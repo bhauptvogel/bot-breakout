@@ -1,34 +1,125 @@
-version: "3.1"
-
+version: '3.1'
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-
+- '[London](location)'
+- affirm
+- age
+- age_question
+- bot_challenge
+- deny
+- goodbye
+- greet
+- inform
+- mood_great
+- mood_question
+- mood_unhappy
+- place_recommendation
+- request_search_form
+- restaurant
+- stupid
+entities:
+- location
+- place
+- age
+slots:
+  place:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: place
+  location:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: location
+  reccomended_place:
+    type: any
+    mappings:
+    - type: custom
+  age:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: age
+forms:
+  simple_search_form:
+    required_slots:
+    - place
+    - location
+  simple_age_form:
+    required_slots:
+    - age
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
-
+  - text: Hey!
+  - text: Hello!
+  - text: Hi!
+  utter_respond_mood:
+  - text: I'm good thanks! And you?
+  - text: I am good thank you! What about you?
+  - text: Good, thanks. Wbu?
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
+  - text: 'Here is something to cheer you up:'
   utter_did_that_help:
-  - text: "Did that help you?"
-
+  - text: Did that help you?
   utter_happy:
-  - text: "Great, carry on!"
-
+  - text: That's nice :D
+  - text: Good!
+  - text: Nice :)
+  utter_age_quiz:
+  - text: I have a Quiz for you ;) When I was 6 years old my sister was half of my age and my brother was twice of my age. 5 years later, what is the sum of my siblings' ages? That's my age.
+  - text: Here's a Quiz for you ;) When I was 6 years old my sister was half of my age and my brother was twice of my age. 5 years later, what is the sum of my siblings' ages? That's my age.
+  utter_ask_age:
+  - text: No that's wrong. I'm not {age}
+  - text: No, {age} is not my age
+  - text: Nope I'm not {age}
+  utter_sad:
+  - text: Oh no I'm sorry :(
+  - text: Nooo I'm so sorry
+  - text: No :( sad to hear!
   utter_goodbye:
-  - text: "Bye"
-
+  - text: See you, bye
+  - text: Bye :)
+  - text: Goodbye
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
+  - text: I am a bot, powered by Rasa.
+  utter_submit:
+  - text: I will search for something now!
+  utter_ask_place:
+  - text: Sure! Where do you want to go?
+  - text: Where do you want to go?
+  utter_ask_location:
+  - text: Where should I search for a {place}?
+  - text: Where do you want me to search for a {place}?
+  utter_answer_stupid:
+  - text: So you will never know how old I am.
+  - text: So you'll never know
+  - text: You will never know then
+  utter_confirm:
+  - text: Perfect let's go to a {place} in {location}! I'll send you the details.
+  - text: Nice let's go to a {place} in {location}! I'll send you the address.
+  - text: Sounds good, let's go to a {place} in {location}! I will send you the address!
+actions:
+- action_restaurant_search
+- utter_submit
+- utter_greet
+- place_recommendation
+- utter_cheer_up
+- utter_did_that_help
+- utter_happy
+- utter_goodbye
+- utter_iamabot
+- utter_ask_place
+- utter_ask_location
+- utter_respond_mood
+- utter_sad
+- utter_age_quiz
+- utter_answer_stupid
+- utter_ask_age
+- validate_simple_age_form
+- utter_confirm
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

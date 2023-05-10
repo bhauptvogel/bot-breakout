@@ -2,12 +2,41 @@ version: "3.1"
 
 rules:
 
-- rule: Say goodbye anytime the user says goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
-
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Activate Search Form
+  steps: 
+  - intent: place_recommendation
+  - action: simple_search_form
+  - active_loop: simple_search_form
+
+- rule: Submit Search Form
+  condition: 
+  - active_loop: simple_search_form
+  steps:
+  - action: simple_search_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_restaurant_search
+
+- rule: Activate Age Form
+  steps: 
+  - intent: age_question
+  - action: utter_age_quiz
+  - action: simple_age_form
+  - active_loop: simple_age_form
+
+- rule: Submit Age Form
+  condition: 
+  - active_loop: simple_age_form
+  steps:
+  - action: simple_age_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+
+
