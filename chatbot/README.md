@@ -1,5 +1,14 @@
 # date-escaperoom-chatbot
 
+## Frontend
+Each time run these commands in two seperate terminals: 
+
+`rasa run -m models --enable-api --cors "*" --debug`
+
+`rasa run actions`
+
+Then open the index.html (which is in the folder) to use the Web-Interface
+
 
 
 ## Getting started
