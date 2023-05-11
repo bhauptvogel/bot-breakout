@@ -1,0 +1,7 @@
+{
+  "rule_only_slots": [],
+  "rule_only_loops": [
+    "simple_search_form",
+    "simple_age_form"
+  ]
+}

@@ -16,6 +16,7 @@ nlu:
     - goodevening
     - good afternoon
     - Hello
+    - Hey
 - intent: mood_question
   examples: |
     - How are you?
@@ -45,6 +46,7 @@ nlu:
     - To a [restaurant](place)
     - do you want to meet
     - to a [park](place)
+    - to a [park](place)
 - intent: inform
   examples: |
     - [Mitte](location)
@@ -56,6 +58,7 @@ nlu:
     - [Charlottenburg](location)
     - In [kreuzberg]{"entity": "location", "value": "Kreuzberg"}
     - in [kreuzberg]{"entity": "location", "value": "Kreuzberg"}
+    - In [Mitte](location)
 - intent: goodbye
   examples: |
     - cu
@@ -66,6 +69,7 @@ nlu:
     - see you around
     - bye bye
     - see you later
+    - ok bye
 - intent: affirm
   examples: |
     - yes
@@ -157,6 +161,9 @@ nlu:
     - Are you [25](age)?
     - You are [25](age)
     - [25](age) it is
+    - Are you [22](age)?
+    - [24](age)?
+    - [25](age)?
 - synonym: Kreuzberg
   examples: |
     - kreuzberg

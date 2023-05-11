@@ -17,8 +17,8 @@ intents:
 - restaurant
 - stupid
 entities:
-- location
 - place
+- location
 - age
 slots:
   place:
@@ -72,9 +72,9 @@ responses:
   - text: I have a Quiz for you ;) When I was 6 years old my sister was half of my age and my brother was twice of my age. 5 years later, what is the sum of my siblings' ages? That's my age.
   - text: Here's a Quiz for you ;) When I was 6 years old my sister was half of my age and my brother was twice of my age. 5 years later, what is the sum of my siblings' ages? That's my age.
   utter_ask_age:
-  - text: No that's wrong. I'm not {age}
-  - text: No, {age} is not my age
-  - text: Nope I'm not {age}
+  - text: Keep guessing ;)
+  - text: Another guess?
+  - text: Come on you'll get it! 
   utter_sad:
   - text: Oh no I'm sorry :(
   - text: Nooo I'm so sorry
@@ -103,19 +103,19 @@ responses:
   - text: Sounds good, let's go to a {place} in {location}! I will send you the address!
 actions:
 - action_restaurant_search
-- utter_submit
+- utter_goodbye
+- utter_respond_mood
+- utter_age_quiz
+- utter_happy
 - utter_greet
+- utter_submit
 - place_recommendation
 - utter_cheer_up
 - utter_did_that_help
-- utter_happy
-- utter_goodbye
 - utter_iamabot
 - utter_ask_place
 - utter_ask_location
-- utter_respond_mood
 - utter_sad
-- utter_age_quiz
 - utter_answer_stupid
 - utter_ask_age
 - validate_simple_age_form

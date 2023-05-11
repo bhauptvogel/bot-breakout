@@ -32,7 +32,7 @@ from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
-import googlesearch 
+import random
 
 
 class ValidateSimpleAgeForm(FormValidationAction):
@@ -49,10 +49,16 @@ class ValidateSimpleAgeForm(FormValidationAction):
           """Validate `age` value."""
 
           if int(slot_value) != 25:
-               #dispacher.utter_message(text=f"That's not right, try again")
-               return {"age": None}
-          dispacher.utter_message(text=f"Yes! I'm {slot_value} years old")
-          return {"age": slot_value}
+               random_number = random.randint(0, 2)
+               if random_number == 0:
+                    dispacher.utter_message(text=f"No that's wrong. I'm not {slot_value}")
+               elif random_number == 1:
+                    dispacher.utter_message(text=f"No, {slot_value} is not my age")
+               else: 
+                    dispacher.utter_message(text=f"Nope I'm not {slot_value}")
+          else:
+               dispacher.utter_message(text=f"Yes! I'm {slot_value} years old")
+               return {"age": slot_value}
 
 
 class ActionLocationSearch(Action):
@@ -67,7 +73,7 @@ class ActionLocationSearch(Action):
           location = next(tracker.get_latest_entity_values("location"), None)
           place = next(tracker.get_latest_entity_values("place"), None)
 
-          dispatcher.utter_message(text=f"Perfect let's go to a {place} in {location}! I'll send you the details.")
+          #dispatcher.utter_message(text=f"Perfect let's go to a {place} in {location}! I'll send you the details.")
 #          query = str(place)+" in "+str(location)
 #          search = googlesearch.search(query)
 #          dispatcher.utter_message(f"Query: {query}")

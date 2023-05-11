@@ -11,6 +11,7 @@ stories:
   - intent: mood_great
   - action: utter_happy
   - intent: age_question
+  - action: utter_age_quiz
  
 
 - story: sad mood
@@ -22,3 +23,10 @@ stories:
   - intent: mood_unhappy
   - action: utter_sad
   - intent: age_question
+  - action: utter_age_quiz
+
+- story: goodbye 
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+

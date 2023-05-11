@@ -22,11 +22,11 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: action_restaurant_search
+  - action: utter_confirm
 
 - rule: Activate Age Form
   steps: 
-  - intent: age_question
-  - action: utter_age_quiz
+  - intent: age
   - action: simple_age_form
   - active_loop: simple_age_form
 
