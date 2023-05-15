@@ -4,7 +4,7 @@ stories:
 
 - story: happy mood
   steps:
-  - intent: greet 
+  - intent: greet
   - action: utter_greet
   - intent: mood_question
   - action: utter_respond_mood
@@ -12,11 +12,11 @@ stories:
   - action: utter_happy
   - intent: age_question
   - action: utter_age_quiz
- 
+
 
 - story: sad mood
   steps:
-  - intent: greet 
+  - intent: greet
   - action: utter_greet
   - intent: mood_question
   - action: utter_respond_mood
@@ -24,9 +24,3 @@ stories:
   - action: utter_sad
   - intent: age_question
   - action: utter_age_quiz
-
-- story: goodbye 
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
-

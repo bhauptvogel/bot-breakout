@@ -8,13 +8,13 @@ rules:
   - action: utter_iamabot
 
 - rule: Activate Search Form
-  steps: 
+  steps:
   - intent: place_recommendation
   - action: simple_search_form
   - active_loop: simple_search_form
 
 - rule: Submit Search Form
-  condition: 
+  condition:
   - active_loop: simple_search_form
   steps:
   - action: simple_search_form
@@ -25,18 +25,16 @@ rules:
   - action: utter_confirm
 
 - rule: Activate Age Form
-  steps: 
+  steps:
   - intent: age
   - action: simple_age_form
   - active_loop: simple_age_form
 
 - rule: Submit Age Form
-  condition: 
+  condition:
   - active_loop: simple_age_form
   steps:
   - action: simple_age_form
   - active_loop: null
   - slot_was_set:
     - requested_slot: null
-
-
