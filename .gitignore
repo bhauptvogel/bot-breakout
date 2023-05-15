@@ -6,3 +6,6 @@ chatbot/models/
 chatbot/tests/
 results/
 
+.rasa/
+__pycache__/
+
