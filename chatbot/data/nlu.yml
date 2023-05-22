@@ -1,6 +1,9 @@
 version: "3.1"
 nlu:
 
+# possible intents to add: hello/greet, yes
+
+## ------ start ------
 - intent: user_asks_about_wellbeing
   examples: |
     - how are you?
@@ -14,6 +17,7 @@ nlu:
     - are you good?
     - are you alright there
 
+## ------ general ------
 - intent: user_wants_to_leave
   examples: |
     - i want to leave
@@ -65,6 +69,7 @@ nlu:
     - summary
     - overview
     - could you provide an overview?
+    - watch overview
   
 - intent: user_guesses_murderer
   examples: |
@@ -85,6 +90,8 @@ nlu:
     - Was it possibly [Anna]{"entity":"person"}?
     - [Anna]{"entity":"person"} is my guess.
     - I think it was [Kira]{"entity":"person"}.
+    - I think [Kira]{"entity":"person"} is the murderer
+    - [Patrick]{"entity":"person"} is the killer!
     - [Patrick]{"entity":"person"} did it, didn't he?
     - It had to be [Anna]{"entity":"person"}.
     - [Victor]{"entity":"person"} is my primary suspect.
@@ -92,11 +99,39 @@ nlu:
     - I suppose it only could have been [Kira]{"entity":"person"}.
     - Is [Anna]{"entity":"person"} the murderer?
     - Could the murderer be [Maria's boyfriend]{"entity":"person"}?
+    - I want to log in an answer! 
+    - I want to tell the police who the killer is.
 
+# ! not implemented in domain.yml
+# slots: what was talked about last
+- intent: user_wants_more_about_X
+  examples: |
+    - Tell me more
+    - I want to know more about that
+    - Is there more to that?
+    - Tell me everything about that
+    - Go on
+    - Say more
+    - I need more information about that
+    - And then?
+    - What else?
+    - Ok...?
+    - What else can you tell me?
+    - More information please
+    - I need to know more
+    - Is there more?
+    - Expand on that
+    - Keep going
+    - Well and then?
+
+## ------ scene investigation ------
 - intent: scene_investigation
   examples: |
     - Let’s look at the [body]{"entity":"object", "group":"search"} and the [note]{"entity":"object", "group":"search"}
     - Investigate the scene
+    - Tell me about the environment
+    - What do you see?
+    - What is here
     - Pick up the [note]{"entity":"object", "group":"search"}
     - Read the [note]{"entity":"object", "group":"search"}
     - Look at the [body]{"entity":"object", "group":"search"}
@@ -125,11 +160,14 @@ nlu:
     - Search the [room]{"entity":"object", "group":"search"}
     - I want to see what's in the [cabin]{"entity":"object", "group":"search"}
     - Check the [bench]{"entity":"object", "group":"search"}
+    - More investigation
 
+## ------ character investigation ------
 - intent: information_about_character
   examples: |
     - Tell me about [Maria]{"entity":"person"}
     - Who is the [victim]{"entity":"person"}?
+    - Tell me everything about [Maria]{"entity":"person"}
     - How do you know [Victor]{"entity":"person"}?
     - Tell me about your [co-workers]{"entity":"person", "group":"multiple"}
     - Let's talk about your [coworkers]{"entity":"person", "group":"multiple"}
@@ -170,7 +208,9 @@ nlu:
     - [Patrick]{"entity":"person"}'s [full name]{"entity":"information"} please
     - What is the [surname]{"entity":"information"} of [Patrick]{"entity":"person"}?
     - Please tell me [Anna]{"entity":"person"}'s [family name]{"entity":"information"}
-
+    - More about [Victor]{"entity":"person"}
+    - Tell me more about [Marias]{"entity":"person"}'s [boyfriend]{"entity":"person"}
+    - I want to know more about [Anna]{"entity":"person"}
 
 - intent: motive_of_character
   examples: |
@@ -213,8 +253,10 @@ nlu:
     - Does [Patrick]{"entity":"person"} have the pass to the [ride]{"entity":"object"}?
     - Can [Victor]{"entity":"person"} get into the [cabin]{"entity":"object"}?
     - Who is allowed to access the [roller coaster]{"entity":"object"}?
+    - Did [Kira]{"entity":"person"} have the possiblity to enter the [attraction]{"entity":"object"}?
+    - Could [Anna]{"entity":"person"} have theoretically done it?
 
-
+## --------------------------------------------
 - synonym: Maria
   examples: |
     - victim
