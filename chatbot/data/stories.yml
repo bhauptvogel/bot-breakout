@@ -1,31 +1,3 @@
 version: "3.1"
 
 stories:
-
-- story: happy mood
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_question
-  - action: utter_respond_mood
-  - intent: mood_great
-  - action: utter_happy
-  - intent: age_question
-  - action: utter_age_quiz
-
-
-- story: sad mood
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_question
-  - action: utter_respond_mood
-  - intent: mood_unhappy
-  - action: utter_sad
-  - intent: age_question
-  - action: utter_age_quiz
-
-- story: goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye

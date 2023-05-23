@@ -35,47 +35,86 @@ from rasa_sdk.events import SlotSet, EventType
 import random
 
 
-class ValidateSimpleAgeForm(FormValidationAction):
-     def name(self) -> Text:
-          return "validate_simple_age_form"
-
-     def validate_age(
-               self, 
-               slot_value: Any, 
-               dispacher: CollectingDispatcher, 
-               tracker: Tracker, 
-               domain: DomainDict,
-     ) -> Dict[Text, Any]: 
-          """Validate `age` value."""
-
-          if int(slot_value) != 25:
-               random_number = random.randint(0, 2)
-               if random_number == 0:
-                    dispacher.utter_message(text=f"No that's wrong. I'm not {slot_value}")
-               elif random_number == 1:
-                    dispacher.utter_message(text=f"No, {slot_value} is not my age")
-               else: 
-                    dispacher.utter_message(text=f"Nope I'm not {slot_value}")
-          else:
-               dispacher.utter_message(text=f"Yes! I'm {slot_value} years old")
-               return {"age": slot_value}
-
-
-class ActionLocationSearch(Action):
-
+class GiveHint(Action):
     def name(self) -> Text:
-        return "action_restaurant_search"
-
+        return "action_hint"
+        
     def run(self, dispatcher: CollectingDispatcher,
-          tracker: Tracker,
-          domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
+        
+        dispatcher.utter_message(text='TODO: Give hint (answer to last question)')
+        
+        return []
+    
+class SituationOverview(Action):
+    def name(self) -> Text:
+        return "action_overview_of_the_state"
+        
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
+        
+        dispatcher.utter_message(text='TODO: Give situation overview')
+        
+        return []
+    
+class SceneInvestigation(Action):
+    def name(self) -> Text:
+        return "action_scene_investigation"
+        
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
+        
+        entities = tracker.latest_message['entities']
+        objects = [e['value'] for e in entities if e['entity'] == 'object']
 
-          location = next(tracker.get_latest_entity_values("location"), None)
-          place = next(tracker.get_latest_entity_values("place"), None)
+        dispatcher.utter_message(text=('TODO: Investigate ' + ', '.join(objects) + '...'))
+        
+        return []
+    
+class CharacterInvestigation(Action):
+    def name(self) -> Text:
+        return "action_character_investigation"
+        
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
+        
+        entities = tracker.latest_message['entities']
+        characters = [e['value'] for e in entities if e['entity'] == 'person']
+        informations = [e['value'] for e in entities if e['entity'] == 'information']
+        dispatcher.utter_message(text=('TODO: Investigate characters: ' + ', '.join(characters) + ' / informations: ' + ', '.join(informations) + '...'))
+        
+        return []
 
-          #dispatcher.utter_message(text=f"Perfect let's go to a {place} in {location}! I'll send you the details.")
-#          query = str(place)+" in "+str(location)
-#          search = googlesearch.search(query)
-#          dispatcher.utter_message(f"Query: {query}")
-            
-#          return []
+
+class CharacterMotive(Action):
+    def name(self) -> Text:
+        return "action_tell_motive"
+        
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
+        
+        entites = tracker.latest_message['entities']
+        suspects = [e['value'] for e in entites if e['group'] == 'suspect' and e['entity'] == 'person']
+        victim = [e['value'] for e in entites if e['group'] == 'victim' and e['entity'] == 'person']
+        dispatcher.utter_message(text='TODO: Tell motive of ' + ', '.join(suspects) + ' for killing ' + ', '.join(victim) + '...')
+        
+        return []
+
+class AccessToRollerCoaster(Action):
+    def name(self) -> Text:
+        return "action_access_to_roller_coaster"
+        
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
+        
+        entities = tracker.latest_message['entities']
+        characters = [e['value'] for e in entities if e['entity'] == 'person']
+        dispatcher.utter_message(text='TODO: Tell access to roller coaster of ' + ', '.join(characters) + '...')
+        
+        return []

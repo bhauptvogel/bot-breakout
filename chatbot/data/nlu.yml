@@ -1,169 +1,307 @@
 version: "3.1"
 nlu:
-- intent: greet
+
+# possible intents to add: hello/greet, yes
+
+## ------ start ------
+- intent: user_asks_about_wellbeing
   examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
-    - Hello
-    - Hey
-- intent: mood_question
+    - how are you?
+    - how is it going?
+    - what is up with you?
+    - are you okay?
+    - how are you doing?
+    - is everything okay?
+    - how are you
+    - hello, how are you?
+    - are you good?
+    - are you alright there
+
+## ------ general ------
+- intent: user_wants_to_leave
   examples: |
-    - How are you?
-    - How are you today?
-    - How do you feel?
-- intent: age_question
+    - i want to leave
+    - i want to leave now
+    - i wish to exit
+    - time to go
+    - i'd like to leave
+    - i want to exit
+    - we should go
+    - we've got to go
+    - i think i should head out
+    - we need to leave
+    - i'm leaving
+    - im heading out
+
+- intent: user_needs_hint
   examples: |
-    - How old are you?
-    - So how old are you?
-    - What's your age?
-    - One question, how old are you?
-    - How old are you btw?
-    - Anyways, how old are you?
-    - Doesn't matter, so how old are you?
-    - Anyways, What's your age?
-    - Doesn't matter. One question, how old are you?
-    - Anyways. How old are you btw?
-- intent: place_recommendation
+    - can you give me a hint?
+    - i need a hint
+    - i'm stuck, can you help me?
+    - can you help me with a clue?
+    - i could use a hint
+    - give me a hint please
+    - please provide a clue
+    - could you give me a tip?
+    - i'm lost, can you help me?
+    - i require a hint
+    - i'm puzzled, can i get a hint?
+    - i could do with a hint
+    - can you suggest something?
+    - please give me a hint
+    - can i have a hint?
+    - please, a hint would be nice
+    - i'm not sure what to do next, can I get a hint?
+    - do you have any tips?
+    - i need some guidance
+
+- intent: overview_of_the_state
   examples: |
-    - Do you want to go out?
-    - Do you want to meet?
-    - Do you have time to meet?
-    - Do you want to go to a [restaurant](place)?
-    - Do you want to go to a [park](place)?
-    - want to go to a [park](place)?
-    - want to go to a [restaurant](place)?
-    - To a [restaurant](place)
-    - do you want to meet
-    - to a [park](place)
-    - to a [park](place)
-- intent: inform
+    - what is the state?
+    - give me an overview 
+    - i need a status about all the information
+    - can you summarize everything so far?
+    - i need a recap
+    - i need a brief on the situation
+    - let me know about the situation
+    - what is the current situation?
+    - i need a summary
+    - summary
+    - overview
+    - could you provide an overview?
+    - watch overview
+  
+- intent: user_guesses_murderer
   examples: |
-    - [Mitte](location)
-    - In [Friedrichshain](location)
-    - [Neukölln](location)
-    - [Friedrichshain](location)
-    - In [Kreuzberg](location)
-    - [Kreuzberg](location)
-    - [Charlottenburg](location)
-    - In [kreuzberg]{"entity": "location", "value": "Kreuzberg"}
-    - in [kreuzberg]{"entity": "location", "value": "Kreuzberg"}
-    - In [Mitte](location)
-- intent: goodbye
+    - Do you think it was [Kira]{"entity":"person"}?
+    - Was it [Anna]{"entity":"person"}?
+    - It was [Victor]{"entity":"person"}!
+    - I am sure it was [Patrick]{"entity":"person"}.
+    - Could [Kira]{"entity":"person"} be the murderer?
+    - I'm suspecting [Anna]{"entity":"person"}.
+    - [Victor]{"entity":"person"} has to be the murderer!
+    - I have a feeling it was [Patrick]{"entity":"person"}.
+    - It was [Anna]{"entity":"person"}, I'm sure of it!
+    - I believe it was [Kira]{"entity":"person"}.
+    - I bet it was [Anna]{"entity":"person"}.
+    - My guess is [Patrick]{"entity":"person"}.
+    - Is it possible that [Victor]{"entity":"person"} is the murderer?
+    - I suspect it was [Kira]{"entity":"person"}.
+    - Was it possibly [Anna]{"entity":"person"}?
+    - [Anna]{"entity":"person"} is my guess.
+    - I think it was [Kira]{"entity":"person"}.
+    - I think [Kira]{"entity":"person"} is the murderer
+    - [Patrick]{"entity":"person"} is the killer!
+    - [Patrick]{"entity":"person"} did it, didn't he?
+    - It had to be [Anna]{"entity":"person"}.
+    - [Victor]{"entity":"person"} is my primary suspect.
+    - I accuse [Anna]{"entity":"person"}.
+    - I suppose it only could have been [Kira]{"entity":"person"}.
+    - Is [Anna]{"entity":"person"} the murderer?
+    - Could the murderer be [Maria's boyfriend]{"entity":"person"}?
+    - I want to log in an answer! 
+    - I want to tell the police who the killer is.
+
+# ! not implemented in domain.yml
+# slots: what was talked about last
+- intent: user_wants_more_about_X
   examples: |
-    - cu
-    - cee you later
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
-    - ok bye
-- intent: affirm
+    - Tell me more
+    - I want to know more about that
+    - Is there more to that?
+    - Tell me everything about that
+    - Go on
+    - Say more
+    - I need more information about that
+    - And then?
+    - What else?
+    - Ok...?
+    - What else can you tell me?
+    - More information please
+    - I need to know more
+    - Is there more?
+    - Expand on that
+    - Keep going
+    - Well and then?
+
+## ------ scene investigation ------
+- intent: scene_investigation
   examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
-- intent: deny
+    - Let’s look at the [body]{"entity":"object", "group":"search"} and the [note]{"entity":"object", "group":"search"}
+    - Investigate the scene
+    - Tell me about the environment
+    - What do you see?
+    - What is here
+    - Pick up the [note]{"entity":"object", "group":"search"}
+    - Read the [note]{"entity":"object", "group":"search"}
+    - Look at the [body]{"entity":"object", "group":"search"}
+    - Look at the [note]{"entity":"object", "group":"search"}
+    - Please take a look at the [weapon]{"entity":"object", "group":"search"}
+    - Let’s search for the [murder weapon]{"entity":"object", "group":"search"}
+    - Look at the [floor cabin]{"entity":"object", "group":"search"}
+    - Look under the [bench]{"entity":"object", "group":"search"}
+    - Look behind the [tree]{"entity":"object", "group":"search"}
+    - Tell me about the [note]{"entity":"object", "group":"search"}.
+    - Check out the environment
+    - Can you examine the [corpse]{"entity":"object", "group":"search"}?
+    - Please look into the [body]{"entity":"object", "group":"search"}
+    - Go through the [cabin]{"entity":"object", "group":"search"}
+    - Inspect the [cabin]{"entity":"object", "group":"search"}
+    - What about the [note]{"entity":"object", "group":"search"}?
+    - Investigate the [dead woman]{"entity":"object", "group":"search"}
+    - Let's take a closer look at the [victim]{"entity":"object", "group":"search"}
+    - Search the [cabin]{"entity":"object", "group":"search"}
+    - Look inside the [cabin]{"entity":"object", "group":"search"}
+    - Let's check out the [dead body]{"entity":"object", "group":"search"}
+    - Examine the [floor cabin]{"entity":"object", "group":"search"}
+    - Please check the [body]{"entity":"object", "group":"search"}
+    - Look around the [tree]{"entity":"object", "group":"search"}
+    - Let's inspect the [bench]{"entity":"object", "group":"search"}
+    - Search the [room]{"entity":"object", "group":"search"}
+    - I want to see what's in the [cabin]{"entity":"object", "group":"search"}
+    - Check the [bench]{"entity":"object", "group":"search"}
+    - More investigation
+
+## ------ character investigation ------
+- intent: information_about_character
   examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
-    - Thanks
-- intent: mood_great
+    - Tell me about [Maria]{"entity":"person"}
+    - Who is the [victim]{"entity":"person"}?
+    - Tell me everything about [Maria]{"entity":"person"}
+    - How do you know [Victor]{"entity":"person"}?
+    - Tell me about your [co-workers]{"entity":"person", "group":"multiple"}
+    - Let's talk about your [coworkers]{"entity":"person", "group":"multiple"}
+    - What about your [coworkers]{"entity":"person", "group":"multiple"}?
+    - Who are your [coworkers]{"entity":"person", "group":"multiple"}?
+    - tell me about [Maria]{"entity":"person"}
+    - Who is the [boyfriend]{"entity":"person"}?
+    - Who is [Patrick]{"entity":"person"}?
+    - More information about [Anna]{"entity":"person"}
+    - Where do you know [Victor]{"entity":"person"} from?
+    - What [secret]{"entity":"information"}?
+    - Tell me about the [secret]{"entity":"information"} of [Patrick]{"entity":"person"}
+    - Tell me [Patrick]{"entity":"person"}'s [secret]{"entity":"information"}
+    - Tell me about the [breakup]{"entity":"information"} of [Maria]{"entity":"person"}
+    - What can you tell me about [Anna]{"entity":"person"}?
+    - Give me information about [Patrick]{"entity":"person"}
+    - What's the story of [Maria]{"entity":"person"}?
+    - Who is [Victor]{"entity":"person"}?
+    - What do you know about [Anna]{"entity":"person"}?
+    - What's [Patrick]{"entity":"person"}'s background?
+    - Can you tell me more about [Maria]{"entity":"person"}?
+    - Share information about [Victor]{"entity":"person"}
+    - I want to know about [Anna]{"entity":"person"}
+    - What is the [relation]{"entity":"information"} between [Maria]{"entity":"person"} and [Victor]{"entity":"person"}?
+    - Does [Patrick]{"entity":"person"} have any [secrets]{"entity":"information"}?
+    - What do we know about [Anna]{"entity":"person"}'s [past]{"entity":"information"}?
+    - Can you tell me [Victor]{"entity":"person"}'s [profession]{"entity":"information"}?
+    - What's the [connection]{"entity":"information"} between [Anna]{"entity":"person"} and [Maria]{"entity":"person"}?
+    - What's [Patrick]{"entity":"person"}'s role in all this?
+    - Tell me about [Maria]{"entity":"person"}'s [secret]{"entity":"information"}
+    - How did [Victor]{"entity":"person"} meet [Anna]{"entity":"person"}?
+    - What is the [last name]{"entity":"information"} of [Anna]{"entity":"person"}?
+    - What is [Victor]{"entity":"person"}'s' [full name]{"entity":"information"}?
+    - Give me the [full name]{"entity":"information"} of [Patrick]{"entity":"person"}
+    - I need [Anna]{"entity":"person"}'s [name]{"entity":"information"}
+    - Do you know [Patrick]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - [Last name]{"entity":"information"} of [Victor]{"entity":"person"}
+    - [Patrick]{"entity":"person"}'s [full name]{"entity":"information"} please
+    - What is the [surname]{"entity":"information"} of [Patrick]{"entity":"person"}?
+    - Please tell me [Anna]{"entity":"person"}'s [family name]{"entity":"information"}
+    - More about [Victor]{"entity":"person"}
+    - Tell me more about [Marias]{"entity":"person"}'s [boyfriend]{"entity":"person"}
+    - I want to know more about [Anna]{"entity":"person"}
+
+- intent: motive_of_character
   examples: |
-    - I'm good
-    - I am good
-    - Good, thanks
-    - I am good, thank you!
-    - Thanks I am good
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-- intent: mood_unhappy
+    - What is [Patrick]{"entity":"person", "group":"suspect"}'s motive?
+    - Has [Anna]{"entity":"person", "group":"suspect"} a motive?
+    - Is there a reason for [Victor]{"entity":"person", "group":"suspect"} to kill [Maria]{"entity":"person", "group":"victim"}?
+    - Why would [Kira]{"entity":"person", "group":"suspect"} kill [Maria]{"entity":"person", "group":"victim"}?
+    - Why would [Patrick]{"entity":"person", "group":"suspect"} want to harm [Maria]{"entity":"person", "group":"victim"}?
+    - What could be [Anna]{"entity":"person", "group":"suspect"}'s reason to kill [Maria]{"entity":"person", "group":"victim"}?
+    - Does [Victor]{"entity":"person", "group":"suspect"} have a reason to harm [Maria]{"entity":"person", "group":"victim"}?
+    - What could [Kira]{"entity":"person", "group":"suspect"} gain from [Maria]{"entity":"person", "group":"victim"}'s death?
+    - Why would [Anna]{"entity":"person", "group":"suspect"} kill [Maria]{"entity":"person", "group":"victim"}?
+    - Does [Kira]{"entity":"person", "group":"suspect"} have any motive to harm [Maria]{"entity":"person", "group":"victim"}?
+    - Could [Victor]{"entity":"person", "group":"suspect"} have a reason to harm [Maria]{"entity":"person", "group":"victim"}?
+    - What could be [Patrick]{"entity":"person", "group":"suspect"}'s motive for killing [Maria]{"entity":"person", "group":"victim"}?
+    - Does [Anna]{"entity":"person", "group":"suspect"} have a motive for harming [Maria]{"entity":"person", "group":"victim"}?
+    - What could [Maria]{"entity":"person", "group":"victim"} have done to [Patrick]{"entity":"person", "group":"suspect"} that he would want to kill her?
+    - What did [Maria]{"entity":"person", "group":"victim"} do to [Patrick]{"entity":"person", "group":"suspect"} that he would harm her?
+    - Could [Maria]{"entity":"person", "group":"suspect"} have any reason for doing all this?
+    - Why could [Kira]{"entity":"person", "group":"suspect"} have done it?
+    - Why could [Anna]{"entity":"person", "group":"suspect"} have been it?
+    - Why could [Victor]{"entity":"person", "group":"suspect"} have killed her?
+    - Tell me Reasons for [Patrick]{"entity":"person", "group":"suspect"} might have killed [Maria]{"entity":"person", "group":"victim"}?
+    - Why would [Kira]{"entity":"person", "group":"suspect"} do that?
+
+- intent: access_to_rollercoaster
   examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-- intent: stupid
+    - Has [Patrick]{"entity":"person"} access to the [rollercoaster]{"entity":"object"}?
+    - Does [Anna]{"entity":"person"} have access to the [ghost train]{"entity":"object"}?
+    - Has [Victor]{"entity":"person"} access to the [cabin]{"entity":"object"}?
+    - Who has the keys to the [rollercoaster]{"entity":"object"}?
+    - Who has access to the [train]{"entity":"object"}?
+    - Can [Victor]{"entity":"person"} access the [rollercoaster]{"entity":"object"}?
+    - Is [Patrick]{"entity":"person"} able to get into this [part]{"entity":"object"} of the park?
+    - Does [Kira]{"entity":"person"} have the keys to the [haunted house]{"entity":"object"}?
+    - Can [Patrick]{"entity":"person"} operate the [park]{"entity":"object"}?
+    - Who can enter the [attraction]{"entity":"object"}?
+    - Who has the ability to operate the [rollercoaster]{"entity":"object"}?
+    - Is [Anna]{"entity":"person"} in charge of the [attraction]{"entity":"object"}?
+    - Does [Patrick]{"entity":"person"} have the pass to the [ride]{"entity":"object"}?
+    - Can [Victor]{"entity":"person"} get into the [cabin]{"entity":"object"}?
+    - Who is allowed to access the [roller coaster]{"entity":"object"}?
+    - Did [Kira]{"entity":"person"} have the possiblity to enter the [attraction]{"entity":"object"}?
+    - Could [Anna]{"entity":"person"} have theoretically done it?
+
+## --------------------------------------------
+- synonym: Maria
   examples: |
-    - That's stupid
-    - How stupid
-    - stupid
-    - What's wrong with you?
-    - What a dumb question
-- intent: bot_challenge
+    - victim
+    - dead person
+    - dead woman
+    - woman in the cabin
+    - maria
+
+- synonym: Victor
   examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
-- intent: restaurant
+    - Maria's boyfriend
+    - the boyfriend of maria
+    - the new boyfriend
+    - new boyfriend
+    - victor
+
+- synonym: Coworkers
   examples: |
-    - I need a [restaurant](place)
-- intent: '[London](location)'
+    - coworkers
+    - colleagues
+    - co-workers
+    - co workers
+    - the staff
+
+- synonym: connection
   examples: |
-    - London
-    - [London](location)
-- intent: age
+    - relation
+    - interaction
+    - involvement
+    - relationship
+    - association
+    - link
+    - bond
+
+- synonym: murder weapon
   examples: |
-    - [20](age)?
-    - Are you [20](age)?
-    - [21](age)?
-    - [22](age)?
-    - Are you [21](age)?
-    - Are you [22](age)?
-    - [23](age)?
-    - Are you [23](age)?
-    - [24](age)?
-    - Are you [24](age)?
-    - [25](age)?
-    - Are you [25](age)?
-    - You are [25](age)
-    - [25](age) it is
-    - Are you [22](age)?
-    - [24](age)?
-    - [25](age)?
-- synonym: Kreuzberg
+    - knife
+    - weapon
+    - crime weapon
+
+- synonym: full name
   examples: |
-    - kreuzberg
+    - surname
+    - fullname
+    - name
+    - last name
+    - family name
+    - name of the family

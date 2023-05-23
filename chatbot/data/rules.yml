@@ -2,39 +2,47 @@ version: "3.1"
 
 rules:
 
-- rule: Say 'I am a bot' anytime the user challenges
+- rule: Start game
   steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
+  - intent: user_asks_about_wellbeing
+  - action: utter_hello
 
-- rule: Activate Search Form
+- rule: You cannot leave
   steps:
-  - intent: place_recommendation
-  - action: simple_search_form
-  - active_loop: simple_search_form
+  - intent: user_wants_to_leave
+  - action: utter_you_cannot_leave
 
-- rule: Submit Search Form
-  condition:
-  - active_loop: simple_search_form
+- rule: Give user a hint
   steps:
-  - action: simple_search_form
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-  - action: action_restaurant_search
-  - action: utter_confirm
+  - intent: user_needs_hint
+  - action: action_hint
 
-- rule: Activate Age Form
+- rule: Give user an overview of the state
   steps:
-  - intent: age
-  - action: simple_age_form
-  - active_loop: simple_age_form
+  - intent: overview_of_the_state
+  - action: action_overview_of_the_state
 
-- rule: Submit Age Form
-  condition:
-  - active_loop: simple_age_form
+- rule: User guesses who the murderer is
   steps:
-  - action: simple_age_form
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
+  - intent: user_guesses_murderer
+  - action: utter_respond_to_accusation
+
+- rule: User investigates the scene
+  steps:
+  - intent: scene_investigation
+  - action: action_scene_investigation
+
+- rule: User investigates the characters
+  steps:
+  - intent: information_about_character
+  - action: action_character_investigation
+
+- rule: User want's to know reasons / motives about the characters
+  steps:
+  - intent: motive_of_character
+  - action: action_tell_motive
+
+- rule: User want's to know who has access to the roller coaster
+  steps:
+  - intent: access_to_rollercoaster
+  - action: action_access_to_roller_coaster
