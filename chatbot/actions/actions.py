@@ -90,16 +90,26 @@ class CharacterInvestigation(Action):
         else:
             data = tracker.get_slot('data')
 
-        if "Maria" in characters:
-            if "times_asked_about_Maria" not in data:
-                data["times_asked_about_Maria"] = 1
-                dispatcher.utter_message(text=("Maria is the Ex-girlfriend of my co-worker Kira. Do you want to know more about Kira or should we investigate the cabin a bit more?"))
-            else:
-                data["times_asked_about_Maria"] += 1
-                if data["times_asked_about_Maria"] == 2:
-                    dispatcher.utter_message(text=("Information 2 about Maria"))
+        story_characters = {"Maria": {1: "Maria is the Ex-girlfriend of my co-worker Kira. Do you want to know more about Kira or should we investigate the cabin a bit more?", 2: "Information 2 about Maria"}, 
+                            "Kira" : {1 : "Information 1 about Kira", 2: "Information 2 about Kira"}, 
+                            "Patrick": {1 : "Information 1 about Kira", 2: "Information 2 about Kira"}, 
+                            "Victor": {1 : "Information 1 about Victor", 2: "Information 2 about Victor"}, 
+                            "Anna": {1 : "Information 1 about Anna", 2: "Information 2 about Anna"}}
+        
+        for story_character in story_characters:
+            if story_character in characters:
+                if "times_asked_about_" + story_character not in data:
+                    data["times_asked_about_" + story_character] = 1
+                    dispatcher.utter_message(text=(story_characters[story_character][1]))
                 else:
-                    dispatcher.utter_message(text=("You already asked me about Maria but sure, here is the information I have: Maria is the Ex-girlfriend of my co-worker Kira. Information 2 about Maria"))
+                    data["times_asked_about_" + story_character] += 1
+                    if data["times_asked_about_" + story_character] == 2:
+                        dispatcher.utter_message(text=(story_characters[story_character][2]))
+                    else:
+                        dispatcher.utter_message(text=("You already asked me about " + story_character + " but sure, her you go: " + story_characters[story_character][2]))
+
+        
+    
 
         informations = [e['value'] for e in entities if e['entity'] == 'information']
         dispatcher.utter_message(text=('TODO: Investigate characters: ' + ', '.join(characters) + ' / informations: ' + ', '.join(informations) + '...'))
