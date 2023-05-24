@@ -35,6 +35,7 @@ from rasa_sdk.events import SlotSet, EventType
 import random
 
 
+
 class GiveHint(Action):
     def name(self) -> Text:
         return "action_hint"
@@ -84,10 +85,26 @@ class CharacterInvestigation(Action):
         
         entities = tracker.latest_message['entities']
         characters = [e['value'] for e in entities if e['entity'] == 'person']
+        if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
+            data = {}
+        else:
+            data = tracker.get_slot('data')
+
+        if "Maria" in characters:
+            if "times_asked_about_Maria" not in data:
+                data["times_asked_about_Maria"] = 1
+                dispatcher.utter_message(text=("Maria is the Ex-girlfriend of my co-worker Kira. Do you want to know more about Kira or should we investigate the cabin a bit more?"))
+            else:
+                data["times_asked_about_Maria"] += 1
+                if data["times_asked_about_Maria"] == 2:
+                    dispatcher.utter_message(text=("Information 2 about Maria"))
+                else:
+                    dispatcher.utter_message(text=("You already asked me about Maria but sure, here is the information I have: Maria is the Ex-girlfriend of my co-worker Kira. Information 2 about Maria"))
+
         informations = [e['value'] for e in entities if e['entity'] == 'information']
         dispatcher.utter_message(text=('TODO: Investigate characters: ' + ', '.join(characters) + ' / informations: ' + ', '.join(informations) + '...'))
         
-        return []
+        return [SlotSet("data", data)]
 
 
 class CharacterMotive(Action):
