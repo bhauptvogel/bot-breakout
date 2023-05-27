@@ -60,20 +60,6 @@ class SituationOverview(Action):
         
         return []
     
-class SceneInvestigation(Action):
-    def name(self) -> Text:
-        return "action_scene_investigation"
-        
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
-        
-        entities = tracker.latest_message['entities']
-        objects = [e['value'] for e in entities if e['entity'] == 'object']
-
-        dispatcher.utter_message(text=('TODO: Investigate ' + ', '.join(objects) + '...'))
-        
-        return []
     
 class CharacterInvestigation(Action):
     def name(self) -> Text:
