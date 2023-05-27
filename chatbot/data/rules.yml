@@ -34,7 +34,25 @@ rules:
   condition:
   - active_loop: simple_age_form
   steps:
-  - action: simple_age_form
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
+  - intent: user_guesses_murderer
+  - action: utter_respond_to_accusation
+
+- rule: User investigates the scene
+  steps:
+  - intent: scene_investigation
+  - action: action_scene_investigation
+
+- rule: User investigates the characters
+  steps:
+  - intent: information_about_character
+  - action: action_character_investigation
+
+- rule: User want's to know reasons / motives about the characters
+  steps:
+  - intent: motive_of_character
+  - action: action_tell_motive
+
+- rule: User want's to know who has access to the roller coaster
+  steps:
+  - intent: access_to_rollercoaster
+  - action: action_access_to_roller_coaster
