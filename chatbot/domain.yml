@@ -1,125 +1,58 @@
 version: '3.1'
 intents:
-- '[London](location)'
-- affirm
-- age
-- age_question
-- bot_challenge
-- deny
-- goodbye
-- greet
-- inform
-- mood_great
-- mood_question
-- mood_unhappy
-- place_recommendation
-- request_search_form
-- restaurant
-- stupid
+- user_asks_about_wellbeing
+- user_wants_to_leave
+- user_needs_hint
+- overview_of_the_state
+- user_guesses_murderer
+- scene_investigation
+- information_about_character
+- motive_of_character
+- access_to_rollercoaster
 entities:
-- place
-- location
-- age
+- object
+- person
+- information
+
 slots:
-  place:
-    type: text
-    influence_conversation: true
-    mappings:
-    - type: from_entity
-      entity: place
-  location:
-    type: text
-    influence_conversation: true
-    mappings:
-    - type: from_entity
-      entity: location
-  reccomended_place:
-    type: any
+  data:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
     mappings:
     - type: custom
-  age:
-    type: text
-    influence_conversation: true
-    mappings:
-    - type: from_entity
-      entity: age
-forms:
-  simple_search_form:
-    required_slots:
-    - place
-    - location
-  simple_age_form:
-    required_slots:
-    - age
+
 responses:
-  utter_greet:
-  - text: Hey!
-  - text: Hello!
-  - text: Hi!
-  utter_respond_mood:
-  - text: I'm good thanks! And you?
-  - text: I am good thank you! What about you?
-  - text: Good, thanks. Wbu?
-  utter_cheer_up:
-  - text: 'Here is something to cheer you up:'
-  utter_did_that_help:
-  - text: Did that help you?
-  utter_happy:
-  - text: That's nice :D
-  - text: Good!
-  - text: Nice :)
-  utter_age_quiz:
-  - text: I have a Quiz for you ;) When I was 6 years old my sister was half of my age and my brother was twice of my age. 5 years later, what is the sum of my siblings' ages? That's my age.
-  - text: Here's a Quiz for you ;) When I was 6 years old my sister was half of my age and my brother was twice of my age. 5 years later, what is the sum of my siblings' ages? That's my age.
-  utter_ask_age:
-  - text: Keep guessing ;)
-  - text: Another guess?
-  - text: Come on you'll get it! 
-  utter_sad:
-  - text: Oh no I'm sorry :(
-  - text: Nooo I'm so sorry
-  - text: No :( sad to hear!
-  utter_goodbye:
-  - text: See you, bye
-  - text: Bye :)
-  - text: Goodbye
-  utter_iamabot:
-  - text: I am a bot, powered by Rasa.
-  utter_submit:
-  - text: I will search for something now!
-  utter_ask_place:
-  - text: Sure! Where do you want to go?
-  - text: Where do you want to go?
-  utter_ask_location:
-  - text: Where should I search for a {place}?
-  - text: Where do you want me to search for a {place}?
-  utter_answer_stupid:
-  - text: So you will never know how old I am.
-  - text: So you'll never know
-  - text: You will never know then
-  utter_confirm:
-  - text: Perfect let's go to a {place} in {location}! I'll send you the details.
-  - text: Nice let's go to a {place} in {location}! I'll send you the address.
-  - text: Sounds good, let's go to a {place} in {location}! I will send you the address!
+  utter_hello:
+  - text: Oh, I’m just a bit stunned. After seeing the dead body, I called the police. Because this is what a good citizen does, right? But now I’m not sure if it was the right decision… We are the only people here and its my work place. I might be a suspect! We have 10 min until the police is here. I should give them some valuable hints about this case when they arrive here. But I don’t know where to start. Can you help me clear my mind? We could first investigate the body with the note, or I can tell you about my co-workers.
+  - text: I'm shocked. After discovering the lifeless body, m first instinct was to call the police. That's what I was supposed to do, wasn't I? But now, I'm having second thoughts... We're the only ones here, and this is my workplace, so I'm likely to become a suspect. The police will be here in 10 minutues or so. I need to gprovide useful leads about this case when they are here. But shere should I start? My thoughts are a mess. Could you help me? Maybe we should start examining the cirme scene or let's talk about my co-workers.
+  utter_you_cannot_leave:
+  - text: You can’t leave before the police arrives in a few minutes! We need to find hints together, so they don’t think we two did it. Should we investigate or talk?
+  - text: This is not possible! The murder could still be walking around, we should wait until the police arrives in a few minutes. I think we should investigate the situation more.
+  utter_respond_to_accusation:
+  - text: I'm not really sure. It could be possible! But before we accuse her let's have a closer look at all the facts we have so far
+  utter_investigate_crime_scene:
+  - text: Oh my god, this feel scary to look at a dead body, but it’s the best think we can do. Let’s move a few  steps closer… Ahhhh! Shit. I know the dead woman in the cabin.
+  utter_information_about_coworkers:
+  - text: My coworkers are Kira, who works as a cashier, and Patrick who is the director of the amusement park. Do you want to know more about one of them?
+  utter_who_is_maria:
+  - text: She's the ex-girlfriend from Kira, my co-worker. I met her a couple times.
+  - text: This is Maria. She is the Ex-girlfriend of my co-worker Kira who works as a cashier. Do you want to know more about Kira Or should we investigate the cabin a bit more?
+  utter_who_is_kira:
+  - text: Ok so we are standing Infront of the train cabin. It has two seats, as ours did. On the seat closer to us and closer to the themed area is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died… We could look around a bit more and find the weapon Or I tell you about the note…
+  utter_who_is_patrick:
+  - text: Patrick is my boss. He in charge of the amusement park. Its actually a family business, he earned it from his dad. Patrick is kind of a snob… he loves to drive around in big cars and all this wealthy stuff.
+  utter_who_is_anna:
+  - text: Anna is Marias colleague at the Fictional Times Paper. I met her at some of Kiras Partys. She is nice but very focused on her job, just as Maria is … sorry, was 😥
+  utter_who_is_victor:
+  - text: Victor is the Maria's new boyfriend. I don’t know him. Only the things Kira told me about him. She was pretty jealous, that Maria has someone new 👀
+
 actions:
-- action_restaurant_search
-- utter_goodbye
-- utter_respond_mood
-- utter_age_quiz
-- utter_happy
-- utter_greet
-- utter_submit
-- place_recommendation
-- utter_cheer_up
-- utter_did_that_help
-- utter_iamabot
-- utter_ask_place
-- utter_ask_location
-- utter_sad
-- utter_answer_stupid
-- utter_ask_age
-- validate_simple_age_form
-- utter_confirm
+- action_hint
+- action_overview_of_the_state
+- action_scene_investigation
+- action_character_investigation
+- action_tell_motive
+- action_access_to_roller_coaster
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

@@ -91,8 +91,6 @@ class CharacterInvestigation(Action):
                         dispatcher.utter_message(text=("You already asked me about " + story_character + " but sure, her you go: " + story_characters[story_character][2]))
 
 
-
-
         informations = [e['value'] for e in entities if e['entity'] == 'information']
         dispatcher.utter_message(text=('TODO: Investigate characters: ' + ', '.join(characters) + ' / informations: ' + ', '.join(informations) + '...'))
 
@@ -107,9 +105,13 @@ class CharacterMotive(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        # check if the person asked for is suspect or victim
         entities = tracker.latest_message['entities']
-        suspects = [e['value'] for e in entites if e['group'] == 'suspect' and e['entity'] == 'person']
-        victim = [e['value'] for e in entites if e['group'] == 'victim' and e['entity'] == 'person']
+        suspects = victim = None
+        if 'suspect' in entities['group']:
+            suspects = [e['value'] for e in entites if e['group'] == 'suspect' and e['entity'] == 'person']
+        elif 'victim' in entities['group']:
+            victim = [e['value'] for e in entites if e['group'] == 'victim' and e['entity'] == 'person']
         characters = [e['value'] for e in entities if e['entity'] == 'person']
 
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
@@ -117,13 +119,24 @@ class CharacterMotive(Action):
         else:
             data = tracker.get_slot('data')
 
-        story_characters = {"Kira" : {1 : "Motive of Kira", 2: "Second answer if asked again"},
-                            "Patrick": {1 : "Motive of Patrick", 2: "Second answer if asked again"},
-                            "Victor": {1 : "Motive of Victor", 2: "Second answer if asked again"},
-                            "Anna": {1 : "Motive of Anna", 2: "Second answer if asked again"}}
+        story_characters = {"Kira" : {1 : "Maria is the Ex of Kira. The break up wasn't so nice and a few days after Maria was already together with Victor. Kira didn't handle the break up so good.",
+                                      2: "Second answer if asked again (maybe look for a second smaller motive later)"},
+                            "Patrick": {1 : "I'm not sure if I should tell you about this, but whatever... the situation can't really get any worse. Maria had recently discovered that Patrick was involved in some illegal activities reagrding corruption. I don't know the details but it would have been the end of Patricks career if this story got published.",
+                                        2: "Second answer if asked again"},
+                            "Victor": {1 : "As far as I know, he wouldn't have a reason to kill Maria. They just started dating and it was going really well.",
+                                       2: "Second answer if asked again"},
+                            "Anna": {1 : "Anna and Maria were rivals. If it's about a good story Anna would have done anything.",
+                                     2: "Second answer if asked again"}}
 
+        # If user asks for a motive of Maria (the vicitm)
+        if "Maria" in characters and len(characters) == 1 and suspect == None:
+            dispatcher.utter_message(
+                        text=("Since we're sure that Maria didn't unalive herself, she doesn't have a motive.")
+                    )
+
+        # print motive of character that is asked fors
         for story_character, motive in story_characters.items():
-            if story_character in characters:
+            if story_character in suspects:
                 if "times_asked_about_" + story_character not in data:
                     data["times_asked_about_" + story_character] = 1
                     dispatcher.utter_message(text=(motive[1]))
@@ -132,11 +145,12 @@ class CharacterMotive(Action):
                     if data["times_asked_about_" + story_character] == 2:
                         dispatcher.utter_message(text=(motive[2]))
                     else:
-                        dispatcher.utter_message(text=("You already asked me about " + story_character + " but sure, here you go: " + motive[2]))
+                        dispatcher.utter_message(text=("You already asked me about the motive of " + story_character + " but sure, here you go: " + motive[1])) # To decide: here also motive[2] could be used
 
-        dispatcher.utter_message(text='TODO: Tell motive of ' + ', '.join(suspects) + ' for killing ' + ', '.join(victim) + '...')
+        #dispatcher.utter_message(text='TODO: Tell motive of ' + ', '.join(suspects) + ' for killing ' + ', '.join(victim) + '...')
+        # last person talked about data["last_person_talked_information"]
 
-        return []
+        return [SlotSet("data", data)]
 
 
 class AccessToRollerCoaster(Action):
