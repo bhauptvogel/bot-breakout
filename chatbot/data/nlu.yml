@@ -214,7 +214,9 @@ nlu:
 
 - intent: motive_of_character
   examples: |
-    - What could be her motive?
+    - Does [Maria]{"entity":"person", "group":"victim"} have a motive?
+    - What motive could [Maria]{"entity":"person", "group":"victim"} have?
+    - Did [Maria]{"entity":"person", "group":"victim"} kill herself?
     - What is [Patrick]{"entity":"person", "group":"suspect"}'s motive?
     - Has [Anna]{"entity":"person", "group":"suspect"} a motive?
     - Is there a reason for [Victor]{"entity":"person", "group":"suspect"} to kill [Maria]{"entity":"person", "group":"victim"}?
@@ -257,7 +259,7 @@ nlu:
     - Did [Kira]{"entity":"person"} have the possiblity to enter the [attraction]{"entity":"object"}?
     - Could [Anna]{"entity":"person"} have theoretically done it?
 
-## --------- Synonyms -----------------
+## --------------------------------------------
 - synonym: Maria
   examples: |
     - victim
