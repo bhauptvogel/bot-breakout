@@ -219,6 +219,8 @@ nlu:
     - Did [Maria]{"entity":"person", "group":"victim"} kill herself?
     - What is [Patrick]{"entity":"person", "group":"suspect"}'s motive?
     - Has [Anna]{"entity":"person", "group":"suspect"} a motive?
+    - Has [Anna]{"entity":"person", "group":"suspect"} a motiv?
+    - Has [Ana]{"entity":"person", "group":"suspect"} a motiv?
     - Is there a reason for [Victor]{"entity":"person", "group":"suspect"} to kill [Maria]{"entity":"person", "group":"victim"}?
     - Why would [Kira]{"entity":"person", "group":"suspect"} kill [Maria]{"entity":"person", "group":"victim"}?
     - Why would [Patrick]{"entity":"person", "group":"suspect"} want to harm [Maria]{"entity":"person", "group":"victim"}?
@@ -238,6 +240,8 @@ nlu:
     - Why could [Victor]{"entity":"person", "group":"suspect"} have killed her?
     - Tell me Reasons for [Patrick]{"entity":"person", "group":"suspect"} might have killed [Maria]{"entity":"person", "group":"victim"}?
     - Why would [Kira]{"entity":"person", "group":"suspect"} do that?
+    - Why would [Patrick]{"entity":"person", "group":"suspect"} do that?
+    - Why wuld [Victor]{"entity":"person", "group":"suspect"} do tha?
 
 - intent: access_to_rollercoaster
   examples: |
