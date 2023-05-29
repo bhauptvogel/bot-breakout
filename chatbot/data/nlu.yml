@@ -271,7 +271,7 @@ nlu:
     - What is [Patrick]{"entity":"person", "group":"suspect"}'s motive?
     - Has [Anna]{"entity":"person", "group":"suspect"} a motive?
     - Has [Anna]{"entity":"person", "group":"suspect"} a motiv?
-    - Has [Ana]{"entity":"person", "group":"suspect"} a motiv?
+    - Has [Ana]{"entity":"person", "group":"suspect", "value":"Anna"} a motiv?
     - Is there a reason for [Victor]{"entity":"person", "group":"suspect"} to kill [Maria]{"entity":"person", "group":"victim"}?
     - Why would [Kira]{"entity":"person", "group":"suspect"} kill [Maria]{"entity":"person", "group":"victim"}?
     - Why would [Patrick]{"entity":"person", "group":"suspect"} want to harm [Maria]{"entity":"person", "group":"victim"}?
@@ -298,9 +298,12 @@ nlu:
     - Why would [Ben]{"entity":"person"} want to harm [Maria]{"entity":"person", "group":"victim"}?
     - What could be [Meike]{"entity":"person"}'s reason to kill [Maria]{"entity":"person", "group":"victim"}?
     - Does [Ursula]{"entity":"person"} have a reason to harm [Maria]{"entity":"person", "group":"victim"}?
-    - Can you tell me more about [Victor]{"entity":"person", "group":"suspect"}s motive?
+    - Can you tell me more about [Victors]{"entity":"person", "group":"suspect", "value":"Victor"} motive?
     - Can you tell me more about [Patrick]{"entity":"person", "group":"suspect"}s motive?
-    - Can you tell me more about [Anna]{"entity":"person", "group":"suspect"}s motive?
+    - Can you tell me more about [Annas]{"entity":"person", "group":"suspect", "value":"Anna"} motive?
+    - What could [kira]{"entity":"person", "group":"suspect", "value":"Kira"} gain from [Maria]{"entity":"person", "group":"victim"}'s death?
+    - Why would [Ana]{"entity":"person", "group":"suspect", "value":"Anna"} kill [Maria]{"entity":"person", "group":"victim"}?
+    - Does [Patrik]{"entity":"person", "group":"suspect", "value":"Patrick"} have any motive to harm [Maria]{"entity":"person", "group":"victim"}?
     - Can you tell me more about his motive?
     - Can you tell me more about her motive?
     - What could be her motive?
@@ -377,3 +380,51 @@ nlu:
     - last name
     - family name
     - name of the family
+
+- synonym: Victor
+  examples: |
+    - Victors
+    - Victor's
+    - Viktor
+    - Vicktor
+    - Viktors
+    - Vicktors
+    - victor
+    - vicctor
+
+- synonym: Anna
+  examples: |
+    - Ana
+    - Annna
+    - Annas
+    - Anna's
+    - anna
+    - Annaa
+    - Anas
+
+- synonym: Maria
+  examples: |
+    - Marias
+    - Maria's
+    - Marie
+    - Marria
+    - maria
+    - mari
+
+- synonym: Kira
+  examples: |
+    - Kiras
+    - Kira's
+    - Kisa
+    - kira
+
+- synonym: Patrick
+  examples: |
+    - Patricks
+    - Patrik
+    - Patriks
+    - Patrik's
+    - Patrick's
+    - Padrik
+    - patrick
+    - patrik
