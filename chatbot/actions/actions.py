@@ -94,20 +94,47 @@ class SituationOverview(Action):
         
         return []
     
-class SceneInvestigation(Action):
+    
+class CharacterInvestigation(Action):
     def name(self) -> Text:
-        return "action_scene_investigation"
+        return "action_character_investigation"
         
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
         
         entities = tracker.latest_message['entities']
-        objects = [e['value'] for e in entities if e['entity'] == 'object']
+        characters = [e['value'] for e in entities if e['entity'] == 'person']
+        if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
+            data = {}
+        else:
+            data = tracker.get_slot('data')
 
-        dispatcher.utter_message(text=('TODO: Investigate ' + ', '.join(objects) + '...'))
+        story_characters = {"Maria": {1: "Maria is the Ex-girlfriend of my co-worker Kira. Do you want to know more about Kira or should we investigate the cabin a bit more?", 2: "Information 2 about Maria"}, 
+                            "Kira" : {1 : "Information 1 about Kira", 2: "Information 2 about Kira"}, 
+                            "Patrick": {1 : "Information 1 about Kira", 2: "Information 2 about Kira"}, 
+                            "Victor": {1 : "Information 1 about Victor", 2: "Information 2 about Victor"}, 
+                            "Anna": {1 : "Information 1 about Anna", 2: "Information 2 about Anna"}}
         
-        return []
+        for story_character in story_characters:
+            if story_character in characters:
+                if "times_asked_about_" + story_character not in data:
+                    data["times_asked_about_" + story_character] = 1
+                    dispatcher.utter_message(text=(story_characters[story_character][1]))
+                else:
+                    data["times_asked_about_" + story_character] += 1
+                    if data["times_asked_about_" + story_character] == 2:
+                        dispatcher.utter_message(text=(story_characters[story_character][2]))
+                    else:
+                        dispatcher.utter_message(text=("You already asked me about " + story_character + " but sure, her you go: " + story_characters[story_character][2]))
+
+        
+    
+
+        informations = [e['value'] for e in entities if e['entity'] == 'information']
+        dispatcher.utter_message(text=('TODO: Investigate characters: ' + ', '.join(characters) + ' / informations: ' + ', '.join(informations) + '...'))
+        
+        return [SlotSet("data", data)]
 
 
 class CharacterMotive(Action):
