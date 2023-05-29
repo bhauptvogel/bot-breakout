@@ -165,6 +165,10 @@ nlu:
 ## ------ character investigation ------
 - intent: information_about_character
   examples: |
+    - Tell me more about him
+    - Tell me more about her
+    - More about him
+    - More about her
     - Tell me about [Maria]{"entity":"person"}
     - Who is the [victim]{"entity":"person"}?
     - Tell me everything about [Maria]{"entity":"person"}
