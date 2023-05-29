@@ -9,6 +9,8 @@ intents:
 - information_about_character
 - motive_of_character
 - access_to_rollercoaster
+- EXTERNAL_reminder
+
 entities:
 - object
 - person
@@ -53,6 +55,8 @@ actions:
 - action_character_investigation
 - action_tell_motive
 - action_access_to_roller_coaster
+- action_set_reminder
+- action_react_to_reminder
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
