@@ -8,9 +8,19 @@ from rasa_sdk.events import SlotSet, ReminderScheduled
 from datetime import datetime, timedelta
 import random
 
+KIRA_SYNONYMS = ["Kira", "Kiras", "Kira's", "Kisa", "kira"]
+PATRICK_SYNONYMS = ["Patrick", "Patricks", "Patrik", "Patriks", "Patrik's", "Patrick's", "Padrik", "patrick"]
+VICTOR_SYNONYMS = ["Victor", "Victors", "Victor's", "Viktor", "Vicktor", "Viktors", "Vicktors", "victor"]
+ANNA_SYNONYMS = ["Anna", "Ana", "Annna", "Annas", "Anna's", "anna"]
+MARIA_SYNONYMS = ["Maria", "Marias", "Maria's", "Marie", "Marria", "maria"]
+
+
 class StartGame(Action):
+    # def __init__(self):
+
     def name(self) -> Text:
         return "action_set_reminder"
+
     def run(self, dispatcher, tracker: Tracker, domain):
         dispatcher.utter_message("The police is coming soon! I will remind you in 10 seconds. Just a test")
 
@@ -63,20 +73,5 @@ class SituationOverview(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         dispatcher.utter_message(text='TODO: Give situation overview')
-
-        return []
-
-
-class AccessToRollerCoaster(Action):
-    def name(self) -> Text:
-        return "action_access_to_roller_coaster"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        entities = tracker.latest_message['entities']
-        characters = [e['value'] for e in entities if e['entity'] == 'person']
-        dispatcher.utter_message(text='TODO: Tell access to roller coaster of ' + ', '.join(characters) + '...')
 
         return []
