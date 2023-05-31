@@ -178,9 +178,5 @@ class CharacterInvestigation(Action):
             dispatcher.utter_message(text=("My coworkers are Kira, who works as a cashier, and Patrick who is the director of the amusement park. Who do you want to know more about?"))
 
         
-        if "last_spoken_about_information" in data.keys() and "last_spoken_about_character" in data.keys():                   
-            dispatcher.utter_message(text=('TODO: Investigate characters: ' + str(characters) + ' / informations: ' + str(informations) + 'last spoken character: ' + str(data["last_spoken_about_character"]) + "last spoken information: " + str(data["last_spoken_about_information"])))
-        else:
-            dispatcher.utter_message(text=('TODO: Investigate characters: ' + str(characters) + ' / informations: ' + str(informations)))
 
         return [SlotSet("data", data)]

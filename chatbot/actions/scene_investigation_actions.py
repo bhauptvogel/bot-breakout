@@ -41,8 +41,6 @@ class SceneInvestigation(Action):
         entities = tracker.latest_message['entities']
         objects = [e['value'] for e in entities if e['entity'] == 'object']
 
-        dispatcher.utter_message(text="SCENE INVESTIGATION INTENT: " + "Objects to investigate: " + ",".join(objects))
-
         if len(objects) == 0:
             if 'times_asked_about_scene_invesigation' not in data:
                 data['times_asked_about_scene_invesigation'] = 0

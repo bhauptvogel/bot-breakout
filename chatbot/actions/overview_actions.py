@@ -105,7 +105,4 @@ class SituationOverview(Action):
 
 
 
-
-        dispatcher.utter_message(text=str(data["revealed_information"]))
-
         return [SlotSet("data", data)]
