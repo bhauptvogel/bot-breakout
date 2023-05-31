@@ -18,14 +18,10 @@ class AccessToRollerCoaster(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        story_characters = {"Kira" : {1: "",
-                                      2: "Second answer if asked again"},
-                            "Patrick": {1: "",
-                                        2: "Second answer if asked again"},
-                            "Victor": {1: "",
-                                       2: "Second answer if asked again"},
-                            "Anna": {1: "She doesn’t have access and even if she had, she would not know how to control the machines.",
-                                     2: "She doesn’t have access and even if she had, I'm sure she wouldn’t know how to stop the rollercoaster."}
+        story_characters = {"Kira" : {1: "Somehow yes, she is part of the staff. Every staff member has excess to the rides."},
+                            "Patrick": {1: "He could have had access, since he’s the director of the amusement park, but I’m not sure if he knows how to stop the rollercoaster."},
+                            "Victor": {1: "He shouldn’t have access since he doesn’t work here, but who knows if he found another way in."},
+                            "Anna": {1: "She doesn’t have access and even if she had, she would not know how to control the machines."}
                             }
 
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
