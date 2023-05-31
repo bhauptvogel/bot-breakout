@@ -112,8 +112,7 @@ class CharacterInvestigation(Action):
                         for character in characters:
                             data["revealed_information"][story_character]["full_name"] = True
                             dispatcher.utter_message(text=(character+"'s full name is "+ str(character) + " "+str(story_character_last_name[character][1])))
-                    elif "last_spoken_about_character" in data.keys():
-                        data["revealed_information"][story_character]["full_name"] = True
+                    elif "last_spoken_about_character" in data.keys() and data["last_spoken_about_character"] != []:
                         for character in data["last_spoken_about_character"]:
                             dispatcher.utter_message(text=(character+"'s full name is "+ str(character) + " "+str(story_character_last_name[character][1])))
                     else:
@@ -157,7 +156,7 @@ class CharacterInvestigation(Action):
             print("In characters > 0 informations < 0 coworker == 0")
             for story_character in story_characters:
                 if story_character in characters:
-                    if "times_asked_about_" + story_character not in data:
+                    if "times_asked_about_" + story_character not in data.keys():
                         data["times_asked_about_" + story_character] = 1
                         data["revealed_information"][story_character]["personal_information"] = True
                         dispatcher.utter_message(text=(story_characters[story_character][1]))
