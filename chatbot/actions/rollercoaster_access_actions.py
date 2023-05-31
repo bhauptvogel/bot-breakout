@@ -33,7 +33,7 @@ class AccessToRollerCoaster(Action):
 
         
         if len(characters) > 0:
-            print("In characters > 0 informations < 0 coworker == 0")
+            print("Access to rollercoaster")
             for story_character in story_characters_access:
                 if story_character in characters:
                     data["last_spoken_about_character"].append(story_character)

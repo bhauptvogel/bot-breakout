@@ -174,7 +174,7 @@ class CharacterInvestigation(Action):
             data["last_spoken_about_information"] = []
         
         if len(informations) == 0 and cowoker_set:
-            print("In characters > 0 informations < 0 coworker == 0")
+            print("In informations == 0 coworker_set")
             dispatcher.utter_message(text=("My coworkers are Kira, who works as a cashier, and Patrick who is the director of the amusement park. Who do you want to know more about?"))
 
         
