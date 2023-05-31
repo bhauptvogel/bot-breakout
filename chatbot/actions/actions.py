@@ -16,32 +16,31 @@ INITIAL_DATA_OBJECT = {
             "personal_information": False,
             "motive": False,
             "access": False,
-            "weapon": False,
+            "full_name": False,
         },
         "Maria": {
             "personal_information": False,
-            "motive": False,
-            "access": False,
-            "weapon": False,
+            "full_name": False,
         },
         "Victor": {
             "personal_information": False,
             "motive": False,
             "access": False,
-            "weapon": False,
+            "full_name": False,
         },
-        "Luis": {
+        "Anna": {
             "personal_information": False,
             "motive": False,
             "access": False,
-            "weapon": False,
+            "full_name": False,
         },
-        "Sofia": {
+        "Patrick": {
             "personal_information": False,
             "motive": False,
             "access": False,
-            "weapon": False,
+            "full_name": False,
         },
+        "Weapon_initials": False,
     },
 }
 
