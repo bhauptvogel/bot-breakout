@@ -8,13 +8,6 @@ from rasa_sdk.events import SlotSet, ReminderScheduled
 from datetime import datetime, timedelta
 import random
 
-KIRA_SYNONYMS = ["Kira", "Kiras", "Kira's", "Kisa", "kira"]
-PATRICK_SYNONYMS = ["Patrick", "Patricks", "Patrik", "Patriks", "Patrik's", "Patrick's", "Padrik", "patrick"]
-VICTOR_SYNONYMS = ["Victor", "Victors", "Victor's", "Viktor", "Vicktor", "Viktors", "Vicktors", "victor"]
-ANNA_SYNONYMS = ["Anna", "Ana", "Annna", "Annas", "Anna's", "anna"]
-MARIA_SYNONYMS = ["Maria", "Marias", "Maria's", "Marie", "Marria", "maria"]
-
-
 class StartGame(Action):
     # def __init__(self):
 

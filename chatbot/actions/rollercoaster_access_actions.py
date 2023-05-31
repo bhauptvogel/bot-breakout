@@ -8,6 +8,7 @@ from rasa_sdk.events import SlotSet, ReminderScheduled
 from datetime import datetime, timedelta
 import random
 
+
 class AccessToRollerCoaster(Action):
     def name(self) -> Text:
         return "action_access_to_roller_coaster"
