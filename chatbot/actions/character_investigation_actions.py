@@ -12,11 +12,11 @@ import random
 class CharacterInvestigation(Action):
     def name(self) -> Text:
         return "action_character_investigation"
-        
+
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
-        
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
         entities = tracker.latest_message['entities']
         characters = [e['value'] for e in entities if e['entity'] == 'person']
         informations = [e['value'] for e in entities if e['entity'] == 'information']
@@ -39,7 +39,7 @@ class CharacterInvestigation(Action):
                             "Patrick": {1 : "Patrick is my boss. He in charge of the amusement park. Its actually a family business, he earned it from his dad. Patrick is kind of a snob... he loves to drive around in big cars and all this wealthy stuff.", 2: "Information 2 about Patrick"}, 
                             "Victor": {1 : "To be honest... I don’t know him. He is just Marias new boyfriend 🤷", 2: "Victor is Maria's new boyfriend. I don’t know him. Only the things Kira told me about him. She was pretty jealous, that Maria has someone new 👀"}, 
                             "Anna": {1 : "Anna is Marias colleague at the Fictional Times Paper. I met her at some of Kiras Partys. She is nice but very focused on her job, just as Maria is … sorry, was 😥", 2: "Information 2 about Anna"}}
-        
+
         story_characters_information = {"breakup": {1: ["Kira", "Maria"], 2: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her Colleague Anna. Thats why their relationship broke apart…"},
                                         "secret": {1: ["Patrick"], 2: "Secret about Patrick"},
                                         }
@@ -122,7 +122,7 @@ class CharacterInvestigation(Action):
 
                 
 
-        
+
         #If basic information about character is asked
         if len(characters) > 0 and len(informations) == 0 and not cowoker_set:
             print("In characters > 0 informations < 0 coworker == 0")

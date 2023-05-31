@@ -5,7 +5,7 @@ rules:
   steps:
   - intent: user_asks_about_wellbeing
   - action: action_set_reminder
-  
+
 - rule: Trigger `action_react_to_reminder` for `EXTERNAL_reminder`
   steps:
   - intent: EXTERNAL_reminder

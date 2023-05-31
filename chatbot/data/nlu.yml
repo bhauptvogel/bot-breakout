@@ -58,7 +58,7 @@ nlu:
 - intent: overview_of_the_state
   examples: |
     - what is the state?
-    - give me an overview 
+    - give me an overview
     - i need a status about all the information
     - can you summarize everything so far?
     - i need a recap
@@ -70,7 +70,22 @@ nlu:
     - overview
     - could you provide an overview?
     - watch overview
-  
+
+- intent: user_guesses_murderer
+    - what is the state?
+    - give me an overview
+    - i need a status about all the information
+    - can you summarize everything so far?
+    - i need a recap
+    - i need a brief on the situation
+    - let me know about the situation
+    - what is the current situation?
+    - i need a summary
+    - summary
+    - overview
+    - could you provide an overview?
+    - watch overview
+
 - intent: user_guesses_murderer
   examples: |
     - Do you think it was [Kira]{"entity":"person"}?
@@ -99,7 +114,39 @@ nlu:
     - I suppose it only could have been [Kira]{"entity":"person"}.
     - Is [Anna]{"entity":"person"} the murderer?
     - Could the murderer be [Maria's boyfriend]{"entity":"person"}?
-    - I want to log in an answer! 
+    - I want to log in an answer!
+    - I want to tell the police who the killer is.
+
+# ! not implemented in domain.yml
+# slots: what was talked about last
+- intent: user_wants_more_about_X
+    - Do you think it was [Kira]{"entity":"person"}?
+    - Was it [Anna]{"entity":"person"}?
+    - It was [Victor]{"entity":"person"}!
+    - I am sure it was [Patrick]{"entity":"person"}.
+    - Could [Kira]{"entity":"person"} be the murderer?
+    - I'm suspecting [Anna]{"entity":"person"}.
+    - [Victor]{"entity":"person"} has to be the murderer!
+    - I have a feeling it was [Patrick]{"entity":"person"}.
+    - It was [Anna]{"entity":"person"}, I'm sure of it!
+    - I believe it was [Kira]{"entity":"person"}.
+    - I bet it was [Anna]{"entity":"person"}.
+    - My guess is [Patrick]{"entity":"person"}.
+    - Is it possible that [Victor]{"entity":"person"} is the murderer?
+    - I suspect it was [Kira]{"entity":"person"}.
+    - Was it possibly [Anna]{"entity":"person"}?
+    - [Anna]{"entity":"person"} is my guess.
+    - I think it was [Kira]{"entity":"person"}.
+    - I think [Kira]{"entity":"person"} is the murderer
+    - [Patrick]{"entity":"person"} is the killer!
+    - [Patrick]{"entity":"person"} did it, didn't he?
+    - It had to be [Anna]{"entity":"person"}.
+    - [Victor]{"entity":"person"} is my primary suspect.
+    - I accuse [Anna]{"entity":"person"}.
+    - I suppose it only could have been [Kira]{"entity":"person"}.
+    - Is [Anna]{"entity":"person"} the murderer?
+    - Could the murderer be [Maria's boyfriend]{"entity":"person"}?
+    - I want to log in an answer!
     - I want to tell the police who the killer is.
 
 # ! not implemented in domain.yml
@@ -127,40 +174,45 @@ nlu:
 ## ------ scene investigation ------
 - intent: scene_investigation
   examples: |
-    - Let’s look at the [body]{"entity":"object", "group":"search"} and the [note]{"entity":"object", "group":"search"}
     - Investigate the scene
     - Tell me about the environment
     - What do you see?
+    - Search the room
     - What is here
-    - Pick up the [note]{"entity":"object", "group":"search"}
-    - Read the [note]{"entity":"object", "group":"search"}
-    - Look at the [body]{"entity":"object", "group":"search"}
-    - Look at the [note]{"entity":"object", "group":"search"}
-    - Please take a look at the [weapon]{"entity":"object", "group":"search"}
-    - Let’s search for the [murder weapon]{"entity":"object", "group":"search"}
-    - Look at the [floor cabin]{"entity":"object", "group":"search"}
-    - Look under the [bench]{"entity":"object", "group":"search"}
-    - Look behind the [tree]{"entity":"object", "group":"search"}
-    - Tell me about the [note]{"entity":"object", "group":"search"}.
+    - Where are we
+    - More investigation
     - Check out the environment
-    - Can you examine the [corpse]{"entity":"object", "group":"search"}?
+    - Let’s look at the [body]{"entity":"object", "group":"search"} and the [note]{"entity":"object", "group":"search"}
+    - Look at the [body]{"entity":"object", "group":"search"}
     - Please look into the [body]{"entity":"object", "group":"search"}
+    - Please check the [body]{"entity":"object", "group":"search"}
+    - Can you examine the [corpse]{"entity":"object", "group":"search", "value":"body"}?
+    - Let's take a closer look at the [victim]{"entity":"object", "group":"search", "value":"body"}
+    - Let's check out the [dead body]{"entity":"object", "group":"search", "value":"body"}
+    - Investigate the [dead woman]{"entity":"object", "group":"search", "value":"body"}
+    - Pick up the [note]{"entity":"object", "group":"search"}
+    - What about the [note]{"entity":"object", "group":"search"}?
+    - Read the [note]{"entity":"object", "group":"search"}
+    - Look at the [note]{"entity":"object", "group":"search"}
+    - Tell me about the [note]{"entity":"object", "group":"search"}.
+    - Please take a look at the [weapon]{"entity":"object", "group":"search"}
+    - Let’s search for the [murder weapon]{"entity":"object", "group":"search", "value": "weapon"}
+    - Look at the [floor cabin]{"entity":"object", "group":"search"}
+    - Look inside the [cabin]{"entity":"object", "group":"search"}
+    - Search the [cabin]{"entity":"object", "group":"search"}
     - Go through the [cabin]{"entity":"object", "group":"search"}
     - Inspect the [cabin]{"entity":"object", "group":"search"}
-    - What about the [note]{"entity":"object", "group":"search"}?
-    - Investigate the [dead woman]{"entity":"object", "group":"search"}
-    - Let's take a closer look at the [victim]{"entity":"object", "group":"search"}
-    - Search the [cabin]{"entity":"object", "group":"search"}
-    - Look inside the [cabin]{"entity":"object", "group":"search"}
-    - Let's check out the [dead body]{"entity":"object", "group":"search"}
+    - Please look at the [train cabin]{"entity":"object", "group":"search", "value":"cabin"}
     - Examine the [floor cabin]{"entity":"object", "group":"search"}
-    - Please check the [body]{"entity":"object", "group":"search"}
-    - Look around the [tree]{"entity":"object", "group":"search"}
-    - Let's inspect the [bench]{"entity":"object", "group":"search"}
-    - Search the [room]{"entity":"object", "group":"search"}
     - I want to see what's in the [cabin]{"entity":"object", "group":"search"}
+    - Look at the [cabin]{"entity":"object", "group":"search", "value":"cabin"}
+    - What's inside the [train]{"entity":"object", "group":"search", "value":"cabin"}
+    - I need to know more about the [rollercoaster cabin]{"entity":"object", "group":"search", "value":"cabin"}
+    - Let's inspect the [bench]{"entity":"object", "group":"search"}
+    - Look under the [bench]{"entity":"object", "group":"search"}
     - Check the [bench]{"entity":"object", "group":"search"}
-    - More investigation
+    - Look behind the [tree]{"entity":"object", "group":"search"}
+    - Look around the [tree]{"entity":"object", "group":"search"}
 
 ## ------ character investigation ------
 - intent: information_about_character
@@ -218,8 +270,13 @@ nlu:
 
 - intent: motive_of_character
   examples: |
+    - Does [Maria]{"entity":"person", "group":"victim"} have a motive?
+    - What motive could [Maria]{"entity":"person", "group":"victim"} have?
+    - Did [Maria]{"entity":"person", "group":"victim"} kill herself?
     - What is [Patrick]{"entity":"person", "group":"suspect"}'s motive?
     - Has [Anna]{"entity":"person", "group":"suspect"} a motive?
+    - Has [Anna]{"entity":"person", "group":"suspect"} a motiv?
+    - Has [Ana]{"entity":"person", "group":"suspect", "value":"Anna"} a motiv?
     - Is there a reason for [Victor]{"entity":"person", "group":"suspect"} to kill [Maria]{"entity":"person", "group":"victim"}?
     - Why would [Kira]{"entity":"person", "group":"suspect"} kill [Maria]{"entity":"person", "group":"victim"}?
     - Why would [Patrick]{"entity":"person", "group":"suspect"} want to harm [Maria]{"entity":"person", "group":"victim"}?
@@ -239,6 +296,25 @@ nlu:
     - Why could [Victor]{"entity":"person", "group":"suspect"} have killed her?
     - Tell me Reasons for [Patrick]{"entity":"person", "group":"suspect"} might have killed [Maria]{"entity":"person", "group":"victim"}?
     - Why would [Kira]{"entity":"person", "group":"suspect"} do that?
+    - Why would [Patrick]{"entity":"person", "group":"suspect"} do that?
+    - Why wuld [Victor]{"entity":"person", "group":"suspect"} do tha?
+    - Is there a reason for [Stephanie]{"entity":"person"} to kill [Maria]{"entity":"person", "group":"victim"}?
+    - Why would [Chiara]{"entity":"person"} kill [Maria]{"entity":"person", "group":"victim"}?
+    - Why would [Ben]{"entity":"person"} want to harm [Maria]{"entity":"person", "group":"victim"}?
+    - What could be [Meike]{"entity":"person"}'s reason to kill [Maria]{"entity":"person", "group":"victim"}?
+    - Does [Ursula]{"entity":"person"} have a reason to harm [Maria]{"entity":"person", "group":"victim"}?
+    - Can you tell me more about [Victors]{"entity":"person", "group":"suspect", "value":"Victor"} motive?
+    - Can you tell me more about [Patrick]{"entity":"person", "group":"suspect"}s motive?
+    - Can you tell me more about [Annas]{"entity":"person", "group":"suspect", "value":"Anna"} motive?
+    - What could [kira]{"entity":"person", "group":"suspect", "value":"Kira"} gain from [Maria]{"entity":"person", "group":"victim"}'s death?
+    - Why would [Ana]{"entity":"person", "group":"suspect", "value":"Anna"} kill [Maria]{"entity":"person", "group":"victim"}?
+    - Does [Patrik]{"entity":"person", "group":"suspect", "value":"Patrick"} have any motive to harm [Maria]{"entity":"person", "group":"victim"}?
+    - Can you tell me more about his motive?
+    - Can you tell me more about her motive?
+    - What could be her motive?
+    - Does he have a motive?
+    - What motive could she have?
+
 
 - intent: access_to_rollercoaster
   examples: |
@@ -264,10 +340,19 @@ nlu:
 - synonym: Maria
   examples: |
     - victim
+    - maria
+
+- synonym: body
+  examples: |
     - dead person
     - dead woman
     - woman in the cabin
-    - maria
+    - corpse
+
+- synonym: cabin
+    - train cabin
+    - train
+    - rollercoaster cabin
 
 - synonym: Victor
   examples: |
@@ -295,10 +380,10 @@ nlu:
     - link
     - bond
 
-- synonym: murder weapon
+- synonym: weapon
   examples: |
-    - knife
     - weapon
+    - murder weapon
     - crime weapon
 
 - synonym: full name
@@ -309,3 +394,51 @@ nlu:
     - last name
     - family name
     - name of the family
+
+- synonym: Victor
+  examples: |
+    - Victors
+    - Victor's
+    - Viktor
+    - Vicktor
+    - Viktors
+    - Vicktors
+    - victor
+    - vicctor
+
+- synonym: Anna
+  examples: |
+    - Ana
+    - Annna
+    - Annas
+    - Anna's
+    - anna
+    - Annaa
+    - Anas
+
+- synonym: Maria
+  examples: |
+    - Marias
+    - Maria's
+    - Marie
+    - Marria
+    - maria
+    - mari
+
+- synonym: Kira
+  examples: |
+    - Kiras
+    - Kira's
+    - Kisa
+    - kira
+
+- synonym: Patrick
+  examples: |
+    - Patricks
+    - Patrik
+    - Patriks
+    - Patrik's
+    - Patrick's
+    - Padrik
+    - patrick
+    - patrik

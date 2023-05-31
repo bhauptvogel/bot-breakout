@@ -25,8 +25,8 @@ slots:
 
 responses:
   utter_hello:
-  - text: Oh, I’m just a bit stunned. After seeing the dead body, I called the police. Because this is what a good citizen does, right? But now I’m not sure if it was the right decision… We are the only people here and its my work place. I might be a suspect! We have 10 min until the police is here. I should give them some valuable hints about this case when they arrive here. But I don’t know where to start. Can you help me clear my mind? We could first investigate the body with the note, or I can tell you about my co-workers.
-  - text: I'm shocked. After discovering the lifeless body, m first instinct was to call the police. That's what I was supposed to do, wasn't I? But now, I'm having second thoughts... We're the only ones here, and this is my workplace, so I'm likely to become a suspect. The police will be here in 10 minutues or so. I need to gprovide useful leads about this case when they are here. But shere should I start? My thoughts are a mess. Could you help me? Maybe we should start examining the cirme scene or let's talk about my co-workers.
+  - text: Oh, I’m just in shock after seeing the dead body. I just called the police, because this is what a good citizen does, right? But now I’m not sure if it was the right decision… We are the only people here and its my work place. I might be a suspect! The police told me they would arrive in about 10 minutues. I should give them some valuable hints about this case when they arrive here. But I don’t know where to start. Can you help me clear my mind? We could first investigate the body with the note, or we could talk about my co-workers.
+  - text: I'm shocked. After discovering the lifeless body, my first instinct was to call the police. That's what I was supposed to do, wasn't I? But now, I'm having second thoughts... We're the only ones here, and this is my workplace, so I'm likely to become a suspect. The police told me they would arrive in about 10 minutues and I think it would be good if we could already give the police a possible suspect, to not be one myself. But where should I start? My thoughts are a mess. Could you help me? Maybe we should start examining the crime scene or let's talk about my co-workers.
   utter_you_cannot_leave:
   - text: You can’t leave before the police arrives in a few minutes! We need to find hints together, so they don’t think we two did it. Should we investigate or talk?
   - text: This is not possible! The murder could still be walking around, we should wait until the police arrives in a few minutes. I think we should investigate the situation more.
@@ -42,7 +42,7 @@ responses:
   utter_who_is_kira:
   - text: Ok so we are standing Infront of the train cabin. It has two seats, as ours did. On the seat closer to us and closer to the themed area is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died… We could look around a bit more and find the weapon Or I tell you about the note…
   utter_who_is_patrick:
-  - text: Patrick is my boss. He in charge of the amusement park. Its actually a family business, he earned it from his dad. Patrick is kind of a snob… he loves to drive around in big cars and all this wealthy stuff. 
+  - text: Patrick is my boss. He in charge of the amusement park. Its actually a family business, he earned it from his dad. Patrick is kind of a snob… he loves to drive around in big cars and all this wealthy stuff.
   utter_who_is_anna:
   - text: Anna is Marias colleague at the Fictional Times Paper. I met her at some of Kiras Partys. She is nice but very focused on her job, just as Maria is … sorry, was 😥
   utter_who_is_victor:

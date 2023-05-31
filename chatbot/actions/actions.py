@@ -1,31 +1,3 @@
-# This files contains your custom actions which can be used to run
-# custom Python code.
-#
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/custom-actions
-
-
-# This is a simple example for a custom action which utters "Hello World!"
-
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
-
 from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker, FormValidationAction
@@ -36,9 +8,19 @@ from rasa_sdk.events import SlotSet, ReminderScheduled
 from datetime import datetime, timedelta
 import random
 
+KIRA_SYNONYMS = ["Kira", "Kiras", "Kira's", "Kisa", "kira"]
+PATRICK_SYNONYMS = ["Patrick", "Patricks", "Patrik", "Patriks", "Patrik's", "Patrick's", "Padrik", "patrick"]
+VICTOR_SYNONYMS = ["Victor", "Victors", "Victor's", "Viktor", "Vicktor", "Viktors", "Vicktors", "victor"]
+ANNA_SYNONYMS = ["Anna", "Ana", "Annna", "Annas", "Anna's", "anna"]
+MARIA_SYNONYMS = ["Maria", "Marias", "Maria's", "Marie", "Marria", "maria"]
+
+
 class StartGame(Action):
+    # def __init__(self):
+
     def name(self) -> Text:
         return "action_set_reminder"
+
     def run(self, dispatcher, tracker: Tracker, domain):
         dispatcher.utter_message("The police is coming soon! I will remind you in 10 seconds. Just a test")
 
@@ -52,7 +34,7 @@ class StartGame(Action):
         )
 
         return [reminder]
-    
+
 
 class ActionReactToReminder(Action):
     def name(self) -> Text:
@@ -64,7 +46,7 @@ class ActionReactToReminder(Action):
         tracker: Tracker,
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
-        
+
         dispatcher.utter_message("The police is coming now! What's our guess?")
 
         return []
@@ -73,53 +55,23 @@ class ActionReactToReminder(Action):
 class GiveHint(Action):
     def name(self) -> Text:
         return "action_hint"
-        
+
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
-        
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
         dispatcher.utter_message(text='TODO: Give hint (answer to last question)')
-        
+
         return []
-    
+
 class SituationOverview(Action):
     def name(self) -> Text:
         return "action_overview_of_the_state"
-        
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
-        
-        dispatcher.utter_message(text='TODO: Give situation overview')
-        
-        return []
-    
-    
-class CharacterMotive(Action):
-    def name(self) -> Text:
-        return "action_tell_motive"
-        
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
-        
-        entites = tracker.latest_message['entities']
-        suspects = [e['value'] for e in entites if e['group'] == 'suspect' and e['entity'] == 'person']
-        victim = [e['value'] for e in entites if e['group'] == 'victim' and e['entity'] == 'person']
-        dispatcher.utter_message(text='TODO: Tell motive of ' + ', '.join(suspects) + ' for killing ' + ', '.join(victim) + '...')
-        
-        return []
 
-class AccessToRollerCoaster(Action):
-    def name(self) -> Text:
-        return "action_access_to_roller_coaster"
-        
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
-        
-        entities = tracker.latest_message['entities']
-        characters = [e['value'] for e in entities if e['entity'] == 'person']
-        dispatcher.utter_message(text='TODO: Tell access to roller coaster of ' + ', '.join(characters) + '...')
-        
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(text='TODO: Give situation overview')
+
         return []
