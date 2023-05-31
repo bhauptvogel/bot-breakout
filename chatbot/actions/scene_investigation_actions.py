@@ -9,7 +9,7 @@ import random
 
 from actions.actions import INITIAL_DATA_OBJECT
 
-investigation = {
+INVESTIGATION_INFORMATION = {
     'base' : [
               'Ok, so we are standing in the zombie themed area of the ghost ride. In some way it’s a quite romantic area... we earlier shared a seat at the bench with two zombies holding hand. In the background there is a scary tree, with no leaf. We can look at the train cabin, under the bench and behind the tree. Where should we start?',
               'Oh my god! I found a knife at the cabin floor and a pen behind the tree , lets have a closer look… the pen seems to be used by a professional.',
@@ -46,13 +46,15 @@ class SceneInvestigation(Action):
         if len(objects) == 0:
             if 'times_asked_about_scene_invesigation' not in data:
                 data['times_asked_about_scene_invesigation'] = 0
-            elif data['times_asked_about_scene_invesigation'] + 1 < len(investigation['base']):
+            elif data['times_asked_about_scene_invesigation'] + 1 < len(INVESTIGATION_INFORMATION['base']):
                 data['times_asked_about_scene_invesigation'] += 1
-            dispatcher.utter_message(text=investigation['base'][data['times_asked_about_scene_invesigation']])
+            dispatcher.utter_message(text=INVESTIGATION_INFORMATION['base'][data['times_asked_about_scene_invesigation']])
 
         for obj in objects:
-            if obj in investigation:
-                dispatcher.utter_message(text=investigation[obj])
+            if obj in INVESTIGATION_INFORMATION:
+                dispatcher.utter_message(text=INVESTIGATION_INFORMATION[obj])
+                if obj == 'knife':
+                    data["revealed_information"]["Weapon_initials"] = True
             else:
                 dispatcher.utter_message(text="I don't know how I can investigate " + obj + ".")
 

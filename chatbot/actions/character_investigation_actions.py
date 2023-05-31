@@ -8,6 +8,8 @@ from rasa_sdk.events import SlotSet, ReminderScheduled
 from datetime import datetime, timedelta
 import random
 
+from actions.actions import INITIAL_DATA_OBJECT
+
 
 class CharacterInvestigation(Action):
     def name(self) -> Text:
@@ -29,17 +31,17 @@ class CharacterInvestigation(Action):
         
 
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
-            data = {}
+            data = INITIAL_DATA_OBJECT
         else:
             data = tracker.get_slot('data')
 
 
-        story_characters = {"Maria": {1 : "Maria is the Ex-girlfriend of my co-worker Kira. Do you want to know more about Kira or should we investigate the cabin a bit more?"}, 
-                            "Kira" : {1 : "Kira is my co-worker. We are pretty good... I helped her to get through the breakup with Maria. That really took her down she was super upset - specially because of Marias new boyfriend.", 2: "Information 2 about Kira"}, 
-                            "Patrick": {1 : "Patrick is my boss. He in charge of the amusement park. Its actually a family business, he earned it from his dad. Patrick is kind of a snob... he loves to drive around in big cars and all this wealthy stuff.", 2: "Information 2 about Patrick"}, 
+        story_characters = {"Maria": {1 : "Maria is the Ex-girlfriend of my co-worker Kira. She is was journalist and was investigating stuff that was going on in the amusement park.", 2: "I told Maria everything that I knew about Patrick and the stuff going on around here!"}, 
+                            "Kira" : {1 : "Kira is my co-worker. We are pretty good... I helped her to get through the breakup with Maria. That really took her down she was super upset - specially because of Marias new boyfriend.", 2: "I think Maria's new boyfriend really took her down. She was super upset. Other than that she is really nice. She doesn't know a lot about what is going on in the amusement park business."}, 
+                            "Patrick": {1 : "Patrick is my boss. He in charge of the amusement park. Its actually a family business, he earned it from his dad. Patrick is kind of a snob... he loves to drive around in big cars and all this wealthy stuff.", 2: "Patrick is from China... he came here to take over the amusement park of his family."}, 
                             "Victor": {1 : "To be honest... I don’t know him. He is just Marias new boyfriend 🤷", 2: "Victor is Maria's new boyfriend. I don’t know him. Only the things Kira told me about him. She was pretty jealous, that Maria has someone new 👀"}, 
-                            "Anna": {1 : "Anna is Marias colleague at the Fictional Times Paper. I met her at some of Kiras Partys. She is nice but very focused on her job, just as Maria is … sorry, was 😥", 2: "Information 2 about Anna"}}
-        
+                            "Anna": {1 : "Anna is Marias colleague at the Fictional Times Paper. I met her at some of Kiras Partys. She is nice but very focused on her job, just as Maria is … sorry, was 😥", 2: "Anna and Maria often worked together in the past. But it rivalry kinda developed... I think prestige is super important to Anna. She always wants to have the biggest stories."}}
+
         story_characters_information = {"breakup": {1: ["Kira", "Maria"], 2: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her Colleague Anna. Thats why their relationship broke apart…"},
                                         "secret": {1: ["Patrick"], 2: "Secret about Patrick"},
                                         }
@@ -98,16 +100,20 @@ class CharacterInvestigation(Action):
                     if len(characters) > 0:
                         for character in characters:
                             dispatcher.utter_message(text=(str(character)+"'s last name is "+str(story_character_last_name[character][1])))
+                            data["revealed_information"][story_character]["full_name"] = True
                     elif "last_spoken_about_character" in data.keys():
                         for character in data["last_spoken_about_character"]:
+                            data["revealed_information"][story_character]["full_name"] = True
                             dispatcher.utter_message(text=(str(character)+"'s last name is "+str(story_character_last_name[character][1])))
                     else:
                         dispatcher.utter_message(text=("I don't know who you're talking about"))
                 elif info == "full name":    
                     if len(characters) > 0:
                         for character in characters:
+                            data["revealed_information"][story_character]["full_name"] = True
                             dispatcher.utter_message(text=(character+"'s full name is "+ str(character) + " "+str(story_character_last_name[character][1])))
                     elif "last_spoken_about_character" in data.keys():
+                        data["revealed_information"][story_character]["full_name"] = True
                         for character in data["last_spoken_about_character"]:
                             dispatcher.utter_message(text=(character+"'s full name is "+ str(character) + " "+str(story_character_last_name[character][1])))
                     else:
@@ -153,6 +159,7 @@ class CharacterInvestigation(Action):
                 if story_character in characters:
                     if "times_asked_about_" + story_character not in data:
                         data["times_asked_about_" + story_character] = 1
+                        data["revealed_information"][story_character]["personal_information"] = True
                         dispatcher.utter_message(text=(story_characters[story_character][1]))
                     else:
                         data["times_asked_about_" + story_character] += 1

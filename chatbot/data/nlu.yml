@@ -290,7 +290,9 @@ nlu:
     - Does [Anna]{"entity":"person", "group":"suspect"} have a motive for harming [Maria]{"entity":"person", "group":"victim"}?
     - What could [Maria]{"entity":"person", "group":"victim"} have done to [Patrick]{"entity":"person", "group":"suspect"} that he would want to kill her?
     - What did [Maria]{"entity":"person", "group":"victim"} do to [Patrick]{"entity":"person", "group":"suspect"} that he would harm her?
-    - Could [Maria]{"entity":"person", "group":"suspect"} have any reason for doing all this?
+    - Could [Maria]{"entity":"person", "group":"victim"} have any reason for doing all this?
+    - Does [Kira]{"entity":"person", "group":"suspect"} have a motive?
+    - Does [Anna]{"entity":"person", "group":"suspect"} have a motive?
     - Why could [Kira]{"entity":"person", "group":"suspect"} have done it?
     - Why could [Anna]{"entity":"person", "group":"suspect"} have been it?
     - Why could [Victor]{"entity":"person", "group":"suspect"} have killed her?
@@ -314,6 +316,7 @@ nlu:
     - What could be her motive?
     - Does he have a motive?
     - What motive could she have?
+    - Could she have a motive?
 
 
 - intent: access_to_rollercoaster
@@ -419,7 +422,6 @@ nlu:
     - Marria
     - maria
     - mari
-    - vitum
 
 - synonym: Kira
   examples: |
@@ -438,3 +440,4 @@ nlu:
     - Padrik
     - patrick
     - patrik
+    - Partick
