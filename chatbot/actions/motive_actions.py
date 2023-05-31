@@ -45,7 +45,7 @@ class CharacterMotive(Action):
 
         # set character to last_spoken_about if empty
         # If they ask about "her", "him", "it" it uses the "last_spoken"
-        if len(characters) == 0:
+        if len(characters) == 0 and "last_spoken_about_character" in data:
             if len(data["last_spoken_about_character"]) == 2:
                 print("Add Button for user to choose which person hes/shes talking about")
                 # buttons = []
@@ -65,6 +65,10 @@ class CharacterMotive(Action):
                     victim.append("Maria")
             print("Her/him case: " + str(characters))
 
+        elif len(characters) == 0 and "last_spoken_about_character" not in data:
+            dispatcher.utter_message(text=("Who do you mean?"))
+            return [SlotSet("data", data)]
+
         # If user enters an name that is not in our story
         if len(characters) == 1 and characters[0] not in story_characters.keys() and characters[0] != "Maria":
             dispatcher.utter_message(text=("I'm sorry, I don't know this person..."))
@@ -79,32 +83,32 @@ class CharacterMotive(Action):
         # If user asks for a motive of Maria (the vicitm)
         if "Maria" in victim and suspects == []:
             dispatcher.utter_message(text=("I'm pretty sure Maria didn't unalive herself. This looks definitly like a murder."))
-            data["last_spoken_about_character"] = []
+            data["last_spoken_about_character"] = ["Maria"]
             return [SlotSet("data", data)]
-
+        print(data)
         # print motive of character that is asked for, if specific name was entered
         if len(suspects) > 0:
             for story_character, motive in story_characters.items():
                 if len(suspects) > 1:
                     if story_character in suspects:
-                        if "times_asked_about_" + story_character not in data:
-                            data["times_asked_about_" + story_character] = 1
+                        if "times_asked_about_" + story_character + "_motive" not in data:
+                            data["times_asked_about_" + story_character + "_motive"] = 1
                             data["revealed_information"][story_character]["motive"] = True
                             dispatcher.utter_message(text=(story_character + "'s motive is: " + motive[1]))
                         else:
-                            data["times_asked_about_" + story_character] += 1
-                            if data["times_asked_about_" + story_character] == 2:
+                            data["times_asked_about_" + story_character + "_motive"] += 1
+                            if data["times_asked_about_" + story_character + "_motive"] == 2:
                                 dispatcher.utter_message(text=(story_character + "'s motive to kill Maria could be: " + motive[2]))
                             else:
                                 dispatcher.utter_message(text=("You already asked me about " + story_character + "'s motive but no worries, i'll tell you again. " + motive[3]))
                 else:
                     if story_character in suspects:
-                        if "times_asked_about_" + story_character not in data:
-                            data["times_asked_about_" + story_character] = 1
+                        if "times_asked_about_" + story_character + "_motive" not in data:
+                            data["times_asked_about_" + story_character + "_motive"] = 1
                             dispatcher.utter_message(text=(motive[1]))
                         else:
-                            data["times_asked_about_" + story_character] += 1
-                            if data["times_asked_about_" + story_character] == 2:
+                            data["times_asked_about_" + story_character + "_motive"] += 1
+                            if data["times_asked_about_" + story_character + "_motive"] == 2:
                                 dispatcher.utter_message(text=(motive[2])) # To decide: here also motive[2] could be used
                             else:
                                 dispatcher.utter_message(text=("You already asked me about " + story_character + "'s motive but no worries, i'll tell you again. " + motive[3]))
