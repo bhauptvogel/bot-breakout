@@ -72,21 +72,6 @@ nlu:
     - watch overview
 
 - intent: user_guesses_murderer
-    - what is the state?
-    - give me an overview
-    - i need a status about all the information
-    - can you summarize everything so far?
-    - i need a recap
-    - i need a brief on the situation
-    - let me know about the situation
-    - what is the current situation?
-    - i need a summary
-    - summary
-    - overview
-    - could you provide an overview?
-    - watch overview
-
-- intent: user_guesses_murderer
   examples: |
     - Do you think it was [Kira]{"entity":"person"}?
     - Was it [Anna]{"entity":"person"}?
@@ -116,38 +101,35 @@ nlu:
     - Could the murderer be [Maria's boyfriend]{"entity":"person"}?
     - I want to log in an answer!
     - I want to tell the police who the killer is.
+    - I am suspecting it was [Victors]{"entity":"person", "value":"Victor"}.
+    - It's definitely [Ana]{"entity":"person", "value":"Anna"}.
+    - [Viktor's]{"entity":"person", "value":"Victor"} the one, I'm positive.
+    - Are we sure it isn't [Annas]{"entity":"person", "value":"Anna"}?
+    - I'm fairly certain it was [Marie]{"entity":"person", "value":"Maria"}.
+    - [Vicktor]{"entity":"person", "value":"Victor"} is the only one left.
+    - Could [Kirass]{"entity":"person", "value":"Kira"} be the one we're looking for?
+    - It must have been [Patrik's]{"entity":"person", "value":"Patrick"}.
+    - [Viktors]{"entity":"person", "value":"Victor"}' handiwork, I'm sure.
+    - I believe [Marria]{"entity":"person", "value":"Maria"} is guilty.
+    - [Kisa]{"entity":"person", "value":"Kira"} must have done it!
+    - I'm pointing my finger at [Padrik]{"entity":"person", "value":"Patrick"}.
+    - It's possible that [Victor]{"entity":"person", "value":"Victor"} committed the crime.
+    - I have a hunch it's [Ana]{"entity":"person", "value":"Anna"}.
+    - Do you think it could be [Patrik]{"entity":"person", "value":"Patrick"}?
+    - [Marie]{"entity":"person", "value":"Maria"} can't be ruled out.
+    - [Vicktors]{"entity":"person", "value":"Victor"} is the likely suspect.
+    - I want to report that it was [Partick]{"entity":"person", "value":"Patrick"}.
+    - I need to let the detectives know it was [Kiras]{"entity":"person", "value":"Kira"}.
+    - My intuition says it's [Marias]{"entity":"person", "value":"Maria"}.
+    - [Vicctor]{"entity":"person", "value":"Victor"} is the one to blame.
+    - I'm convinced it's [Annaa]{"entity":"person", "value":"Anna"}.
+    - I wish to report that [Patriks]{"entity":"person", "value":"Patrick"} is the criminal.
+    - Let's consider [Anas]{"entity":"person", "value":"Anna"} as the killer.  
+    - I want to submit my final answer: It's [mari]{"entity":"person", "value":"Maria"}.
+    - I think it's time to tell the police that [patrick]{"entity":"person", "value":"Patrick"} is responsible.
+    - Can [Kira's]{"entity":"person", "value":"Kira"} guilt be confirmed?
+    - I have no doubts, it was [Patrik]{"entity":"person", "value":"Patrick"}.
 
-# ! not implemented in domain.yml
-# slots: what was talked about last
-- intent: user_wants_more_about_X
-    - Do you think it was [Kira]{"entity":"person"}?
-    - Was it [Anna]{"entity":"person"}?
-    - It was [Victor]{"entity":"person"}!
-    - I am sure it was [Patrick]{"entity":"person"}.
-    - Could [Kira]{"entity":"person"} be the murderer?
-    - I'm suspecting [Anna]{"entity":"person"}.
-    - [Victor]{"entity":"person"} has to be the murderer!
-    - I have a feeling it was [Patrick]{"entity":"person"}.
-    - It was [Anna]{"entity":"person"}, I'm sure of it!
-    - I believe it was [Kira]{"entity":"person"}.
-    - I bet it was [Anna]{"entity":"person"}.
-    - My guess is [Patrick]{"entity":"person"}.
-    - Is it possible that [Victor]{"entity":"person"} is the murderer?
-    - I suspect it was [Kira]{"entity":"person"}.
-    - Was it possibly [Anna]{"entity":"person"}?
-    - [Anna]{"entity":"person"} is my guess.
-    - I think it was [Kira]{"entity":"person"}.
-    - I think [Kira]{"entity":"person"} is the murderer
-    - [Patrick]{"entity":"person"} is the killer!
-    - [Patrick]{"entity":"person"} did it, didn't he?
-    - It had to be [Anna]{"entity":"person"}.
-    - [Victor]{"entity":"person"} is my primary suspect.
-    - I accuse [Anna]{"entity":"person"}.
-    - I suppose it only could have been [Kira]{"entity":"person"}.
-    - Is [Anna]{"entity":"person"} the murderer?
-    - Could the murderer be [Maria's boyfriend]{"entity":"person"}?
-    - I want to log in an answer!
-    - I want to tell the police who the killer is.
 
 # ! not implemented in domain.yml
 # slots: what was talked about last
@@ -409,6 +391,11 @@ nlu:
     - Vicktors
     - victor
     - vicctor
+    - Viktorr's
+    - Victor
+    - Vicctor
+    - Wicktor
+    - Wiktor
 
 - synonym: Anna
   examples: |
@@ -419,6 +406,7 @@ nlu:
     - anna
     - Annaa
     - Anas
+    - Annna
 
 - synonym: Maria
   examples: |
@@ -428,6 +416,9 @@ nlu:
     - Marria
     - maria
     - mari
+    - Mariee
+    - Marri
+    - mariaa
 
 - synonym: Kira
   examples: |
@@ -435,6 +426,7 @@ nlu:
     - Kira's
     - Kisa
     - kira
+    - Kirras
 
 - synonym: Patrick
   examples: |
@@ -447,3 +439,4 @@ nlu:
     - patrick
     - patrik
     - Partick
+    - Padrik

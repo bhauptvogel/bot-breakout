@@ -29,7 +29,7 @@ rules:
 - rule: User guesses who the murderer is
   steps:
   - intent: user_guesses_murderer
-  - action: utter_respond_to_accusation
+  - action: action_user_guess
 
 - rule: User investigates the scene
   steps:
