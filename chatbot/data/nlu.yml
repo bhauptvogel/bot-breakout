@@ -422,7 +422,6 @@ nlu:
     - Marria
     - maria
     - mari
-    - vitum
 
 - synonym: Kira
   examples: |
@@ -441,3 +440,4 @@ nlu:
     - Padrik
     - patrick
     - patrik
+    - Partick
