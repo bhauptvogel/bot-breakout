@@ -20,16 +20,16 @@ class CharacterMotive(Action):
         suspects = []
         victim = []
         story_characters = {"Kira" : {1: "Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very good.",
-                                      2: "Second answer if asked again (maybe look for a second smaller motive later)",
+                                      2: "Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very good.",
                                       3: "Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very good."},
                             "Patrick": {1: "I'm not sure if I should tell you about this, but whatever... the situation can't really get any worse. Maria had recently discovered that Patrick was involved in some illegal activities reagrding corruption. I don't know the details but it would have been the end of Patricks career if this story got published.",
-                                        2: "Second answer if asked again",
+                                        2: "I'm not sure if I should tell you about this, but whatever... the situation can't really get any worse. Maria had recently discovered that Patrick was involved in some illegal activities reagrding corruption. I don't know the details but it would have been the end of Patricks career if this story got published.",
                                         3: "Maria had recently discovered that Patrick was involved in some illegal activities reagrding corruption. I don't know the details but it would have been the end of Patricks career if this story got published."},
                             "Victor": {1: "As far as I know, he wouldn't have a reason to kill Maria. They just started dating and it was going really well.",
-                                       2: "Second answer if asked again",
+                                       2: "As far as I know, he wouldn't have a reason to kill Maria. They just started dating and it was going really well.",
                                        3: "I don't think he had a reason to kill Maria. They just started dating and it was going really well."},
                             "Anna": {1: "Anna and Maria were rivals. If it's about a good story Anna would have done anything.",
-                                     2: "Second answer if asked again",
+                                     2: "Anna and Maria were rivals. If it's about a good story Anna would have done anything.",
                                      3: "Anna and Maria were rivals. If it's about a good story Anna would have done anything."}
                             }
 
