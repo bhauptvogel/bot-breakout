@@ -36,14 +36,14 @@ class CharacterInvestigation(Action):
             data = tracker.get_slot('data')
 
 
-        story_characters = {"Maria": {1 : "Maria is the Ex-girlfriend of my co-worker Kira. She is was journalist and was investigating stuff that was going on in the amusement park.", 2: "I told Maria everything that I knew about Patrick and the stuff going on around here!"}, 
+        story_characters = {"Maria": {1 : "Maria is the Ex-girlfriend of my co-worker Kira. She is was journalist and was uncovering stuff that was going on in the amusement park to be better informed than her rival Anna", 2: "I told Maria everything that I knew about Patrick and the stuff going on around here!"}, 
                             "Kira" : {1 : "Kira is my co-worker. We are pretty good... I helped her to get through the breakup with Maria. That really took her down she was super upset - specially because of Marias new boyfriend Victor.", 2: "I think Maria's new boyfriend really took her down. She was super upset. Other than that she is really nice. She doesn't know a lot about what is going on in the amusement park business."}, 
-                            "Patrick": {1 : "Patrick is my boss. He in charge of the amusement park. Its actually a family business, he earned it from his dad. Patrick is kind of a snob... he loves to drive around in big cars and all this wealthy stuff.", 2: "Patrick is from China... he came here to take over the amusement park of his family."}, 
+                            "Patrick": {1 : "Patrick is my boss. He in charge of the amusement park. Its actually a family business, he got it from his dad. Patrick is kind of a snob... he loves to drive around in big cars and all this wealthy stuff. He has his secrets that nobody knows about...", 2: "Patrick is from China... he came here to take over the amusement park of his family."}, 
                             "Victor": {1 : "To be honest... I don’t know him. He is just Marias new boyfriend 🤷", 2: "Victor is Maria's new boyfriend. I don’t know him. Only the things Kira told me about him. She was pretty jealous, that Maria has someone new 👀"}, 
-                            "Anna": {1 : "Anna is Marias colleague at the Fictional Times Paper. I met her at some of Kiras Partys. She is nice but very focused on her job, just as Maria is … sorry, was 😥", 2: "Anna and Maria often worked together in the past. But it rivalry kinda developed... I think prestige is super important to Anna. She always wants to have the biggest stories."}}
+                            "Anna": {1 : "Anna is Marias colleague at the Fictional Times Paper. I met her at some of Kira's Partys. She is nice but very focused on her job, just as Maria is … sorry, was 😥", 2: "Anna and Maria often worked together in the past. But it rivalry kinda developed... I think prestige is super important to Anna. She always wants to have the biggest stories."}}
 
         story_characters_information = {"breakup": {1: ["Kira", "Maria"], 2: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her Colleague Anna. Thats why their relationship broke apart…"},
-                                        "secret": {1: ["Patrick"], 2: "Secret about Patrick"},
+                                        "secret": {1: ["Patrick"], 2: "I think I can tell you anything. Soo… It's somewhat embarrassing, and I'm also very ashamed of it. Maybe I could have prevented this whole situation and even Maria's death… So let me tell you the story: Patrick is not really a kind person but at all he is a good boss. When we had a employee consultation I saw some letters from the tax office on his desk and when I asked him about it he tore me down. So I told it Maria. She was thinking about doing some investigations on her own. Because the possibility of corruption was high. With Patricks lifestyle, the big cars and everything… Maria and I didn’t have much contact ever since. She said the risk is to high that someone draws their own conclusions… But it seams like Patrick came to a conclusion. And he may even knows that it was me who informed Maria. That could be the reason for the note. He wants to get me. And now we are here… with a dead journalist and a dirty business secret"},
                                         }
         
         story_character_last_name = {"Maria": {1 : "Sterling"}, 
@@ -54,11 +54,11 @@ class CharacterInvestigation(Action):
         
     
         story_character_relation = { 
-    ("Maria", "Kira"): {1: "Oh, Maria and Kira? They were like, super tight! They were actually dating and totally into each other. But you know how life goes, things changed, and now they're ex-friends."},
+    ("Maria", "Kira"): {1: "Oh, Maria and Kira? They were like, super close! They were actually dating and totally into each other. But you know how life goes, things changed, and now they're ex-friends."},
     ("Maria", "Patrick"): {1: "Maria, being the journalist she is, got all intrigued about Patrick's \"business\" and how he makes his cash. She was planning to write an article exposing all the captivating details."},
     ("Maria", "Victor"): {1: "After Maria and Kira broke up, she found love with Victor, and they're dating. They're both incredibly happy together... sorry they WERE incredibly happy"},
     ("Maria", "Anna"): {1: "Their relationship is a little complicated. They're not just colleagues, but also rivals in a way. It's like they're constantly in a battle, pushing each other to be at the top of their game. Things can get pretty heated between them."},
-    ("Kira", "Patrick"): {1: "Kira works at the cash-out in Patrick's business in the amusement park, where Patrick is her boss."},
+    ("Kira", "Patrick"): {1: "Kira works at the cash-out in Patrick's amusement park, where Patrick is her boss."},
     ("Kira", "Victor"): {1: "Kira is Maria's ex, and Victor is her new boyfriend. They barely know each other beyond their connection through Maria."},
     ("Kira", "Anna"): {1: "Kira and Anna barely know each other. They may have crossed paths briefly when Anna was snooping around the rollercoaster business, but that's about it."},
     ("Patrick", "Victor"): {1: "Patrick and Victor don't know each other."},

@@ -180,6 +180,7 @@ nlu:
     - Search the room
     - What is here
     - Where are we
+    - Investigate
     - More investigation
     - Check out the environment
     - Let’s look at the [body]{"entity":"object", "group":"search"} and the [note]{"entity":"object", "group":"search"}
@@ -196,6 +197,10 @@ nlu:
     - Look at the [note]{"entity":"object", "group":"search"}
     - Tell me about the [note]{"entity":"object", "group":"search"}.
     - Please take a look at the [weapon]{"entity":"object", "group":"search"}
+    - Please take a look at the [knife]{"entity":"object", "group":"search"}
+    - Look at the [knife]{"entity":"object", "group":"search"}
+    - Please look at the [knife]{"entity":"object", "group":"search"}
+    - Investigate the [knife]{"entity":"object", "group":"search"}
     - Let’s search for the [murder weapon]{"entity":"object", "group":"search", "value": "weapon"}
     - Look at the [floor cabin]{"entity":"object", "group":"search"}
     - Look inside the [cabin]{"entity":"object", "group":"search"}
@@ -213,6 +218,47 @@ nlu:
     - Check the [bench]{"entity":"object", "group":"search"}
     - Look behind the [tree]{"entity":"object", "group":"search"}
     - Look around the [tree]{"entity":"object", "group":"search"}
+    - Investigate the [scene]{"entity":"object", "group":"search"}
+    - Take a closer look at the [environment]{"entity":"object", "group":"search"}
+    - What do you observe in the surroundings?
+    - Conduct a thorough search of the [room]{"entity":"object", "group":"search"}
+    - Engage in further investigation.
+    - Perform a detailed examination of the [body]{"entity":"object", "group":"search"} and the [note]{"entity":"object", "group":"search"}
+    - Direct your attention to the [body]{"entity":"object", "group":"search"}
+    - Please inspect the [body]{"entity":"object", "group":"search"}
+    - Inspect the [body]{"entity":"object", "group":"search"}
+    - Ensure to check the [body]{"entity":"object", "group":"search"}
+    - Can you thoroughly examine the [corpse]{"entity":"object", "group":"search", "value":"body"}?
+    - Let's take a closer look at the [victim]{"entity":"object", "group":"search", "value":"body"}
+    - Let's explore the details of the [dead body]{"entity":"object", "group":"search", "value":"body"}
+    - Investigate the characteristics of the [dead woman]{"entity":"object", "group":"search", "value":"body"}
+    - Retrieve and analyze the [note]{"entity":"object", "group":"search"}
+    - What important information does the [note]{"entity":"object", "group":"search"} contain?
+    - Familiarize yourself with the contents of the [note]{"entity":"object", "group":"search"}
+    - Direct your attention to the [note]{"entity":"object", "group":"search"}
+    - Provide insights about the [note]{"entity":"object", "group":"search"}.
+    - Please examine the [weapon]{"entity":"object", "group":"search"} carefully.
+    - Take a close look at the [knife]{"entity":"object", "group":"search"}
+    - Observe the details of the [knife]{"entity":"object", "group":"search"}
+    - Carefully inspect the [knife]{"entity":"object", "group":"search"}
+    - Inspect the [knife]{"entity":"object", "group":"search"}
+    - Investigate the characteristics of the [knife]{"entity":"object", "group":"search"}
+    - Let's search for the [murder weapon]{"entity":"object", "group":"search", "value": "weapon"}
+    - Analyze the [floor cabin]{"entity":"object", "group":"search"}
+    - Explore the contents within the [cabin]{"entity":"object", "group":"search"}
+    - Conduct a thorough search of the [cabin]{"entity":"object", "group":"search"}
+    - Thoroughly examine the [cabin]{"entity":"object", "group":"search"}
+    - Please look closely at the [train cabin]{"entity":"object", "group":"search", "value":"cabin"}
+    - Examine the details of the [floor cabin]{"entity":"object", "group":"search"}
+    - I would like to investigate the contents of the [cabin]{"entity":"object", "group":"search"}
+    - Look at the [cabin]{"entity":"object", "group":"search", "value":"cabin"} and see what you find
+    - What can you discover inside the [train]{"entity":"object", "group":"search", "value":"cabin"}?
+    - Obtain more information about the [rollercoaster cabin]{"entity":"object", "group":"search", "value":"cabin"}
+    - Inspect the details of the [bench]{"entity":"object", "group":"search"}
+    - Look under the [bench]{"entity":"object", "group":"search"}
+    - Carefully examine the [bench]{"entity":"object", "group":"search"}
+    - Direct your attention to what is behind the [tree]{"entity":"object", "group":"search"}
+    - Take a look around the [tree]{"entity":"object", "group":"search"} and observe
 
 ## ------ character investigation ------
 - intent: information_about_character
@@ -267,6 +313,160 @@ nlu:
     - More about [Victor]{"entity":"person"}
     - Tell me more about [Marias]{"entity":"person"}'s [boyfriend]{"entity":"person"}
     - I want to know more about [Anna]{"entity":"person"}
+    - Provide further details about him.
+    - Share additional information about her.
+    - Can you tell me more about [Maria]{"entity":"person"}?
+    - Who is the [victim]{"entity":"person"} and what can you tell me about them?
+    - Share everything you know about [Maria]{"entity":"person"}.
+    - How are you acquainted with [Victor]{"entity":"person"}?
+    - Tell me about your [co-workers]{"entity":"person", "group":"multiple"}.
+    - Let's discuss your [coworkers]{"entity":"person", "group":"multiple"}.
+    - What can you tell me about your [coworkers]{"entity":"person", "group":"multiple"}?
+    - Who are your [coworkers]{"entity":"person", "group":"multiple"}?
+    - Provide more information about [Maria]{"entity":"person"}.
+    - Who is [Patrick]{"entity":"person"}'s significant other?
+    - Can you give me some background information on [Patrick]{"entity":"person"}?
+    - Tell me more about [Anna]{"entity":"person"} and her background.
+    - Where did you meet [Victor]{"entity":"person"}?
+    - What [secret]{"entity":"information"} are you referring to?
+    - Tell me about [Patrick]{"entity":"person"}'s [secret]{"entity":"information"}.
+    - Share the details of [Patrick]{"entity":"person"}'s [secret]{"entity":"information"}.
+    - Tell me about the [breakup]{"entity":"information"} between [Maria]{"entity":"person"} and her partner.
+    - What can you tell me about [Anna]{"entity":"person"}?
+    - Provide information about [Patrick]{"entity":"person"}.
+    - What is the story behind [Maria]{"entity":"person"}?
+    - Who is [Victor]{"entity":"person"} and what is his background?
+    - What do you know about [Anna]{"entity":"person"}?
+    - Tell me more about [Patrick]{"entity":"person"} and his background.
+    - Can you provide more details about [Maria]{"entity":"person"}?
+    - Share information about [Victor]{"entity":"person"}.
+    - I would like to know more about [Anna]{"entity":"person"}.
+    - What is the [relation]{"entity":"information"} between [Maria]{"entity":"person"} and [Victor]{"entity":"person"}?
+    - Does [Patrick]{"entity":"person"} have any [secrets]{"entity":"information"}?
+    - What do we know about [Anna]{"entity":"person"}'s [past]{"entity":"information"}?
+    - Can you tell me [Victor]{"entity":"person"}'s [profession]{"entity":"information"}?
+    - What is the [connection]{"entity":"information"} between [Anna]{"entity":"person"} and [Maria]{"entity":"person"}?
+    - What role does [Patrick]{"entity":"person"} play in all this?
+    - Tell me about [Maria]{"entity":"person"}'s [secret]{"entity":"information"}.
+    - How did [Victor]{"entity":"person"} meet [Anna]{"entity":"person"}?
+    - What is [Anna]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - What is [Victor]{"entity":"person"}'s [full name]{"entity":"information"}?
+    - Provide me with the [full name]{"entity":"information"} of [Patrick]{"entity":"person"}.
+    - I need to know [Anna]{"entity":"person"}'s [name]{"entity":"information"}.
+    - Do you know [Patrick]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - What is [Victor]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - Please provide [Patrick]{"entity":"person"}'s [full name]{"entity":"information"}.
+    - What is [Patrick]{"entity":"person"}'s [surname]{"entity":"information"}?
+    - Please tell me [Anna]{"entity":"person"}'s [family name]{"entity":"information"}.
+    - Share more details about [Victor]{"entity":"person"}.
+    - Tell me more about [Maria]{"entity":"person"}'s [boyfriend]{"entity":"person"}.
+    - I want to know more about [Anna]{"entity":"person"}.
+    - Tell me about [Maria]{"entity":"person"}.
+    - Who is the [victim]{"entity":"person"}?
+    - Tell me everything about [Maria]{"entity":"person"}.
+    - How do you know [Victor]{"entity":"person"}?
+    - Tell me about your [coworkers]{"entity":"person", "group":"multiple"}.
+    - Let's talk about your [coworkers]{"entity":"person", "group":"multiple"}.
+    - What about your [coworkers]{"entity":"person", "group":"multiple"}?
+    - Who are your [coworkers]{"entity":"person", "group":"multiple"}?
+    - Let's talk about your [co-workers]{"entity":"person", "group":"multiple"}.
+    - What about your [co-workers]{"entity":"person", "group":"multiple"}?
+    - Who are your [co-workers]{"entity":"person", "group":"multiple"}?
+    - Tell me about [Maria]{"entity":"person"}.
+    - Who is [Patrick]{"entity":"person"}?
+    - More information about [Anna]{"entity":"person"}.
+    - Where do you know [Victor]{"entity":"person"} from?
+    - What [secret]{"entity":"information"}?
+    - Tell me about the [secret]{"entity":"information"} of [Patrick]{"entity":"person"}.
+    - Tell me [Patrick]{"entity":"person"}'s [secret]{"entity":"information"}.
+    - Tell me about the [breakup]{"entity":"information"} of [Maria]{"entity":"person"}.
+    - What can you tell me about [Anna]{"entity":"person"}?
+    - Give me information about [Patrick]{"entity":"person"}.
+    - What's the story of [Maria]{"entity":"person"}?
+    - Who is [Victor]{"entity":"person"}?
+    - What do you know about [Anna]{"entity":"person"}?
+    - What's [Patrick]{"entity":"person"}'s background?
+    - Can you tell me more about [Maria]{"entity":"person"}?
+    - Share information about [Victor]{"entity":"person"}.
+    - I want to know about [Anna]{"entity":"person"}.
+    - What is the [relation]{"entity":"information"} between [Maria]{"entity":"person"} and [Victor]{"entity":"person"}?
+    - What is the [relation]{"entity":"information"} between [Maria]{"entity":"person"} and [Anna]{"entity":"person"}?
+    - What is the [relation]{"entity":"information"} between [Maria]{"entity":"person"} and [Kira]{"entity":"person"}?
+    - What is the [relation]{"entity":"information"} between [Maria]{"entity":"person"} and [Patrick]{"entity":"person"}?
+    - What is the [relation]{"entity":"information"} between [Victor]{"entity":"person"} and [Maria]{"entity":"person"}?
+    - What is the [relation]{"entity":"information"} between [Anna]{"entity":"person"} and [Maria]{"entity":"person"}?
+    - What is the [relation]{"entity":"information"} between [Kira]{"entity":"person"} and [Maria]{"entity":"person"}?
+    - What is the [relation]{"entity":"information"} between [Patrick]{"entity":"person"} and [Maria]{"entity":"person"}?
+    - Does [Patrick]{"entity":"person"} have any [secrets]{"entity":"information"}?
+    - What do we know about [Anna]{"entity":"person"}'s [past]{"entity":"information"}?
+    - Can you tell me [Victor]{"entity":"person"}'s [profession]{"entity":"information"}?
+    - What's the [connection]{"entity":"information"} between [Anna]{"entity":"person"} and [Maria]{"entity":"person"}?
+    - What's the [connection]{"entity":"information"} between [Maria]{"entity":"person"} and [Anna]{"entity":"person"}?
+    - What's the [connection]{"entity":"information"} between [Maria]{"entity":"person"} and [Victor]{"entity":"person"}?
+    - What's the [connection]{"entity":"information"} between [Maria]{"entity":"person"} and [Patrick]{"entity":"person"}?
+    - What's the [connection]{"entity":"information"} between [Maria]{"entity":"person"} and [Kira]{"entity":"person"}?
+    - What's the [connection]{"entity":"information"} between [Victor]{"entity":"person"} and [Maria]{"entity":"person"}?
+    - What's the [connection]{"entity":"information"} between [Patrick]{"entity":"person"} and [Maria]{"entity":"person"}?
+    - What's the [connection]{"entity":"information"} between [Kira]{"entity":"person"} and [Maria]{"entity":"person"}?
+    - What's [Patrick]{"entity":"person"}'s role in all this?
+    - What is the [last name]{"entity":"information"} of [Anna]{"entity":"person"}?
+    - What is [Victor]{"entity":"person"}'s [full name]{"entity":"information"}?
+    - Give me the [full name]{"entity":"information"} of [Patrick]{"entity":"person"}.
+    - I need [Anna]{"entity":"person"}'s [name]{"entity":"information"}.
+    - Do you know [Patrick]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - [Last name]{"entity":"information"} of [Victor]{"entity":"person"}.
+    - [Patrick]{"entity":"person"}'s [full name]{"entity":"information"} please.
+    - What is the [last name]{"entity":"information"} of [Patrick]{"entity":"person"}?
+    - Please tell me [Anna]{"entity":"person"}'s [last name]{"entity":"information"}.
+    - More about [Victor]{"entity":"person"}.
+    - I want to know more about [Anna]{"entity":"person"}.
+    - Provide further details about him.
+    - Share additional information about her.
+    - Can you tell me more about [Maria]{"entity":"person"}?
+    - Who is the [victim]{"entity":"person"} and what can you tell me about them?
+    - Share everything you know about [Maria]{"entity":"person"}.
+    - Tell me about your [coworkers]{"entity":"person", "group":"multiple"}.
+    - Let's discuss your [coworkers]{"entity":"person", "group":"multiple"}.
+    - Tell me about your [co-workers]{"entity":"person", "group":"multiple"}.
+    - Let's discuss your [co-workers]{"entity":"person", "group":"multiple"}.
+    - What can you tell me about your [coworkers]{"entity":"person", "group":"multiple"}?
+    - Who are your [coworkers]{"entity":"person", "group":"multiple"}?
+    - What can you tell me about your [co-workers]{"entity":"person", "group":"multiple"}?
+    - Who are your [co-workers]{"entity":"person", "group":"multiple"}?
+    - Provide more information about [Maria]{"entity":"person"}.
+    - Tell me more about [Anna]{"entity":"person"} and her background.
+    - Where did you meet [Victor]{"entity":"person"}?
+    - What [secret]{"entity":"information"} are you referring to?
+    - Tell me about [Patrick]{"entity":"person"}'s [secret]{"entity":"information"}.
+    - Share the details of [Patrick]{"entity":"person"}'s [secret]{"entity":"information"}.
+    - Tell me about the [breakup]{"entity":"information"} between [Maria]{"entity":"person"} and [Kira]{"entity":"person"}.
+    - What can you tell me about [Anna]{"entity":"person"}?
+    - Provide information about [Patrick]{"entity":"person"}.
+    - Who is [Victor]{"entity":"person"} and what is his background?
+    - What do you know about [Anna]{"entity":"person"}?
+    - Tell me more about [Patrick]{"entity":"person"} and his background.
+    - Can you provide more details about [Maria]{"entity":"person"}?
+    - Share information about [Victor]{"entity":"person"}.
+    - I would like to know more about [Anna]{"entity":"person"}.
+    - What is the [relation]{"entity":"information"} between [Maria]{"entity":"person"} and [Victor]{"entity":"person"}?
+    - Does [Patrick]{"entity":"person"} have any [secrets]{"entity":"information"}?
+    - What do we know about [Anna]{"entity":"person"}'s past?
+    - What is the [connection]{"entity":"information"} between [Anna]{"entity":"person"} and [Maria]{"entity":"person"}?
+    - What is [Anna]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - What is [Victor]{"entity":"person"}'s [full name]{"entity":"information"}?
+    - Provide me with the [full name]{"entity":"information"} of [Patrick]{"entity":"person"}.
+    - I need to know [Anna]{"entity":"person"}'s [name]{"entity":"information"}.
+    - Do you know [Patrick]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - [Last name]{"entity":"information"} of [Victor]{"entity":"person"}.
+    - [Patrick]{"entity":"person"}'s [full name]{"entity":"information"} please.
+    - What is [Patrick]{"entity":"person"}'s [surname]{"entity":"information"}?
+    - Please tell me [Anna]{"entity":"person"}'s [full name]{"entity":"information"}.
+    - Share more details about [Victor]{"entity":"person"}.
+    - Tell me more about [Maria]{"entity":"person"}'s [boyfriend]{"entity":"person"}.
+    - I want to know more about [Anna]{"entity":"person"}.
+
+
+
 
 - intent: motive_of_character
   examples: |

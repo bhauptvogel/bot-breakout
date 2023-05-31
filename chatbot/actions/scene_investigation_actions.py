@@ -11,10 +11,10 @@ from actions.actions import INITIAL_DATA_OBJECT
 
 INVESTIGATION_INFORMATION = {
     'base' : [
-              'Ok, so we are standing in the zombie themed area of the ghost ride. In some way it’s a quite romantic area... we earlier shared a seat at the bench with two zombies holding hand. In the background there is a scary tree, with no leaf. We can look at the train cabin, under the bench and behind the tree. Where should we start?',
-              'Oh my god! I found a knife at the cabin floor and a pen behind the tree , lets have a closer look… the pen seems to be used by a professional.',
-              'This is all we can find here. We can now talk about my co-workers. I get the feeling that they have something to do with it... Do you want to talk about my coworkers?'],
-    'weapon': 'Let me see... the weapon is a knife. It’s a bit bloody and it’s a bit scary to hold it. I think we should put it back where we found it or should I take a closer look?', 
+              'Ok, so we are standing in the zombie themed area of the ghost ride. In some way it’s a quite romantic area... we earlier shared a seat at the bench with two zombies holding hand. In the background there is a scary tree, with no leaf. We can look at the train cabin, under the bench and behind the tree. I think we should search in order to find some hints about the murderer. Where should we start?',
+              'Let´s have another close look at everything...',
+              'This is all we can find here. We can now talk about my co-workers. I get the feeling that they have something to do with it...'],
+    'weapon': 'Let me see... the weapon is a knife. It’s a bit bloody and it’s a bit scary to hold it. Should I take a closer look or should we put it back where we found it?', 
     'knife': 'The Knife... Oh there are initials in it. It says “A.P”  in the knife. Hm, who might it be?',
     'body': 'Ok, this feels a bit scary to look at a dead body, but it’s the best thing we can do. Let’s move a few steps closer... Hmm, I think I know the dead woman in the cabin.',
     'cabin': 'It has two seats, as ours did. On the seat closer to us and closer to the themed area is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. Should I investigate it more or should I tell you about the note...',
