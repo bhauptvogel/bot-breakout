@@ -6,41 +6,21 @@ from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
 
-from actions.actions import ( KIRA_SYNONYMS,
-                      MARIA_SYNONYMS,
-                      ANNA_SYNONYMS,
-                      PATRICK_SYNONYMS,
-                      VICTOR_SYNONYMS )
+from actions.actions import INITIAL_DATA_OBJECT
 
 
 class CharacterMotive(Action):
     def name(self) -> Text:
         return "action_tell_motive"
 
-    # Map name synonyms to our actual name: e.g. Victors --> Victor
-    def map_name_synonyms(self, character_names):
-        new_character_list = []
-        for name in character_names:
-            if name in ANNA_SYNONYMS:
-                new_character_list.append("Anna")
-            elif name in MARIA_SYNONYMS:
-                new_character_list.append("Maria")
-            elif name in PATRICK_SYNONYMS:
-                new_character_list.append("Patrick")
-            elif name in KIRA_SYNONYMS:
-                new_character_list.append("Kira")
-            elif name in VICTOR_SYNONYMS:
-                new_character_list.append("Victor")
-            elif name not in ANNA_SYNONYMS + MARIA_SYNONYMS + PATRICK_SYNONYMS + KIRA_SYNONYMS + VICTOR_SYNONYMS:
-                return name
-        return new_character_list
+
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
-            data = {}
+            data = INITIAL_DATA_OBJECT
         else:
             data = tracker.get_slot('data')
 
@@ -48,8 +28,6 @@ class CharacterMotive(Action):
         entities = tracker.latest_message['entities']
         characters = [e['value'] for e in entities if e['entity'] == 'person']
         if len(characters) > 0:
-            # check if a name is misspelled
-            characters = self.map_name_synonyms(characters)
             # if unknown name in characters
             if type(characters) == str:
                 dispatcher.utter_message(text=("I'm sorry, I don't know this person..."))
@@ -62,9 +40,6 @@ class CharacterMotive(Action):
         if len(entities) > 0 and "group" in entities[0].keys():
             suspects = [e['value'] for e in entities if e['group'] == 'suspect' and e['entity'] == 'person']
             victim = [e['value'] for e in entities if e['group'] == 'victim' and e['entity'] == 'person']
-            # check if a name is misspelled
-            suspects = self.map_name_synonyms(suspects)
-            victim = self.map_name_synonyms(victim)
 
             # if unknown name in characters
             if type(suspects) == str:
@@ -110,6 +85,7 @@ class CharacterMotive(Action):
                     if story_character in suspects:
                         if "times_asked_about_" + story_character not in data:
                             data["times_asked_about_" + story_character] = 1
+                            data["revealed_information"][story_character]["motive"] = True
                             dispatcher.utter_message(text=(story_character + "'s motive is: " + motive[1]))
                         else:
                             data["times_asked_about_" + story_character] += 1

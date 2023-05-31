@@ -47,9 +47,9 @@ responses:
   - text: Anna is Marias colleague at the Fictional Times Paper. I met her at some of Kiras Partys. She is nice but very focused on her job, just as Maria is … sorry, was 😥
   utter_who_is_victor:
   - text: Victor is the Maria's new boyfriend. I don’t know him. Only the things Kira told me about him. She was pretty jealous, that Maria has someone new 👀
-
+  utter_hint:
+  - text: You can always ask for an overview of the situation and what I have already told you.
 actions:
-- action_hint
 - action_overview_of_the_state
 - action_scene_investigation
 - action_character_investigation

@@ -8,11 +8,42 @@ from rasa_sdk.events import SlotSet, ReminderScheduled
 from datetime import datetime, timedelta
 import random
 
-KIRA_SYNONYMS = ["Kira", "Kiras", "Kira's", "Kisa", "kira"]
-PATRICK_SYNONYMS = ["Patrick", "Patricks", "Patrik", "Patriks", "Patrik's", "Patrick's", "Padrik", "patrick"]
-VICTOR_SYNONYMS = ["Victor", "Victors", "Victor's", "Viktor", "Vicktor", "Viktors", "Vicktors", "victor"]
-ANNA_SYNONYMS = ["Anna", "Ana", "Annna", "Annas", "Anna's", "anna"]
-MARIA_SYNONYMS = ["Maria", "Marias", "Maria's", "Marie", "Marria", "maria"]
+
+# the object that is used to store the data (inital content)
+INITIAL_DATA_OBJECT = {
+    "revealed_information": {
+        "Kira": {
+            "personal_information": False,
+            "motive": False,
+            "access": False,
+            "weapon": False,
+        },
+        "Maria": {
+            "personal_information": False,
+            "motive": False,
+            "access": False,
+            "weapon": False,
+        },
+        "Victor": {
+            "personal_information": False,
+            "motive": False,
+            "access": False,
+            "weapon": False,
+        },
+        "Luis": {
+            "personal_information": False,
+            "motive": False,
+            "access": False,
+            "weapon": False,
+        },
+        "Sofia": {
+            "personal_information": False,
+            "motive": False,
+            "access": False,
+            "weapon": False,
+        },
+    },
+}
 
 
 class StartGame(Action):
@@ -22,7 +53,9 @@ class StartGame(Action):
         return "action_set_reminder"
 
     def run(self, dispatcher, tracker: Tracker, domain):
-        dispatcher.utter_message("The police is coming soon! I will remind you in 10 seconds. Just a test")
+        dispatcher.utter_message(
+            "The police is coming soon! I will remind you in 10 seconds. Just a test"
+        )
 
         date = datetime.now() + timedelta(seconds=10)
 
@@ -46,32 +79,9 @@ class ActionReactToReminder(Action):
         tracker: Tracker,
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
-
         dispatcher.utter_message("The police is coming now! What's our guess?")
 
         return []
 
 
-class GiveHint(Action):
-    def name(self) -> Text:
-        return "action_hint"
 
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        dispatcher.utter_message(text='TODO: Give hint (answer to last question)')
-
-        return []
-
-class SituationOverview(Action):
-    def name(self) -> Text:
-        return "action_overview_of_the_state"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        dispatcher.utter_message(text='TODO: Give situation overview')
-
-        return []
