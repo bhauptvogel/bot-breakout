@@ -174,40 +174,45 @@ nlu:
 ## ------ scene investigation ------
 - intent: scene_investigation
   examples: |
-    - Let’s look at the [body]{"entity":"object", "group":"search"} and the [note]{"entity":"object", "group":"search"}
     - Investigate the scene
     - Tell me about the environment
     - What do you see?
+    - Search the room
     - What is here
-    - Pick up the [note]{"entity":"object", "group":"search"}
-    - Read the [note]{"entity":"object", "group":"search"}
-    - Look at the [body]{"entity":"object", "group":"search"}
-    - Look at the [note]{"entity":"object", "group":"search"}
-    - Please take a look at the [weapon]{"entity":"object", "group":"search"}
-    - Let’s search for the [murder weapon]{"entity":"object", "group":"search"}
-    - Look at the [floor cabin]{"entity":"object", "group":"search"}
-    - Look under the [bench]{"entity":"object", "group":"search"}
-    - Look behind the [tree]{"entity":"object", "group":"search"}
-    - Tell me about the [note]{"entity":"object", "group":"search"}.
+    - Where are we
+    - More investigation
     - Check out the environment
-    - Can you examine the [corpse]{"entity":"object", "group":"search"}?
+    - Let’s look at the [body]{"entity":"object", "group":"search"} and the [note]{"entity":"object", "group":"search"}
+    - Look at the [body]{"entity":"object", "group":"search"}
     - Please look into the [body]{"entity":"object", "group":"search"}
+    - Please check the [body]{"entity":"object", "group":"search"}
+    - Can you examine the [corpse]{"entity":"object", "group":"search", "value":"body"}?
+    - Let's take a closer look at the [victim]{"entity":"object", "group":"search", "value":"body"}
+    - Let's check out the [dead body]{"entity":"object", "group":"search", "value":"body"}
+    - Investigate the [dead woman]{"entity":"object", "group":"search", "value":"body"}
+    - Pick up the [note]{"entity":"object", "group":"search"}
+    - What about the [note]{"entity":"object", "group":"search"}?
+    - Read the [note]{"entity":"object", "group":"search"}
+    - Look at the [note]{"entity":"object", "group":"search"}
+    - Tell me about the [note]{"entity":"object", "group":"search"}.
+    - Please take a look at the [weapon]{"entity":"object", "group":"search"}
+    - Let’s search for the [murder weapon]{"entity":"object", "group":"search", "value": "weapon"}
+    - Look at the [floor cabin]{"entity":"object", "group":"search"}
+    - Look inside the [cabin]{"entity":"object", "group":"search"}
+    - Search the [cabin]{"entity":"object", "group":"search"}
     - Go through the [cabin]{"entity":"object", "group":"search"}
     - Inspect the [cabin]{"entity":"object", "group":"search"}
-    - What about the [note]{"entity":"object", "group":"search"}?
-    - Investigate the [dead woman]{"entity":"object", "group":"search"}
-    - Let's take a closer look at the [victim]{"entity":"object", "group":"search"}
-    - Search the [cabin]{"entity":"object", "group":"search"}
-    - Look inside the [cabin]{"entity":"object", "group":"search"}
-    - Let's check out the [dead body]{"entity":"object", "group":"search"}
+    - Please look at the [train cabin]{"entity":"object", "group":"search", "value":"cabin"}
     - Examine the [floor cabin]{"entity":"object", "group":"search"}
-    - Please check the [body]{"entity":"object", "group":"search"}
-    - Look around the [tree]{"entity":"object", "group":"search"}
-    - Let's inspect the [bench]{"entity":"object", "group":"search"}
-    - Search the [room]{"entity":"object", "group":"search"}
     - I want to see what's in the [cabin]{"entity":"object", "group":"search"}
+    - Look at the [cabin]{"entity":"object", "group":"search", "value":"cabin"}
+    - What's inside the [train]{"entity":"object", "group":"search", "value":"cabin"}
+    - I need to know more about the [rollercoaster cabin]{"entity":"object", "group":"search", "value":"cabin"}
+    - Let's inspect the [bench]{"entity":"object", "group":"search"}
+    - Look under the [bench]{"entity":"object", "group":"search"}
     - Check the [bench]{"entity":"object", "group":"search"}
-    - More investigation
+    - Look behind the [tree]{"entity":"object", "group":"search"}
+    - Look around the [tree]{"entity":"object", "group":"search"}
 
 ## ------ character investigation ------
 - intent: information_about_character
@@ -335,13 +340,17 @@ nlu:
     - Could [Anna]{"entity":"person"} have theoretically done it?
 
 ## --------------------------------------------
-- synonym: Maria
+- synonym: body
   examples: |
-    - victim
     - dead person
     - dead woman
     - woman in the cabin
-    - maria
+    - corpse
+
+- synonym: cabin
+    - train cabin
+    - train
+    - rollercoaster cabin
 
 - synonym: Victor
   examples: |
@@ -369,10 +378,10 @@ nlu:
     - link
     - bond
 
-- synonym: murder weapon
+- synonym: weapon
   examples: |
-    - knife
     - weapon
+    - murder weapon
     - crime weapon
 
 - synonym: full name
@@ -413,6 +422,7 @@ nlu:
     - Marria
     - maria
     - mari
+    - vitum
 
 - synonym: Kira
   examples: |

@@ -7,18 +7,20 @@ from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
 
+from actions.actions import INITIAL_DATA_OBJECT
 
 investigation = {
     'base' : [
               'Ok, so we are standing in the zombie themed area of the ghost ride. In some way it’s a quite romantic area... we earlier shared a seat at the bench with two zombies holding hand. In the background there is a scary tree, with no leaf. We can look at the train cabin, under the bench and behind the tree. Where should we start?',
-              'I found a knife at the cabin floor and a pen behind the tree , lets have a closer look… the pen seems to be used by a professional.',
+              'Oh my god! I found a knife at the cabin floor and a pen behind the tree , lets have a closer look… the pen seems to be used by a professional.',
               'This is all we can find here. We can now talk about my co-workers. I get the feeling that they have something to do with it... Do you want to talk about my coworkers?'],
+    'weapon': 'Let me see... the weapon is a knife. It’s a bit bloody and it’s a bit scary to hold it. I think we should put it back where we found it or should I take a closer look?', 
     'knife': 'The Knife... Oh there are initials in it. It says “A.P”  in the knife. Hm, who might it be?',
-    'maria': 'Ok, this feels a bit scary to look at a dead body, but it’s the best thing we can do. Let’s move a few steps closer... Hmm, I think I know the dead woman in the cabin.',
+    'body': 'Ok, this feels a bit scary to look at a dead body, but it’s the best thing we can do. Let’s move a few steps closer... Hmm, I think I know the dead woman in the cabin.',
     'cabin': 'It has two seats, as ours did. On the seat closer to us and closer to the themed area is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. Should I investigate it more or should I tell you about the note...',
-    'floor cabin': 'The cabin floor is covert in puddles of blood. In between this mess there is a shape... Its strange to grab in blood but I get it out of it.',
-    'bench': 'The cabin floor is covert in puddles of blood. In between this mess there is a shape... Its strange to grab in blood but I get it out of it.',
-    'tree': 'The tree is a bit scary. It’s a dead tree with no leafs. Behind the tree there is just some light equipment to give the scene a spoky feeling. But... I think there is something, between the synthetic turf.',
+    'cabin floor': 'The cabin floor is covered in puddles of blood.',
+    'bench': 'Just some zombie love dripping through the wooden slats of the bench. Or is this something else... Lets stand up but be careful to not get tangled in the zombies limbs.',
+    'tree': 'The tree is a bit scary. It’s a dead tree with no leafs. Behind the tree there is just some light equipment to give the scene a spoky feeling.',
     'note': 'There is a Note on the body. It says “Your are next”. I believe it means that I am the target the murderer intends to go after next.',  
 }
               
@@ -32,12 +34,14 @@ class SceneInvestigation(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
         
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
-            data = {}
+            data = INITIAL_DATA_OBJECT
         else:
             data = tracker.get_slot('data')
         
         entities = tracker.latest_message['entities']
         objects = [e['value'] for e in entities if e['entity'] == 'object']
+
+        dispatcher.utter_message(text="SCENE INVESTIGATION INTENT: " + "Objects to investigate: " + ",".join(objects))
 
         if len(objects) == 0:
             if 'times_asked_about_scene_invesigation' not in data:
@@ -50,6 +54,6 @@ class SceneInvestigation(Action):
             if obj in investigation:
                 dispatcher.utter_message(text=investigation[obj])
             else:
-                dispatcher.utter_message(text="What do you mean with " + obj + "?")
+                dispatcher.utter_message(text="I don't know how I can investigate " + obj + ".")
 
         return [SlotSet("data", data)]

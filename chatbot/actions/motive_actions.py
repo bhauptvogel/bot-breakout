@@ -6,6 +6,8 @@ from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
 
+from actions.actions import INITIAL_DATA_OBJECT
+
 
 class CharacterMotive(Action):
     def name(self) -> Text:
@@ -32,7 +34,7 @@ class CharacterMotive(Action):
                             }
 
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
-            data = {}
+            data = INITIAL_DATA_OBJECT
         else:
             data = tracker.get_slot('data')
 
@@ -87,6 +89,7 @@ class CharacterMotive(Action):
                     if story_character in suspects:
                         if "times_asked_about_" + story_character not in data:
                             data["times_asked_about_" + story_character] = 1
+                            data["revealed_information"][story_character]["motive"] = True
                             dispatcher.utter_message(text=(story_character + "'s motive is: " + motive[1]))
                         else:
                             data["times_asked_about_" + story_character] += 1
