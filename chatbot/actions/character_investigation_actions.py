@@ -14,11 +14,11 @@ from actions.actions import INITIAL_DATA_OBJECT
 class CharacterInvestigation(Action):
     def name(self) -> Text:
         return "action_character_investigation"
-
+        
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
+        
         entities = tracker.latest_message['entities']
         characters = [e['value'] for e in entities if e['entity'] == 'person']
         informations = [e['value'] for e in entities if e['entity'] == 'information']
@@ -52,6 +52,19 @@ class CharacterInvestigation(Action):
                             "Victor": {1 : "L."}, 
                             "Anna": {1 : "Pollock"}}
         
+    
+        story_character_relation = { 
+    ("Maria", "Kira"): {1: "Oh, Maria and Kira? They were like, super tight! They were actually dating and totally into each other. But you know how life goes, things changed, and now they're ex-friends."},
+    ("Maria", "Patrick"): {1: "Maria, being the journalist she is, got all intrigued about Patrick's \"business\" and how he makes his cash. She was planning to write an article exposing all the captivating details."},
+    ("Maria", "Victor"): {1: "After Maria and Kira broke up, she found love with Victor, and they're dating. They're both incredibly happy together... sorry they WERE incredibly happy"},
+    ("Maria", "Anna"): {1: "Their relationship is a little complicated. They're not just colleagues, but also rivals in a way. It's like they're constantly in a battle, pushing each other to be at the top of their game. Things can get pretty heated between them."},
+    ("Kira", "Patrick"): {1: "Kira works at the cash-out in Patrick's business in the amusement park, where Patrick is her boss."},
+    ("Kira", "Victor"): {1: "Kira is Maria's ex, and Victor is her new boyfriend. They barely know each other beyond their connection through Maria."},
+    ("Kira", "Anna"): {1: "Kira and Anna barely know each other. They may have crossed paths briefly when Anna was snooping around the rollercoaster business, but that's about it."},
+    ("Patrick", "Victor"): {1: "Patrick and Victor don't know each other."},
+    ("Patrick", "Anna"): {1: "So, here's the deal: they ended up knowing each other because of this report that Anna and Maria wanted to publish. They both got involved in the investigation, but let me tell you, Patrick wasn't exactly thrilled about it. Things got a bit tense there, my friend!"},
+    ("Victor", "Anna"): {1: "So, Anna and Victor actually know each other through their connection with Maria. Anna happens to be Maria's colleague, while Victor is Maria's new boyfriend."}
+} 
         
         
          #If they ask about "her", "him", "it" it uses the "last_spoken"
@@ -105,6 +118,16 @@ class CharacterInvestigation(Action):
                             dispatcher.utter_message(text=(character+"'s full name is "+ str(character) + " "+str(story_character_last_name[character][1])))
                     else:
                         dispatcher.utter_message(text=("I don't know who you're talking about"))     
+                elif info == "relation" or info =="connection":
+                    connection_found = False
+                    for key in story_character_relation.keys():
+                        if set(key) == set(characters):
+                            dispatcher.utter_message(text=(story_character_relation[key][1]))
+                            connection_found = True
+                            break
+                        
+                    if not connection_found: 
+                        dispatcher.utter_message(text=("I dont know about which "+str(info)+" you're talking about"))
 
                 for character_information in story_characters_information:
                     if len(characters) < 1 and "last_spoken_about_character" not in data.keys():
@@ -128,7 +151,7 @@ class CharacterInvestigation(Action):
 
                 
 
-
+        
         #If basic information about character is asked
         if len(characters) > 0 and len(informations) == 0 and not cowoker_set:
             print("In characters > 0 informations < 0 coworker == 0")
