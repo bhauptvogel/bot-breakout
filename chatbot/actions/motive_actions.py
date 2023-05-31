@@ -15,17 +15,18 @@ class CharacterMotive(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        suspects = victim = []
-        story_characters = {"Kira" : {1 : "Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very good.",
+        suspects = []
+        victim = []
+        story_characters = {"Kira" : {1: "Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very good.",
                                       2: "Second answer if asked again (maybe look for a second smaller motive later)",
                                       3: "Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very good."},
-                            "Patrick": {1 : "I'm not sure if I should tell you about this, but whatever... the situation can't really get any worse. Maria had recently discovered that Patrick was involved in some illegal activities reagrding corruption. I don't know the details but it would have been the end of Patricks career if this story got published.",
+                            "Patrick": {1: "I'm not sure if I should tell you about this, but whatever... the situation can't really get any worse. Maria had recently discovered that Patrick was involved in some illegal activities reagrding corruption. I don't know the details but it would have been the end of Patricks career if this story got published.",
                                         2: "Second answer if asked again",
                                         3: "Maria had recently discovered that Patrick was involved in some illegal activities reagrding corruption. I don't know the details but it would have been the end of Patricks career if this story got published."},
-                            "Victor": {1 : "As far as I know, he wouldn't have a reason to kill Maria. They just started dating and it was going really well.",
+                            "Victor": {1: "As far as I know, he wouldn't have a reason to kill Maria. They just started dating and it was going really well.",
                                        2: "Second answer if asked again",
                                        3: "I don't think he had a reason to kill Maria. They just started dating and it was going really well."},
-                            "Anna": {1 : "Anna and Maria were rivals. If it's about a good story Anna would have done anything.",
+                            "Anna": {1: "Anna and Maria were rivals. If it's about a good story Anna would have done anything.",
                                      2: "Second answer if asked again",
                                      3: "Anna and Maria were rivals. If it's about a good story Anna would have done anything."}
                             }
@@ -37,7 +38,6 @@ class CharacterMotive(Action):
 
         # check if the person asked for is suspect or victim
         entities = tracker.latest_message['entities']
-        print(entities)
         characters = [e['value'] for e in entities if e['entity'] == 'person']
         print("Original entered names: ", characters)
 
@@ -58,37 +58,18 @@ class CharacterMotive(Action):
             characters = data["last_spoken_about_character"]
             for character in characters:
                 if character in story_characters.keys():
-                    print("Character Suspect: ", str(character))
                     suspects.append(character)
                 elif character == "Maria":
                     victim.append("Maria")
             print("Her/him case: " + str(characters))
 
         # If user enters an name that is not in our story
-        if len(characters) == 1 and characters[0] not in story_characters.keys():
+        if len(characters) == 1 and characters[0] not in story_characters.keys() and characters[0] != "Maria":
             dispatcher.utter_message(text=("I'm sorry, I don't know this person..."))
+            data["last_spoken_about_character"] = characters
             return [SlotSet("data", data)]
 
-            # if characters == []:
-            #     if "last_spoken_about_character" in data.keys():
-            #         for last_spoken in data["last_spoken_about_character"]:
-            #             if "times_asked_about_" + last_spoken not in data:
-            #                 data["times_asked_about_" + last_spoken] = 1
-            #                 dispatcher.utter_message(text=(story_characters[last_spoken][1]))
-            #             else:
-            #                 data["times_asked_about_" + last_spoken] += 1
-            #                 if data["times_asked_about_" + last_spoken] == 2:
-            #                     if 2 not in story_characters[last_spoken]:
-            #                         dispatcher.utter_message(text=("You already asked me about " + last_spoken + " but sure, her you go: " + story_characters[last_spoken][1]))
-            #                     else:
-            #                         dispatcher.utter_message(text=(story_characters[last_spoken][2]))
-            #                 else:
-            #                     dispatcher.utter_message(text=("You already asked me about " + last_spoken + " but sure, her you go: " + story_characters[last_spoken][1]))
-
-
         # check if group is set and define suspects and victims
-        print("Suspect1: ", suspects)
-        print("Victim1: ", victim)
         if len(entities) > 0 and "group" in entities[0].keys():
             suspects = [e['value'] for e in entities if e['group'] == 'suspect' and e['entity'] == 'person']
             victim = [e['value'] for e in entities if e['group'] == 'victim' and e['entity'] == 'person']
@@ -98,9 +79,6 @@ class CharacterMotive(Action):
             dispatcher.utter_message(text=("I'm pretty sure Maria didn't unalive herself. This looks definitly like a murder."))
             data["last_spoken_about_character"] = []
             return [SlotSet("data", data)]
-
-        print("Suspect: ", suspects)
-        print("Victim: ", victim)
 
         # print motive of character that is asked for, if specific name was entered
         if len(suspects) > 0:
@@ -113,7 +91,7 @@ class CharacterMotive(Action):
                         else:
                             data["times_asked_about_" + story_character] += 1
                             if data["times_asked_about_" + story_character] == 2:
-                                dispatcher.utter_message(text=(story_character + "'s motive to kill Maria is: " + motive[2]))
+                                dispatcher.utter_message(text=(story_character + "'s motive to kill Maria could be: " + motive[2]))
                             else:
                                 dispatcher.utter_message(text=("You already asked me about " + story_character + "'s motive but no worries, i'll tell you again. " + motive[3]))
                 else:
