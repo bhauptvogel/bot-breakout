@@ -100,20 +100,21 @@ class CharacterInvestigation(Action):
                     if len(characters) > 0:
                         for character in characters:
                             dispatcher.utter_message(text=(str(character)+"'s last name is "+str(story_character_last_name[character][1])))
-                            data["revealed_information"][story_character]["full_name"] = True
+                            data["revealed_information"][character]["full_name"] = True
                     elif "last_spoken_about_character" in data.keys():
                         for character in data["last_spoken_about_character"]:
-                            data["revealed_information"][story_character]["full_name"] = True
+                            data["revealed_information"][character]["full_name"] = True
                             dispatcher.utter_message(text=(str(character)+"'s last name is "+str(story_character_last_name[character][1])))
                     else:
                         dispatcher.utter_message(text=("I don't know who you're talking about"))
                 elif info == "full name":    
                     if len(characters) > 0:
                         for character in characters:
-                            data["revealed_information"][story_character]["full_name"] = True
+                            data["revealed_information"][character]["full_name"] = True
                             dispatcher.utter_message(text=(character+"'s full name is "+ str(character) + " "+str(story_character_last_name[character][1])))
                     elif "last_spoken_about_character" in data.keys() and data["last_spoken_about_character"] != []:
                         for character in data["last_spoken_about_character"]:
+                            data["revealed_information"][character]["full_name"] = True
                             dispatcher.utter_message(text=(character+"'s full name is "+ str(character) + " "+str(story_character_last_name[character][1])))
                     else:
                         dispatcher.utter_message(text=("I don't know who you're talking about"))     
