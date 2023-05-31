@@ -29,7 +29,7 @@ INFORMATION = {
         "access": "She definitely doesn't have access to the roller coaster. ",
     },
     "Patrick": {
-        "personal_information": "Patrick is my snobbish boss who inherits the family amusement park business and has a fondness for luxury vehicles and opulence ",
+        "personal_information": "Patrick is my snobbish boss who owns the family amusement park business and loves luxury vehicles and opulence. ",
         "motive": "Maria just found out that Patrick's been caught up in some sketchy corruption stuff. If this gets out, he's toast, but I don't know all the details. ",
         "access": "As the owner of the amusement park, he has access to the roller coaster. ",
     },
@@ -54,6 +54,8 @@ class SituationOverview(Action):
             data = tracker.get_slot("data")
 
         revealed_information = data["revealed_information"]
+
+        dispatcher.utter_message(text="Here is everything we talked about so far: \n")
 
         # Maria information
         if (revealed_information["Maria"]["personal_information"] == True):
