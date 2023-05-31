@@ -19,7 +19,7 @@ rules:
 - rule: Give user a hint
   steps:
   - intent: user_needs_hint
-  - action: action_hint
+  - action: utter_hint
 
 - rule: Give user an overview of the state
   steps:

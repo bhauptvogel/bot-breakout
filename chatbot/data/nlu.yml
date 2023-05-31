@@ -337,11 +337,6 @@ nlu:
     - Could [Anna]{"entity":"person"} have theoretically done it?
 
 ## --------------------------------------------
-- synonym: Maria
-  examples: |
-    - victim
-    - maria
-
 - synonym: body
   examples: |
     - dead person
@@ -424,6 +419,7 @@ nlu:
     - Marria
     - maria
     - mari
+    - vitum
 
 - synonym: Kira
   examples: |
