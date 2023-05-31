@@ -12,11 +12,11 @@ import random
 class CharacterInvestigation(Action):
     def name(self) -> Text:
         return "action_character_investigation"
-        
+
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
-        
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
         entities = tracker.latest_message['entities']
         characters = [e['value'] for e in entities if e['entity'] == 'person']
         informations = [e['value'] for e in entities if e['entity'] == 'information']
@@ -27,19 +27,17 @@ class CharacterInvestigation(Action):
             data = tracker.get_slot('data')
 
 
-        story_characters = {"Maria": {1: "Maria is the Ex-girlfriend of my co-worker Kira. Do you want to know more about Kira or should we investigate the cabin a bit more?"}, 
-                            "Kira" : {1 : "Kira is my co-worker. We are pretty good... I helped her to get through the breakup with Maria. That really took her down she was super upset - specially because of Marias new boyfriend.", 2: "Information 2 about Kira"}, 
-                            "Patrick": {1 : "Patrick is my boss. He in charge of the amusement park. Its actually a family business, he earned it from his dad. Patrick is kind of a snob... he loves to drive around in big cars and all this wealthy stuff.", 2: "Information 2 about Patrick"}, 
-                            "Victor": {1 : "To be honest... I don’t know him. He is just Marias new boyfriend 🤷", 2: "Victor is Maria's new boyfriend. I don’t know him. Only the things Kira told me about him. She was pretty jealous, that Maria has someone new 👀"}, 
+        story_characters = {"Maria": {1: "Maria is the Ex-girlfriend of my co-worker Kira. Do you want to know more about Kira or should we investigate the cabin a bit more?"},
+                            "Kira" : {1 : "Kira is my co-worker. We are pretty good... I helped her to get through the breakup with Maria. That really took her down she was super upset - specially because of Marias new boyfriend.", 2: "Information 2 about Kira"},
+                            "Patrick": {1 : "Patrick is my boss. He in charge of the amusement park. Its actually a family business, he earned it from his dad. Patrick is kind of a snob... he loves to drive around in big cars and all this wealthy stuff.", 2: "Information 2 about Patrick"},
+                            "Victor": {1 : "To be honest... I don’t know him. He is just Marias new boyfriend 🤷", 2: "Victor is Maria's new boyfriend. I don’t know him. Only the things Kira told me about him. She was pretty jealous, that Maria has someone new 👀"},
                             "Anna": {1 : "Anna is Marias colleague at the Fictional Times Paper. I met her at some of Kiras Partys. She is nice but very focused on her job, just as Maria is … sorry, was 😥", 2: "Information 2 about Anna"}}
-        
+
         story_characters_information = {"breakup": {1: ["Kira", "Maria"], 2: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her Colleague Anna. Thats why their relationship broke apart…"},
                                         "secret": {1: ["Patrick"], 2: "Secret about Patrick"},
                                         }
 
-        dispatcher.utter_message(text=('1. TODO: Investigate characters: ' + ', '.join(characters) + ' / informations: ' + ', '.join(informations) + '...'.join(str(data["last_spoken_about_character"])).join(data["last_spoken_about_information"])))
 
-        
          #If they ask about "her", "him", "it" it uses the "last_spoken"
         if not informations and not characters:
             if not data["last_spoken_about_information"]:
@@ -58,9 +56,9 @@ class CharacterInvestigation(Action):
                             dispatcher.utter_message(text=("You already asked me about " + last_spoken + " but sure, her you go: " + story_characters[last_spoken][1]))
             else:
                 dispatcher.utter_message(text="Information about "+str(data["last_spoken_about_information"]))
-        
+
         #If information about something character-related is asked
-        if len(informations) > 0: 
+        if len(informations) > 0:
             for character_information in story_characters_information:
                if len(characters) < 1 and data["last_spoken_about_character"] == "":
                     dispatcher.utter_message(text="I don't know what you mean")
@@ -72,7 +70,7 @@ class CharacterInvestigation(Action):
             data["last_spoken_about_information"] = informations
             data["last_spoken_about_character"] = ""
 
-        
+
         #If basic information about character is asked
         if len(characters) > 0:
             for story_character in story_characters:
@@ -91,8 +89,8 @@ class CharacterInvestigation(Action):
                             dispatcher.utter_message(text=("You already asked me about " + story_character + " but sure, her you go: " + story_characters[story_character][1]))
             data["last_spoken_about_character"] = characters
             data["last_spoken_about_information"] = ""
-        
-                            
+
+
         dispatcher.utter_message(text=('TODO: Investigate characters: ' + ', '.join(characters) + ' / informations: ' + ', '.join(informations) + '...'.join(str(data["last_spoken_about_character"])).join(data["last_spoken_about_information"])))
 
         return [SlotSet("data", data)]
