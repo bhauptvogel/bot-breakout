@@ -338,6 +338,12 @@ nlu:
     - Who is allowed to access the [roller coaster]{"entity":"object"}?
     - Did [Kira]{"entity":"person"} have the possiblity to enter the [attraction]{"entity":"object"}?
     - Could [Anna]{"entity":"person"} have theoretically done it?
+    - Does he have the keys to the [rollercoaster]{"entity":"object"}?
+    - Does she have the keys to the [rollercoaster]{"entity":"object"}?
+    - It is possible for him to have access?
+    - Does she have the keys?
+    - Is is possible for her to get to this part of the park?
+    - Can he get into the [attraction]{"entity":"object"}?
 
 ## --------------------------------------------
 - synonym: body
