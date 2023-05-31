@@ -46,10 +46,10 @@ class CharacterInvestigation(Action):
                                         "secret": {1: ["Patrick"], 2: "Secret about Patrick"},
                                         }
         
-        story_character_last_name = {"Maria": {1 : "S."}, 
-                            "Kira" : {1 : "R."}, 
+        story_character_last_name = {"Maria": {1 : "Sterling"}, 
+                            "Kira" : {1 : "Russell"}, 
                             "Patrick": {1 : "Anyang"}, 
-                            "Victor": {1 : "L."}, 
+                            "Victor": {1 : "Lopez"}, 
                             "Anna": {1 : "Pollock"}}
         
     
