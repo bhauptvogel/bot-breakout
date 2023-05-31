@@ -8,7 +8,7 @@ import random
 
 from actions.actions import INITIAL_DATA_OBJECT
 
-PERCENTAGE_THRESHOLD = 0
+PERCENTAGE_THRESHOLD = 60
 
 
 class UserGuessesMurderer(Action):
