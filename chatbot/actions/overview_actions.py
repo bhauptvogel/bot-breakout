@@ -55,7 +55,7 @@ class SituationOverview(Action):
 
         revealed_information = data["revealed_information"]
 
-        dispatcher.utter_message(text="Here is everything we talked about so far: \n")
+        dispatcher.utter_message(text="Here is everything we talked about so far: \n\n")
 
         # Maria information
         if (revealed_information["Maria"]["personal_information"] == True):
