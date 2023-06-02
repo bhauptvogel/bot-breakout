@@ -1,59 +1,12 @@
 
 import yaml
-
-def get_specifications_of_all_subclasses(class_):
-    """
-    Looks into information.yml and returns all specifications of all subclasses of a specific class
-    :param class_: class (e.g. 'scene_investigation')
-    :return: list of specifications
-    """
-
-    with open('information.yml', encoding="utf8") as f:
-        info = yaml.load(f, Loader=yaml.FullLoader)
-
-    possible_specifications = []
-
-    for i in info[class_]:
-        possible_specifications.append(get_specifications_of_class(f"{class_}/{i}"))
-
-
-    possible_specifications = [item for sublist in possible_specifications for item in sublist]
-    possible_specifications = [x for x in possible_specifications if not x.startswith("base_")]
-    possible_specifications = list(set(possible_specifications))
-    return possible_specifications
-
-def get_specifications_of_class(class_):
-    """
-    Looks into information.yml and returns all specifications of a specific class
-    :param class_: class (e.g. 'scene_investigation')
-    :return: list of specifications
-    """
-
-    with open('information.yml', encoding="utf8") as f:
-        info = yaml.load(f, Loader=yaml.FullLoader)
-
-    # if class_ has '/' -> path to a class
-    # split and go through the path
-    if '/' in class_:
-        class_split = class_.split('/')
-        for i in range(len(class_split)):
-            if class_split[i] in info:
-                info = info[class_split[i]]
-            else:
-                return None
-    elif class_ in info:
-        info = info[class_]
-    else:
-        return None
-
-    # list of keys in class
-    keys = []
-    for dict in info:
-        keys.append(list(dict.keys())[0])
-
-    return keys
+import logging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def set_revealed_information(data_slot, revealed_information):
+    """
+    Sets the revealed_information in data_slot to True
+    """
     keys = revealed_information.split('/')
     d = data_slot["revealed_information"]
 
@@ -65,25 +18,15 @@ def set_revealed_information(data_slot, revealed_information):
 
     if keys[-1] in d:
         d[keys[-1]] = True
-    
-def get_story_information(class_, specification, data_slot=None, revealed_information=None):
-    """
-    :param class_: class to get information about (e.g. 'scene_investigation')
-    :param specification: specification of the class (e.g. 'base_1', none means base)
-    :param times_asked_about: how many times the user has asked about the class (without specification)
-    :return: utter message that the chatbot should say
-    """
-    
-    print("get_story_information: " + class_ + " " + specification)
 
-    with open('information.yml', encoding="utf8") as f:
-        info = yaml.load(f, Loader=yaml.FullLoader)
-
-    # if class_ has '/' -> path to a class
-    # split and go through the path
+def get_class_split(class_, info):
+    """
+    if class_ has '/' -> path to a class
+    else -> class_ is a class
+    split and go through the path
+    """
     if '/' in class_:
         class_split = class_.split('/')
-        print("class_split")
         for i in range(len(class_split)):
             if class_split[i] in info:
                 info = info[class_split[i]]
@@ -92,6 +35,46 @@ def get_story_information(class_, specification, data_slot=None, revealed_inform
     elif class_ in info:
         info = info[class_]
     else:
+        return None
+    
+    return info
+
+def get_base_specification(keys, times_asked_about):
+    """
+    base is the amount of times the user has asked about the class (+1)
+    or the highest base that exists (if the user has asked multiple times)
+    """
+
+    if 'base_1' not in keys:
+        return None
+    if 'base_' + str(times_asked_about+1) in keys:
+        specification = 'base_' + str(times_asked_about+1)
+    else:
+        highest_base = 0
+        for base in keys:
+            if base.startswith('base_'):
+                if int(base[5:]) > highest_base:
+                    highest_base = int(base[5:])
+        specification = 'base_' + str(highest_base)
+
+    return specification
+
+def get_story_information(class_, specification, data_slot=None, revealed_information=None):
+    """
+    :param class_: class to get information about (e.g. 'scene_investigation')
+    :param specification: specification of the class (e.g. 'base_1', none means base)
+    :param times_asked_about: how many times the user has asked about the class (without specification)
+    :return: utter message that the chatbot should say
+    """
+    
+    logging.info("get_story_information: " + class_ + " " + specification)
+
+    with open('information.yml', encoding="utf8") as f:
+        info = yaml.load(f, Loader=yaml.FullLoader)
+
+    info = get_class_split(class_, info)
+
+    if info is None:
         return None
     
     times_asked_about = 0
@@ -103,23 +86,8 @@ def get_story_information(class_, specification, data_slot=None, revealed_inform
     for dict in info:
         keys.append(list(dict.keys())[0])
     
-    # if specification is not given -> get the base
-    # base is the amount of times the user has asked about the class
-    # or the highest base that exists (if the user has asked multiple times)
     if specification == '' or specification is None:
-        if 'base_1' not in keys:
-            return None
-        if 'base_' + str(times_asked_about+1) in keys:
-            specification = 'base_' + str(times_asked_about+1)
-        else:
-            highest_base = 0
-            for base in keys:
-                if base.startswith('base_'):
-                    if int(base[5:]) > highest_base:
-                        highest_base = int(base[5:])
-            specification = 'base_' + str(highest_base)
-
-        print(specification)
+        specification = get_base_specification(keys, times_asked_about)
     
     if specification not in keys:
         print('specification not in keys...')
@@ -141,6 +109,5 @@ def get_story_information(class_, specification, data_slot=None, revealed_inform
 
 
 
-print(get_story_information('story_character_relation', 'Patrick_Anna'))
 
 
