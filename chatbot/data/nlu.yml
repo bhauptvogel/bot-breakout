@@ -184,13 +184,13 @@ nlu:
     - Please look at the [knife]{"entity":"object", "group":"search"}
     - Investigate the [knife]{"entity":"object", "group":"search"}
     - Let’s search for the [murder weapon]{"entity":"object", "group":"search", "value": "weapon"}
-    - Look at the [floor cabin]{"entity":"object", "group":"search"}
+    - Look at the [cabin]{"entity":"object", "group":"search"}
     - Look inside the [cabin]{"entity":"object", "group":"search"}
     - Search the [cabin]{"entity":"object", "group":"search"}
     - Go through the [cabin]{"entity":"object", "group":"search"}
     - Inspect the [cabin]{"entity":"object", "group":"search"}
     - Please look at the [train cabin]{"entity":"object", "group":"search", "value":"cabin"}
-    - Examine the [floor cabin]{"entity":"object", "group":"search"}
+    - Examine the [cabin]{"entity":"object", "group":"search"}
     - I want to see what's in the [cabin]{"entity":"object", "group":"search"}
     - Look at the [cabin]{"entity":"object", "group":"search", "value":"cabin"}
     - What's inside the [train]{"entity":"object", "group":"search", "value":"cabin"}
@@ -226,12 +226,12 @@ nlu:
     - Inspect the [knife]{"entity":"object", "group":"search"}
     - Investigate the characteristics of the [knife]{"entity":"object", "group":"search"}
     - Let's search for the [murder weapon]{"entity":"object", "group":"search", "value": "weapon"}
-    - Analyze the [floor cabin]{"entity":"object", "group":"search"}
+    - Analyze the [cabin]{"entity":"object", "group":"search"}
     - Explore the contents within the [cabin]{"entity":"object", "group":"search"}
     - Conduct a thorough search of the [cabin]{"entity":"object", "group":"search"}
     - Thoroughly examine the [cabin]{"entity":"object", "group":"search"}
     - Please look closely at the [train cabin]{"entity":"object", "group":"search", "value":"cabin"}
-    - Examine the details of the [floor cabin]{"entity":"object", "group":"search"}
+    - Examine the details of the [cabin]{"entity":"object", "group":"search"}
     - I would like to investigate the contents of the [cabin]{"entity":"object", "group":"search"}
     - Look at the [cabin]{"entity":"object", "group":"search", "value":"cabin"} and see what you find
     - What can you discover inside the [train]{"entity":"object", "group":"search", "value":"cabin"}?
