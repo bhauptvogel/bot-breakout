@@ -87,11 +87,16 @@ motive:
 access:
   Kira:
   - base_1: "Kira works at the rollercoaster and has backstage access so yes she had access"
+  - base_2: "Like I told you: Kira works at the rollercoaster and she has backstage access, so indeed she had the necessary access"
   Patrick:
   - base_1: "Since he is the owner of the rollercoaster he definetly had access to it, so he could have done something..."
+  - base_2: "Didn't you already ask me that? Well, since he's the owner of the rollercoaster, he definitely had access to it, which means he could have potentially done something..."
   Victor:
   - base_1: "Victor doesn't work at the rollercoaster, and since access to the backstage area requires specific keys, it's highly unlikely that he could have gotten back there."
+  - base_2: "I think I told you. Victor isn't employed at the amusement park, and considering that access to the backstage area requires specific keys, it's highly improbable that he could have managed to get back there."
   Anna:
   - base_1: "Anna doesn't work here so she doesn't have the keys she requires to access backstage. So it was not possible for her to get there"
+  - base_2: "I alread told you, didn't I? Well, Anna doesn't actually work here, which means she doesn't have the necessary keys to access the backstage area. So, it was simply not possible for her to make her way there."
   Maria:
   - base_1: "Maria is the victim. She lies dead in the cabin."
+  - base_2: "That is an odd question. Maria is the victim and lies dead in the cabin."
