@@ -38,6 +38,7 @@ INITIAL_DATA_OBJECT = {
             "personal_information": False,
             "motive": False,
             "access": False,
+            "secret": False,
             "full_name": False,
         },
         "Weapon_initials": False,

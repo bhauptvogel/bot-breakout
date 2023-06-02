@@ -1,0 +1,63 @@
+
+character_information:
+  Maria:
+  - base_1: "Maria is the Ex-girlfriend of my co-worker Kira. She is was journalist and was uncovering stuff that was going on in the amusement park to be better informed than her rival Anna"
+  - base_2: "I told Maria everything that I knew about Patrick and the stuff going on around here!"
+  - breakup: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her Colleague Anna. Thats why their relationship broke apart…"
+  - full_name: "Maria Sterling is her full name"
+  Kira:
+  - base_1: "Kira is my co-worker. We are pretty good... I helped her to get through the breakup with Maria. That really took her down she was super upset - specially because of Marias new boyfriend Victor."
+  - base_2: "I think Maria's new boyfriend really took her down. She was super upset. Other than that she is really nice. She doesn't know a lot about what is going on in the amusement park business."
+  - breakup: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her Colleague Anna. Thats why their relationship broke apart…"
+  - full_name: "Kira Russell is her full name"
+  Patrick:
+  - base_1: "Patrick is my boss. He in charge of the amusement park. Its actually a family business, he got it from his dad. Patrick is kind of a snob... he loves to drive around in big cars and all this wealthy stuff. He has his secrets that nobody knows about..."
+  - base_2: "Patrick is from China... he came here to take over the amusement park of his family."
+  - secret: "Soo… It's somewhat embarrassing, and I'm also very ashamed of it. Maybe I could have prevented this whole situation and even Maria's death… So let me tell you the story: Patrick is not really a kind person but at all he is a good boss. When we had a employee consultation I saw some letters from the tax office on his desk and when I asked him about it he tore me down. So I told it Maria. She was thinking about doing some investigations on her own. Because the possibility of corruption was high. With Patricks lifestyle, the big cars and everything… Maria and I didn’t have much contact ever since. She said the risk is to high that someone draws their own conclusions… But it seams like Patrick came to a conclusion. And he may even knows that it was me who informed Maria. That could be the reason for the note. He wants to get me. And now we are here… with a dead journalist and a dirty business secret"
+  - full_name: "Patrick Anyang is his full name"
+  Victor:
+  - base_1: "To be honest... I don’t know him. He is just Marias new boyfriend"
+  - base_2: "Victor is Maria's new boyfriend. I don’t know him. Only the things Kira told me about him. She was pretty jealous, that Maria has someone new"
+  - full_name: "Victor Lopez is his full name"
+  Anna:
+  - base_1: "Anna is Marias colleague at the Fictional Times Paper. I met her at some of Kira's Partys. She is nice but very focused on her job, just as Maria is … sorry, was"
+  - base_2: "Anna and Maria often worked together in the past. But it rivalry kinda developed... I think prestige is super important to Anna. She always wants to have the biggest stories."
+  - full_name: "Anna Pollock is her full name"
+  __General__:
+  - base_1: "My coworkers are Kira, who works as a cashier, and Patrick who is the director of the amusement park. Who do you want to know more about?"
+  - breakup: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her Colleague Anna. Thats why their relationship broke apart…"
+
+# all relations have to be duplicated, because the user can ask for the relation in both directions
+story_character_relation:
+  - Maria_Kira: "Oh, Maria and Kira? They were like, super close! They were actually dating and totally into each other. But you know how life goes, things changed, and now they're ex-friends."
+  - Kira_Maria: "Oh, Maria and Kira? They were like, super close! They were actually dating and totally into each other. But you know how life goes, things changed, and now they're ex-friends."
+  - Maria_Patrick: "Maria, being the journalist she is, got all intrigued about Patrick's \"business\" and how he makes his cash. She was planning to write an article exposing all the captivating details."
+  - Patrick_Maria: "Maria, being the journalist she is, got all intrigued about Patrick's \"business\" and how he makes his cash. She was planning to write an article exposing all the captivating details."
+  - Maria_Victor: "After Maria and Kira broke up, she found love with Victor, and they're dating. They're both incredibly happy together... sorry they WERE incredibly happy"
+  - Victor_Maria: "After Maria and Kira broke up, she found love with Victor, and they're dating. They're both incredibly happy together... sorry they WERE incredibly happy"
+  - Maria_Anna: "Their relationship is a little complicated. They're not just colleagues, but also rivals in a way. It's like they're constantly in a battle, pushing each other to be at the top of their game. Things can get pretty heated between them."
+  - Anna_Maria: "Their relationship is a little complicated. They're not just colleagues, but also rivals in a way. It's like they're constantly in a battle, pushing each other to be at the top of their game. Things can get pretty heated between them."
+  - Kira_Patrick: "Kira works at the cash-out in Patrick's amusement park, where Patrick is her boss."
+  - Patrick_Kira: "Kira works at the cash-out in Patrick's amusement park, where Patrick is her boss."
+  - Kira_Victor: "Kira is Maria's ex, and Victor is her new boyfriend. They barely know each other beyond their connection through Maria."
+  - Victor_Kira: "Kira is Maria's ex, and Victor is her new boyfriend. They barely know each other beyond their connection through Maria."
+  - Kira_Anna: "Kira and Anna barely know each other. They may have crossed paths briefly when Anna was snooping around the rollercoaster business, but that's about it."
+  - Anna_Kira: "Kira and Anna barely know each other. They may have crossed paths briefly when Anna was snooping around the rollercoaster business, but that's about it."
+  - Patrick_Victor: "Patrick and Victor don't know each other."
+  - Victor_Patrick: "Patrick and Victor don't know each other."
+  - Patrick_Anna: "So, here's the deal: they ended up knowing each other because of this report that Anna and Maria wanted to publish. They both got involved in the investigation, but let me tell you, Patrick wasn't exactly thrilled about it. Things got a bit tense there, my friend!"
+  - Anna_Patrick: "So, here's the deal: they ended up knowing each other because of this report that Anna and Maria wanted to publish. They both got involved in the investigation, but let me tell you, Patrick wasn't exactly thrilled about it. Things got a bit tense there, my friend!"
+  - Victor_Anna: "Anna and Victor actually know each other through their connection with Maria. Anna happens to be Maria's colleague, while Victor is Maria's new boyfriend."
+  - Anna_Victor: "Anna and Victor actually know each other through their connection with Maria. Anna happens to be Maria's colleague, while Victor is Maria's new boyfriend."
+
+scene_investigation:
+  - base_1: "Ok, so we are standing in the zombie themed area of the ghost ride. In some way it’s a quite romantic area... we earlier shared a seat at the bench with two zombies holding hand. In the background there is a scary tree, with no leaf. We can look at the train cabin, under the bench and behind the tree. I think we should search in order to find some hints about the murderer. Where should we start?"
+  - base_2: "Let´s have another close look at everything..."
+  - base_3: "This is all we can find here. We can now talk about my co-workers. I get the feeling that they have something to do with it..."
+  - weapon: "Let me see... the weapon is a knife. It’s a bit bloody and it’s a bit scary to hold it. Should I take a closer look or should we put it back where we found it?"
+  - knife: "The Knife... Oh there are initials in it. It says “A.P”  in the knife. Hm, who might it be?"
+  - body: "Ok, this feels a bit scary to look at a dead body, but it’s the best thing we can do. Let’s move a few steps closer... Hmm, I think I know the dead woman in the cabin."
+  - cabin: "It has two seats, as ours did. On the seat closer to us and closer to the themed area is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... Should I investigate it more or should I tell you about the note..."
+  - bench: "Just some zombie love dripping through the wooden slats of the bench. Or is this something else... Lets stand up but be careful to not get tangled in the zombies limbs."
+  - tree: "The tree is a bit scary. It’s a dead tree with no leafs. Behind the tree there is just some light equipment to give the scene a spoky feeling."
+  - note: "There is a Note on the body. It says “Your are next”. I believe it means that I am the target the murderer intends to go after next."
