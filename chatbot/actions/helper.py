@@ -3,6 +3,42 @@ import yaml
 import logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
+# the object that is used to store the data (inital content)
+INITIAL_DATA_OBJECT = {
+    "revealed_information": {
+        "Kira": {
+            "personal_information": False,
+            "motive": False,
+            "access": False,
+            "full_name": False,
+        },
+        "Maria": {
+            "personal_information": False,
+            "full_name": False,
+        },
+        "Victor": {
+            "personal_information": False,
+            "motive": False,
+            "access": False,
+            "full_name": False,
+        },
+        "Anna": {
+            "personal_information": False,
+            "motive": False,
+            "access": False,
+            "full_name": False,
+        },
+        "Patrick": {
+            "personal_information": False,
+            "motive": False,
+            "access": False,
+            "secret": False,
+            "full_name": False,
+        },
+        "Weapon_initials": False,
+    },
+}
+
 def load_information():
     """
     Loads the information from the information.yml file
@@ -75,7 +111,7 @@ def get_story_information(class_, item, data_slot=None, revealed_information=Non
     :return: utter message that the chatbot should say
     """
     
-    logging.info("get_story_information: " + class_ + " " + item)
+    logging.info("get_story_information: " + class_ + ", item: " + item)
 
     information_yml = load_information()
     class_data = get_class_split(class_, information_yml)

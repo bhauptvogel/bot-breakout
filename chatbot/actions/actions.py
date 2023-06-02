@@ -9,41 +9,7 @@ from rasa_sdk.events import SlotSet, ReminderScheduled
 import random
 
 
-# the object that is used to store the data (inital content)
-INITIAL_DATA_OBJECT = {
-    "revealed_information": {
-        "Kira": {
-            "personal_information": False,
-            "motive": False,
-            "access": False,
-            "full_name": False,
-        },
-        "Maria": {
-            "personal_information": False,
-            "full_name": False,
-        },
-        "Victor": {
-            "personal_information": False,
-            "motive": False,
-            "access": False,
-            "full_name": False,
-        },
-        "Anna": {
-            "personal_information": False,
-            "motive": False,
-            "access": False,
-            "full_name": False,
-        },
-        "Patrick": {
-            "personal_information": False,
-            "motive": False,
-            "access": False,
-            "secret": False,
-            "full_name": False,
-        },
-        "Weapon_initials": False,
-    },
-}
+
 
 
 class StartGame(Action):

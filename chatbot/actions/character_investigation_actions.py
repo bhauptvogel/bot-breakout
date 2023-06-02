@@ -9,9 +9,6 @@ from datetime import datetime, timedelta
 import random
 from . import helper
 
-from actions.actions import INITIAL_DATA_OBJECT
-
-
 class CharacterInvestigation(Action):
     def name(self) -> Text:
         return "action_character_investigation"
@@ -21,7 +18,8 @@ class CharacterInvestigation(Action):
             dispatcher.utter_message(text="I don't know what you mean")
         else:
             dispatcher.utter_message(text=helper.get_story_information("story_character_relation", f"{characters[0]}_{characters[1]}", data))
-            
+            data["last_spoken_about_information"] = []
+            data["last_spoken_about_character"] = []
     
     def utter_specific_information(self, dispatcher, characters, informations, data):
         characters = characters if "last_spoken_about_character" not in data.keys() or len(characters) > 0 else data["last_spoken_about_character"]
@@ -58,9 +56,8 @@ class CharacterInvestigation(Action):
         characters = [e['value'] for e in entities if e['entity'] == 'person']
         informations = [e['value'] for e in entities if e['entity'] == 'information']
 
-     
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
-            data = INITIAL_DATA_OBJECT
+            data = helper.INITIAL_DATA_OBJECT
         else:
             data = tracker.get_slot('data')
 
@@ -78,6 +75,7 @@ class CharacterInvestigation(Action):
             self.utter_specific_information(dispatcher, characters, informations, data)   
         # If all coworkers are asked     
         elif len(entities) > 0 and "group" in entities[0].keys():
+            characters = ["__General__"]
             self.utter_base_information(dispatcher, characters, data)
         # If basic information about character is asked
         elif len(characters) > 0 and len(informations) == 0:

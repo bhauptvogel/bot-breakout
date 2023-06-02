@@ -7,8 +7,7 @@ from rasa_sdk.events import SlotSet, ReminderScheduled
 
 from datetime import datetime, timedelta
 import random
-
-from actions.actions import INITIAL_DATA_OBJECT
+from . import helper
 
 class AccessToRollerCoaster(Action):
     def name(self) -> Text:
@@ -22,7 +21,7 @@ class AccessToRollerCoaster(Action):
         characters = [e['value'] for e in entities if e['entity'] == 'person']
 
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
-            data = INITIAL_DATA_OBJECT
+            data = helper.INITIAL_DATA_OBJECT
         else:
             data = tracker.get_slot('data')
 
