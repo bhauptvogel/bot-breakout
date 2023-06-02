@@ -108,6 +108,8 @@ def get_story_information(class_, item, data_slot=None, revealed_information=Non
     :param class_: class to get information about (e.g. 'scene_investigation')
     :param item: item of the class (e.g. 'base_1', none means base)
     :param times_asked_about: how many times the user has asked about the class (without item)
+    :param data_slot: data_slot of the each user
+    :param revealed_information: information that the user has revealed and will be set to True in data_slot
     :return: utter message that the chatbot should say
     """
     
