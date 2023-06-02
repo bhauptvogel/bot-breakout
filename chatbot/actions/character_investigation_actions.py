@@ -68,7 +68,6 @@ class CharacterInvestigation(Action):
                 informations = data["last_spoken_about_information"]
             if "last_spoken_about_character" in data.keys() and len(data["last_spoken_about_character"]) > 0:
                 characters = data["last_spoken_about_character"]
-            # TODO: Sorry I already told you everything about X...
         
         # If information about something character-related is asked
         if len(informations) > 0: 

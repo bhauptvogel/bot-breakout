@@ -147,7 +147,6 @@ def get_story_information(class_, item, data_slot=None, revealed_information=Non
         if revealed_information:
             set_revealed_information(data_slot, revealed_information)
     
-
     return class_data[class_keys.index(item)][item]
 
 
