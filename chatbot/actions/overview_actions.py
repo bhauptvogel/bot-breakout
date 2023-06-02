@@ -5,8 +5,8 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
+from . import helper
 
-from actions.actions import INITIAL_DATA_OBJECT
 
 
 INFORMATION = {
@@ -49,7 +49,7 @@ class SituationOverview(Action):
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
         if tracker.get_slot("data") is None or tracker.get_slot("data") == "Null":
-            data = INITIAL_DATA_OBJECT
+            data = helper.INITIAL_DATA_OBJECT
         else:
             data = tracker.get_slot("data")
 
