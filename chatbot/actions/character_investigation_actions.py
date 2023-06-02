@@ -22,6 +22,7 @@ class CharacterInvestigation(Action):
             data["last_spoken_about_character"] = []
     
     def utter_specific_information(self, dispatcher, characters, informations, data):
+        # set character to last_spoken_about if empty (if user asks about "her", "him", "it")
         characters = characters if "last_spoken_about_character" not in data.keys() or len(characters) > 0 else data["last_spoken_about_character"]
         for info in informations:
             if info == "relation" or info =="connection":  
@@ -62,21 +63,19 @@ class CharacterInvestigation(Action):
             data = tracker.get_slot('data')
 
 
-        # If they ask about "her", "him", "it" -> information and character is last spoken about
+        # set character and information to last_spoken_about if empty (if user asks about "her", "him", "it")
         if len(informations) == 0 and len(characters) == 0:
             if "last_spoken_about_information" in data.keys() and len(data["last_spoken_about_information"]) > 0:
                 informations = data["last_spoken_about_information"]
             if "last_spoken_about_character" in data.keys() and len(data["last_spoken_about_character"]) > 0:
                 characters = data["last_spoken_about_character"]
         
-        # If information about something character-related is asked
         if len(informations) > 0: 
             self.utter_specific_information(dispatcher, characters, informations, data)   
-        # If all coworkers are asked     
         elif len(entities) > 0 and "group" in entities[0].keys():
+            # If all coworkers are asked 
             characters = ["__General__"]
             self.utter_base_information(dispatcher, characters, data)
-        # If basic information about character is asked
         elif len(characters) > 0 and len(informations) == 0:
             self.utter_base_information(dispatcher, characters, data)
 

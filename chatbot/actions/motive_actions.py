@@ -24,14 +24,14 @@ class CharacterMotive(Action):
         entities = tracker.latest_message['entities']
         characters = [e['value'] for e in entities if e['entity'] == 'person']
 
-        # set character to last_spoken_about if empty
-        # If they ask about "her", "him", "it" it uses the "last_spoken"
-        if len(characters) == 0 and "last_spoken_about_character" in data:
-            characters = data["last_spoken_about_character"]
-        elif len(characters) == 0 and "last_spoken_about_character" not in data:
-            dispatcher.utter_message(text=("Who do you mean?"))
-            return [SlotSet("data", data)]
-
+        # set character to last_spoken_about if empty (if user asks about "her", "him", "it")
+        if len(characters) == 0:
+            if "last_spoken_about_character" in data:
+                characters = data["last_spoken_about_character"]
+            else:
+                dispatcher.utter_message(text=("Who do you mean?"))
+                return [SlotSet("data", data)]
+            
         # Todo: If user enters an name that is not in our story
         
         for character in characters:
