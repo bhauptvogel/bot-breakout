@@ -29,13 +29,19 @@ class CharacterInvestigation(Action):
             if info == "relation" or info =="connection":  
                 self.utter_relation(dispatcher, characters, data)                 
             else: 
-                info = "full_name" if info == "last name" or info == "full name" else info
+                if info == "last name" or info == "full name":
+                    info = "full_name"
+
+                if len(characters) == 0:
+                    dispatcher.utter_message(text=helper.get_story_information(f"character_information/__General__", info, data))
+                    data["last_spoken_about_information"] = informations
+                    return
              
                 for character in characters:
                     dispatcher.utter_message(text=helper.get_story_information(f"character_information/{character}", info, data, f"{character}/{info}"))
                     data["last_spoken_about_information"] = informations
                     
-                data["last_spoken_about_character"] = [] if len(characters) == 0 else characters
+                data["last_spoken_about_character"] = characters
 
     def utter_base_information(self, dispatcher, characters, data):
         for character in characters:

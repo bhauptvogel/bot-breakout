@@ -3,6 +3,14 @@ import yaml
 import logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
+def load_information():
+    """
+    Loads the information from the information.yml file
+    """
+    with open('information.yml', encoding="utf8") as f:
+        info = yaml.load(f, Loader=yaml.FullLoader)
+    return info
+
 def set_revealed_information(data_slot, revealed_information):
     """
     Sets the revealed_information in data_slot to True
@@ -39,7 +47,7 @@ def get_class_split(class_, info):
     
     return info
 
-def get_base_specification(keys, times_asked_about):
+def get_base_item(keys, times_asked_about):
     """
     base is the amount of times the user has asked about the class (+1)
     or the highest base that exists (if the user has asked multiple times)
@@ -48,49 +56,47 @@ def get_base_specification(keys, times_asked_about):
     if 'base_1' not in keys:
         return None
     if 'base_' + str(times_asked_about+1) in keys:
-        specification = 'base_' + str(times_asked_about+1)
+        item = 'base_' + str(times_asked_about+1)
     else:
         highest_base = 0
         for base in keys:
             if base.startswith('base_'):
                 if int(base[5:]) > highest_base:
                     highest_base = int(base[5:])
-        specification = 'base_' + str(highest_base)
+        item = 'base_' + str(highest_base)
 
-    return specification
+    return item
 
-def get_story_information(class_, specification, data_slot=None, revealed_information=None):
+def get_story_information(class_, item, data_slot=None, revealed_information=None):
     """
     :param class_: class to get information about (e.g. 'scene_investigation')
-    :param specification: specification of the class (e.g. 'base_1', none means base)
-    :param times_asked_about: how many times the user has asked about the class (without specification)
+    :param item: item of the class (e.g. 'base_1', none means base)
+    :param times_asked_about: how many times the user has asked about the class (without item)
     :return: utter message that the chatbot should say
     """
     
-    logging.info("get_story_information: " + class_ + " " + specification)
+    logging.info("get_story_information: " + class_ + " " + item)
 
-    with open('information.yml', encoding="utf8") as f:
-        info = yaml.load(f, Loader=yaml.FullLoader)
+    information_yml = load_information()
+    class_data = get_class_split(class_, information_yml)
 
-    info = get_class_split(class_, info)
-
-    if info is None:
+    if class_data is None:
         return None
     
     times_asked_about = 0
     if data_slot is not None and "times_asked_about_" + class_ in data_slot:
         times_asked_about = data_slot["times_asked_about_" + class_]
 
-    # list of keys in class
-    keys = []
-    for dict in info:
-        keys.append(list(dict.keys())[0])
+    # keys in class
+    class_keys = []
+    for dict in class_data:
+        class_keys.append(list(dict.keys())[0])
     
-    if specification == '' or specification is None:
-        specification = get_base_specification(keys, times_asked_about)
+    if item == '' or item is None:
+        item = get_base_item(class_keys, times_asked_about)
     
-    if specification not in keys:
-        print('specification not in keys...')
+    if item not in class_keys:
+        print(f'item {item} not in keys... ' + ' '.join(class_keys))
         return None
     
     # add 1 to times_asked_about_class_ in data_slot
@@ -104,7 +110,7 @@ def get_story_information(class_, specification, data_slot=None, revealed_inform
             set_revealed_information(data_slot, revealed_information)
     
 
-    return info[keys.index(specification)][specification]
+    return class_data[class_keys.index(item)][item]
 
 
 
