@@ -1,9 +1,12 @@
 
 import yaml
 
-
-
 def get_specifications_of_all_subclasses(class_):
+    """
+    Looks into information.yml and returns all specifications of all subclasses of a specific class
+    :param class_: class (e.g. 'scene_investigation')
+    :return: list of specifications
+    """
 
     with open('information.yml', encoding="utf8") as f:
         info = yaml.load(f, Loader=yaml.FullLoader)
@@ -19,9 +22,12 @@ def get_specifications_of_all_subclasses(class_):
     possible_specifications = list(set(possible_specifications))
     return possible_specifications
 
-
 def get_specifications_of_class(class_):
-
+    """
+    Looks into information.yml and returns all specifications of a specific class
+    :param class_: class (e.g. 'scene_investigation')
+    :return: list of specifications
+    """
 
     with open('information.yml', encoding="utf8") as f:
         info = yaml.load(f, Loader=yaml.FullLoader)
@@ -47,14 +53,28 @@ def get_specifications_of_class(class_):
 
     return keys
 
-def get_story_information(class_, specification, data_slot=None):
+def set_revealed_information(data_slot, revealed_information):
+    keys = revealed_information.split('/')
+    d = data_slot["revealed_information"]
+
+    for key in keys[:-1]:
+        if key in d:
+            d = d[key]
+        else:
+            return
+
+    if keys[-1] in d:
+        d[keys[-1]] = True
+    
+def get_story_information(class_, specification, data_slot=None, revealed_information=None):
     """
     :param class_: class to get information about (e.g. 'scene_investigation')
     :param specification: specification of the class (e.g. 'base_1', none means base)
     :param times_asked_about: how many times the user has asked about the class (without specification)
     :return: utter message that the chatbot should say
     """
-            
+    
+    print("get_story_information: " + class_ + " " + specification)
 
     with open('information.yml', encoding="utf8") as f:
         info = yaml.load(f, Loader=yaml.FullLoader)
@@ -111,9 +131,14 @@ def get_story_information(class_, specification, data_slot=None):
             data_slot["times_asked_about_" + class_] += 1
         else:
             data_slot["times_asked_about_" + class_] = 1
+
+        if revealed_information:
+            set_revealed_information(data_slot, revealed_information)
     
 
     return info[keys.index(specification)][specification]
+
+
 
 
 print(get_story_information('story_character_relation', 'Patrick_Anna'))

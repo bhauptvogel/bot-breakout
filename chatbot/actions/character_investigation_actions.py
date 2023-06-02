@@ -44,7 +44,7 @@ class CharacterInvestigation(Action):
 
             if "last_spoken_about_character" in data.keys() and len(data["last_spoken_about_character"]) > 0:
                 for last_spoken in data["last_spoken_about_character"]:
-                    dispatcher.utter_message(text=helper.get_story_information(f"character_information/{last_spoken}", last_spoken_information, data))
+                    dispatcher.utter_message(text=helper.get_story_information(f"character_information/{last_spoken}", last_spoken_information, data, f"{last_spoken}/{last_spoken_information}"))
             else:
                 dispatcher.utter_message(text=helper.get_story_information(f"character_information/__General__", last_spoken_information, data))
 
@@ -64,17 +64,15 @@ class CharacterInvestigation(Action):
                         dispatcher.utter_message(text="I don't know what you mean")
                         return [SlotSet("data", data)]
                     
-                    dispatcher.utter_message(text=helper.get_story_information("character_information/story_character_relation", f"{characters[0]}_{characters[1]}", data))
+                    dispatcher.utter_message(text=helper.get_story_information("story_character_relation", f"{characters[0]}_{characters[1]}", data))
 
                 elif info in possible_specifications:
                         
                     if len(characters) > 0:
                         for character in characters:
-                            dispatcher.utter_message(text=helper.get_story_information(f"character_information/{character}", info, data))
+                            dispatcher.utter_message(text=helper.get_story_information(f"character_information/{character}", info, data, f"{character}/{info}"))
                             data["last_spoken_about_information"] = informations
-                            print(character, info)
-                            if info in data["revealed_information"][character].keys():
-                                data["revealed_information"][character][info] = True
+                            
                         data["last_spoken_about_character"] = characters
                     else:
                         dispatcher.utter_message(text=helper.get_story_information(f"character_information/__General__", info, data))
@@ -87,7 +85,7 @@ class CharacterInvestigation(Action):
         if len(characters) > 0 and len(informations) == 0 and not cowoker_set:
             print("In characters > 0 informations < 0 coworker == 0")
             for character in characters:
-                dispatcher.utter_message(text=helper.get_story_information(f"character_information/{character}", "", data))
+                dispatcher.utter_message(text=helper.get_story_information(f"character_information/{character}", "", data, f"{character}/personal_information"))
             data["last_spoken_about_character"] = characters
             data["last_spoken_about_information"] = []
         

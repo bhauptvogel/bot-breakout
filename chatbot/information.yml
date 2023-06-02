@@ -64,15 +64,15 @@ scene_investigation:
 
 motive:
   Maria:
-    - base_1: "Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very good."
+  - base_1: "Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very good."
   Patrick:
-    - base_1: "I'm not sure if I should tell you about this, but whatever... the situation can't really get any worse. Maria had recently discovered that Patrick was involved in some illegal activities reagrding corruption. I don't know the details but it would have been the end of Patricks career if this story got published."
+  - base_1: "I'm not sure if I should tell you about this, but whatever... the situation can't really get any worse. Maria had recently discovered that Patrick was involved in some illegal activities reagrding corruption. I don't know the details but it would have been the end of Patricks career if this story got published."
   Victor:
-   - base_1: "As far as I know, he wouldn't have a reason to kill Maria. They just started dating and it was going really well."
-   Anna:
-   - base_1: "Anna and Maria were rivals. If it's about a good story Anna would have done anything."
-   Maria:
-   - base_1: "Maria is the victim."
+  - base_1: "As far as I know, he wouldn't have a reason to kill Maria. They just started dating and it was going really well."
+  Anna:
+  - base_1: "Anna and Maria were rivals. If it's about a good story Anna would have done anything."
+  Maria:
+  - base_1: "Maria is the victim."
 
 access:
   Kira:
