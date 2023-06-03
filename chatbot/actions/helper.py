@@ -35,7 +35,10 @@ INITIAL_DATA_OBJECT = {
             "secret": False,
             "full_name": False,
         },
-        "Weapon_initials": False,
+        "Objects": {
+            "knife": False, # initials
+            "note": False, # you are next
+        }
     },
 }
 

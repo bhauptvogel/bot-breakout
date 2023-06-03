@@ -32,7 +32,7 @@ class CharacterMotive(Action):
                 dispatcher.utter_message(text=("Who do you mean?"))
                 return [SlotSet("data", data)]
             
-        # Todo: If user enters an name that is not in our story
+        # Todo: If user enters a name that is not in our story
         
         for character in characters:
             dispatcher.utter_message(text=helper.get_story_information(f"motive/{character}", "", data, f"{character}/motive"))
