@@ -156,6 +156,8 @@ nlu:
 ## ------ scene investigation ------
 - intent: scene_investigation
   examples: |
+    - Investigate the surroundings
+    - investigate scene
     - Investigate the scene
     - Tell me about the environment
     - What do you see?

@@ -65,7 +65,7 @@ scene_investigation:
   - cabin: "It has two seats, as ours did. On the seat closer to us and closer to the themed area is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... Should I investigate it more or should I tell you about the note..."
   - bench: "Just some zombie love dripping through the wooden slats of the bench. Or is this something else... Lets stand up but be careful to not get tangled in the zombies limbs."
   - tree: "The tree is a bit scary. It’s a dead tree with no leafs. Behind the tree there is just some light equipment to give the scene a spoky feeling."
-  - note: "There is a Note on the body. It says “Your are next”. I believe it means that I am the target the murderer intends to go after next."
+  - note: "There is a Note on the body. It says “You are next”. I believe it means that I am the target the murderer intends to go after next."
 
 motive:
   Maria:

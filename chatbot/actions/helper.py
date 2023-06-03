@@ -35,7 +35,10 @@ INITIAL_DATA_OBJECT = {
             "secret": False,
             "full_name": False,
         },
-        "Weapon_initials": False,
+        "Objects": {
+            "knife": False, # initials
+            "note": False, # you are next
+        }
     },
 }
 
@@ -103,7 +106,7 @@ def get_base_item(keys, times_asked_about):
 
     return item
 
-def get_story_information(class_, item, data_slot=None, revealed_information=None):
+def get_story_information(class_, item, data_slot, revealed_information=None):
     """
     :param class_: class to get information about (e.g. 'scene_investigation')
     :param item: item of the class (e.g. 'base_1', none means base)
@@ -118,11 +121,12 @@ def get_story_information(class_, item, data_slot=None, revealed_information=Non
     information_yml = load_information()
     class_data = get_class_split(class_, information_yml)
 
-    if class_data is None:
+    if class_data is None or data_slot is None:
+        logging.error("get_story_information: class_data or data_slot is None")
         return None
     
     times_asked_about = 0
-    if data_slot is not None and "times_asked_about_" + class_ in data_slot:
+    if "times_asked_about_" + class_ in data_slot:
         times_asked_about = data_slot["times_asked_about_" + class_]
 
     # keys in class
@@ -138,14 +142,14 @@ def get_story_information(class_, item, data_slot=None, revealed_information=Non
         return None
     
     # add 1 to times_asked_about_class_ in data_slot
-    if data_slot is not None:
+    if item.startswith('base_'):
         if "times_asked_about_" + class_ in data_slot:
             data_slot["times_asked_about_" + class_] += 1
         else:
             data_slot["times_asked_about_" + class_] = 1
 
-        if revealed_information:
-            set_revealed_information(data_slot, revealed_information)
+    if revealed_information:
+        set_revealed_information(data_slot, revealed_information)
     
     return class_data[class_keys.index(item)][item]
 
