@@ -32,7 +32,5 @@ class SceneInvestigation(Action):
             dispatcher.utter_message(text=helper.get_story_information("scene_investigation", obj, data, f"Objects/{obj}"))
 
         # Todo: If user enters an object that is not in our story
-
-        print(data["revealed_information"])
-
+        
         return [SlotSet("data", data)]

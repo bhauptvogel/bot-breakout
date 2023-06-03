@@ -54,6 +54,8 @@ class UserGuessesMurderer(Action):
 
         print(true_percentage)
 
+
+        # TODO: Rewrite end
         if true_percentage > PERCENTAGE_THRESHOLD:
             if data["times_wanted_to_guess_murderer"] == 0:
                 dispatcher.utter_message(
