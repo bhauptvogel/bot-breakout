@@ -3,45 +3,6 @@ import yaml
 import logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# the object that is used to store the data (inital content)
-INITIAL_DATA_OBJECT = {
-    "revealed_information": {
-        "Kira": {
-            "personal_information": False,
-            "motive": False,
-            "access": False,
-            "full_name": False,
-        },
-        "Maria": {
-            "personal_information": False,
-            "full_name": False,
-        },
-        "Victor": {
-            "personal_information": False,
-            "motive": False,
-            "access": False,
-            "full_name": False,
-        },
-        "Anna": {
-            "personal_information": False,
-            "motive": False,
-            "access": False,
-            "full_name": False,
-        },
-        "Patrick": {
-            "personal_information": False,
-            "motive": False,
-            "access": False,
-            "secret": False,
-            "full_name": False,
-        },
-        "Objects": {
-            "knife": False, # initials
-            "note": False, # you are next
-        }
-    },
-}
-
 def load_information():
     """
     Loads the information from the information.yml file
@@ -50,21 +11,25 @@ def load_information():
         info = yaml.load(f, Loader=yaml.FullLoader)
     return info
 
-def set_revealed_information(data_slot, revealed_information):
-    """
-    Sets the revealed_information in data_slot to True
-    """
-    keys = revealed_information.split('/')
-    d = data_slot["revealed_information"]
+def set_game_state(class_, item, data_slot):
 
-    for key in keys[:-1]:
+    st = f"{class_}/{item}"
+    keys = st.split('/')
+    if "story_state" not in data_slot:
+        data_slot["story_state"] = {}
+    d = data_slot["story_state"]
+
+
+    for index, key in enumerate(keys):
         if key in d:
             d = d[key]
+        elif index == len(keys)-1:
+            d[key] = True
         else:
-            return
+            d[key] = {}
+            d = d[key]
 
-    if keys[-1] in d:
-        d[keys[-1]] = True
+    print(data_slot["story_state"])
 
 def get_class_split(class_, info):
     """
@@ -106,13 +71,12 @@ def get_base_item(keys, times_asked_about):
 
     return item
 
-def get_story_information(class_, item, data_slot, revealed_information=None):
+def get_story_information(class_, item, data_slot):
     """
     :param class_: class to get information about (e.g. 'scene_investigation')
     :param item: item of the class (e.g. 'base_1', none means base)
     :param times_asked_about: how many times the user has asked about the class (without item)
     :param data_slot: data_slot of the each user
-    :param revealed_information: information that the user has revealed and will be set to True in data_slot
     :return: utter message that the chatbot should say
     """
     
@@ -148,8 +112,7 @@ def get_story_information(class_, item, data_slot, revealed_information=None):
         else:
             data_slot["times_asked_about_" + class_] = 1
 
-    if revealed_information:
-        set_revealed_information(data_slot, revealed_information)
+    set_game_state(class_, item, data_slot)
     
     return class_data[class_keys.index(item)][item]
 

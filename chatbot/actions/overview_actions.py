@@ -49,7 +49,7 @@ class SituationOverview(Action):
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
         if tracker.get_slot("data") is None or tracker.get_slot("data") == "Null":
-            data = helper.INITIAL_DATA_OBJECT
+            data = {}
         else:
             data = tracker.get_slot("data")
 

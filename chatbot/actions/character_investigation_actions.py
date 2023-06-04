@@ -37,14 +37,14 @@ class CharacterInvestigation(Action):
                     return
              
                 for character in characters:
-                    dispatcher.utter_message(text=helper.get_story_information(f"character_information/{character}", info, data, f"{character}/{info}"))
+                    dispatcher.utter_message(text=helper.get_story_information(f"character_information/{character}", info, data))
                     data["last_spoken_about_information"] = informations
                     
                 data["last_spoken_about_character"] = characters
 
     def utter_base_information(self, dispatcher, characters, data):
         for character in characters:
-            dispatcher.utter_message(text=helper.get_story_information(f"character_information/{character}", "", data, f"{character}/personal_information"))
+            dispatcher.utter_message(text=helper.get_story_information(f"character_information/{character}", "", data))
         data["last_spoken_about_character"] = characters
         data["last_spoken_about_information"] = []
 
@@ -58,7 +58,7 @@ class CharacterInvestigation(Action):
         informations = [e['value'] for e in entities if e['entity'] == 'information']
 
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
-            data = helper.INITIAL_DATA_OBJECT
+            data = {}
         else:
             data = tracker.get_slot('data')
 
