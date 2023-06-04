@@ -85,9 +85,14 @@ def get_story_information(class_, item, data_slot):
     information_yml = load_information()
     class_data = get_class_split(class_, information_yml)
 
-    if class_data is None or data_slot is None:
-        logging.error("get_story_information: class_data or data_slot is None")
+
+    if class_data is None:
+        logging.error(f"get_story_information: class_data is None! class:{class_}, item:{item}")
         return None
+    if data_slot is None:
+        logging.error("get_story_information: data_slot is None")
+        return None
+            
     
     times_asked_about = 0
     if "times_asked_about_" + class_ in data_slot:
