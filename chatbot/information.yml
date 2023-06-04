@@ -61,7 +61,7 @@ scene_investigation:
   - base_3: "This is all we can find here. We can now talk about my co-workers. I get the feeling that they have something to do with it..."
   - weapon: "Let me see... the weapon is a knife. It’s a bit bloody and it’s a bit scary to hold it. Should I take a closer look or should we put it back where we found it?"
   - knife: "The Knife... Oh there are initials in it. It says “A.P”  in the knife. Hm, who might it be?"
-  - body: "Ok, this feels a bit scary to look at a dead body, but it’s the best thing we can do. Let’s move a few steps closer... Hmm, I think I know the dead woman in the cabin."
+  - body: "Ok, this feels a bit scary to look at Maria's dead body, but it’s the best thing we can do. Let’s move a few steps closer... She is covered in blood... sorry i'm feeling sick I can't look at it anymore. Please say that we can investigate the scene now..."
   - cabin: "It has two seats, as ours did. On the seat closer to us and closer to the themed area is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... Should I investigate it more or should I tell you about the note..."
   - bench: "Just some zombie love dripping through the wooden slats of the bench. Or is this something else... Lets stand up but be careful to not get tangled in the zombies limbs."
   - tree: "The tree is a bit scary. It’s a dead tree with no leafs. Behind the tree there is just some light equipment to give the scene a spoky feeling."
