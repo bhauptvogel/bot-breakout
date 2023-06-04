@@ -95,7 +95,7 @@ class UserGuessesMurderer(Action):
                 )
         else:
             dispatcher.utter_message(
-                text="We can’t leave before the police arrives in a few minutes! We need to find hints together, so they don’t think we two did it. Let's investigate..."
+                text="We can’t leave before the police arrives in a few minutes! We need to find hints together, so they don’t think we two did it. We need to check for a motive, if the suspect had access and the murder weapon!"
             )
 
         return [SlotSet("data", data)]
