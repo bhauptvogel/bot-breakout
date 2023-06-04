@@ -84,6 +84,7 @@ actions:
 - validate_simple_cabin_form
 - action_cabin_end
 - utter_ask_cabin_password
+- action_give_hint
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
