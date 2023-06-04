@@ -62,33 +62,6 @@ HINTS = [
         "text": "Let's look at the knife, should we?",
         "not_in_game_state": ["scene_investigation/knife"],
     },
-    # not asked about possible motives of characters
-    {
-        "text": "Maybe we can think about possible motives of the characters.",
-        "not_in_game_state": [
-            "character_information/Maria/motive",
-            "character_information/Anna/motive",
-            "character_information/Patrick/motive",
-            "character_information/Kira/motive",
-            "character_information/Victor/motive",
-        ],
-    },
-    # not asked about possible access to rollercoaster
-    {
-        "text": "I think it might help us to clear our minds about who even had access to this rollercoaster and part of the amusement park.",
-        "not_in_game_state": [
-            "character_information/Maria/access",
-            "character_information/Anna/access",
-            "character_information/Patrick/access",
-            "character_information/Kira/access",
-            "character_information/Victor/access",
-        ],
-    },
-    # not asked about patricks secret
-    {
-        "text": "I'm not sure I told you everything about Patrick. There is more. He has a secret...",
-        "not_in_game_state": ["character_information/Patrick/secret"],
-    },
     # not asked about full names of characters (because of intitials)
     {
         "text": "I'm not sure you have the full names of the characters. I think you need them if you want to know who could be 'A.P.'",
@@ -100,6 +73,33 @@ HINTS = [
             "character_information/Victor/full_name",
         ],
     },
+    # not asked about possible motives of characters
+    {
+        "text": "Maybe we can think about possible motives of the characters.",
+        "not_in_game_state": [
+            "motive/Maria",
+            "motive/Anna",
+            "motive/Patrick",
+            "motive/Kira",
+            "motive/Victor",
+        ],
+    },
+    # not asked about possible access to rollercoaster
+    {
+        "text": "I think it might help us to clear our minds about who even had access to this rollercoaster and part of the amusement park.",
+        "not_in_game_state": [
+            "access/Maria",
+            "access/Anna",
+            "access/Patrick",
+            "access/Kira",
+            "access/Victor",
+        ],
+    },
+    # not asked about patricks secret
+    {
+        "text": "I'm not sure I told you everything about Patrick. There is more. He has a secret...",
+        "not_in_game_state": ["character_information/Patrick/secret"],
+    },
 ]
 
 
@@ -109,7 +109,10 @@ class Hint(Action):
 
     def get_next_hint(self, data):
         
+        if "story_state" not in data:
+            data["story_state"] = {}
 
+        print(data["story_state"])
         for hint in HINTS:
             not_in_game_state = hint["not_in_game_state"]
             in_game_state = []
@@ -132,7 +135,7 @@ class Hint(Action):
                 return hint["text"]
 
 
-        return
+        return "I don't have any hints for you right now."
 
     def run(
         self,
