@@ -59,7 +59,7 @@ scene_investigation:
   - base_1: "Ok, so we are standing in the zombie themed area of the ghost ride. In some way it’s a quite romantic area... we earlier shared a seat at the bench with two zombies holding hand. In the background there is a scary tree, with no leaf. We can look at the train cabin, under the bench and behind the tree. I think we should search in order to find some hints about the murderer. Where should we start?"
   - base_2: "Let´s have another close look at everything..."
   - base_3: "This is all we can find here. We can now talk about my co-workers. I get the feeling that they have something to do with it..."
-  - weapon: "Let me see... the weapon is a knife. It’s a bit bloody and it’s a bit scary to hold it. Should I take a closer look or should we put it back where we found it?"
+  - weapon: "Let me see... the weapon is a knife. It’s a bit bloody and it’s a bit scary to hold it. Oh there are initials in it. It says “A.P”  in the knife."
   - knife: "The Knife... Oh there are initials in it. It says “A.P”  in the knife. Hm, who might it be?"
   - body: "Ok, this feels a bit scary to look at Maria's dead body, but it’s the best thing we can do. Let’s move a few steps closer... She is covered in blood... sorry i'm feeling sick I can't look at it anymore. Please say that we can look around now..."
   - cabin: "It has two seats, as ours did. On the seat closer to us and closer to the themed area is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... Should I investigate it more or should I tell you about the note..."
@@ -68,6 +68,7 @@ scene_investigation:
   - note: "There is a Note on the body. It says “You are next”. I believe it means that I am the target the murderer intends to go after next."
 
 motive:
+  #muss das nicht Kira heißen und nicht Maria?
   Maria:
   - base_1: "Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very good."
   - base_2: "You already asked me about Marias's motive but no worries, i'll tell you again. Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very good."
