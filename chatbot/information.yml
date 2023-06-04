@@ -68,7 +68,7 @@ scene_investigation:
   - note: "There is a Note on the body. It says “You are next”. I believe it means that I am the target the murderer intends to go after next."
 
 motive:
-  Maria:
+  Kira:
   - base_1: "Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very well."
   - base_2: "You already asked me about Marias's motive but no worries, I'll tell you again. Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very well."
   Patrick:
