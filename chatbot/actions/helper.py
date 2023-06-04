@@ -29,7 +29,7 @@ def set_game_state(class_, item, data_slot):
             d[key] = {}
             d = d[key]
 
-    print(data_slot["story_state"])
+    print("Game state was set:", data_slot["story_state"])
 
 def get_class_split(class_, info):
     """
@@ -107,7 +107,7 @@ def get_story_information(class_, item, data_slot):
         item = get_base_item(class_keys, times_asked_about)
     
     if item not in class_keys:
-        print(f'item {item} not in keys... ' + ' '.join(class_keys))
+        logging.warning(f'item {item} not in keys... ' + ' '.join(class_keys))
         return None
     
     # add 1 to times_asked_about_class_ in data_slot
