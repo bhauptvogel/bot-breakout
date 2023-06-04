@@ -10,11 +10,14 @@ intents:
 - motive_of_character
 - access_to_rollercoaster
 - EXTERNAL_reminder
+- cabin_investigation
+- guess_cabin_pin
 
 entities:
 - object
 - person
 - information
+- cabin_password
 
 slots:
   data:
@@ -22,6 +25,17 @@ slots:
     initial_value: null
     mappings:
     - type: custom
+  cabin_password:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: cabin_password
+
+forms:
+  simple_cabin_form:
+    required_slots:
+      - cabin_password
 
 responses:
   utter_hello:
@@ -49,6 +63,15 @@ responses:
   - text: Victor is the Maria's new boyfriend. I don’t know him. Only the things Kira told me about him. She was pretty jealous, that Maria has someone new 👀
   utter_hint:
   - text: You can always ask for an overview of the situation and what I have already told you.
+  utter_ask_cabin_password:
+  - text: Is there another possibility than 686?
+  - text: Nope it's not this one...
+  - text: Maybe we should consider if the train number was correct...
+  - text: Maybe look at the train number another way...
+  utter_cabin_entry:
+  - text: "It has two seats, as ours did. On the seat closer to us and closer to the themed area is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. I see something in the puddles. Its a knife! Its strange to grab in blood, but I get it out."
+  utter_cabin_text:
+  - text: We are now standing in front of the train cabin with the dead body. But Damn... the door is locked, I cant get in. All cabins are lock with a 3-digit pincode. I set those after a rough work day... I don't know the solution but I work with a specific system. I subtract the fourth prime number from the cabin number, added 2 and divide it by 2. I think the cabin number of this cabin is 686. Can you help me find the right pin code to enter the cabin? Just tell me the 3-digit pin code I should try!
 actions:
 - action_overview_of_the_state
 - action_scene_investigation
@@ -58,6 +81,10 @@ actions:
 - action_set_reminder
 - action_react_to_reminder
 - action_user_guess
+- validate_simple_cabin_form
+- action_cabin_end
+- utter_ask_cabin_password
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+

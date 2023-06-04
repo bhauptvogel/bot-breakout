@@ -31,6 +31,34 @@ class SceneInvestigation(Action):
         for obj in objects:
             dispatcher.utter_message(text=helper.get_story_information("scene_investigation", obj, data, f"Objects/{obj}"))
 
-        # Todo: If user enters an object that is not in our story
+        # TODO: If user enters an object that is not in our story
         
         return [SlotSet("data", data)]
+
+
+# Validation Form for the cabin pin
+class ValidateSimpleCabinForm(FormValidationAction):
+        def name(self) -> Text:
+            return "validate_simple_cabin_form"
+
+        def validate_cabin_password(
+                self,
+                slot_value: Any,
+                dispacher: CollectingDispatcher,
+                tracker: Tracker,
+                domain: DomainDict,
+        ) -> Dict[Text, Any]:
+            if slot_value == "492":
+                dispacher.utter_message(text="Yes "+slot_value+" worked. We can enter the cabin.")
+                return {"cabin_password": slot_value}
+            return {"cabin_password": None}
+
+# End if the pin was right 
+class CabinEnd(FormValidationAction):
+    def name(self) -> Text:
+        return "action_cabin_end"
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        # TODO: save that the cabin pin is found so it is possible to enter afterwards without the pin 
+        print("save that cabin door is open")

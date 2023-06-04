@@ -156,8 +156,6 @@ nlu:
 ## ------ scene investigation ------
 - intent: scene_investigation
   examples: |
-    - Investigate the surroundings
-    - investigate scene
     - Investigate the scene
     - Tell me about the environment
     - What do you see?
@@ -186,17 +184,6 @@ nlu:
     - Please look at the [knife]{"entity":"object", "group":"search"}
     - Investigate the [knife]{"entity":"object", "group":"search"}
     - Let’s search for the [murder weapon]{"entity":"object", "group":"search", "value": "weapon"}
-    - Look at the [cabin]{"entity":"object", "group":"search"}
-    - Look inside the [cabin]{"entity":"object", "group":"search"}
-    - Search the [cabin]{"entity":"object", "group":"search"}
-    - Go through the [cabin]{"entity":"object", "group":"search"}
-    - Inspect the [cabin]{"entity":"object", "group":"search"}
-    - Please look at the [train cabin]{"entity":"object", "group":"search", "value":"cabin"}
-    - Examine the [cabin]{"entity":"object", "group":"search"}
-    - I want to see what's in the [cabin]{"entity":"object", "group":"search"}
-    - Look at the [cabin]{"entity":"object", "group":"search", "value":"cabin"}
-    - What's inside the [train]{"entity":"object", "group":"search", "value":"cabin"}
-    - I need to know more about the [rollercoaster cabin]{"entity":"object", "group":"search", "value":"cabin"}
     - Let's inspect the [bench]{"entity":"object", "group":"search"}
     - Look under the [bench]{"entity":"object", "group":"search"}
     - Check the [bench]{"entity":"object", "group":"search"}
@@ -228,6 +215,26 @@ nlu:
     - Inspect the [knife]{"entity":"object", "group":"search"}
     - Investigate the characteristics of the [knife]{"entity":"object", "group":"search"}
     - Let's search for the [murder weapon]{"entity":"object", "group":"search", "value": "weapon"}
+    - Inspect the details of the [bench]{"entity":"object", "group":"search"}
+    - Look under the [bench]{"entity":"object", "group":"search"}
+    - Carefully examine the [bench]{"entity":"object", "group":"search"}
+    - Direct your attention to what is behind the [tree]{"entity":"object", "group":"search"}
+    - Take a look around the [tree]{"entity":"object", "group":"search"} and observe
+
+
+- intent: cabin_investigation
+  examples: |
+    - Look at the [cabin]{"entity":"object", "group":"search"}
+    - Look inside the [cabin]{"entity":"object", "group":"search"}
+    - Search the [cabin]{"entity":"object", "group":"search"}
+    - Go through the [cabin]{"entity":"object", "group":"search"}
+    - Inspect the [cabin]{"entity":"object", "group":"search"}
+    - Please look at the [train cabin]{"entity":"object", "group":"search", "value":"cabin"}
+    - Examine the [cabin]{"entity":"object", "group":"search"}
+    - I want to see what's in the [cabin]{"entity":"object", "group":"search"}
+    - Look at the [cabin]{"entity":"object", "group":"search", "value":"cabin"}
+    - What's inside the [train]{"entity":"object", "group":"search", "value":"cabin"}
+    - I need to know more about the [rollercoaster cabin]{"entity":"object", "group":"search", "value":"cabin"}
     - Analyze the [cabin]{"entity":"object", "group":"search"}
     - Explore the contents within the [cabin]{"entity":"object", "group":"search"}
     - Conduct a thorough search of the [cabin]{"entity":"object", "group":"search"}
@@ -238,11 +245,24 @@ nlu:
     - Look at the [cabin]{"entity":"object", "group":"search", "value":"cabin"} and see what you find
     - What can you discover inside the [train]{"entity":"object", "group":"search", "value":"cabin"}?
     - Obtain more information about the [rollercoaster cabin]{"entity":"object", "group":"search", "value":"cabin"}
-    - Inspect the details of the [bench]{"entity":"object", "group":"search"}
-    - Look under the [bench]{"entity":"object", "group":"search"}
-    - Carefully examine the [bench]{"entity":"object", "group":"search"}
-    - Direct your attention to what is behind the [tree]{"entity":"object", "group":"search"}
-    - Take a look around the [tree]{"entity":"object", "group":"search"} and observe
+
+- intent: guess_cabin_pin
+  examples: |
+    - it [123]{"entity":"cabin_password"}    
+    - is it [123]{"entity":"cabin_password"}    
+    - [123]{"entity":"cabin_password"}    
+    - try [123]{"entity":"cabin_password"}    
+    - what about [123]{"entity":"cabin_password"} 
+    - is [123]{"entity":"cabin_password"} the right answer
+    - is [123]{"entity":"cabin_password"} right?
+    - it [123.5]{"entity":"cabin_password"}    
+    - is it [123,5]{"entity":"cabin_password"}    
+    - [123.5]{"entity":"cabin_password"}    
+    - try [123.5]{"entity":"cabin_password"}    
+    - what about [123.5]{"entity":"cabin_password"} 
+    - is [123,5]{"entity":"cabin_password"} the right answer
+    - is [123,5]{"entity":"cabin_password"} right?
+
 
 ## ------ character investigation ------
 - intent: information_about_character
