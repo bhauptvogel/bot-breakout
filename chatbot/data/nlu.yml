@@ -558,6 +558,7 @@ nlu:
     - corpse
 
 - synonym: cabin
+  examples: |
     - train cabin
     - train
     - rollercoaster cabin
