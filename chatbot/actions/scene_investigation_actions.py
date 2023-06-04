@@ -50,6 +50,10 @@ class ValidateSimpleCabinForm(FormValidationAction):
         ) -> Dict[Text, Any]:
             if slot_value == "492":
                 dispacher.utter_message(text="Yes "+slot_value+" worked. We can enter the cabin.")
+                if tracker.get_slot('data') is not None:
+                    data = tracker.get_slot('data')
+                    helper.set_game_state("scene_investigation", "cabin", data)
+                    return {"cabin_password": slot_value, "data": data}
                 return {"cabin_password": slot_value}
             return {"cabin_password": None}
 
