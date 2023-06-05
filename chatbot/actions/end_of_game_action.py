@@ -8,8 +8,26 @@ import random
 from . import helper
 
 
-PERCENTAGE_THRESHOLD = 60
+PERCENTAGE_THRESHOLD = 0.5
 
+REQUIRED_GAME_STATES = [
+    "character_information/Maria",
+    "character_information/Anna",
+    "character_information/Patrick",
+    "character_information/Kira",
+    "scene_investigation/base_1",
+    "scene_investigation/cabin",
+    "scene_investigation/body",
+    "scene_investigation/knife",
+    "motive/Maria",
+    "motive/Anna",
+    "motive/Patrick",
+    "motive/Kira",
+    "access/Maria",
+    "access/Anna",
+    "access/Patrick",
+    "access/Kira",
+]
 
 class UserGuessesMurderer(Action):
     def name(self) -> Text:
@@ -35,27 +53,21 @@ class UserGuessesMurderer(Action):
         if "times_wanted_to_guess_murderer" not in data:
             data["times_wanted_to_guess_murderer"] = 0
 
+        false_count = 0
+        for state in REQUIRED_GAME_STATES:
+            keys = state.split("/")
+            temp_data = data["story_state"]
 
-        def count_boolean_values(dictionary):
-            total_count = 0
-            true_count = 0
-            false_count = 0
+            for key in keys:
+                if key in temp_data:
+                    temp_data = temp_data[key]
+                else:
+                    print(state)
+                    false_count += 1
+                    break
 
-            if isinstance(dictionary, dict):
-                for value in dictionary.values():
-                    total, true = count_boolean_values(value)
-                    total_count += total
-                    true_count += true
-            elif isinstance(dictionary, bool):
-                total_count += 1
-                if dictionary:
-                    true_count += 1
-
-            false_count = total_count - true_count
-            return total_count, true_count, false_count
-
-        true_percentage = 100
-
+        true_count = len(REQUIRED_GAME_STATES) - false_count
+        true_percentage = true_count / (true_count + false_count)
 
         # TODO: Rewrite end
         if true_percentage > PERCENTAGE_THRESHOLD:
