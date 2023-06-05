@@ -10,67 +10,67 @@ from . import helper
 INFORMATION = [
     {
         "text": "Maria is the victim. She was a journalist and worked on a big story about this amusment park.",
-        "in_game_state": ["character_information/Maria/base_1"],
+        "required_story_states": ["character_information/Maria/base_1"],
     },
     {
         "text": "Kira is my co-worker and I know her pretty well.",
-        "in_game_state": ["character_information/Kira/base_1"],
+        "required_story_states": ["character_information/Kira/base_1"],
     },
     {
         "text": "She is the Ex-Girlfriend of Maria. She didn't handle the break-up well, as Maria was already together with Victor after a few days.",
-        "in_game_state": ["character_information/Kira/base_1", "motive/Kira"],
+        "required_story_states": ["character_information/Kira/base_1", "motive/Kira"],
     },
     {
         "text": "She works here in the office and has access to the building 👀.",
-        "in_game_state": ["character_information/Kira/base_1", "access/Kira"],
+        "required_story_states": ["character_information/Kira/base_1", "access/Kira"],
     },
     {
         "text": "I don't know Victor very well. He is the new boyfriend of Maria.",
-        "in_game_state": ["character_information/Victor/base_1"],
+        "required_story_states": ["character_information/Victor/base_1"],
     },
     {
         "text": "I don't see any reason why he would kill Maria.",
-        "in_game_state": ["character_information/Victor/base_1", "motive/Victor"],
+        "required_story_states": ["character_information/Victor/base_1", "motive/Victor"],
     },
     {
         "text": "I don't know how he could have accessed the building.",
-        "in_game_state": ["character_information/Victor/base_1", "access/Victor"],
+        "required_story_states": ["character_information/Victor/base_1", "access/Victor"],
     },
     {
         "text": "Anna is a journalist and a colleague of Maria.",
-        "in_game_state": ["character_information/Anna/base_1"],
+        "required_story_states": ["character_information/Anna/base_1"],
     },
     {
         "text": "She and Maria were rivals. Anna is very driven and wanted to be the first to publish the story about the amusement park.",
-        "in_game_state": ["character_information/Anna/base_1", "motive/Anna"],
+        "required_story_states": ["character_information/Anna/base_1", "motive/Anna"],
     },
     {
         "text": "She definitely doesn't have access to the roller coaster.",
-        "in_game_state": ["character_information/Anna/base_1", "access/Anna"],
+        "required_story_states": ["character_information/Anna/base_1", "access/Anna"],
     },
     {
         "text": "Patrick is my snobbish boss who owns the family amusement park business and loves luxury vehicles and opulence.",
-        "in_game_state": ["character_information/Patrick/base_1"],
-    },
-    {
-        "text": "Maria just found out that Patrick's been caught up in some sketchy corruption stuff. If this gets out, he's toast, but I don't know all the details.",
-        "in_game_state": ["character_information/Patrick/base_1", "motive/Patrick"],
+        "required_story_states": ["character_information/Patrick/base_1"],
     },
     {
         "text": "As the owner of the amusement park, he has access to the roller coaster.",
-        "in_game_state": ["character_information/Patrick/base_1", "access/Patrick"],
+        "required_story_states": ["character_information/Patrick/base_1", "access/Patrick"],
+    },
+    {
+        "text": "Maria just found out that Patrick's been caught up in some sketchy corruption stuff. If this gets out, he's toast, but I don't know all the details.",
+        "required_story_states": ["character_information/Patrick/base_1", "motive/Patrick"],
     },
     {
         "text": "Somebody used a knife to kill Maria. Written on the knife were the initials 'A' and 'P'.",
-        "in_game_state": ["scene_investigation/knife"],
+        "required_story_states": ["scene_investigation/knife"],
     },
     {
         "text": "This can only be Anna Pollock or Patrick Anyang.",
-        "in_game_state": ["scene_investigation/knife", "character_information/Anna/full_name", "character_information/Patrick/full_name"],
+        "required_story_states": ["scene_investigation/knife", "character_information/Anna/full_name", "character_information/Patrick/full_name"],
     },
     {
         "text": "There is a note on the body saying “You are next”. We have to hurry!",
-        "in_game_state": ["scene_investigation/note"],
+        "required_story_states": ["scene_investigation/note"],
     }
 ]
 
@@ -98,7 +98,7 @@ class SituationOverview(Action):
 
         for info in INFORMATION:
             in_game_state = True
-            for state in info["in_game_state"]:
+            for state in info["required_story_states"]:
                 keys = state.split("/")
                 temp_data = data["story_state"]
 

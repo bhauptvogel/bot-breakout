@@ -25,11 +25,18 @@ class SceneInvestigation(Action):
         entities = tracker.latest_message['entities']
         objects = [e['value'] for e in entities if e['entity'] == 'object']
 
+        cabin_list = ['body', 'weapon', 'knife', 'note']
+
         if len(objects) == 0:
             dispatcher.utter_message(text=helper.get_story_information("scene_investigation", "", data))
 
         for obj in objects:
-            dispatcher.utter_message(text=helper.get_story_information("scene_investigation", obj, data))
+            if obj in cabin_list:
+                if "cabin_open" in data.keys() and data["cabin_open"] == True:
+                    dispatcher.utter_message(text=helper.get_story_information("scene_investigation", obj, data))
+                else:
+                    dispatcher.utter_message(text=helper.get_story_information("scene_investigation", "no_access", data))
+
 
         # TODO: If user enters an object that is not in our story
         
@@ -50,10 +57,6 @@ class ValidateSimpleCabinForm(FormValidationAction):
         ) -> Dict[Text, Any]:
             if slot_value == "492":
                 dispacher.utter_message(text="Yes "+slot_value+" worked. We can enter the cabin.")
-                if tracker.get_slot('data') is not None:
-                    data = tracker.get_slot('data')
-                    helper.set_game_state("scene_investigation", "cabin", data)
-                    return {"cabin_password": slot_value, "data": data}
                 return {"cabin_password": slot_value}
             return {"cabin_password": None}
 
@@ -64,5 +67,14 @@ class CabinEnd(FormValidationAction):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        # TODO: save that the cabin pin is found so it is possible to enter afterwards without the pin 
-        print("save that cabin door is open")
+        if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
+            data = {}
+        else:
+            data = tracker.get_slot('data')
+        
+        data["cabin_open"] = True
+
+        helper.set_game_state("scene_investigation", "cabin", data)
+
+        return [SlotSet("data", data)]
+
