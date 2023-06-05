@@ -20,7 +20,7 @@ class StartGame(Action):
 
     def run(self, dispatcher, tracker: Tracker, domain):
         dispatcher.utter_message(
-            "Oh, I’m just a bit stunned. I know this woman - it's Maria, a journalist... After seeing the dead body, I called the police. Because this is what a good citizen does, doesn’t they? But now I’m not sure if it was the right decision... We are the only people here and its my work place. I might be a suspect! We have 10 min until the police is here. I should give them some valuable hints about the motive, the access to the crime scene and the murder weapon when they arrive here. But I don’t know where to start. Can you help me clear my mind? We could first investigate the body with the note, or I can tell you about my co-workers."
+            "Oh, I’m just a bit stunned. I know this woman - it's Maria, a journalist... After seeing the dead body, I called the police. Because this is what a good citizen does, right? But now I’m not sure if it was the right decision... We are the only people here and its my work place. I might be a suspect! We have 10 min until the police is here. I should give them some valuable hints about the motive, the access to the crime scene and the murder weapon when they arrive here. But I don’t know where to start. Can you help me clear my mind? We could first investigate the body with the note, or I can tell you about my co-workers."
         )
 
         #date = datetime.now() + timedelta(seconds=10)

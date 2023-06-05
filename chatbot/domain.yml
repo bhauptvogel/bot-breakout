@@ -49,7 +49,7 @@ responses:
   utter_investigate_crime_scene:
   - text: Oh my god, this feels scary to look at Maria's dead body, but it’s the best thing we can do. Let’s move a few steps closer… Ahhhh! Shit. I know the dead woman in the cabin.
   utter_information_about_coworkers:
-  - text: My coworkers are Kira, who works as a cashier, and Patrick who is the director of the amusement park. Do you want to know more about one of them?
+  - text: My coworkers are Kira, who works as a cashier, and Patrick who is the director of the amusement park. By the way, I also know Anna. Do you want to know more about one of them?
   utter_who_is_maria:
   - text: She's the ex-girlfriend of Kira, my co-worker. I met her a couple times.
   - text: This is Maria. She is the Ex-girlfriend of my co-worker Kira who works as a cashier. Do you want to know more about Kira Or should we investigate the cabin a bit more?
@@ -68,6 +68,7 @@ responses:
   - text: Nope it's not this one...
   - text: Maybe we should consider if the train number was correct...
   - text: Not the right one. Maybe look at the train number another way...
+  - text: No. I think we should look closer at the train number again...
   utter_cabin_entry:
   - text: "It has two seats, as ours did. On the seat closer to us and closer to the themed area is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. I see something in the puddles. It's a knife! It's strange to grab in blood, but I get it out. I could take a closer look at it."
   utter_cabin_text:

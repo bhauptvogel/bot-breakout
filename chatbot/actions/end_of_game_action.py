@@ -8,7 +8,7 @@ import random
 from . import helper
 
 
-PERCENTAGE_THRESHOLD = 0.5
+PERCENTAGE_THRESHOLD = 0.45
 
 REQUIRED_GAME_STATES = [
     "character_information/Maria",
@@ -46,12 +46,21 @@ class UserGuessesMurderer(Action):
 
         entities = tracker.latest_message["entities"]
         person = [e["value"] for e in entities if e["entity"] == "person"]
+        
+        # ! hack for the case that the "Maria" entity is in persons (f.e. "Did Kira kill Maria?")
+        if len(person) == 2 and "Maria" in person:
+                # person is the other person
+                person = [p for p in person if p != "Maria"]
+
         if len(person) > 1:
             dispatcher.utter_message(text="So who do you think it is? I'm confused.")
             return [SlotSet("data", data)]
 
         if "times_wanted_to_guess_murderer" not in data:
             data["times_wanted_to_guess_murderer"] = 0
+
+        if "story_state" not in data:
+            data["story_state"] = {}
 
         false_count = 0
         for state in REQUIRED_GAME_STATES:
@@ -62,7 +71,6 @@ class UserGuessesMurderer(Action):
                 if key in temp_data:
                     temp_data = temp_data[key]
                 else:
-                    print(state)
                     false_count += 1
                     break
 
@@ -73,7 +81,7 @@ class UserGuessesMurderer(Action):
         if true_percentage > PERCENTAGE_THRESHOLD:
             if data["times_wanted_to_guess_murderer"] == 0:
                 dispatcher.utter_message(
-                    text="I'm not sure about that. Let's check the clues we have! Type watch overview."
+                    text="Are you sure? Maybe, but I'm not sure about that. Let's check the clues we have! Type watch overview. Then tell me who you think is the murderer."
                 )
                 data["times_wanted_to_guess_murderer"] += 1
             elif "user_wants_to_commit" not in data:
@@ -109,7 +117,7 @@ class UserGuessesMurderer(Action):
                 )
         else:
             dispatcher.utter_message(
-                text="We can’t leave before the police arrives in a few minutes! We need to find hints together, so they don’t think we two did it. We need to check for a motive, if the suspect had access and the murder weapon!"
+                text="We can’t leave before the police arrives in a few minutes! You need to know more about this story to be sure. Let's find more hints together, so they don’t think we two did it. We need to check for a motive, if the suspect had access and the murder weapon!"
             )
 
         return [SlotSet("data", data)]

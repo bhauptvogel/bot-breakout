@@ -29,7 +29,7 @@ def set_game_state(class_, item, data_slot):
             d[key] = {}
             d = d[key]
 
-    print("Game state was set:", data_slot["story_state"])
+    logging.debug("Game state was set: " + str(data_slot["story_state"]))
 
 def get_class_split(class_, info):
     """

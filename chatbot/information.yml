@@ -29,7 +29,7 @@ character_information:
   - base_3: "Actually you already asked me about Anna. But I will tell you about her again. Anna is a colleague of Maria's at the Fictional Times Paper. I've met her at some parties hosted by Kira, and she seems nice, but she's really focused on her job, just like Maria was. There's this rivalry between Anna and Maria that developed over time. I think Anna values prestige a lot and always strives to have the biggest stories."
   - full_name: "Anna Pollock is her full name"
   __General__:
-  - base_1: "My coworkers are Kira, who works as a cashier, and Patrick who is the director of the amusement park. Who do you want to know more about?"
+  - base_1: "My coworkers are Kira, who works as a cashier, and Patrick who is the director of the amusement park. By the way, I also know Anna. Who do you want to know more about?"
   - breakup: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her Colleague Anna. That's why their relationship broke apart…"
 
 # All relations have to be duplicated because the user can ask for the relation in both directions
@@ -66,7 +66,7 @@ scene_investigation:
   - bench: "Just some zombie love dripping through the wooden slats of the bench. Or is this something else... Let's stand up but be careful to not get tangled in the zombies' limbs."
   - tree: "The tree is a bit scary. It’s a dead tree with no leaves. Behind the tree, there is just some light equipment to give the scene a spooky feeling."
   - note: "There is a Note on the body. It says “You are next”. I believe it means that I am the target the murderer intends to go after next."
-  - no_access: "We have no access to it. We should first investigate the cabin..."
+  - no_access: "It is inside the train cabin and we currently don't have acess. We should first investigate the cabin..."
 
 motive:
   Kira:
@@ -79,7 +79,7 @@ motive:
   - base_1: "As far as I know, he wouldn't have a reason to kill Maria. They just started dating and it was going really well."
   - base_2: "You already asked me about Victor's motive but no worries, I'll tell you again. Victor wouldn't have a reason to kill Maria. They just started dating and it was going really well."
   Anna:
-  - base_1: "Anna and Maria were rivals. If it's about a good story Anna would have done anything."
+  - base_1: "Anna and Maria were rivals. If it's about a good story Anna would have done anything. And they worked on the same story..."
   - base_2: "You already asked me about Anna's motive but no worries, I'll tell you again. She and Maria were rivals. If it's about a good story Anna would have done anything."
   Maria:
   - base_1: "I'm pretty sure Maria didn't unalive herself. This looks definitely like a murder."
@@ -87,8 +87,8 @@ motive:
 
 access:
   Kira:
-  - base_1: "Kira works at the rollercoaster and has backstage access so yes she had access"
-  - base_2: "Like I told you: Kira works at the rollercoaster and she has backstage access, so indeed she had the necessary access"
+  - base_1: "Kira works at the rollercoaster and has backstage access, so yes, she had access."
+  - base_2: "Like I told you: Kira works at the rollercoaster and she has backstage access, so indeed she had the necessary access."
   Patrick:
   - base_1: "Since he is the owner of the rollercoaster he definitely had access to it, so he could have done something..."
   - base_2: "Didn't you already ask me that? Well, since he's the owner of the rollercoaster, he definitely had access to it, which means he could have potentially done something..."
