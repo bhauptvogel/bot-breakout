@@ -129,29 +129,7 @@ nlu:
     - I think it's time to tell the police that [patrick]{"entity":"person", "value":"Patrick"} is responsible.
     - Can [Kira's]{"entity":"person", "value":"Kira"} guilt be confirmed?
     - I have no doubts, it was [Patrik]{"entity":"person", "value":"Patrick"}.
-
-
-# ! not implemented in domain.yml
-# slots: what was talked about last
-- intent: user_wants_more_about_X
-  examples: |
-    - Tell me more
-    - I want to know more about that
-    - Is there more to that?
-    - Tell me everything about that
-    - Go on
-    - Say more
-    - I need more information about that
-    - And then?
-    - What else?
-    - Ok...?
-    - What else can you tell me?
-    - More information please
-    - I need to know more
-    - Is there more?
-    - Expand on that
-    - Keep going
-    - Well and then?
+    - So [Patrick]{"entity":"person", "value":"Patrick"} killed Maria?
 
 ## ------ scene investigation ------
 - intent: scene_investigation
