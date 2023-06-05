@@ -1,0 +1,11 @@
+{
+    "name": "Partner in Crime - Murder Mystery at the ghost ride",
+    "chatbot_name": "Mika",
+    "user_name": "You",
+    "messagebox_caption": "Talk to Mika",
+    "send_button_caption": "Say",
+    "id": "bot-breakout",
+    "background-image": "bot-breakout-background.jpeg",
+    "api-url": "http://localhost:5005",
+    "welcome-message": "After your long single life your best friend sets you up on a Date. With pounding hearts, you were excited to meet Mika, who is non-binary and your Date. Mika works at an amusement park and had the whole place booked for the two of you! How generous! You boarded the train cabin of the ghost train together, catching some first feelings of intimacy while touching leg on leg - AND THEN a sudden stop. In the dim light of the ghost ride, you see that a person in the cabin in front of you is slumped in their seat, dead with a note pinned to there chest, 'YOU ARE NEXT.' With adrenaline coursing through your veins, you must now unravel the mystery, find the killer, and escape the ghost ride before it claims its next victim — you? Your Date Mika is impatiently exiting the train cabin, out into the Zombieland of the ghost ride. Finding a dead body seams to be a bummer on a Date :/ But maybe you two get closer by solving this mystery. You can always ask your date about a hint. Mika will give you an overview of the things you discovered so far. You two sit down on a bench together. Be kind, you should ask how Mika is doing!"
+}
