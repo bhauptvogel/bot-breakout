@@ -112,25 +112,21 @@ class Hint(Action):
         if "story_state" not in data:
             data["story_state"] = {}
 
-        print(data["story_state"])
         for hint in HINTS:
-            not_in_game_state = hint["not_in_game_state"]
             in_game_state = []
-            for state in not_in_game_state:
+            for state in hint["not_in_game_state"]:
                 in_game_state.append(True)
                 keys = state.split("/")
                 temp_data = data["story_state"]
-                print(keys)
 
                 for key in keys:
-                    print(key)
                     if key in temp_data:
                         temp_data = temp_data[key]
                     else:
                         in_game_state[-1] = False
                         break
 
-            # if only false in in_game_state, return hint
+            # if all states of hint are not in game state, return hint
             if not any(in_game_state):
                 return hint["text"]
 
