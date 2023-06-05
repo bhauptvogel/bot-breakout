@@ -16,7 +16,7 @@ class CharacterMotive(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
-            data = helper.INITIAL_DATA_OBJECT
+            data = {}
         else:
             data = tracker.get_slot('data')
 
@@ -35,7 +35,7 @@ class CharacterMotive(Action):
         # Todo: If user enters a name that is not in our story
         
         for character in characters:
-            dispatcher.utter_message(text=helper.get_story_information(f"motive/{character}", "", data, f"{character}/motive"))
+            dispatcher.utter_message(text=helper.get_story_information(f"motive/{character}", "", data))
             
         data["last_spoken_about_character"] = characters
 

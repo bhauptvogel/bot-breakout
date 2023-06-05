@@ -18,7 +18,7 @@ class SceneInvestigation(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
         
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
-            data = helper.INITIAL_DATA_OBJECT
+            data = {}
         else:
             data = tracker.get_slot('data')
         
@@ -29,7 +29,7 @@ class SceneInvestigation(Action):
             dispatcher.utter_message(text=helper.get_story_information("scene_investigation", "", data))
 
         for obj in objects:
-            dispatcher.utter_message(text=helper.get_story_information("scene_investigation", obj, data, f"Objects/{obj}"))
+            dispatcher.utter_message(text=helper.get_story_information("scene_investigation", obj, data))
 
         # TODO: If user enters an object that is not in our story
         
@@ -50,6 +50,10 @@ class ValidateSimpleCabinForm(FormValidationAction):
         ) -> Dict[Text, Any]:
             if slot_value == "492":
                 dispacher.utter_message(text="Yes "+slot_value+" worked. We can enter the cabin.")
+                if tracker.get_slot('data') is not None:
+                    data = tracker.get_slot('data')
+                    helper.set_game_state("scene_investigation", "cabin", data)
+                    return {"cabin_password": slot_value, "data": data}
                 return {"cabin_password": slot_value}
             return {"cabin_password": None}
 

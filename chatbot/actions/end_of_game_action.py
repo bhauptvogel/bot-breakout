@@ -22,7 +22,7 @@ class UserGuessesMurderer(Action):
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
         if tracker.get_slot("data") is None or tracker.get_slot("data") == "Null":
-            data = helper.INITIAL_DATA_OBJECT
+            data = {}
         else:
             data = tracker.get_slot("data")
 
@@ -35,24 +35,26 @@ class UserGuessesMurderer(Action):
         if "times_wanted_to_guess_murderer" not in data:
             data["times_wanted_to_guess_murderer"] = 0
 
-        total_count = 0
-        true_count = 0
-        false_count = 0
 
         def count_boolean_values(dictionary):
-            nonlocal total_count, true_count, false_count
+            total_count = 0
+            true_count = 0
+            false_count = 0
+
             if isinstance(dictionary, dict):
                 for value in dictionary.values():
-                    count_boolean_values(value)
+                    total, true = count_boolean_values(value)
+                    total_count += total
+                    true_count += true
             elif isinstance(dictionary, bool):
                 total_count += 1
                 if dictionary:
                     true_count += 1
 
-        count_boolean_values(data["revealed_information"])
-        true_percentage = (true_count / total_count) * 100
+            false_count = total_count - true_count
+            return total_count, true_count, false_count
 
-        print(true_percentage)
+        true_percentage = 100
 
 
         # TODO: Rewrite end

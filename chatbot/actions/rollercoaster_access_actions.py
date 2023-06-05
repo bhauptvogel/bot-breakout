@@ -21,7 +21,7 @@ class AccessToRollerCoaster(Action):
         characters = [e['value'] for e in entities if e['entity'] == 'person']
 
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
-            data = helper.INITIAL_DATA_OBJECT
+            data = {}
         else:
             data = tracker.get_slot('data')
 
@@ -35,7 +35,7 @@ class AccessToRollerCoaster(Action):
         # Todo: If user enters an name that is not in our story
     
         for character in characters:
-            dispatcher.utter_message(text=helper.get_story_information(f"access/{character}", "", data, f"{character}/access"))
+            dispatcher.utter_message(text=helper.get_story_information(f"access/{character}", "", data))
         
         data["last_spoken_about_character"] = characters
 
