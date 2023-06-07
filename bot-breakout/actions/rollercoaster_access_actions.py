@@ -35,7 +35,7 @@ class AccessToRollerCoaster(Action):
         # Todo: If user enters an name that is not in our story
     
         for character in characters:
-            dispatcher.utter_message(text=ii.get_story_information(f"access/{character}", "", data))
+            dispatcher.utter_message(text=ii.get_story_information(f"access/{character}", "", data, fallback="Sorry, I don't know who you're talking about. Do you want to know if a person had access to the roller coaster?"))
         
         data["last_spoken_about_character"] = characters
 

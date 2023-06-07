@@ -35,7 +35,7 @@ class CharacterMotive(Action):
         # Todo: If user enters a name that is not in our story
         
         for character in characters:
-            dispatcher.utter_message(text=ii.get_story_information(f"motive/{character}", "", data))
+            dispatcher.utter_message(text=ii.get_story_information(f"motive/{character}", "", data, fallback="Sorry, I don't know who you're talking about. Do you want to know the motive of a person?"))
             
         data["last_spoken_about_character"] = characters
 

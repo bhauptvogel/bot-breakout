@@ -25,17 +25,14 @@ class SceneInvestigation(Action):
         entities = tracker.latest_message['entities']
         objects = [e['value'] for e in entities if e['entity'] == 'object']
 
-        cabin_list = ['body', 'weapon', 'knife', 'note']
-
         if len(objects) == 0:
-            dispatcher.utter_message(text=ii.get_story_information("scene_investigation", "", data))
+            dispatcher.utter_message(text=ii.get_story_information("scene_investigation", "", data, fallback="Sorry, I don't undestand what you mean. Do you want me to investigate the scene?"))
 
         for obj in objects:
-            if obj in cabin_list:
-                if "cabin_open" in data.keys() and data["cabin_open"] == True:
-                    dispatcher.utter_message(text=ii.get_story_information("scene_investigation", obj, data))
-                else:
-                    dispatcher.utter_message(text=ii.get_story_information("scene_investigation", "no_access", data))
+            objects_inside_cabin = ['body', 'weapon', 'knife', 'note']
+            if obj in objects_inside_cabin and not ("cabin_open" in data.keys() and data["cabin_open"] == True):
+                obj = "no_access"
+            dispatcher.utter_message(text=ii.get_story_information("scene_investigation", obj, data, fallback=f"Sorry, I'm not sure what you mean with {obj}."))
 
 
         # TODO: If user enters an object that is not in our story

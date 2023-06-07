@@ -17,7 +17,7 @@ class CharacterInvestigation(Action):
         if len(characters) != 2:
             dispatcher.utter_message(text="I don't know what you mean")
         else:
-            dispatcher.utter_message(text=ii.get_story_information("story_character_relation", f"{characters[0]}_{characters[1]}", data))
+            dispatcher.utter_message(text=ii.get_story_information("story_character_relation", f"{characters[0]}_{characters[1]}", data, fallback="I don't quite understand. Do you want to know a relation between two persons? Please be more specific."))
             data["last_spoken_about_information"] = []
             data["last_spoken_about_character"] = []
     
@@ -32,19 +32,19 @@ class CharacterInvestigation(Action):
                     info = "full_name"
 
                 if len(characters) == 0:
-                    dispatcher.utter_message(text=ii.get_story_information(f"character_information/__General__", info, data))
+                    dispatcher.utter_message(text=ii.get_story_information(f"character_information/__General__", info, data, fallback="I don't understand that or don't have that information."))
                     data["last_spoken_about_information"] = informations
                     return
              
                 for character in characters:
-                    dispatcher.utter_message(text=ii.get_story_information(f"character_information/{character}", info, data))
+                    dispatcher.utter_message(text=ii.get_story_information(f"character_information/{character}", info, data, fallback=f"I don't have that information about {character}"))
                     data["last_spoken_about_information"] = informations
                     
                 data["last_spoken_about_character"] = characters
 
     def utter_base_information(self, dispatcher, characters, data):
         for character in characters:
-            dispatcher.utter_message(text=ii.get_story_information(f"character_information/{character}", "", data))
+            dispatcher.utter_message(text=ii.get_story_information(f"character_information/{character}", "", data, fallback=f"I don't know who you're talking about"))
         data["last_spoken_about_character"] = characters
         data["last_spoken_about_information"] = []
 
