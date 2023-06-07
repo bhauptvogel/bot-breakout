@@ -461,6 +461,7 @@ nlu:
     - Did [Maria]{"entity":"person", "group":"victim"} kill herself?
     - What is [Patrick]{"entity":"person", "group":"suspect"}'s motive?
     - Has [Anna]{"entity":"person", "group":"suspect"} a motive?
+    - What could be possible motives for [Victor]{"entity":"person", "group":"suspect"}?
     - Has [Anna]{"entity":"person", "group":"suspect"} a motiv?
     - Has [Ana]{"entity":"person", "group":"suspect", "value":"Anna"} a motiv?
     - Is there a reason for [Victor]{"entity":"person", "group":"suspect"} to kill [Maria]{"entity":"person", "group":"victim"}?
