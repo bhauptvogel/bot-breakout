@@ -8,3 +8,5 @@ results/
 
 .rasa/
 __pycache__/
+
+frontend/
