@@ -5,7 +5,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
-from . import helper
+from . import information_interface as ii
 
 
 PERCENTAGE_THRESHOLD = 0.45

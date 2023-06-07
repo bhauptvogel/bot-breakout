@@ -6,7 +6,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
-from . import helper
+from . import information_interface as ii
         
 
 class SceneInvestigation(Action):
@@ -28,14 +28,14 @@ class SceneInvestigation(Action):
         cabin_list = ['body', 'weapon', 'knife', 'note']
 
         if len(objects) == 0:
-            dispatcher.utter_message(text=helper.get_story_information("scene_investigation", "", data))
+            dispatcher.utter_message(text=ii.get_story_information("scene_investigation", "", data))
 
         for obj in objects:
             if obj in cabin_list:
                 if "cabin_open" in data.keys() and data["cabin_open"] == True:
-                    dispatcher.utter_message(text=helper.get_story_information("scene_investigation", obj, data))
+                    dispatcher.utter_message(text=ii.get_story_information("scene_investigation", obj, data))
                 else:
-                    dispatcher.utter_message(text=helper.get_story_information("scene_investigation", "no_access", data))
+                    dispatcher.utter_message(text=ii.get_story_information("scene_investigation", "no_access", data))
 
 
         # TODO: If user enters an object that is not in our story
@@ -74,7 +74,7 @@ class CabinEnd(FormValidationAction):
         
         data["cabin_open"] = True
 
-        helper.set_game_state("scene_investigation", "cabin", data)
+        ii.set_game_state("scene_investigation", "cabin", data)
 
         return [SlotSet("data", data)]
 

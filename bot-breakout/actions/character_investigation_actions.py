@@ -7,7 +7,7 @@ from rasa_sdk.events import SlotSet, ReminderScheduled
 
 from datetime import datetime, timedelta
 import random
-from . import helper
+from . import information_interface as ii
 
 class CharacterInvestigation(Action):
     def name(self) -> Text:
@@ -17,7 +17,7 @@ class CharacterInvestigation(Action):
         if len(characters) != 2:
             dispatcher.utter_message(text="I don't know what you mean")
         else:
-            dispatcher.utter_message(text=helper.get_story_information("story_character_relation", f"{characters[0]}_{characters[1]}", data))
+            dispatcher.utter_message(text=ii.get_story_information("story_character_relation", f"{characters[0]}_{characters[1]}", data))
             data["last_spoken_about_information"] = []
             data["last_spoken_about_character"] = []
     
@@ -32,19 +32,19 @@ class CharacterInvestigation(Action):
                     info = "full_name"
 
                 if len(characters) == 0:
-                    dispatcher.utter_message(text=helper.get_story_information(f"character_information/__General__", info, data))
+                    dispatcher.utter_message(text=ii.get_story_information(f"character_information/__General__", info, data))
                     data["last_spoken_about_information"] = informations
                     return
              
                 for character in characters:
-                    dispatcher.utter_message(text=helper.get_story_information(f"character_information/{character}", info, data))
+                    dispatcher.utter_message(text=ii.get_story_information(f"character_information/{character}", info, data))
                     data["last_spoken_about_information"] = informations
                     
                 data["last_spoken_about_character"] = characters
 
     def utter_base_information(self, dispatcher, characters, data):
         for character in characters:
-            dispatcher.utter_message(text=helper.get_story_information(f"character_information/{character}", "", data))
+            dispatcher.utter_message(text=ii.get_story_information(f"character_information/{character}", "", data))
         data["last_spoken_about_character"] = characters
         data["last_spoken_about_information"] = []
 

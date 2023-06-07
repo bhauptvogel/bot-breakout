@@ -5,7 +5,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
-from . import helper
+from . import information_interface as ii
 
 class CharacterMotive(Action):
     def name(self) -> Text:
@@ -35,7 +35,7 @@ class CharacterMotive(Action):
         # Todo: If user enters a name that is not in our story
         
         for character in characters:
-            dispatcher.utter_message(text=helper.get_story_information(f"motive/{character}", "", data))
+            dispatcher.utter_message(text=ii.get_story_information(f"motive/{character}", "", data))
             
         data["last_spoken_about_character"] = characters
 

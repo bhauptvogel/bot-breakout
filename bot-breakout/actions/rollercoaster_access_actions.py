@@ -7,7 +7,7 @@ from rasa_sdk.events import SlotSet, ReminderScheduled
 
 from datetime import datetime, timedelta
 import random
-from . import helper
+from . import information_interface as ii
 
 class AccessToRollerCoaster(Action):
     def name(self) -> Text:
@@ -35,7 +35,7 @@ class AccessToRollerCoaster(Action):
         # Todo: If user enters an name that is not in our story
     
         for character in characters:
-            dispatcher.utter_message(text=helper.get_story_information(f"access/{character}", "", data))
+            dispatcher.utter_message(text=ii.get_story_information(f"access/{character}", "", data))
         
         data["last_spoken_about_character"] = characters
 
