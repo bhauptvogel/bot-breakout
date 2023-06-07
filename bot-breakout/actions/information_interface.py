@@ -3,11 +3,12 @@ import yaml
 import logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
+
 def load_information():
     """
     Loads the information from the information.yml file
     """
-    with open('information.yml', encoding="utf8") as f:
+    with open('story_information.yml', encoding="utf8") as f:
         info = yaml.load(f, Loader=yaml.FullLoader)
     return info
 
@@ -71,7 +72,7 @@ def get_base_item(keys, times_asked_about):
 
     return item
 
-def get_story_information(class_, item, data_slot):
+def get_story_information(class_, item, data_slot, fallback=""):
     """
     :param class_: class to get information about (e.g. 'scene_investigation')
     :param item: item of the class (e.g. 'base_1', none means base)
@@ -88,10 +89,10 @@ def get_story_information(class_, item, data_slot):
 
     if class_data is None:
         logging.error(f"get_story_information: class_data is None! class:{class_}, item:{item}")
-        return None
+        return fallback
     if data_slot is None:
         logging.error("get_story_information: data_slot is None")
-        return None
+        return fallback
             
     
     times_asked_about = 0
@@ -108,7 +109,7 @@ def get_story_information(class_, item, data_slot):
     
     if item not in class_keys:
         logging.warning(f'item {item} not in keys... ' + ' '.join(class_keys))
-        return None
+        return fallback
     
     # add 1 to times_asked_about_class_ in data_slot
     if item.startswith('base_'):
