@@ -1,3 +1,5 @@
+from . import information_interface as ii
+
 def get_most_similar_person(character):
         """
         Returns the most similar character from the story to the given character. 
@@ -19,7 +21,7 @@ def get_most_similar_person(character):
         
         most_similar_character = ""
         most_similar_character_similarity = 100
-        for story_character in get_story_characters():
+        for story_character in ii.get_story_characters():
             similarity = levenshtein_distance(character, story_character)
             if similarity < most_similar_character_similarity:
                 most_similar_character = story_character
