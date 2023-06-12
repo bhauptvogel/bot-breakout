@@ -14,13 +14,26 @@ class CharacterInvestigation(Action):
     def name(self) -> Text:
         return "action_character_investigation"
 
+    def utter_base_information(self, dispatcher, characters, data):
+        for character in characters:
+            dispatcher.utter_message(text=ii.get_story_information(f"character_information/{character}", "", data))
+    
+    def utter_specific_information(self, dispatcher, character, info, data):
+        if info not in ii.get_story_characters_information()[character]:
+            if character == "__General__":
+                dispatcher.utter_message(text=f"I don't know anything about the {info}")
+            else:
+                dispatcher.utter_message(text=f"I don't know anything about the {info} of {character}!")
+        else:
+            dispatcher.utter_message(text=ii.get_story_information(f"character_information/{character}", info, data))
+
     def utter_relation(self, dispatcher, characters, data):
         if len(characters) != 2:
             dispatcher.utter_message(text="I don't know what you mean. Please specify two characters if you want to know about their relation.")
         else:
             dispatcher.utter_message(text=ii.get_story_information("story_character_relation", f"{characters[0]}_{characters[1]}", data))
-    
-    def utter_specific_information(self, dispatcher, characters, informations, data):
+                     
+    def utter_all_informations(self, dispatcher, characters, informations, data):
         for info in informations:
             if info == "relation" or info =="connection":  
                 self.utter_relation(dispatcher, characters, data)                 
@@ -29,22 +42,11 @@ class CharacterInvestigation(Action):
                     info = "full_name"
 
                 if len(characters) == 0:
-                    if info not in ii.get_story_characters_information()["__General__"]:
-                        dispatcher.utter_message(text=f"I don't know anything about the {info}!")
-                    else:
-                        characters = ["__General__"]
-             
-                for character in characters:
-                    if info not in ii.get_story_characters_information()[character]:
-                        dispatcher.utter_message(text=f"I don't know anything about the {info} of {character}!")
-                    else:
-                        dispatcher.utter_message(text=ii.get_story_information(f"character_information/{character}", info, data))
+                    self.utter_specific_information(dispatcher, "__General__", info, data)
 
-    def utter_base_information(self, dispatcher, characters, data):
-        for character in characters:
-            dispatcher.utter_message(text=ii.get_story_information(f"character_information/{character}", "", data))
-    
-        
+                for character in characters:
+                    self.utter_specific_information(dispatcher, character, info, data)
+
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
@@ -72,7 +74,7 @@ class CharacterInvestigation(Action):
 
         # if user wants to know something specific (about a character)
         if len(informations) > 0:
-            self.utter_specific_information(dispatcher, characters, informations, data)   
+            self.utter_all_informations(dispatcher, characters, informations, data)   
             return [SlotSet("data", data)]
     
         # if user is not specifying a character
