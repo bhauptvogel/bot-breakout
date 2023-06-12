@@ -139,6 +139,7 @@ nlu:
 - intent: scene_investigation
   examples: |
     - Investigate the scene
+    - investigate the scene
     - Tell me about the environment
     - What do you see?
     - Search the room
@@ -268,6 +269,7 @@ nlu:
     - More information about [Anna]{"entity":"person"}
     - Where do you know [Victor]{"entity":"person"} from?
     - What [secret]{"entity":"information"}?
+    - tell me about [patricks]{"entity":"person", "value":"Patrick"} secret
     - Tell me about the [secret]{"entity":"information"} of [Patrick]{"entity":"person"}
     - Tell me [Patrick]{"entity":"person"}'s [secret]{"entity":"information"}
     - Tell me about the [breakup]{"entity":"information"} of [Maria]{"entity":"person"}
@@ -651,6 +653,8 @@ nlu:
     - Patrik's
     - Patrick's
     - Padrik
+    - patricks
+    - patriks
     - patrick
     - patrik
     - Partick

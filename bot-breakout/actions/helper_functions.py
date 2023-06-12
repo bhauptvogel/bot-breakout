@@ -64,6 +64,6 @@ def get_most_similar_person(character):
                 most_similar_character_similarity = similarity
         
         if most_similar_character_similarity >= 3:
-            return f"Did you mean {most_similar_character}?"
+            return f"Maybe you meant {most_similar_character}. Please specify."
         else:
             return ""

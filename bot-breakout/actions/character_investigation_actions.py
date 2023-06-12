@@ -16,7 +16,7 @@ class CharacterInvestigation(Action):
 
     def utter_relation(self, dispatcher, characters, data):
         if len(characters) != 2:
-            dispatcher.utter_message(text="I don't know what you mean")
+            dispatcher.utter_message(text="I don't know what you mean. Please specify two characters if you want to know about their relation.")
         else:
             dispatcher.utter_message(text=ii.get_story_information("story_character_relation", f"{characters[0]}_{characters[1]}", data))
     
@@ -29,7 +29,10 @@ class CharacterInvestigation(Action):
                     info = "full_name"
 
                 if len(characters) == 0:
-                    characters = ["__General__"]
+                    if info not in helper.get_story_characters_information()["__General__"]:
+                        dispatcher.utter_message(text=f"I don't know anything about the {info}!")
+                    else:
+                        characters = ["__General__"]
              
                 for character in characters:
                     if info not in helper.get_story_characters_information()[character]:
@@ -50,23 +53,15 @@ class CharacterInvestigation(Action):
         characters = [e['value'] for e in entities if e['entity'] == 'person']
         informations = [e['value'] for e in entities if e['entity'] == 'information']
 
+
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
             data = {}
         else:
             data = tracker.get_slot('data')
 
-        # if user wants to know something specific (about a character)
-        if len(informations) > 0:
-            self.utter_specific_information(dispatcher, characters, informations, data)   
-            return [SlotSet("data", data)]
-    
-        # if user is not specifiing a character
-        if len(characters) == 0:
-            dispatcher.utter_message(text="If you want to know something about a character, please specify who you mean.")
-            return [SlotSet("data", data)]
-        
+
         if len(entities) > 0 and "group" in entities[0].keys():
-            # If all coworkers are asked 
+            # if all coworkers are asked 
             characters = ["__General__"]
         else:
             # if user asks about a character that is not in the story
@@ -74,6 +69,17 @@ class CharacterInvestigation(Action):
                 if character not in helper.get_story_characters():
                     dispatcher.utter_message(text=f"I don't know who {character} is. {helper.get_most_similar_person(character)}")
                     return [SlotSet("data", data)]
+
+        # if user wants to know something specific (about a character)
+        if len(informations) > 0:
+            self.utter_specific_information(dispatcher, characters, informations, data)   
+            return [SlotSet("data", data)]
+    
+        # if user is not specifying a character
+        if len(characters) == 0:
+            dispatcher.utter_message(text="If you want to know something about a character, please specify who you mean.")
+            return [SlotSet("data", data)]
+        
 
         self.utter_base_information(dispatcher, characters, data)
         return [SlotSet("data", data)]

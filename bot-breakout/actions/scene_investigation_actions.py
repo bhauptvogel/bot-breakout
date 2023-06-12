@@ -36,7 +36,7 @@ class SceneInvestigation(Action):
             if obj in helper.get_story_objects():
                 dispatcher.utter_message(text=ii.get_story_information("scene_investigation", obj, data))
             else:
-                dispatcher.utter_message(text=f"Sorry, I don't know what a {obj} is.")
+                dispatcher.utter_message(text=f"Sorry, I don't know what {obj} is.")
 
         
         return [SlotSet("data", data)]
