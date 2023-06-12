@@ -33,7 +33,7 @@ class CharacterInvestigation(Action):
         else:
             dispatcher.utter_message(text=ii.get_story_information("story_character_relation", f"{characters[0]}_{characters[1]}", data))
                      
-    def utter_all_informations(self, dispatcher, characters, informations, data):
+    def process_informations(self, dispatcher, characters, informations, data):
         for info in informations:
             if info == "relation" or info =="connection":  
                 self.utter_relation(dispatcher, characters, data)                 
@@ -74,7 +74,7 @@ class CharacterInvestigation(Action):
 
         # if user wants to know something specific (about a character)
         if len(informations) > 0:
-            self.utter_all_informations(dispatcher, characters, informations, data)   
+            self.process_informations(dispatcher, characters, informations, data)   
             return [SlotSet("data", data)]
     
         # if user is not specifying a character
