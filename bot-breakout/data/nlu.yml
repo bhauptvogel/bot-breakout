@@ -513,8 +513,8 @@ nlu:
     - Has [Victor]{"entity":"person"} access to the [cabin]{"entity":"object"}?
     - Who has the keys to the [rollercoaster]{"entity":"object"}?
     - Who has access to the [train]{"entity":"object"}?
-    - Did Kira have acess to the [murder weapon]{"entity":"object"}?
-    - Could Patrick have reached to the [cabin]{"entity":"object"}?
+    - Did [Anna]{"entity":"person"} have acess to the [murder weapon]{"entity":"object"}?
+    - Could [Patrick]{"entity":"person"} have reached to the [cabin]{"entity":"object"}?
     - Can [Victor]{"entity":"person"} access the [rollercoaster]{"entity":"object"}?
     - Is [Patrick]{"entity":"person"} able to get into this [part]{"entity":"object"} of the park?
     - Does [Kira]{"entity":"person"} have the keys to the [haunted house]{"entity":"object"}?
@@ -532,6 +532,7 @@ nlu:
     - It is possible for him to have access?
     - Does she have the keys?
     - Is is possible for her to get to this part of the park?
+    - had [Anna]{entity:person} access
     - Can he get into the [attraction]{"entity":"object"}?
 
 ## --------------------------------------------

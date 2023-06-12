@@ -7,7 +7,7 @@ from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
 from . import information_interface as ii
-        
+from . import helper_functions as helper
 
 class SceneInvestigation(Action):
     def name(self) -> Text:
@@ -26,16 +26,18 @@ class SceneInvestigation(Action):
         objects = [e['value'] for e in entities if e['entity'] == 'object']
 
         if len(objects) == 0:
-            dispatcher.utter_message(text=ii.get_story_information("scene_investigation", "", data, fallback="Sorry, I don't undestand what you mean. Do you want me to investigate the scene?"))
+            dispatcher.utter_message(text=ii.get_story_information("scene_investigation", "", data))
 
         for obj in objects:
             objects_inside_cabin = ['body', 'weapon', 'knife', 'note']
             if obj in objects_inside_cabin and not ("cabin_open" in data.keys() and data["cabin_open"] == True):
                 obj = "no_access"
-            dispatcher.utter_message(text=ii.get_story_information("scene_investigation", obj, data, fallback=f"Sorry, I'm not sure what you mean with {obj}."))
+            
+            if obj in helper.get_story_objects():
+                dispatcher.utter_message(text=ii.get_story_information("scene_investigation", obj, data))
+            else:
+                dispatcher.utter_message(text=f"Sorry, I don't know what a {obj} is.")
 
-
-        # TODO: If user enters an object that is not in our story
         
         return [SlotSet("data", data)]
 

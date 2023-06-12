@@ -77,7 +77,7 @@ class UserGuessesMurderer(Action):
         true_count = len(REQUIRED_GAME_STATES) - false_count
         true_percentage = true_count / (true_count + false_count)
 
-        # TODO: Rewrite end
+        # TODO (#23): Rewrite end
         if true_percentage > PERCENTAGE_THRESHOLD:
             if data["times_wanted_to_guess_murderer"] == 0:
                 dispatcher.utter_message(

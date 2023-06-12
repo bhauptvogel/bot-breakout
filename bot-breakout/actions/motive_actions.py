@@ -6,7 +6,7 @@ from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
 from . import information_interface as ii
-
+from . import helper_functions as helper
 class CharacterMotive(Action):
     def name(self) -> Text:
         return "action_tell_motive"
@@ -24,20 +24,19 @@ class CharacterMotive(Action):
         entities = tracker.latest_message['entities']
         characters = [e['value'] for e in entities if e['entity'] == 'person']
 
-        # set character to last_spoken_about if empty (if user asks about "her", "him", "it")
+        # if user is not specifiing a character
         if len(characters) == 0:
-            if "last_spoken_about_character" in data:
-                characters = data["last_spoken_about_character"]
-            else:
-                dispatcher.utter_message(text=("Who do you mean?"))
-                return [SlotSet("data", data)]
-            
-        # Todo: If user enters a name that is not in our story
+            dispatcher.utter_message(text="If you want to know the motive about a certain character, let me know who you want to know about.")
+            return [SlotSet("data", data)]
         
         for character in characters:
-            dispatcher.utter_message(text=ii.get_story_information(f"motive/{character}", "", data, fallback="Sorry, I don't know who you're talking about. If you want to know motives for killing Maria, ask for a specific person."))
+            # if user asks about a character that is not in the story
+            if character not in helper.get_story_characters():
+                dispatcher.utter_message(text=f"I don't know who {character} is. {helper.get_most_similar_person(character)}")
+            else:
+                dispatcher.utter_message(text=ii.get_story_information(f"motive/{character}", "", data))
+        
             
-        data["last_spoken_about_character"] = characters
-
+            
 
         return [SlotSet("data", data)]

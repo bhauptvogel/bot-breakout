@@ -72,7 +72,7 @@ def get_base_item(keys, times_asked_about):
 
     return item
 
-def get_story_information(class_, item, data_slot, fallback=""):
+def get_story_information(class_, item, data_slot):
     """
     :param class_: class to get information about (e.g. 'scene_investigation')
     :param item: item of the class (e.g. 'base_1', none means base)
@@ -89,10 +89,10 @@ def get_story_information(class_, item, data_slot, fallback=""):
 
     if class_data is None:
         logging.error(f"get_story_information: class_data is None! class:{class_}, item:{item}")
-        return fallback
+        return None
     if data_slot is None:
         logging.error("get_story_information: data_slot is None")
-        return fallback
+        return None
             
     
     times_asked_about = 0
@@ -109,7 +109,7 @@ def get_story_information(class_, item, data_slot, fallback=""):
     
     if item not in class_keys:
         logging.warning(f'item {item} not in keys... ' + ' '.join(class_keys))
-        return fallback
+        return None
     
     # add 1 to times_asked_about_class_ in data_slot
     if item.startswith('base_'):
