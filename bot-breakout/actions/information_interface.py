@@ -125,5 +125,36 @@ def get_story_information(class_, item, data_slot):
 
 
 
+def get_story_characters():
+    keys = load_information()["character_information"].keys()
+    keys = list(keys)
+    keys.remove("__General__")
+    return keys
 
+def get_story_characters_information():
+    """
+    Returns a dictionary with all characters as keys and a list of all their information as values.
+    """
+    output = {}
+    story_character_information = load_information()["character_information"]
+    for character in story_character_information.keys():
+        character_information_dict = story_character_information[character]
+        if character not in output.keys():
+            output[character] = []
+        for info_list in character_information_dict:
+            specific_information = info_list.keys()
+            specific_information = list(specific_information)[0]
+            if not specific_information.startswith("base_"):
+                output[character].append(specific_information)
+    return output
 
+def get_story_objects():
+    output = []
+    story_objects_dict = load_information()["scene_investigation"]
+    for object in story_objects_dict:
+        keys = object.keys()
+        obj = list(keys)[0]
+        if not obj.startswith("base_"):
+            output.append(obj)
+
+    return output

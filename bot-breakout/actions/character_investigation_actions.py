@@ -29,13 +29,13 @@ class CharacterInvestigation(Action):
                     info = "full_name"
 
                 if len(characters) == 0:
-                    if info not in helper.get_story_characters_information()["__General__"]:
+                    if info not in ii.get_story_characters_information()["__General__"]:
                         dispatcher.utter_message(text=f"I don't know anything about the {info}!")
                     else:
                         characters = ["__General__"]
              
                 for character in characters:
-                    if info not in helper.get_story_characters_information()[character]:
+                    if info not in ii.get_story_characters_information()[character]:
                         dispatcher.utter_message(text=f"I don't know anything about the {info} of {character}!")
                     else:
                         dispatcher.utter_message(text=ii.get_story_information(f"character_information/{character}", info, data))
@@ -66,7 +66,7 @@ class CharacterInvestigation(Action):
         else:
             # if user asks about a character that is not in the story
             for character in characters:
-                if character not in helper.get_story_characters():
+                if character not in ii.get_story_characters():
                     dispatcher.utter_message(text=f"I don't know who {character} is. {helper.get_most_similar_person(character)}")
                     return [SlotSet("data", data)]
 
