@@ -58,7 +58,7 @@ story_character_relation:
 scene_investigation:
   - base_1: "Ok, so we are standing in the zombie-themed area of the ghost ride. In some way it’s a quite romantic area... we earlier shared a seat at the bench with two zombies holding hands. In the background, there is a scary tree, with no leaves. We can look at the train cabin, under the bench and behind the tree. I think we should search to find some hints about the murderer. Where should we start?"
   - base_2: "Let´s have another close look at everything..."
-  - base_3: "This is all we can find here. We can now talk about my co-workers. I get the feeling that they have something to do with it..."
+  - base_3: "I think this is all we can find here." # TODO #47: Talk about stuff that is not yet explored OR We can now talk about my co-workers. I get the feeling that they have something to do with it...
   - weapon: "Let me see... the weapon is a knife. It’s a bit bloody and it’s a bit scary to hold it. Should I take a closer look or should we put it back where we found it?"
   - knife: "The Knife... Oh, there are initials in it. It says “A.P.” on the knife. Hm, who might it be?"
   - body: "Ok, this feels a bit scary to look at Maria's dead body, but it’s the best thing we can do. Let’s move a few steps closer... She is covered in blood... sorry I'm feeling sick I can't look at it anymore. Please say that we can look around now..."

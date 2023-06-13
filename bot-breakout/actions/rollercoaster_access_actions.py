@@ -8,6 +8,7 @@ from rasa_sdk.events import SlotSet, ReminderScheduled
 from datetime import datetime, timedelta
 import random
 from . import information_interface as ii
+from . import helper_functions as helper
 
 class AccessToRollerCoaster(Action):
     def name(self) -> Text:
@@ -25,19 +26,16 @@ class AccessToRollerCoaster(Action):
         else:
             data = tracker.get_slot('data')
 
+        # if user is not specifiing a character
         if len(characters) == 0:
-            if "last_spoken_about_character" in data:
-                characters = data["last_spoken_about_character"]
-            else:
-                dispatcher.utter_message(text=("I don't know who you're talking about"))
-                return [SlotSet("data", data)]
-            
-        # Todo: If user enters an name that is not in our story
-    
-        for character in characters:
-            dispatcher.utter_message(text=ii.get_story_information(f"access/{character}", "", data, fallback="Sorry, I don't know who you're talking about. If you want to know who has access to the roller coaster, ask for a specific person."))
+            dispatcher.utter_message(text="If you want to know who had access to the roller coaster, tell me who do you want to know about.")
+            return [SlotSet("data", data)]
         
-        data["last_spoken_about_character"] = characters
-
+        for character in characters:
+            # if user asks about a character that is not in the story
+            if character not in ii.get_story_characters():
+                dispatcher.utter_message(text=f"I don't know who {character} is. {helper.get_most_similar_person(character)}")
+            else:
+                dispatcher.utter_message(text=ii.get_story_information(f"access/{character}", "", data))
 
         return [SlotSet("data", data)]
