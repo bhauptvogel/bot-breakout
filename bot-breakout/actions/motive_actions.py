@@ -6,6 +6,7 @@ from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
 from . import information_interface as ii
+from helpers.timer_check import check_timer, set_timer
 
 class CharacterMotive(Action):
     def name(self) -> Text:
@@ -39,5 +40,7 @@ class CharacterMotive(Action):
             
         data["last_spoken_about_character"] = characters
 
+        if check_timer(data):
+            dispatcher.utter_message(text=set_timer(data))
 
         return [SlotSet("data", data)]

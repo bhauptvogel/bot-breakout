@@ -4,6 +4,7 @@ from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, ReminderScheduled
+from helpers.timer_check import check_timer, set_timer
 
 from datetime import datetime, timedelta
 import random
@@ -38,6 +39,9 @@ class AccessToRollerCoaster(Action):
             dispatcher.utter_message(text=ii.get_story_information(f"access/{character}", "", data, fallback="Sorry, I don't know who you're talking about. If you want to know who has access to the roller coaster, ask for a specific person."))
         
         data["last_spoken_about_character"] = characters
+
+        if check_timer(data):
+            dispatcher.utter_message(text=set_timer(data))
 
 
         return [SlotSet("data", data)]

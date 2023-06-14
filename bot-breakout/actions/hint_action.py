@@ -5,6 +5,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
+from helpers.timer_check import check_timer, set_timer
 
 HINTS = [
     # not talked about coworkers
@@ -145,6 +146,9 @@ class Hint(Action):
             data = tracker.get_slot("data")
 
         dispatcher.utter_message(text=self.get_next_hint(data))
+
+        if check_timer(data):
+                dispatcher.utter_message(text=set_timer(data))
 
         return [SlotSet("data", data)]
 

@@ -6,6 +6,7 @@ from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
 from . import information_interface as ii
+from helpers.timer_check import check_timer, set_timer
 
 
 PERCENTAGE_THRESHOLD = 0.45
@@ -119,5 +120,8 @@ class UserGuessesMurderer(Action):
             dispatcher.utter_message(
                 text="We can’t leave before the police arrives in a few minutes! You need to know more about this story to be sure. Let's find more hints together, so they don’t think we two did it. We need to check for a motive, if the suspect had access and the murder weapon!"
             )
+        
+        if check_timer(data):
+                dispatcher.utter_message(text=set_timer(data))       
 
         return [SlotSet("data", data)]
