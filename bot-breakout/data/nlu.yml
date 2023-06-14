@@ -16,6 +16,17 @@ nlu:
     - hello, how are you?
     - are you good?
     - are you alright there
+    - hi
+    - hey
+    - hello
+    - mika
+    - Hi mika
+    - Hello Mika
+    - Hey mika, how are you?
+    - huhu
+    - aloha
+    - bonjour
+    - hola
 
 ## ------ general ------
 - intent: user_wants_to_leave
