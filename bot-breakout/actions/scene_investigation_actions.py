@@ -36,6 +36,7 @@ class SceneInvestigation(Action):
             if obj in ii.get_story_objects():
                 dispatcher.utter_message(text=ii.get_story_information("scene_investigation", obj, data))
             else:
+                # TODO: If User has not yet looked around: "I could look around and tell you what I see."
                 dispatcher.utter_message(text=f"Sorry, I don't know what {obj} is.")
 
         if check_timer(data):
