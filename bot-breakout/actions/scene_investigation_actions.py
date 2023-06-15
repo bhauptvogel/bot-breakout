@@ -36,6 +36,7 @@ class SceneInvestigation(Action):
             if obj in ii.get_story_objects():
                 dispatcher.utter_message(text=ii.get_story_information("scene_investigation", obj, data))
             else:
+                # TODO: If User has not yet looked around: "I could look around and tell you what I see."
                 dispatcher.utter_message(text=f"Sorry, I don't know what {obj} is.")
 
         if check_timer(data):
@@ -61,7 +62,7 @@ class ValidateSimpleCabinForm(FormValidationAction):
             else:
                 value = tracker.get_slot('cabin_guess')
             
-            print(value)
+            # print(value)
             
             if tracker.get_slot('cabin_number_guess') is None:
                 boolean = False

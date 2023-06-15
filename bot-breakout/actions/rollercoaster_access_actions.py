@@ -9,7 +9,7 @@ from helpers.timer_check import check_timer, set_timer
 from datetime import datetime, timedelta
 import random
 from . import information_interface as ii
-from . import helper_functions as helper
+from helpers.string_similarity import get_most_similar_person
 
 class AccessToRollerCoaster(Action):
     def name(self) -> Text:
@@ -29,13 +29,14 @@ class AccessToRollerCoaster(Action):
 
         # if user is not specifiing a character
         if len(characters) == 0:
+            # TODO: I can tell you who had access of... (all characters the user has not asked access about yet) #53
             dispatcher.utter_message(text="If you want to know who had access to the roller coaster, tell me who do you want to know about.")
             return [SlotSet("data", data)]
         
         for character in characters:
             # if user asks about a character that is not in the story
             if character not in ii.get_story_characters():
-                dispatcher.utter_message(text=f"I don't know who {character} is. {helper.get_most_similar_person(character)}")
+                dispatcher.utter_message(text=f"I don't know who {character} is. {get_most_similar_person(character)}")
             else:
                 dispatcher.utter_message(text=ii.get_story_information(f"access/{character}", "", data))
         

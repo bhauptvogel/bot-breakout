@@ -1,4 +1,4 @@
-from . import information_interface as ii
+from actions import information_interface as ii
 
 def get_most_similar_person(character):
         """
