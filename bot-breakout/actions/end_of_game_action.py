@@ -8,6 +8,7 @@ import random
 from . import information_interface as ii
 from helpers.timer_check import check_timer, set_timer
 from helpers.last_talked_about import reset_last_talked_about_character
+from helpers.string_similarity import get_most_similar_person
 
 PERCENTAGE_THRESHOLD = 0.45
 
@@ -53,8 +54,11 @@ class UserGuessesMurderer(Action):
                 # person is the other person
                 person = [p for p in person if p != "Maria"]
 
-        if len(person) > 1:
+        if len(person) != 1:
             dispatcher.utter_message(text="So who do you think it is? I'm confused.")
+            return [SlotSet("data", data)]
+        elif person[0] not in ii.get_story_characters():
+            dispatcher.utter_message(text=f"I don't know who {person[0]} is. {get_most_similar_person(person[0])}")
             return [SlotSet("data", data)]
 
         if "times_wanted_to_guess_murderer" not in data:
