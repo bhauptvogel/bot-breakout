@@ -43,7 +43,7 @@ class CharacterMotive(Action):
             return [SlotSet("data", data)]
     
         # if user is not specifiing a character
-        if len(characters) == 0:
+        if len(characters) == 0 or characters[0] == "":
             # TODO: I can tell you the motive of... (all characters the user has not asked the motive about yet) #53
             dispatcher.utter_message(text="If you want to know the motive about a certain character, let me know who you want to know about.")
             reset_last_talked_about_character(data)

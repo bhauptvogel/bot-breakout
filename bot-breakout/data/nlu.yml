@@ -561,13 +561,24 @@ nlu:
     - Who is allowed to access the [roller coaster]{"entity":"object"}?
     - Did [Kira]{"entity":"person"} have the possiblity to enter the [attraction]{"entity":"object"}?
     - Could [Anna]{"entity":"person"} have theoretically done it?
-    - Does he have the keys to the [rollercoaster]{"entity":"object"}?
-    - Does she have the keys to the [rollercoaster]{"entity":"object"}?
-    - It is possible for him to have access?
-    - Does she have the keys?
-    - Is is possible for her to get to this part of the park?
     - had [Anna]{"entity":"person"} access
-    - Can he get into the [attraction]{"entity":"object"}?
+    - Has [he]{"entity":"person", "group":"reference"} access to the [rollercoaster]{"entity":"object"}?
+    - Does [she]{"entity":"person", "group":"reference"} have access to the [ghost train]{"entity":"object"}?
+    - Has [he]{"entity":"person", "group":"reference"} access to the [cabin]{"entity":"object"}?
+    - Did [she]{"entity":"person", "group":"reference"} have access to the [murder weapon]{"entity":"object"}?
+    - Could [he]{"entity":"person", "group":"reference"} have reached the [cabin]{"entity":"object"}?
+    - Can [he]{"entity":"person", "group":"reference"} access the [rollercoaster]{"entity":"object"}?
+    - Is [he]{"entity":"person", "group":"reference"} able to get into this [part]{"entity":"object"} of the park?
+    - Does [she]{"entity":"person", "group":"reference"} have the keys to the [haunted house]{"entity":"object"}?
+    - Can [he]{"entity":"person", "group":"reference"} operate the [park]{"entity":"object"}?
+    - Is [she]{"entity":"person", "group":"reference"} in charge of the [attraction]{"entity":"object"}?
+    - Does [he]{"entity":"person", "group":"reference"} have the pass to the [ride]{"entity":"object"}?
+    - Can [he]{"entity":"person", "group":"reference"} get into the [cabin]{"entity":"object"}?
+    - Did [she]{"entity":"person", "group":"reference"} have the possibility to enter the [attraction]{"entity":"object"}?
+    - Could [she]{"entity":"person", "group":"reference"} have theoretically done it?
+    - It is possible for [him]{"entity":"person", "group":"reference"} to have access?
+    - Does [she]{"entity":"person", "group":"reference"} have the keys?
+    - Is is possible for [her]{"entity":"person", "group":"reference"} to get to this part of the park?
 
 ## --------------------------------------------
 - synonym: body
