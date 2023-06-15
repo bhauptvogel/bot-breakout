@@ -154,6 +154,7 @@ nlu:
     - Tell me about the environment
     - What do you see?
     - Search the room
+    - Mika investigate the scene
     - What is here
     - Where are we
     - Investigate
@@ -183,10 +184,9 @@ nlu:
     - Check the [bench]{"entity":"object", "group":"search"}
     - Look behind the [tree]{"entity":"object", "group":"search"}
     - Look around the [tree]{"entity":"object", "group":"search"}
-    - Investigate the [scene]{"entity":"object", "group":"search"}
-    - Take a closer look at the [environment]{"entity":"object", "group":"search"}
+    - Take a closer look at the environment
     - What do you observe in the surroundings?
-    - Conduct a thorough search of the [room]{"entity":"object", "group":"search"}
+    - Conduct a thorough search of the room
     - Engage in further investigation.
     - Perform a detailed examination of the [body]{"entity":"object", "group":"search"} and the [note]{"entity":"object", "group":"search"}
     - Direct your attention to the [body]{"entity":"object", "group":"search"}
@@ -261,6 +261,7 @@ nlu:
   examples: |
     - Tell me more about him
     - Tell me more about her
+    - Tell me more about it
     - More about him
     - More about her
     - Tell me about [Maria]{"entity":"person"}
