@@ -18,7 +18,7 @@ class CharacterInvestigation(Action):
 
     def utter_base_information(self, dispatcher, characters, data):
         for character in characters:
-            if character not in ii.get_story_characters():
+            if character is not "__General__" and character not in ii.get_story_characters():
                     dispatcher.utter_message(text=f"I don't know who {character} is. {get_most_similar_person(character)}")
                     reset_last_talked_about_character(data)
                     return
