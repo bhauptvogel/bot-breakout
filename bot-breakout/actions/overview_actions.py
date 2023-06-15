@@ -115,7 +115,7 @@ class SituationOverview(Action):
                 dispatcher.utter_message(text=info["text"])
             
         if check_timer(data):
-                dispatcher.utter_message(text=set_timer(data))  
+            dispatcher.utter_message(text=set_timer(data))  
                 
 
         return [SlotSet("data", data)]
