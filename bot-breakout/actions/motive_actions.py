@@ -6,8 +6,8 @@ from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
 from . import information_interface as ii
-from . import helper_functions as helper
 from helpers.timer_check import check_timer, set_timer
+from helpers.string_similarity import get_most_similar_person
 
 class CharacterMotive(Action):
     def name(self) -> Text:
@@ -34,7 +34,7 @@ class CharacterMotive(Action):
         for character in characters:
             # if user asks about a character that is not in the story
             if character not in ii.get_story_characters():
-                dispatcher.utter_message(text=f"I don't know who {character} is. {helper.get_most_similar_person(character)}")
+                dispatcher.utter_message(text=f"I don't know who {character} is. {get_most_similar_person(character)}")
             else:
                 dispatcher.utter_message(text=ii.get_story_information(f"motive/{character}", "", data))
         
