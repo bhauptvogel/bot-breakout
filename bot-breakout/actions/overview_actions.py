@@ -6,6 +6,7 @@ from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
 from . import information_interface as ii
+from helpers.timer_check import check_timer, set_timer
 
 INFORMATION = [
     {
@@ -112,6 +113,9 @@ class SituationOverview(Action):
             # if all states of info are in the game_state 
             if in_game_state:
                 dispatcher.utter_message(text=info["text"])
+            
+        if check_timer(data):
+                dispatcher.utter_message(text=set_timer(data))  
                 
 
         return [SlotSet("data", data)]

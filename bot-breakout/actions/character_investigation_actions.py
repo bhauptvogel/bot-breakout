@@ -4,8 +4,8 @@ from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, ReminderScheduled
+from helpers.timer_check import check_timer, set_timer
 
-from datetime import datetime, timedelta
 import random
 from . import information_interface as ii
 from . import helper_functions as helper
@@ -60,6 +60,7 @@ class CharacterInvestigation(Action):
             data = {}
         else:
             data = tracker.get_slot('data')
+    
 
 
         if len(entities) > 0 and "group" in entities[0].keys():
