@@ -28,7 +28,7 @@ class CharacterInvestigation(Action):
     def utter_specific_information(self, dispatcher, character, info, data):
         if info not in ii.get_story_characters_information()[character]:
             if character == "__General__":
-                dispatcher.utter_message(text=f"I don't know anything about the {info}")
+                dispatcher.utter_message(text=f"I don't know anything about the {info}!")
             else:
                 dispatcher.utter_message(text=f"I don't know anything about the {info} of {character}!")        
         else:

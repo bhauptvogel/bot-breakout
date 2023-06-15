@@ -83,7 +83,7 @@ class UserGuessesMurderer(Action):
         true_percentage = true_count / (true_count + false_count)
 
         # TODO (#23): Rewrite end
-        if true_percentage > PERCENTAGE_THRESHOLD:
+        if true_percentage > PERCENTAGE_THRESHOLD or check_timer(data):
             if data["times_wanted_to_guess_murderer"] == 0:
                 dispatcher.utter_message(
                     text="Are you sure? Maybe, but I'm not sure about that. Let's check the clues we have! Type watch overview. Then tell me who you think is the murderer."
