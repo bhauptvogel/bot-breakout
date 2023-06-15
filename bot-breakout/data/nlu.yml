@@ -173,7 +173,9 @@ nlu:
     - Read the [note]{"entity":"object", "group":"search"}
     - Look at the [note]{"entity":"object", "group":"search"}
     - Tell me about the [note]{"entity":"object", "group":"search"}.
+    - can i look closer at the light [equipment]{"entity":"object", "group":"search"}?
     - Please take a look at the [weapon]{"entity":"object", "group":"search"}
+    - Look at the light [equipment]{"entity":"object", "group":"search"}
     - Please take a look at the [knife]{"entity":"object", "group":"search"}
     - Look at the [knife]{"entity":"object", "group":"search"}
     - Please look at the [knife]{"entity":"object", "group":"search"}
