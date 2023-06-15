@@ -62,7 +62,7 @@ class ValidateSimpleCabinForm(FormValidationAction):
             else:
                 value = tracker.get_slot('cabin_guess')
             
-            print(value)
+            # print(value)
             
             if tracker.get_slot('cabin_number_guess') is None:
                 boolean = False
