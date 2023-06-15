@@ -6,6 +6,7 @@ from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
 from helpers.timer_check import check_timer, set_timer
+from helpers.last_talked_about import reset_last_talked_about_character
 
 HINTS = [
     # not talked about coworkers
@@ -146,6 +147,8 @@ class Hint(Action):
             data = tracker.get_slot("data")
 
         dispatcher.utter_message(text=self.get_next_hint(data))
+
+        reset_last_talked_about_character(data)
 
         if check_timer(data):
                 dispatcher.utter_message(text=set_timer(data))

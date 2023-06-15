@@ -7,7 +7,8 @@ from rasa_sdk.events import SlotSet, EventType
 import random
 from . import information_interface as ii
 from helpers.timer_check import check_timer, set_timer
-
+from helpers.last_talked_about import reset_last_talked_about_character
+from helpers.string_similarity import get_most_similar_person
 
 PERCENTAGE_THRESHOLD = 0.45
 
@@ -53,8 +54,11 @@ class UserGuessesMurderer(Action):
                 # person is the other person
                 person = [p for p in person if p != "Maria"]
 
-        if len(person) > 1:
+        if len(person) != 1:
             dispatcher.utter_message(text="So who do you think it is? I'm confused.")
+            return [SlotSet("data", data)]
+        elif person[0] not in ii.get_story_characters():
+            dispatcher.utter_message(text=f"I don't know who {person[0]} is. {get_most_similar_person(person[0])}")
             return [SlotSet("data", data)]
 
         if "times_wanted_to_guess_murderer" not in data:
@@ -79,7 +83,7 @@ class UserGuessesMurderer(Action):
         true_percentage = true_count / (true_count + false_count)
 
         # TODO (#23): Rewrite end
-        if true_percentage > PERCENTAGE_THRESHOLD:
+        if true_percentage > PERCENTAGE_THRESHOLD or check_timer(data):
             if data["times_wanted_to_guess_murderer"] == 0:
                 dispatcher.utter_message(
                     text="Are you sure? Maybe, but I'm not sure about that. Let's check the clues we have! Type watch overview. Then tell me who you think is the murderer."
@@ -121,6 +125,9 @@ class UserGuessesMurderer(Action):
                 #text="We can’t leave before the police arrives in a few minutes! You need to know more about this story to be sure. Let's find more hints together, so they don’t think we two did it. We need to check for a motive, if the suspect had access and the murder weapon!"
                 f"So you guess that {person[0]} is the murderer... We need to make sure we know as much about our suspects as possible, like if they had access to the train and their motive. Also taking a closer look at the murder weapon could give a clue! Lets go on with the investigation before we accuse someone."
             )
+
+        
+        reset_last_talked_about_character(data)
         
         if check_timer(data):
                 dispatcher.utter_message(text=set_timer(data))       

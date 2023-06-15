@@ -154,6 +154,7 @@ nlu:
     - Tell me about the environment
     - What do you see?
     - Search the room
+    - Mika investigate the scene
     - What is here
     - Where are we
     - Investigate
@@ -172,7 +173,9 @@ nlu:
     - Read the [note]{"entity":"object", "group":"search"}
     - Look at the [note]{"entity":"object", "group":"search"}
     - Tell me about the [note]{"entity":"object", "group":"search"}.
+    - can i look closer at the light [equipment]{"entity":"object", "group":"search"}?
     - Please take a look at the [weapon]{"entity":"object", "group":"search"}
+    - Look at the light [equipment]{"entity":"object", "group":"search"}
     - Please take a look at the [knife]{"entity":"object", "group":"search"}
     - Look at the [knife]{"entity":"object", "group":"search"}
     - Please look at the [knife]{"entity":"object", "group":"search"}
@@ -183,10 +186,9 @@ nlu:
     - Check the [bench]{"entity":"object", "group":"search"}
     - Look behind the [tree]{"entity":"object", "group":"search"}
     - Look around the [tree]{"entity":"object", "group":"search"}
-    - Investigate the [scene]{"entity":"object", "group":"search"}
-    - Take a closer look at the [environment]{"entity":"object", "group":"search"}
+    - Take a closer look at the environment
     - What do you observe in the surroundings?
-    - Conduct a thorough search of the [room]{"entity":"object", "group":"search"}
+    - Conduct a thorough search of the room
     - Engage in further investigation.
     - Perform a detailed examination of the [body]{"entity":"object", "group":"search"} and the [note]{"entity":"object", "group":"search"}
     - Direct your attention to the [body]{"entity":"object", "group":"search"}
@@ -214,7 +216,6 @@ nlu:
     - Carefully examine the [bench]{"entity":"object", "group":"search"}
     - Direct your attention to what is behind the [tree]{"entity":"object", "group":"search"}
     - Take a look around the [tree]{"entity":"object", "group":"search"} and observe
-
 
 - intent: cabin_investigation
   examples: |
@@ -257,12 +258,12 @@ nlu:
     - is [123,5]{"entity":"cabin_password"} the right answer
     - is [123,5]{"entity":"cabin_password"} right?
 
-
 ## ------ character investigation ------
 - intent: information_about_character
   examples: |
     - Tell me more about him
     - Tell me more about her
+    - Tell me more about it
     - More about him
     - More about her
     - Tell me about [Maria]{"entity":"person"}
@@ -466,58 +467,81 @@ nlu:
     - Tell me more about [Maria]{"entity":"person"}'s [boyfriend]{"entity":"person"}.
     - I want to know more about [Anna]{"entity":"person"}.
 
-
 - intent: motive_of_character
   examples: |
-    - Does [Maria]{"entity":"person", "group":"victim"} have a motive?
-    - What motive could [Maria]{"entity":"person", "group":"victim"} have?
-    - Did [Maria]{"entity":"person", "group":"victim"} kill herself?
-    - What is [Patrick]{"entity":"person", "group":"suspect"}'s motive?
-    - Has [Anna]{"entity":"person", "group":"suspect"} a motive?
-    - What could be possible motives for [Victor]{"entity":"person", "group":"suspect"}?
-    - Has [Anna]{"entity":"person", "group":"suspect"} a motiv?
-    - Has [Ana]{"entity":"person", "group":"suspect", "value":"Anna"} a motiv?
-    - Is there a reason for [Victor]{"entity":"person", "group":"suspect"} to kill [Maria]{"entity":"person", "group":"victim"}?
-    - Why would [Kira]{"entity":"person", "group":"suspect"} kill [Maria]{"entity":"person", "group":"victim"}?
-    - Why would [Patrick]{"entity":"person", "group":"suspect"} want to harm [Maria]{"entity":"person", "group":"victim"}?
-    - What could be [Anna]{"entity":"person", "group":"suspect"}'s reason to kill [Maria]{"entity":"person", "group":"victim"}?
-    - Does [Victor]{"entity":"person", "group":"suspect"} have a reason to harm [Maria]{"entity":"person", "group":"victim"}?
-    - What could [Kira]{"entity":"person", "group":"suspect"} gain from [Maria]{"entity":"person", "group":"victim"}'s death?
-    - Why would [Anna]{"entity":"person", "group":"suspect"} kill [Maria]{"entity":"person", "group":"victim"}?
-    - Does [Kira]{"entity":"person", "group":"suspect"} have any motive to harm [Maria]{"entity":"person", "group":"victim"}?
-    - Could [Victor]{"entity":"person", "group":"suspect"} have a reason to harm [Maria]{"entity":"person", "group":"victim"}?
-    - What could be [Patrick]{"entity":"person", "group":"suspect"}'s motive for killing [Maria]{"entity":"person", "group":"victim"}?
-    - Does [Anna]{"entity":"person", "group":"suspect"} have a motive for harming [Maria]{"entity":"person", "group":"victim"}?
-    - What could [Maria]{"entity":"person", "group":"victim"} have done to [Patrick]{"entity":"person", "group":"suspect"} that he would want to kill her?
-    - What did [Maria]{"entity":"person", "group":"victim"} do to [Patrick]{"entity":"person", "group":"suspect"} that he would harm her?
-    - Could [Maria]{"entity":"person", "group":"victim"} have any reason for doing all this?
-    - Does [Kira]{"entity":"person", "group":"suspect"} have a motive?
-    - Does [Anna]{"entity":"person", "group":"suspect"} have a motive?
-    - Why could [Kira]{"entity":"person", "group":"suspect"} have done it?
-    - Why could [Anna]{"entity":"person", "group":"suspect"} have been it?
-    - Why could [Victor]{"entity":"person", "group":"suspect"} have killed her?
-    - Tell me Reasons for [Patrick]{"entity":"person", "group":"suspect"} might have killed [Maria]{"entity":"person", "group":"victim"}?
-    - Why would [Kira]{"entity":"person", "group":"suspect"} do that?
-    - Why would [Patrick]{"entity":"person", "group":"suspect"} do that?
-    - Why wuld [Victor]{"entity":"person", "group":"suspect"} do tha?
-    - Is there a reason for [Stephanie]{"entity":"person"} to kill [Maria]{"entity":"person", "group":"victim"}?
-    - Why would [Chiara]{"entity":"person"} kill [Maria]{"entity":"person", "group":"victim"}?
-    - Why would [Ben]{"entity":"person"} want to harm [Maria]{"entity":"person", "group":"victim"}?
-    - What could be [Meike]{"entity":"person"}'s reason to kill [Maria]{"entity":"person", "group":"victim"}?
-    - Does [Ursula]{"entity":"person"} have a reason to harm [Maria]{"entity":"person", "group":"victim"}?
-    - Can you tell me more about [Victors]{"entity":"person", "group":"suspect", "value":"Victor"} motive?
-    - Can you tell me more about [Patrick]{"entity":"person", "group":"suspect"}s motive?
-    - Can you tell me more about [Annas]{"entity":"person", "group":"suspect", "value":"Anna"} motive?
-    - What could [kira]{"entity":"person", "group":"suspect", "value":"Kira"} gain from [Maria]{"entity":"person", "group":"victim"}'s death?
-    - Why would [Ana]{"entity":"person", "group":"suspect", "value":"Anna"} kill [Maria]{"entity":"person", "group":"victim"}?
-    - Does [Patrik]{"entity":"person", "group":"suspect", "value":"Patrick"} have any motive to harm [Maria]{"entity":"person", "group":"victim"}?
-    - Can you tell me more about his motive?
-    - Can you tell me more about her motive?
-    - What could be her motive?
-    - Does he have a motive?
-    - What motive could she have?
-    - Could she have a motive?
-
+    - Does [Maria]{"entity":"person", "role":"suspect"} have a motive?
+    - Does [she]{"entity":"person", "group":"reference", "role":"suspect"} have a motive?
+    - What motive could [Maria]{"entity":"person", "role":"suspect"} have?
+    - What motive could [she]{"entity":"person", "group":"reference", "role":"suspect"} have?
+    - Did [Maria]{"entity":"person", "role":"victim"} kill herself?
+    - Did [she]{"entity":"person", "group":"reference", "role":"victim"} kill herself?
+    - What is [Patrick]{"entity":"person", "role":"suspect"}'s motive?
+    - What is [his]{"entity":"person", "group":"reference", "role":"suspect"} motive?
+    - Has [Anna]{"entity":"person", "role":"suspect"} a motive?
+    - Has [she]{"entity":"person", "group":"reference", "role":"suspect"} a motive?
+    - What could be possible motives for [Victor]{"entity":"person", "role":"suspect"}?
+    - What could be possible motives for [him]{"entity":"person", "group":"reference"}?
+    - Has [Anna]{"entity":"person", "role":"suspect"} a motiv?
+    - Has [she]{"entity":"person", "group":"reference", "role":"suspect"} a motiv?
+    - Has [Ana]{"entity":"person", "role":"suspect", "value":"Anna"} a motiv?
+    - Has [he]{"entity":"person", "group":"reference", "role":"suspect"} a motiv?
+    - Is there a reason for [Victor]{"entity":"person", "role":"suspect"} to kill [Maria]{"entity":"person", "role":"victim"}?
+    - Is there a reason for [him]{"entity":"person", "group":"reference", "role":"suspect"} to kill [Maria]{"entity":"person", "role":"victim"}?
+    - Why would [Kira]{"entity":"person", "role":"suspect"} kill [Maria]{"entity":"person", "role":"victim"}?
+    - Why would [she]{"entity":"person", "group":"reference", "role":"suspect"} kill [Maria]{"entity":"person", "role":"victim"}?
+    - Why would [Patrick]{"entity":"person", "role":"suspect"} want to harm [Maria]{"entity":"person", "role":"victim"}?
+    - Why would [he]{"entity":"person", "group":"reference", "role":"suspect"} want to harm [Maria]{"entity":"person", "role":"victim"}?
+    - What could be [Anna]{"entity":"person", "role":"suspect"}'s reason to kill [Maria]{"entity":"person", "role":"victim"}?
+    - What could be [her]{"entity":"person", "group":"reference", "role":"suspect"} reason to kill [Maria]{"entity":"person", "role":"victim"}?
+    - Does [Victor]{"entity":"person", "role":"suspect"} have a reason to harm [Maria]{"entity":"person", "role":"victim"}?
+    - Does [he]{"entity":"person", "group":"reference", "role":"suspect"} have a reason to harm [Maria]{"entity":"person", "role":"victim"}?
+    - What could [Kira]{"entity":"person", "role":"suspect"} gain from [Maria]{"entity":"person", "role":"victim"}'s death?
+    - What could [she]{"entity":"person", "group":"reference", "role":"suspect"} gain from [Maria]{"entity":"person", "role":"victim"}'s death?
+    - Why would [Anna]{"entity":"person", "role":"suspect"} kill [Maria]{"entity":"person", "role":"victim"}?
+    - Why would [she]{"entity":"person", "group":"reference", "role":"suspect"} kill [Maria]{"entity":"person", "role":"victim"}?
+    - Does [Kira]{"entity":"person", "role":"suspect"} have any motive to harm [Maria]{"entity":"person", "role":"victim"}?
+    - Does [she]{"entity":"person", "group":"reference", "role":"suspect"} have any motive to harm [her]{"entity":"person", "group":"reference", "role":"victim"}?
+    - Could [he]{"entity":"person", "group":"reference", "role":"suspect"} have a reason to harm [Maria]{"entity":"person", "role":"victim"}?
+    - What could be [Patrick]{"entity":"person", "role":"suspect"}'s motive for killing [Maria]{"entity":"person", "role":"victim"}?
+    - What could be [his]{"entity":"person", "group":"reference", "role":"suspect"}'s motive for killing [Maria]{"entity":"person", "role":"victim"}?
+    - Does [Anna]{"entity":"person", "role":"suspect"} have a motive for harming [Maria]{"entity":"person", "role":"victim"}?
+    - Does [she]{"entity":"person", "group":"reference", "role":"suspect"} have a motive for harming [Maria]{"entity":"person", "role":"victim"}?
+    - What could [Maria]{"entity":"person", "role":"victim"} have done to [Patrick]{"entity":"person", "role":"suspect"} that he would want to kill her?
+    - What could [Maria]{"entity":"person", "role":"victim"} have done to [him]{"entity":"person", "group":"reference", "role":"suspect"} that he would want to kill her?
+    - What did [Maria]{"entity":"person", "role":"victim"} do to [Patrick]{"entity":"person", "role":"suspect"} that he would harm her?
+    - What did [Maria]{"entity":"person", "role":"victim"} do to [him]{"entity":"person", "group":"reference", "role":"suspect"} that he would harm her?
+    - Could [Maria]{"entity":"person", "group":"reference", "role":"victim"} have any reason for doing all this?
+    - Could [she]{"entity":"person", "role":"victim"} have any reason for doing all this?
+    - Does [Kira]{"entity":"person", "role":"suspect"} have a motive?
+    - Does [he]{"entity":"person", "group":"reference", "role":"suspect"} have a motive?
+    - Does [Anna]{"entity":"person", "role":"suspect"} have a motive?
+    - Why could [Kira]{"entity":"person", "role":"suspect"} have done it?
+    - Why could [she]{"entity":"person", "group":"reference", "role":"suspect"} have done it?
+    - Why could [Anna]{"entity":"person", "role":"suspect"} have been it?
+    - Why could [Victor]{"entity":"person", "role":"suspect"} have killed her?
+    - Why could [he]{"entity":"person", "group":"reference", "role":"suspect"} have killed her?
+    - Tell me Reasons for [Patrick]{"entity":"person", "role":"suspect"} might have killed [Maria]{"entity":"person", "role":"victim"}?
+    - Why would [Kira]{"entity":"person", "role":"suspect"} do that?
+    - Why would [Patrick]{"entity":"person", "role":"suspect"} do that?
+    - Why would [he]{"entity":"person", "group":"reference", "role":"suspect"} do that?
+    - Why wuld [Victor]{"entity":"person", "role":"suspect"} do tha?
+    - Is there a reason for [Stephanie]{"entity":"person"} to kill [Maria]{"entity":"person", "role":"victim"}?
+    - Why would [Chiara]{"entity":"person"} kill [Maria]{"entity":"person", "role":"victim"}?
+    - Why would [Ben]{"entity":"person"} want to harm [Maria]{"entity":"person", "role":"victim"}?
+    - What could be [Meike]{"entity":"person"}'s reason to kill [Maria]{"entity":"person", "role":"victim"}?
+    - Does [Ursula]{"entity":"person"} have a reason to harm [Maria]{"entity":"person", "role":"victim"}?
+    - Can you tell me more about [Victors]{"entity":"person", "role":"suspect", "value":"Victor"} motive?
+    - Can you tell me more about [Patrick]{"entity":"person", "role":"suspect"}s motive?
+    - Can you tell me more about [Annas]{"entity":"person", "role":"suspect", "value":"Anna"} motive?
+    - What could [kira]{"entity":"person", "role":"suspect", "value":"Kira"} gain from [Maria]{"entity":"person", "role":"victim"}'s death?
+    - Why would [Ana]{"entity":"person", "role":"suspect", "value":"Anna"} kill [Maria]{"entity":"person", "role":"victim"}?
+    - Does [Patrik]{"entity":"person", "role":"suspect", "value":"Patrick"} have any motive to harm [Maria]{"entity":"person", "role":"victim"}?
+    - Can you tell me more about [his]{"entity":"person", "group":"reference", "role":"suspect"} motive?
+    - Can you tell me more about [her]{"entity":"person", "group":"reference", "role":"suspect"} motive?
+    - What could be [her]{"entity":"person", "group":"reference", "role":"suspect"} motive?
+    - Does [he]{"entity":"person", "group":"reference", "role":"suspect"} have a motive?
+    - What motive could [she]{"entity":"person", "group":"reference", "role":"suspect"} have?
+    - Could [she]{"entity":"person", "group":"reference", "role":"suspect"} have a motive?
 
 - intent: access_to_rollercoaster
   examples: |
@@ -540,13 +564,24 @@ nlu:
     - Who is allowed to access the [roller coaster]{"entity":"object"}?
     - Did [Kira]{"entity":"person"} have the possiblity to enter the [attraction]{"entity":"object"}?
     - Could [Anna]{"entity":"person"} have theoretically done it?
-    - Does he have the keys to the [rollercoaster]{"entity":"object"}?
-    - Does she have the keys to the [rollercoaster]{"entity":"object"}?
-    - It is possible for him to have access?
-    - Does she have the keys?
-    - Is is possible for her to get to this part of the park?
     - had [Anna]{"entity":"person"} access
-    - Can he get into the [attraction]{"entity":"object"}?
+    - Has [he]{"entity":"person", "group":"reference"} access to the [rollercoaster]{"entity":"object"}?
+    - Does [she]{"entity":"person", "group":"reference"} have access to the [ghost train]{"entity":"object"}?
+    - Has [he]{"entity":"person", "group":"reference"} access to the [cabin]{"entity":"object"}?
+    - Did [she]{"entity":"person", "group":"reference"} have access to the [murder weapon]{"entity":"object"}?
+    - Could [he]{"entity":"person", "group":"reference"} have reached the [cabin]{"entity":"object"}?
+    - Can [he]{"entity":"person", "group":"reference"} access the [rollercoaster]{"entity":"object"}?
+    - Is [he]{"entity":"person", "group":"reference"} able to get into this [part]{"entity":"object"} of the park?
+    - Does [she]{"entity":"person", "group":"reference"} have the keys to the [haunted house]{"entity":"object"}?
+    - Can [he]{"entity":"person", "group":"reference"} operate the [park]{"entity":"object"}?
+    - Is [she]{"entity":"person", "group":"reference"} in charge of the [attraction]{"entity":"object"}?
+    - Does [he]{"entity":"person", "group":"reference"} have the pass to the [ride]{"entity":"object"}?
+    - Can [he]{"entity":"person", "group":"reference"} get into the [cabin]{"entity":"object"}?
+    - Did [she]{"entity":"person", "group":"reference"} have the possibility to enter the [attraction]{"entity":"object"}?
+    - Could [she]{"entity":"person", "group":"reference"} have theoretically done it?
+    - It is possible for [him]{"entity":"person", "group":"reference"} to have access?
+    - Does [she]{"entity":"person", "group":"reference"} have the keys?
+    - Is is possible for [her]{"entity":"person", "group":"reference"} to get to this part of the park?
 
 ## --------------------------------------------
 - synonym: body
