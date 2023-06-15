@@ -29,6 +29,7 @@ class AccessToRollerCoaster(Action):
 
         # if user is not specifiing a character
         if len(characters) == 0:
+            # TODO: I can tell you who had access of... (all characters the user has not asked access about yet) #53
             dispatcher.utter_message(text="If you want to know who had access to the roller coaster, tell me who do you want to know about.")
             return [SlotSet("data", data)]
         
