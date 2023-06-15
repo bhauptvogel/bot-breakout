@@ -137,7 +137,7 @@ nlu:
     - [Vicctor]{"entity":"person", "value":"Victor"} is the one to blame.
     - I'm convinced it's [Annaa]{"entity":"person", "value":"Anna"}.
     - I wish to report that [Patriks]{"entity":"person", "value":"Patrick"} is the criminal.
-    - Let's consider [Anas]{"entity":"person", "value":"Anna"} as the killer.  
+    - Let's consider [Anas]{"entity":"person", "value":"Anna"} as the killer.
     - I want to submit my final answer: It's [mari]{"entity":"person", "value":"Maria"}.
     - I think it's time to tell the police that [patrick]{"entity":"person", "value":"Patrick"} is responsible.
     - Can [Kira's]{"entity":"person", "value":"Kira"} guilt be confirmed?
@@ -242,18 +242,18 @@ nlu:
 
 - intent: guess_cabin_pin
   examples: |
-    - it [123]{"entity":"cabin_password"}    
-    - is it [123]{"entity":"cabin_password"}    
-    - [123]{"entity":"cabin_password"}    
-    - try [123]{"entity":"cabin_password"}    
-    - what about [123]{"entity":"cabin_password"} 
+    - it [123]{"entity":"cabin_password"}
+    - is it [123]{"entity":"cabin_password"}
+    - [123]{"entity":"cabin_password"}
+    - try [123]{"entity":"cabin_password"}
+    - what about [123]{"entity":"cabin_password"}
     - is [123]{"entity":"cabin_password"} the right answer
     - is [123]{"entity":"cabin_password"} right?
-    - it [123.5]{"entity":"cabin_password"}    
-    - is it [123,5]{"entity":"cabin_password"}    
-    - [123.5]{"entity":"cabin_password"}    
-    - try [123.5]{"entity":"cabin_password"}    
-    - what about [123.5]{"entity":"cabin_password"} 
+    - it [123.5]{"entity":"cabin_password"}
+    - is it [123,5]{"entity":"cabin_password"}
+    - [123.5]{"entity":"cabin_password"}
+    - try [123.5]{"entity":"cabin_password"}
+    - what about [123.5]{"entity":"cabin_password"}
     - is [123,5]{"entity":"cabin_password"} the right answer
     - is [123,5]{"entity":"cabin_password"} right?
 
@@ -545,7 +545,7 @@ nlu:
     - It is possible for him to have access?
     - Does she have the keys?
     - Is is possible for her to get to this part of the park?
-    - had [Anna]{entity:person} access
+    - had [Anna]{"entity":"person"} access
     - Can he get into the [attraction]{"entity":"object"}?
 
 ## --------------------------------------------
@@ -669,4 +669,3 @@ nlu:
     - patrick
     - patrik
     - Partick
-    - Padrik
