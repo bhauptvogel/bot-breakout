@@ -38,5 +38,8 @@ class AccessToRollerCoaster(Action):
                 dispatcher.utter_message(text=f"I don't know who {character} is. {helper.get_most_similar_person(character)}")
             else:
                 dispatcher.utter_message(text=ii.get_story_information(f"access/{character}", "", data))
+        
+        if check_timer(data):
+            dispatcher.utter_message(text=set_timer(data))  
 
         return [SlotSet("data", data)]

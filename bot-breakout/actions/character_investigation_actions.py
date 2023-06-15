@@ -85,4 +85,8 @@ class CharacterInvestigation(Action):
         
 
         self.utter_base_information(dispatcher, characters, data)
+
+        if check_timer(data):
+            dispatcher.utter_message(text=set_timer(data))
+
         return [SlotSet("data", data)]
