@@ -72,7 +72,7 @@ def get_base_item(keys, times_asked_about):
 
     return item
 
-def get_story_information(class_, item, data_slot, fallback=""):
+def get_story_information(class_, item, data_slot):
     """
     :param class_: class to get information about (e.g. 'scene_investigation')
     :param item: item of the class (e.g. 'base_1', none means base)
@@ -89,10 +89,10 @@ def get_story_information(class_, item, data_slot, fallback=""):
 
     if class_data is None:
         logging.error(f"get_story_information: class_data is None! class:{class_}, item:{item}")
-        return fallback
+        return None
     if data_slot is None:
         logging.error("get_story_information: data_slot is None")
-        return fallback
+        return None
             
     
     times_asked_about = 0
@@ -109,7 +109,7 @@ def get_story_information(class_, item, data_slot, fallback=""):
     
     if item not in class_keys:
         logging.warning(f'item {item} not in keys... ' + ' '.join(class_keys))
-        return fallback
+        return None
     
     # add 1 to times_asked_about_class_ in data_slot
     if item.startswith('base_'):
@@ -125,5 +125,36 @@ def get_story_information(class_, item, data_slot, fallback=""):
 
 
 
+def get_story_characters():
+    keys = load_information()["character_information"].keys()
+    keys = list(keys)
+    keys.remove("__General__")
+    return keys
 
+def get_story_characters_information():
+    """
+    Returns a dictionary with all characters as keys and a list of all their information as values.
+    """
+    output = {}
+    story_character_information = load_information()["character_information"]
+    for character in story_character_information.keys():
+        character_information_dict = story_character_information[character]
+        if character not in output.keys():
+            output[character] = []
+        for info_list in character_information_dict:
+            specific_information = info_list.keys()
+            specific_information = list(specific_information)[0]
+            if not specific_information.startswith("base_"):
+                output[character].append(specific_information)
+    return output
 
+def get_story_objects():
+    output = []
+    story_objects_dict = load_information()["scene_investigation"]
+    for object in story_objects_dict:
+        keys = object.keys()
+        obj = list(keys)[0]
+        if not obj.startswith("base_"):
+            output.append(obj)
+
+    return output
