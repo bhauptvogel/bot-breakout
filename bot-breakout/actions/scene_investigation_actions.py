@@ -12,6 +12,24 @@ from helpers.timer_check import check_timer, set_timer
 class SceneInvestigation(Action):
     def name(self) -> Text:
         return "action_scene_investigation"
+    
+    def utter_hint_scene_investigation(self, dispatcher, data):
+        """
+        If the user has already looked around, but not yet at certain objects:
+        Give a little hint what to do next.
+        """
+        NOT_IN_GAME_STATE = {
+            "cabin": "I think we should take a look at the cabin.",
+            "body": "Now I thinks it is time to take a look at the body.",
+            "knife": "We have not yet looked at the knife though.",
+        }
+        for key in NOT_IN_GAME_STATE:
+            if key not in data["story_state"]["scene_investigation"]:
+                dispatcher.utter_message(text=NOT_IN_GAME_STATE[key])
+                return
+        if "character_investigation" not in data["story_state"]:
+            dispatcher.utter_message(text="I think we should talk about my coworkers.")
+            return
         
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
@@ -27,6 +45,9 @@ class SceneInvestigation(Action):
 
         if len(objects) == 0:
             dispatcher.utter_message(text=ii.get_story_information("scene_investigation", "", data))
+            # if alrealy asked about scene_investigation: talk about stuff that is not yet explored 
+            if "base_2" in data["story_state"]["scene_investigation"]:
+                self.utter_hint_scene_investigation(dispatcher, data)
 
         for obj in objects:
             objects_inside_cabin = ['body', 'weapon', 'knife', 'note', 'cabin']
