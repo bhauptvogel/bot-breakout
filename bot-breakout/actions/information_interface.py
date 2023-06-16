@@ -4,13 +4,14 @@ import logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-def load_information():
+
+def load_story_yml():
     """
     Loads the information from the information.yml file
     """
     with open('story_information.yml', encoding="utf8") as f:
-        info = yaml.load(f, Loader=yaml.FullLoader)
-    return info
+        story_yml = yaml.load(f, Loader=yaml.FullLoader)
+    return story_yml
 
 def set_game_state(class_: str, item: str, data_slot: dict):
 
@@ -32,7 +33,7 @@ def set_game_state(class_: str, item: str, data_slot: dict):
 
     logging.debug("Game state was set: " + str(data_slot["story_state"]))
 
-def get_class_split(class_: str, info_dict: dict):
+def get_class_split(class_: str, story_dict: dict):
     """
     if class_ has '/' -> path to a class
     else -> class_ is a class
@@ -41,37 +42,44 @@ def get_class_split(class_: str, info_dict: dict):
     if '/' in class_:
         class_split = class_.split('/')
         for i in range(len(class_split)):
-            if class_split[i] in info_dict:
-                info_dict = info_dict[class_split[i]]
+            if class_split[i] in story_dict:
+                story_dict = story_dict[class_split[i]]
             else:
                 return None
-    elif class_ in info_dict:
-        info_dict = info_dict[class_]
+    elif class_ in story_dict:
+        story_dict = story_dict[class_]
     else:
         return None
     
-    return info_dict
+    return story_dict
 
-def get_base_item(keys: list, class_: str,  data_slot: dict):
+def get_base_item(story_keys: list, class_: str,  data_slot: dict):
     """
     Get the base item of a class from the game state
     """
     if "story_state" not in data_slot:
         data_slot["story_state"] = {}
         return "base_1"
+    
     game_state_class_split = get_class_split(class_, data_slot["story_state"])
     if game_state_class_split is None:
         return "base_1"
 
-    game_state_class_split = game_state_class_split.keys()
-    game_state_class_split = list(game_state_class_split)
+    game_state_class_keys = game_state_class_split.keys()
+    game_state_class_keys = list(game_state_class_keys)
 
-    for key in keys:
+    for key in story_keys:
         if key.startswith('base_'):
-            if key not in game_state_class_split:
-                print("return key: " + str(key))
+            if key not in game_state_class_keys:
                 return key
-
+            
+    # return highest base in game_state_class_keys
+    highest_base = 0
+    for key in game_state_class_keys:
+        if key.startswith('base_'):
+            highest_base = max(highest_base, int(key.split('_')[1]))
+    return "base_" + str(highest_base)
+    
 
 def get_story_information(class_, item, data_slot):
     """
@@ -83,11 +91,11 @@ def get_story_information(class_, item, data_slot):
     
     logging.info("get_story_information: " + class_ + ", item: " + item)
 
-    information_yml = load_information()
-    class_data = get_class_split(class_, information_yml)
+    story_dict = load_story_yml()
+    class_story_data = get_class_split(class_, story_dict)
 
 
-    if class_data is None:
+    if class_story_data is None:
         logging.error(f"get_story_information: class_data is None! class:{class_}, item:{item}")
         return None
     if data_slot is None:
@@ -95,24 +103,24 @@ def get_story_information(class_, item, data_slot):
         return None
 
     # keys in class
-    class_keys = []
-    for dict in class_data:
-        class_keys.append(list(dict.keys())[0])
+    keys_in_class_story = []
+    for dict in class_story_data:
+        keys_in_class_story.append(list(dict.keys())[0])
     
     if item == '' or item is None:
-        item = get_base_item(class_keys, class_, data_slot)
+        item = get_base_item(keys_in_class_story, class_, data_slot)
     
-    if item not in class_keys:
-        logging.warning(f'item {item} not in keys... ' + ' '.join(class_keys))
+    if item not in keys_in_class_story:
+        logging.warning(f'item {item} not in keys... ' + ' '.join(keys_in_class_story))
         return None
 
     set_game_state(class_, item, data_slot)
     
-    return class_data[class_keys.index(item)][item]
+    return class_story_data[keys_in_class_story.index(item)][item]
 
 
 def get_story_characters():
-    keys = load_information()["character_information"].keys()
+    keys = load_story_yml()["character_information"].keys()
     keys = list(keys)
     keys.remove("__General__")
     return keys
@@ -122,7 +130,7 @@ def get_story_characters_information():
     Returns a dictionary with all characters as keys and a list of all their information as values.
     """
     output = {}
-    story_character_information = load_information()["character_information"]
+    story_character_information = load_story_yml()["character_information"]
     for character in story_character_information.keys():
         character_information_dict = story_character_information[character]
         if character not in output.keys():
@@ -136,7 +144,7 @@ def get_story_characters_information():
 
 def get_story_objects():
     output = []
-    story_objects_dict = load_information()["scene_investigation"]
+    story_objects_dict = load_story_yml()["scene_investigation"]
     for object in story_objects_dict:
         keys = object.keys()
         obj = list(keys)[0]
