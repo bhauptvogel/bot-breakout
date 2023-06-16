@@ -12,7 +12,7 @@ def load_information():
         info = yaml.load(f, Loader=yaml.FullLoader)
     return info
 
-def set_game_state(class_, item, data_slot):
+def set_game_state(class_: str, item: str, data_slot: dict):
 
     st = f"{class_}/{item}"
     keys = st.split('/')
@@ -32,7 +32,7 @@ def set_game_state(class_, item, data_slot):
 
     logging.debug("Game state was set: " + str(data_slot["story_state"]))
 
-def get_class_split(class_, info):
+def get_class_split(class_: str, info_dict: dict):
     """
     if class_ has '/' -> path to a class
     else -> class_ is a class
@@ -41,42 +41,42 @@ def get_class_split(class_, info):
     if '/' in class_:
         class_split = class_.split('/')
         for i in range(len(class_split)):
-            if class_split[i] in info:
-                info = info[class_split[i]]
+            if class_split[i] in info_dict:
+                info_dict = info_dict[class_split[i]]
             else:
                 return None
-    elif class_ in info:
-        info = info[class_]
+    elif class_ in info_dict:
+        info_dict = info_dict[class_]
     else:
         return None
     
-    return info
+    return info_dict
 
-def get_base_item(keys, times_asked_about):
+def get_base_item(keys: list, class_: str,  data_slot: dict):
     """
-    base is the amount of times the user has asked about the class (+1)
-    or the highest base that exists (if the user has asked multiple times)
+    Get the base item of a class from the game state
     """
+    if "story_state" not in data_slot:
+        data_slot["story_state"] = {}
+        return "base_1"
+    game_state_class_split = get_class_split(class_, data_slot["story_state"])
+    if game_state_class_split is None:
+        return "base_1"
 
-    if 'base_1' not in keys:
-        return None
-    if 'base_' + str(times_asked_about+1) in keys:
-        item = 'base_' + str(times_asked_about+1)
-    else:
-        highest_base = 0
-        for base in keys:
-            if base.startswith('base_'):
-                if int(base[5:]) > highest_base:
-                    highest_base = int(base[5:])
-        item = 'base_' + str(highest_base)
+    game_state_class_split = game_state_class_split.keys()
+    game_state_class_split = list(game_state_class_split)
 
-    return item
+    for key in keys:
+        if key.startswith('base_'):
+            if key not in game_state_class_split:
+                print("return key: " + str(key))
+                return key
+
 
 def get_story_information(class_, item, data_slot):
     """
     :param class_: class to get information about (e.g. 'scene_investigation')
     :param item: item of the class (e.g. 'base_1', none means base)
-    :param times_asked_about: how many times the user has asked about the class (without item)
     :param data_slot: data_slot of the each user
     :return: utter message that the chatbot should say
     """
@@ -93,11 +93,6 @@ def get_story_information(class_, item, data_slot):
     if data_slot is None:
         logging.error("get_story_information: data_slot is None")
         return None
-            
-    
-    times_asked_about = 0
-    if "times_asked_about_" + class_ in data_slot:
-        times_asked_about = data_slot["times_asked_about_" + class_]
 
     # keys in class
     class_keys = []
@@ -105,24 +100,15 @@ def get_story_information(class_, item, data_slot):
         class_keys.append(list(dict.keys())[0])
     
     if item == '' or item is None:
-        item = get_base_item(class_keys, times_asked_about)
+        item = get_base_item(class_keys, class_, data_slot)
     
     if item not in class_keys:
         logging.warning(f'item {item} not in keys... ' + ' '.join(class_keys))
         return None
-    
-    # add 1 to times_asked_about_class_ in data_slot
-    if item.startswith('base_'):
-        if "times_asked_about_" + class_ in data_slot:
-            data_slot["times_asked_about_" + class_] += 1
-        else:
-            data_slot["times_asked_about_" + class_] = 1
 
     set_game_state(class_, item, data_slot)
     
     return class_data[class_keys.index(item)][item]
-
-
 
 
 def get_story_characters():
