@@ -266,6 +266,7 @@ nlu:
     - Tell me more about it
     - More about him
     - More about her
+    - [Kira]{"entity":"person"}
     - Tell me about [Maria]{"entity":"person"}
     - Who is the [victim]{"entity":"person"}?
     - Tell me everything about [Maria]{"entity":"person"}

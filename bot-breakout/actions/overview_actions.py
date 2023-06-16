@@ -96,7 +96,7 @@ class SituationOverview(Action):
             data["story_state"] = {}
             return [SlotSet("data", data)]
 
-        dispatcher.utter_message(text="Here is everything we talked about so far: \n\n")
+        count_info_utters = 0
 
         for info in INFORMATION:
             in_game_state = True
@@ -113,8 +113,14 @@ class SituationOverview(Action):
 
             # if all states of info are in the game_state 
             if in_game_state:
+                if count_info_utters == 0:
+                    dispatcher.utter_message(text="Here is everything we talked about so far: \n\n")       
+                count_info_utters += 1
                 dispatcher.utter_message(text=info["text"])
             
+        if count_info_utters == 0:
+            dispatcher.utter_message(text="We have not talked about anything important yet.")
+
 
         reset_last_talked_about_character(data)
         
