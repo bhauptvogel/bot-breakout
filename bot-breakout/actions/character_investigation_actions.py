@@ -5,6 +5,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, ReminderScheduled
 from helpers.timer_check import check_timer, set_timer
+from helpers.blocked_message import get_locked_message
 
 import random
 from . import information_interface as ii
@@ -71,6 +72,19 @@ class CharacterInvestigation(Action):
         informations = [e['value'] for e in entities if e['entity'] == 'information']
         characters = [e['value'] for e in entities if e['entity'] == 'person']
 
+        blocked = data["blocked"]
+
+        end_names = ["Anna", "Anna Pollock", "Anna P", "Anna P.", "Patrick", "Patrick Anyang", "Patrick A", "Patrick A.", "Kira", "Kira Russel", "Kira R", "Kira R.", "Victor", "Victor Lopez", "Victor L", "Victor L."]
+        if blocked[self.name()] != "":
+            if data["blocked"][self.name()] == "end_locked":
+                if tracker.latest_message['text'] in end_names:
+                    print("Antwort eingeloggt")
+                else:
+                    dispatcher.utter_message(text=get_locked_message(data["blocked"][self.name()]))
+            else:
+                dispatcher.utter_message(text=get_locked_message(data["blocked"][self.name()]))
+            return [SlotSet("data", data)]
+        
         if len(characters) == 0:
             last_talked_about = get_last_talked_about_character(data)
             if last_talked_about != "":

@@ -7,6 +7,7 @@ from rasa_sdk.events import SlotSet, EventType
 import random
 from helpers.timer_check import check_timer, set_timer
 from helpers.last_talked_about import reset_last_talked_about_character
+from helpers.blocked_message import get_locked_message
 
 HINTS = [
     # not talked about coworkers
@@ -145,6 +146,11 @@ class Hint(Action):
             data = {}
         else:
             data = tracker.get_slot("data")
+        
+        blocked = data["blocked"]
+        if blocked[self.name()] != "":
+            dispatcher.utter_message(text=get_locked_message(data["blocked"][self.name()]))
+            return [SlotSet("data", data)]
 
         dispatcher.utter_message(text=self.get_next_hint(data))
 

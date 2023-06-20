@@ -8,6 +8,7 @@ import random
 from . import information_interface as ii
 from helpers.last_talked_about import reset_last_talked_about_character
 from helpers.timer_check import check_timer, set_timer
+from helpers.blocked_message import get_locked_message
 
 INFORMATION = [
     {
@@ -91,6 +92,11 @@ class SituationOverview(Action):
             data = {}
         else:
             data = tracker.get_slot("data")
+        
+        blocked = data["blocked"]
+        if blocked[self.name()] != "":
+            dispatcher.utter_message(text=get_locked_message(data["blocked"][self.name()]))
+            return [SlotSet("data", data)]
 
         if "story_state" not in data or data["story_state"] is {}:
             data["story_state"] = {}
