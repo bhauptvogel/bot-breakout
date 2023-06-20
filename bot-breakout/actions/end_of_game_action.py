@@ -38,6 +38,26 @@ REQUIRED_GAME_STATES = [
 class UserGuessesMurderer(Action):
     def name(self) -> Text:
         return "action_user_guess"
+    
+    def get_percentage_of_required_game_states(self, data):
+        if "story_state" not in data:
+            data["story_state"] = {}
+
+        false_count = 0
+        for state in REQUIRED_GAME_STATES:
+            keys = state.split("/")
+            temp_data = data["story_state"]
+
+            for key in keys:
+                if key in temp_data:
+                    temp_data = temp_data[key]
+                else:
+                    false_count += 1
+                    break
+
+        true_count = len(REQUIRED_GAME_STATES) - false_count
+        return true_count / (true_count + false_count)
+
 
     def run(
         self,
@@ -52,7 +72,6 @@ class UserGuessesMurderer(Action):
         
         blocked = data["blocked"]
         if blocked[self.name()] != "":
-            print("blocked user guess")
             dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
             return [SlotSet("data", data)]
 
@@ -71,26 +90,8 @@ class UserGuessesMurderer(Action):
             dispatcher.utter_message(text=f"I don't know who {person[0]} is. {get_most_similar_person(person[0])}")
             return [SlotSet("data", data)]
 
-        if "story_state" not in data:
-            data["story_state"] = {}
-
-        false_count = 0
-        for state in REQUIRED_GAME_STATES:
-            keys = state.split("/")
-            temp_data = data["story_state"]
-
-            for key in keys:
-                if key in temp_data:
-                    temp_data = temp_data[key]
-                else:
-                    false_count += 1
-                    break
-
-        true_count = len(REQUIRED_GAME_STATES) - false_count
-        true_percentage = true_count / (true_count + false_count)
-
         # TODO (#23): Rewrite end
-        if true_percentage > PERCENTAGE_THRESHOLD or check_timer(data):
+        if self.get_percentage_of_required_game_states(data) > PERCENTAGE_THRESHOLD or check_timer(data):
             dispatcher.utter_message(text=guess_murderer(data, person[0]))
         else:
             dispatcher.utter_message(
