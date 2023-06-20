@@ -80,9 +80,8 @@ class CharacterInvestigation(Action):
                     dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
                 for name in names_in_message:
                     for story_character in ii.get_story_characters():
-                        print("similarity", name, story_character, levenshtein_distance(name, story_character))
-                        if name == story_character or levenshtein_distance(name, story_character) <= 3:
-                            dispatcher.utter_message(text=guess_murderer(data, tracker.latest_message['text']))
+                        if name == story_character or levenshtein_distance(name, story_character) <= 2:
+                            dispatcher.utter_message(text=guess_murderer(data, story_character))
                             return [SlotSet("data", data)]
             dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
             return [SlotSet("data", data)]

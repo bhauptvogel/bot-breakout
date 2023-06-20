@@ -2,7 +2,7 @@
 def guess_murderer(data, person):
     if "user_wants_to_commit" not in data:
         data["user_wants_to_commit"] = True
-        return "Alright, thanks for clearing my mind. I'm not a hundred percent sure but I trust you. Before you tell the police, remember you can always ask me after an overview of the what we talked about. Let's go now and look for the police to tell them... \n\n [Police Officer] Hey, I'm police officer Kramer. I heard about the dead body you found. Is there anything you want to tell me? Who do you suspect?"
+        return f"Alright, thanks for clearing my mind. I'm not a hundred percent sure but I trust you if you say {person} is the killer. Before you tell the police, remember you can always ask me after an overview of the what we talked about. Let's go now and look for the police to tell them... \n\n [Police Officer] Hey, I'm police officer Kramer. I heard about the dead body you found. Is there anything you want to tell me? Who do you suspect?"
     elif data["user_wants_to_commit"] == True:
         data["user_wants_to_commit"] = False
         if person == "Patrick":
@@ -39,7 +39,7 @@ def guess_murderer(data, person):
                 "action_cabin_end": "game_over_blocked",
                 "action_cabin_start": "game_over_blocked"
             }
-            data["won"] = True
+            data["won"] = False
             return output
     else:
         print("ERROR: this should not happen, look into end_of_game.py")

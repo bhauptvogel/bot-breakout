@@ -8,7 +8,7 @@ def get_blocked_message(data, blocked_key):
     elif blocked_key == "game_over_blocked":
         # TODO: Add emojis
         if data["won"] == True:
-            return "The game is over! You won. You can't do anything anymore." 
+            return "The game is over! You won. Congratulations. You can't do anything anymore." 
         elif data["won"] == False:
             return "The game is over! You have lost. You can't do anything anymore."
         
