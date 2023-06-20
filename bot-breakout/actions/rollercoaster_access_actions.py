@@ -5,6 +5,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, ReminderScheduled
 from helpers.timer_check import check_timer, set_timer
+from helpers.blocked_message import get_locked_message
 
 from datetime import datetime, timedelta
 import random
@@ -25,6 +26,11 @@ class AccessToRollerCoaster(Action):
             data = {}
         else:
             data = tracker.get_slot('data')
+        
+        blocked = data["blocked"]
+        if blocked[self.name()] != "":
+            dispatcher.utter_message(text=get_locked_message(data["blocked"][self.name()]))
+            return [SlotSet("data", data)]
 
         entities = tracker.latest_message['entities']
         characters = []

@@ -54,21 +54,11 @@ rules:
 - rule: User want's to investigate cabin
   steps:
   - intent: cabin_investigation
-  - action: utter_cabin_text
+  - action: action_cabin_start
 
 - rule: Start formular
   steps:
   - intent: guess_cabin_pin
-  - action: simple_cabin_form
-  - active_loop: simple_cabin_form
+  - action: action_cabin_validation
+  
 
-- rule: User guessed right password
-  condition:
-  - active_loop: simple_cabin_form
-  steps:
-  - action: simple_cabin_form
-  - active_loop: null
-  - slot_was_set:
-      - requested_slot: null
-  - action: action_cabin_end
-  - action: utter_cabin_entry

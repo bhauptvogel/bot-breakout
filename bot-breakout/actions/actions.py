@@ -25,7 +25,8 @@ class StartGame(Action):
             data = tracker.get_slot('data')
     
         timestamp = datetime.now()
-        timer = timestamp + timedelta(seconds=420)
+        timer = timestamp + timedelta(seconds=20)
+        #timer = timestamp + timedelta(seconds=420)
         updated_timestamp = timer.timestamp()
 
         if "timer" not in data.keys():
@@ -33,20 +34,26 @@ class StartGame(Action):
         if "timercount" not in data.keys():
             data['timercount'] = 1
         
+        blocked = {
+            "action_character_investigation": "",
+            "action_user_guess": "",
+            "action_give_hint": "",
+            "action_tell_motive": "",
+            "action_overview_of_the_state": "",
+            "action_access_to_roller_coaster": "",
+            "action_scene_investigation": "",
+            "validate_simple_cabin_form": "",
+            "action_cabin_end": "",
+            "action_cabin_start": ""
+        }
+
+        if "blocked" not in data.keys():
+            data["blocked"] = blocked
+
         dispatcher.utter_message(
             "Oh hi! Sorry, I’m just a bit stunned. I know this woman - it's Maria, a journalist... After seeing the dead body, I called the police. Because this is what a good citizen does, right? But now I’m not sure if it was the right decision... We are the only people here and its my work place. I might be a suspect! We have 10 min until the police is here. I should give them some valuable hints about the motive, the access to the crime scene and the murder weapon when they arrive here. But I don’t know where to start. Can you help me clear my mind? We could first investigate the body with the note, or I can tell you about my co-workers."
         )
-
-        #date = datetime.now() + timedelta(seconds=10)
-
-        #reminder = ReminderScheduled(
-        #    "EXTERNAL_reminder",
-        #    trigger_date_time=date,
-        #    name="my_reminder",
-        #    kill_on_user_message=False,
-        #)
-
-        #return [reminder]
+        
         return [SlotSet("data", data)]
         
     

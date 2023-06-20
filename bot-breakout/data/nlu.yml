@@ -27,6 +27,13 @@ nlu:
     - aloha
     - bonjour
     - hola
+    - Hi miki
+    - How are you doing, Mika?
+    - How are you Mika?
+    - How mika is doing
+    - Hi Mika, how are you?
+    - Mika are you ok?
+    - how mike is doing?
 
 ## ------ general ------
 - intent: user_wants_to_leave
@@ -65,6 +72,10 @@ nlu:
     - i'm not sure what to do next, can I get a hint?
     - do you have any tips?
     - i need some guidance
+    - okay, what are we doing now?
+    - what can we do now?
+    - what can we do?
+    - Can you help me?
 
 - intent: overview_of_the_state
   examples: |
@@ -81,9 +92,41 @@ nlu:
     - overview
     - could you provide an overview?
     - watch overview
+    - could you provide an overview?
+    - watch overview
+    - tell me about we talked so far 
+    - tell me what we've talked about so far
+    - what we have talked about so far
+    - what did we talk about so far
 
 - intent: user_guesses_murderer
   examples: |
+    - we suspect [kira]{"entity":"person"}
+    - we suspect [anna]{"entity":"person"}
+    - we suspect [victor]{"entity":"person"}
+    - we suspect [patrick]{"entity":"person"}
+    - police
+    - I want to go to the police
+    - I think [Kira]{"entity":"person"} is the murderer
+    - I think [Anna]{"entity":"person"} is the murderer
+    - I think [Victor]{"entity":"person"} is the murderer
+    - I think [Patrick]{"entity":"person"} is the murderer
+    - I think [Patrick]{"entity":"person"} was it
+    - I think [Anna]{"entity":"person"} was it
+    - I think [Kira]{"entity":"person"} was it
+    - I think [Victor]{"entity":"person"} was it
+    - I think [victor]{"entity":"person"} murdered [Maria]{"entity":"person"}
+    - I think [patrick]{"entity":"person"} murdered [Maria]{"entity":"person"} 
+    - I think [anna]{"entity":"person"} murdered [Maria]{"entity":"person"}
+    - I think [kira]{"entity":"person"} murdered [Maria]{"entity":"person"} 
+    - could it be that [kira]{"entity":"person"} murdered [Maria]{"entity":"person"}?
+    - could it be that [anna]{"entity":"person"} murdered [Maria]{"entity":"person"}?
+    - could it be that [victor]{"entity":"person"} murdered [Maria]{"entity":"person"}?
+    - could it be that [patrick]{"entity":"person"} murdered [Maria]{"entity":"person"}?
+    - [patrick]{"entity":"person"} did the crime
+    - [anna]{"entity":"person"} did the crime
+    - [victor]{"entity":"person"} did the crime
+    - [kira]{"entity":"person"} did the crime
     - Do you think it was [Kira]{"entity":"person"}?
     - I know it is that [Patrick]{"entity":"person"}.
     - I think that is was [Patrick]{"entity":"person"}!
@@ -149,6 +192,15 @@ nlu:
 ## ------ scene investigation ------
 - intent: scene_investigation
   examples: |
+    - let's investigate marias [body]{"entity":"object", "group":"search"}
+    - lets investigate marias [body]{"entity":"object", "group":"search"}
+    - I would like to investigate the [body]{"entity":"object", "group":"search"}
+    - check [bench]{"entity":"object", "group":"search"}
+    - check [tree]{"entity":"object", "group":"search"}
+    - check [note]{"entity":"object", "group":"search"}
+    - check [knife]{"entity":"object", "group":"search"}
+    - check [weapon]{"entity":"object", "group":"search"}
+    - check [cabin]{"entity":"object", "group":"search"}
     - Investigate the scene
     - investigate the scene
     - Tell me about the environment
@@ -219,6 +271,13 @@ nlu:
 
 - intent: cabin_investigation
   examples: |
+    - train [cabin]{"entity":"object", "group":"search"}
+    - [cabin]{"entity":"object", "group":"search"}
+    - Okay, then I would like to investigate the 
+    - Investigate the [cabin]{"entity":"object", "group":"search"}
+    - Investigate [cabin]{"entity":"object", "group":"search"}
+    - Look in the [cabin]{"entity":"object", "group":"search"}
+    - Look in the train [cabin]{"entity":"object", "group":"search"}
     - Look at the [cabin]{"entity":"object", "group":"search"}
     - Look inside the [cabin]{"entity":"object", "group":"search"}
     - Search the [cabin]{"entity":"object", "group":"search"}
@@ -257,10 +316,108 @@ nlu:
     - what about [123.5]{"entity":"cabin_password"}
     - is [123,5]{"entity":"cabin_password"} the right answer
     - is [123,5]{"entity":"cabin_password"} right?
+    - enter [123]{"entity":"cabin_password"}
+    - enter [123,5]{"entity":"cabin_password"}
 
 ## ------ character investigation ------
 - intent: information_about_character
   examples: |
+    - [Maria]{"entity":"person"}
+    - [Kira]{"entity":"person"}
+    - [Anna]{"entity":"person"}
+    - [Victor]{"entity":"person"}
+    - [Patrick]{"entity":"person"}
+    - Who is [Victor]{"entity":"person"}?
+    - Who is [Victor]{"entity":"person"} and what is his background?
+    - Who is [Anna]{"entity":"person"}?
+    - Who is [Anna]{"entity":"person"} and what is her background?
+    - Who is [Maria]{"entity":"person"}?
+    - Who is [Maria]{"entity":"person"} and what is her background?
+    - Who is [Kira]{"entity":"person"}?
+    - Who is [Kira]{"entity":"person"} and what is her background?
+    - Who is [Patrick]{"entity":"person"}?
+    - Who is [Patrick]{"entity":"person"} and what is his background?
+    - Tell me about [coworkers]{"entity":"person", "group":"multiple"}
+    - Tell me about [co workers]{"entity":"person", "group":"multiple"}
+    - Tell me about [Maria]{"entity":"person"}.
+    - Tell me about [Anna]{"entity":"person"}.
+    - Tell me about [Kira]{"entity":"person"}.
+    - Tell me about [Victor]{"entity":"person"}.
+    - Tell me about [Patrick]{"entity":"person"}.
+    - Can you tell me something about [Maria]{"entity":"person"}?
+    - Can you tell me something about [Kira]{"entity":"person"}?
+    - Can you tell me something about [Anna]{"entity":"person"}?
+    - Can you tell me something about [Victor]{"entity":"person"}?
+    - Can you tell me something about [Patrick]{"entity":"person"}?
+    - Can you tell me more about [Maria]{"entity":"person"}?
+    - Can you tell me more about [Kira]{"entity":"person"}?
+    - Can you tell me more about [Anna]{"entity":"person"}?
+    - Can you tell me more about [Victor]{"entity":"person"}?
+    - Can you tell me more about [Patrick]{"entity":"person"}?
+    - Who are the [coworkers]{"entity":"person", "group":"multiple"}?
+    - How is [Patrick]{"entity":"person"}'s [surname]{"entity":"information"}?
+    - How is [Anna]{"entity":"person"}'s [surname]{"entity":"information"}?
+    - How is [Kira]{"entity":"person"}'s [surname]{"entity":"information"}?
+    - How is [Victor]{"entity":"person"}'s [surname]{"entity":"information"}?
+    - Hows [Patrick]{"entity":"person"}'s [surname]{"entity":"information"}?
+    - Hows [Anna]{"entity":"person"}'s [surname]{"entity":"information"}?
+    - Hows [Kira]{"entity":"person"}'s [surname]{"entity":"information"}?
+    - Hows [Victor]{"entity":"person"}'s [surname]{"entity":"information"}?
+    - How's [Patrick]{"entity":"person"}'s [surname]{"entity":"information"}?
+    - How's [Anna]{"entity":"person"}'s [surname]{"entity":"information"}?
+    - How's [Kira]{"entity":"person"}'s [surname]{"entity":"information"}?
+    - How's [Victor]{"entity":"person"}'s [surname]{"entity":"information"}?
+    - How is [Patrick]{"entity":"person"}'s [lastname]{"entity":"information"}?
+    - How is [Victor]{"entity":"person"}'s [lastname]{"entity":"information"}?
+    - How is [Anna]{"entity":"person"}'s [lastname]{"entity":"information"}?
+    - How is [Kira]{"entity":"person"}'s [lastname]{"entity":"information"}?
+    - Hows [Patrick]{"entity":"person"}'s [lastname]{"entity":"information"}?
+    - Hows [Anna]{"entity":"person"}'s [lastname]{"entity":"information"}?
+    - Hows [Kira]{"entity":"person"}'s [lastname]{"entity":"information"}?
+    - Hows [Victor]{"entity":"person"}'s [lastname]{"entity":"information"}?
+    - How's [Patrick]{"entity":"person"}'s [lastname]{"entity":"information"}?
+    - How's [Anna]{"entity":"person"}'s [lastname]{"entity":"information"}?
+    - How's [Kira]{"entity":"person"}'s [lastname]{"entity":"information"}?
+    - How's [Victor]{"entity":"person"}'s [lastname]{"entity":"information"}?
+    - How is [Patrick]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - How is [Victor]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - How is [Anna]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - How is [Kira]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - Hows [Patrick]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - Hows [Anna]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - Hows [Kira]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - Hows [Victor]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - How's [Patrick]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - How's [Anna]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - How's [Kira]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - How's [Victor]{"entity":"person"}'s [last name]{"entity":"information"}?
+    - what else can you tell me about [Kira]{"entity":"person"}?
+    - what else can you tell me about [Anna]{"entity":"person"}?
+    - what else can you tell me about [Patrick]{"entity":"person"}?
+    - what else can you tell me about [Victor]{"entity":"person"}?
+    - [coworkers]{"entity":"person", "group":"multiple"}
+    - [co-workers]{"entity":"person", "group":"multiple"}
+    - [coworker]{"entity":"person", "group":"multiple"}
+    - [co-worker]{"entity":"person", "group":"multiple"}
+    - Sure, lets start with you telling me about your [co-worker]{"entity":"person", "group":"multiple"}
+    - Sure, lets start with you telling me about your [coworker]{"entity":"person", "group":"multiple"}
+    - Sure, lets start with you telling me about your [co-workers]{"entity":"person", "group":"multiple"}
+    - Sure, lets start with you telling me about your [coworkers]{"entity":"person", "group":"multiple"}
+    - what [secret]s{"entity":"information"}?
+    - [secret]{"entity":"information"}?
+    - [secret]s{"entity":"information"}?
+    - investigate about [co-worker]{"entity":"person", "group":"multiple"}
+    - investigate about [coworker]{"entity":"person", "group":"multiple"}
+    - investigate about [co-workers]{"entity":"person", "group":"multiple"}
+    - investigate about [coworkers]{"entity":"person", "group":"multiple"}
+    - investigate [co-worker]{"entity":"person", "group":"multiple"}
+    - investigate [coworker]{"entity":"person", "group":"multiple"}
+    - investigate [co-workers]{"entity":"person", "group":"multiple"}
+    - investigate [coworkers]{"entity":"person", "group":"multiple"}
+    - investigate your [co-worker]{"entity":"person", "group":"multiple"}
+    - investigate your [coworker]{"entity":"person", "group":"multiple"}
+    - investigate your [co-workers]{"entity":"person", "group":"multiple"}
+    - investigate your [coworkers]{"entity":"person", "group":"multiple"}
     - Tell me more about him
     - Tell me more about her
     - Tell me more about it
@@ -546,6 +703,12 @@ nlu:
 
 - intent: access_to_rollercoaster
   examples: |
+    - Does he have the keys to the [rollercoaster]{"entity":"object"}?
+    - Does she have the keys to the [rollercoaster]{"entity":"object"}?
+    - It is possible for him to have access?
+    - Can he get into the [attraction]{"entity":"object"}?
+    - Does she have the keys?
+    - Is is possible for her to get to this part of the park?
     - Has [Patrick]{"entity":"person"} access to the [rollercoaster]{"entity":"object"}?
     - Does [Anna]{"entity":"person"} have access to the [ghost train]{"entity":"object"}?
     - Has [Victor]{"entity":"person"} access to the [cabin]{"entity":"object"}?
@@ -635,6 +798,10 @@ nlu:
     - weapon
     - murder weapon
     - crime weapon
+
+- synonym: knife
+  examples: |
+    - knive
 
 - synonym: full name
   examples: |

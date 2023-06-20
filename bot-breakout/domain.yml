@@ -18,9 +18,6 @@ entities:
 - person
 - information
 - cabin_password
-- cabin_guess
-- cabin_number_guess
-- cabin_open
 
 slots:
   data:
@@ -34,45 +31,31 @@ slots:
     mappings:
     - type: from_entity
       entity: cabin_password
-  cabin_guess:
-    type: float
-    mappings:
-    - type: from_entity
-      entity: cabin_guess
-  cabin_number_guess:
-    type: bool
-    mappings:
-    - type: from_entity
-      entity: cabin_number_guess
-  cabin_open:
-    type: bool
-    initial_value: false
-    mappings:
-    - type: from_entity
-      entity: cabin_open
-
-forms:
-  simple_cabin_form:
-    required_slots:
-      - cabin_password
 
 responses:
   utter_you_cannot_leave:
   - text: You can’t leave before the police arrive in a few minutes! We need to find hints together, so they don’t think we two did it. Should we investigate or talk?
   - text: This is not possible! The murderer could still be walking around, we should wait until the police arrive in a few minutes. I think we should investigate the situation more.
-  utter_cabin_entry:
-  - text: "It has two seats, as ours did. On the seat closer to us and closer to the themed area is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. I see something in the puddles. It's a knife! It's strange to grab in blood, but I get it out. I could take a closer look at it."
-  utter_cabin_text:
-  - condition:
-        - type: slot
-          name: cabin_open
-          value: true
-    text: "It has two seats, as ours did. On the seat closer to us and closer to the themed area is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. I see something in the puddles. It's a knife! It's strange to grab in blood, but I get it out. I could take a closer look at it."
-  - condition:
-        - type: slot
-          name: cabin_open
-          value: false
-    text: "We are now standing in front of the train cabin with the dead body. But Damn... the door is locked, and I can't get in. All cabins are locked with a 3-digit pin code. I set those after a rough workday... I don't know the solution but I work with a specific system. I subtract the fourth prime number from the cabin number, added 2 and divide it by 2. I think the cabin number of this cabin is 686. Can you help me find the right pin code to enter the cabin? Just tell me the 3-digit pin code I should try!"
+  utter_respond_to_accusation:
+  - text: I'm not really sure. It could be possible! But before we accuse her let's have a closer look at all the facts we have so far
+  utter_investigate_crime_scene:
+  - text: Oh my god, this feels scary to look at Maria's dead body, but it’s the best thing we can do. Let’s move a few steps closer… Ahhhh! Shit. I know the dead woman in the cabin.
+  utter_information_about_coworkers:
+  - text: My coworkers are Kira, who works as a cashier, and Patrick who is the director of the amusement park. By the way, I also know Anna. Do you want to know more about one of them?
+  utter_who_is_maria:
+  - text: She's the ex-girlfriend of Kira, my co-worker. I met her a couple times.
+  - text: This is Maria. She is the Ex-girlfriend of my co-worker Kira who works as a cashier. Do you want to know more about Kira Or should we investigate the cabin a bit more?
+  utter_who_is_kira:
+  - text: Ok so we are standing in front of the train cabin. It has two seats, as ours did. On the seat closer to us and closer to the themed area is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died… We could look around a bit more and find the weapon Or I tell you about the note…
+  utter_who_is_patrick:
+  - text: Patrick is my boss. He is in charge of the amusement park. It's actually a family business, he earned it from his dad. Patrick is kind of a snob… he loves to drive around in big cars and all this wealthy stuff.
+  utter_who_is_anna:
+  - text: Anna is Maria's colleague at the Fictional Times Paper. I met her at some of Kira's Partys. She is nice but very focused on her job, just as Maria is … sorry, was 😥
+  utter_who_is_victor:
+  - text: Victor is Maria's new boyfriend. I don’t know him. Only the things Kira told me about him. She was pretty jealous, that Maria has someone new 👀
+  utter_hint:
+  - text: You can always ask for an overview of the situation and what I have already told you.
+
 actions:
 - action_overview_of_the_state
 - action_scene_investigation
@@ -82,10 +65,9 @@ actions:
 - action_set_reminder
 - action_react_to_reminder
 - action_user_guess
-- validate_simple_cabin_form
-- action_cabin_end
-- utter_ask_cabin_password
+- action_cabin_start
 - action_give_hint
+- action_cabin_validation
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

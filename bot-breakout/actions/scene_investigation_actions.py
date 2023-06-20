@@ -8,6 +8,7 @@ from rasa_sdk.events import SlotSet, EventType
 import random
 from . import information_interface as ii
 from helpers.timer_check import check_timer, set_timer
+from helpers.blocked_message import get_locked_message
 
 class SceneInvestigation(Action):
     def name(self) -> Text:
@@ -40,6 +41,17 @@ class SceneInvestigation(Action):
         else:
             data = tracker.get_slot('data')
         
+        blocked = data["blocked"]
+        if blocked[self.name()] != "":
+            dispatcher.utter_message(text=get_locked_message(data["blocked"][self.name()]))
+            return [SlotSet("data", data)]
+        
+        
+        if 'cabin_open' not in data.keys():
+            cabin_open = False
+        else:
+            cabin_open = data['cabin_open']
+        
         entities = tracker.latest_message['entities']
         objects = [e['value'] for e in entities if e['entity'] == 'object']
 
@@ -51,7 +63,7 @@ class SceneInvestigation(Action):
 
         for obj in objects:
             objects_inside_cabin = ['body', 'weapon', 'knife', 'note', 'cabin']
-            if obj in objects_inside_cabin and not ("cabin_open" in data.keys() and data["cabin_open"] == True):
+            if obj in objects_inside_cabin and not cabin_open:
                 obj = "no_access"
             
             if obj in ii.get_story_objects():
@@ -66,60 +78,10 @@ class SceneInvestigation(Action):
         return [SlotSet("data", data)]
 
 
-# Validation Form for the cabin pin
-class ValidateSimpleCabinForm(FormValidationAction):
-        def name(self) -> Text:
-            return "validate_simple_cabin_form"
-
-        def validate_cabin_password(
-                self,
-                slot_value: Any,
-                dispacher: CollectingDispatcher,
-                tracker: Tracker,
-                domain: DomainDict,
-        ) -> Dict[Text, Any]:
-            if tracker.get_slot('cabin_guess') is None:
-                value = 1
-            else:
-                value = tracker.get_slot('cabin_guess')
-            
-            # print(value)
-            
-            if tracker.get_slot('cabin_number_guess') is None:
-                boolean = False
-            else:
-                boolean = tracker.get_slot('cabin_number_guess')
-        
-            if slot_value == "492":
-                dispacher.utter_message(text="Yes "+slot_value+" worked. We can enter the cabin.")
-                return {"cabin_password": slot_value}
-            if slot_value == "989" and not boolean:
-                dispacher.utter_message(text="Yes that looks better. This is the right cabin number, sorry for the confusion. Please do the equation with that number but first let me try it with "+slot_value+" ...")
-                boolean = True
-                value += 1
-                return {"cabin_password": None, "cabin_guess": value, "cabin_number_guess": boolean}
- 
-            if value < 3:
-                value += 1
-            elif value == 3: 
-                dispacher.utter_message(text="Maybe look at the 686 ANOTHER WAY... but let me try first with "+slot_value+" ...")
-                value += 1
-            elif value == 4:
-                value += 1
-            elif value == 5:
-                if not boolean:
-                    dispacher.utter_message(text="Oh I see now... the cabin number is 989 - but first let me try it with "+slot_value+" ...")
-                value += 1
-            else:
-                dispacher.utter_message(text="The pin should be (989 - 7 + 2) / 2. I'll try it first with "+slot_value+" ...")
-                value += 1
-            
-            return {"cabin_password": None, "cabin_guess": value, "cabin_number_guess": boolean}
-
-# End if the pin was right 
-class CabinEnd(FormValidationAction):
+# Start the cabin riddle
+class CabinStart(Action):
     def name(self) -> Text:
-        return "action_cabin_end"
+        return "action_cabin_start"
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
@@ -128,10 +90,123 @@ class CabinEnd(FormValidationAction):
         else:
             data = tracker.get_slot('data')
 
-        ii.set_game_state("scene_investigation", "cabin", data)
+        if 'cabin_open' not in data.keys():
+            cabin_open = False
+        else:
+            cabin_open = data['cabin_open']
+        
+        if 'blocked' in data.keys():
+            blocked = data["blocked"]
+
+        if blocked[self.name()] != "":
+            dispatcher.utter_message(text=get_locked_message(data["blocked"][self.name()]))
+            if check_timer(data):
+                dispatcher.utter_message(text=set_timer(data))
+            return [SlotSet("data", data)]
+
+        block = {
+            "action_character_investigation": "cabin_locked",
+            "action_user_guess": "cabin_locked",
+            "action_give_hint": "",
+            "action_tell_motive": "",
+            "action_overview_of_the_state": "",
+            "action_access_to_roller_coaster": "cabin_locked",
+            "action_scene_investigation": "cabin_locked",
+            "validate_simple_cabin_form": "",
+            "action_cabin_end": "",
+            "action_cabin_start": ""
+        }
+
+        if cabin_open:
+            dispatcher.utter_message(text="It has two seats, as ours did. On the seat closer to us and closer to the themed area is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. I see something in the puddles. It's a knife! It's strange to grab in blood, but I get it out. I could take a closer look at it.")
+        else:
+            data["blocked"] = block
+            dispatcher.utter_message(text="We are now standing in front of the train cabin with the dead body. But Damn... the door is locked, and I can't get in. All cabins are locked with a 3-digit pin code. I set those after a rough workday... I don't know the solution but I work with a specific system. I subtract the fourth prime number from the cabin number, added 2 and divide it by 2. I think the cabin number of this cabin is 686. Can you help me find the right pin code to enter the cabin? Just tell me the 3-digit pin code I should try!")
 
         if check_timer(data):
             dispatcher.utter_message(text=set_timer(data))
 
-        return [SlotSet("data", data), SlotSet("cabin_open", True)]
+        return [SlotSet("data", data)]
 
+class CabinPinValidation(Action):   
+    def name(self) -> Text:
+        return "action_cabin_validation"
+    
+    def cabin_end(self, data):
+         
+            data['cabin_open'] = True
+            
+            block = {
+                "action_character_investigation": "",
+                "action_user_guess": "",
+                "action_give_hint": "",
+                "action_tell_motive": "",
+                "action_overview_of_the_state": "",
+                "action_access_to_roller_coaster": "",
+                "action_scene_investigation": "",
+                "validate_simple_cabin_form": "",
+                "action_cabin_end": "",
+                "action_cabin_start": ""
+            }
+            data["blocked"] = block
+
+            ii.set_game_state("scene_investigation", "cabin", data)
+
+            return [SlotSet("data", data)]
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:  
+        if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
+            data = {}
+        else:
+            data = tracker.get_slot('data')
+        if 'cabin_guess' not in data.keys():
+            data['cabin_guess'] = 1
+        
+        if 'cabin_number_guess' not in data.keys():
+            data['cabin_number_guess'] = False
+
+
+        cabin_password = tracker.latest_message['entities'][0]['value']
+
+        if cabin_password == "492":
+            dispatcher.utter_message(text="Yes "+cabin_password+" worked. We can enter the cabin. It has two seats, as ours did. On the seat closer to us and closer to the themed area is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. I see something in the puddles. It's a knife! It's strange to grab in blood, but I get it out. I could take a closer look at it.")
+            self.cabin_end(data)
+            if check_timer(data):
+                dispatcher.utter_message(text=set_timer(data))
+            return [SlotSet('data', data)]
+        if cabin_password == "989" and not data['cabin_number_guess']:
+            dispatcher.utter_message(text="This is not the password. But 989 is the right cabin number, sorry for the confusion.")
+            data['cabin_number_guess'] = True
+            data['cabin_guess'] += 1
+            if check_timer(data):
+                dispatcher.utter_message(text=set_timer(data))
+            return [SlotSet('data', data)]
+
+        if data['cabin_guess'] == 1:
+            data['cabin_guess'] += 1
+            dispatcher.utter_message(text="No, it is not "+cabin_password)
+        elif data['cabin_guess'] == 2:
+            data['cabin_guess'] += 1
+            dispatcher.utter_message(text="It is also not "+cabin_password)
+        elif data['cabin_guess'] == 3: 
+            dispatcher.utter_message(text="Nope, not right. Maybe look at the 686 ANOTHER WAY...")
+            data['cabin_guess'] += 1
+        elif data['cabin_guess'] == 4:
+            dispatcher.utter_message(text="Nope unfortunately not "+cabin_password)
+            data['cabin_guess'] += 1
+        elif data['cabin_guess'] == 5:
+            if not data['cabin_number_guess']:
+                dispatcher.utter_message(text="It is not "+cabin_password+". Oh I see now... the cabin number is 989")
+            else:
+                dispatcher.utter_message(text= ""+cabin_password +" is not the pin. It should be (989 - 7 + 2) / 2.")
+            data['cabin_guess'] += 1
+        else:
+            dispatcher.utter_message(text= ""+cabin_password +" is not the pin. It should be (989 - 7 + 2) / 2.")
+            data['cabin_guess'] += 1
+        
+        if check_timer(data):
+            dispatcher.utter_message(text=set_timer(data))
+        
+        return [SlotSet('data', data)]
