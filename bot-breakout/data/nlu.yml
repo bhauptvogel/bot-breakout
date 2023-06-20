@@ -703,11 +703,11 @@ nlu:
 
 - intent: access_to_rollercoaster
   examples: |
-    - Does he have the keys to the [rollercoaster]{"entity":"object"}?
-    - Does she have the keys to the [rollercoaster]{"entity":"object"}?
-    - It is possible for him to have access?
-    - Can he get into the [attraction]{"entity":"object"}?
-    - Does she have the keys?
+    - Does [he]{"entity":"person", "group":"reference"} have the keys to the [rollercoaster]{"entity":"object"}?
+    - Does [she]{"entity":"person", "group":"reference"} have the keys to the [rollercoaster]{"entity":"object"}?
+    - It is possible for [him]{"entity":"person", "group":"reference"} to have access?
+    - Can [he]{"entity":"person", "group":"reference"} get into the [attraction]{"entity":"object"}?
+    - Does [she]{"entity":"person", "group":"reference"} have the keys?
     - Is is possible for her to get to this part of the park?
     - Has [Patrick]{"entity":"person"} access to the [rollercoaster]{"entity":"object"}?
     - Does [Anna]{"entity":"person"} have access to the [ghost train]{"entity":"object"}?
