@@ -4,6 +4,22 @@ nlu:
 # possible intents to add: hello/greet, yes
 
 ## ------ start ------
+- intent: user_greets_simple
+  examples: |
+    - hi
+    - hey
+    - Hallo
+    - hello
+    - mika
+    - Hi mika
+    - Hello Mika
+    - Hello Miki
+    - huhu
+    - aloha
+    - bonjour
+    - hola
+    - Hi miki
+
 - intent: user_asks_about_wellbeing
   examples: |
     - how are you?
@@ -16,18 +32,7 @@ nlu:
     - hello, how are you?
     - are you good?
     - are you alright there
-    - hi
-    - hey
-    - hello
-    - mika
-    - Hi mika
-    - Hello Mika
     - Hey mika, how are you?
-    - huhu
-    - aloha
-    - bonjour
-    - hola
-    - Hi miki
     - How are you doing, Mika?
     - How are you Mika?
     - How mika is doing
@@ -94,7 +99,7 @@ nlu:
     - watch overview
     - could you provide an overview?
     - watch overview
-    - tell me about we talked so far 
+    - tell me about we talked so far
     - tell me what we've talked about so far
     - what we have talked about so far
     - what did we talk about so far
@@ -116,9 +121,9 @@ nlu:
     - I think [Kira]{"entity":"person"} was it
     - I think [Victor]{"entity":"person"} was it
     - I think [victor]{"entity":"person"} murdered [Maria]{"entity":"person"}
-    - I think [patrick]{"entity":"person"} murdered [Maria]{"entity":"person"} 
+    - I think [patrick]{"entity":"person"} murdered [Maria]{"entity":"person"}
     - I think [anna]{"entity":"person"} murdered [Maria]{"entity":"person"}
-    - I think [kira]{"entity":"person"} murdered [Maria]{"entity":"person"} 
+    - I think [kira]{"entity":"person"} murdered [Maria]{"entity":"person"}
     - could it be that [kira]{"entity":"person"} murdered [Maria]{"entity":"person"}?
     - could it be that [anna]{"entity":"person"} murdered [Maria]{"entity":"person"}?
     - could it be that [victor]{"entity":"person"} murdered [Maria]{"entity":"person"}?
@@ -273,7 +278,7 @@ nlu:
   examples: |
     - train [cabin]{"entity":"object", "group":"search"}
     - [cabin]{"entity":"object", "group":"search"}
-    - Okay, then I would like to investigate the 
+    - Okay, then I would like to investigate the
     - Investigate the [cabin]{"entity":"object", "group":"search"}
     - Investigate [cabin]{"entity":"object", "group":"search"}
     - Look in the [cabin]{"entity":"object", "group":"search"}

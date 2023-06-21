@@ -13,7 +13,7 @@ from helpers.blocked_message import get_locked_message
 class SceneInvestigation(Action):
     def name(self) -> Text:
         return "action_scene_investigation"
-    
+
     def utter_hint_scene_investigation(self, dispatcher, data):
         """
         If the user has already looked around, but not yet at certain objects:
@@ -31,33 +31,33 @@ class SceneInvestigation(Action):
         if "character_investigation" not in data["story_state"]:
             dispatcher.utter_message(text="I think we should talk about my coworkers.")
             return
-        
+
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
-        
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
             data = {}
         else:
             data = tracker.get_slot('data')
-        
+
         blocked = data["blocked"]
         if blocked[self.name()] != "":
             dispatcher.utter_message(text=get_locked_message(data["blocked"][self.name()]))
             return [SlotSet("data", data)]
-        
-        
+
+
         if 'cabin_open' not in data.keys():
             cabin_open = False
         else:
             cabin_open = data['cabin_open']
-        
+
         entities = tracker.latest_message['entities']
         objects = [e['value'] for e in entities if e['entity'] == 'object']
 
         if len(objects) == 0:
             dispatcher.utter_message(text=ii.get_story_information("scene_investigation", "", data))
-            # if alrealy asked about scene_investigation: talk about stuff that is not yet explored 
+            # if alrealy asked about scene_investigation: talk about stuff that is not yet explored
             if "base_2" in data["story_state"]["scene_investigation"]:
                 self.utter_hint_scene_investigation(dispatcher, data)
 
@@ -65,7 +65,7 @@ class SceneInvestigation(Action):
             objects_inside_cabin = ['body', 'weapon', 'knife', 'note', 'cabin']
             if obj in objects_inside_cabin and not cabin_open:
                 obj = "no_access"
-            
+
             if obj in ii.get_story_objects():
                 dispatcher.utter_message(text=ii.get_story_information("scene_investigation", obj, data))
             else:
@@ -73,7 +73,7 @@ class SceneInvestigation(Action):
                 dispatcher.utter_message(text=f"Sorry, I don't know what {obj} is.")
 
         if check_timer(data):
-            dispatcher.utter_message(text=set_timer(data))  
+            dispatcher.utter_message(text=set_timer(data))
 
         return [SlotSet("data", data)]
 
@@ -94,7 +94,7 @@ class CabinStart(Action):
             cabin_open = False
         else:
             cabin_open = data['cabin_open']
-        
+
         if 'blocked' in data.keys():
             blocked = data["blocked"]
 
@@ -118,7 +118,7 @@ class CabinStart(Action):
         }
 
         if cabin_open:
-            dispatcher.utter_message(text="It has two seats, as ours did. On the seat closer to us and closer to the themed area is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. I see something in the puddles. It's a knife! It's strange to grab in blood, but I get it out. I could take a closer look at it.")
+            dispatcher.utter_message(text="It has two seats, as ours did. On the seat closer to us is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. I see something in the puddles. It's a knife! It's strange to grab in blood, but I get it out. I could take a closer look at it.")
         else:
             data["blocked"] = block
             dispatcher.utter_message(text="We are now standing in front of the train cabin with the dead body. But Damn... the door is locked, and I can't get in. All cabins are locked with a 3-digit pin code. I set those after a rough workday... I don't know the solution but I work with a specific system. I subtract the fourth prime number from the cabin number, added 2 and divide it by 2. I think the cabin number of this cabin is 686. Can you help me find the right pin code to enter the cabin? Just tell me the 3-digit pin code I should try!")
@@ -128,14 +128,14 @@ class CabinStart(Action):
 
         return [SlotSet("data", data)]
 
-class CabinPinValidation(Action):   
+class CabinPinValidation(Action):
     def name(self) -> Text:
         return "action_cabin_validation"
-    
+
     def cabin_end(self, data):
-         
+
             data['cabin_open'] = True
-            
+
             block = {
                 "action_character_investigation": "",
                 "action_user_guess": "",
@@ -156,14 +156,14 @@ class CabinPinValidation(Action):
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:  
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
             data = {}
         else:
             data = tracker.get_slot('data')
         if 'cabin_guess' not in data.keys():
             data['cabin_guess'] = 1
-        
+
         if 'cabin_number_guess' not in data.keys():
             data['cabin_number_guess'] = False
 
@@ -171,7 +171,7 @@ class CabinPinValidation(Action):
         cabin_password = tracker.latest_message['entities'][0]['value']
 
         if cabin_password == "492":
-            dispatcher.utter_message(text="Yes "+cabin_password+" worked. We can enter the cabin. It has two seats, as ours did. On the seat closer to us and closer to the themed area is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. I see something in the puddles. It's a knife! It's strange to grab in blood, but I get it out. I could take a closer look at it.")
+            dispatcher.utter_message(text="Yes "+cabin_password+" worked. We can enter the cabin. It has two seats, as ours did. On the seat closer to us is Maria's body. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. I see something in the puddles. It's a knife! It's strange to grab in blood, but I get it out. I could take a closer look at it.")
             self.cabin_end(data)
             if check_timer(data):
                 dispatcher.utter_message(text=set_timer(data))
@@ -190,7 +190,7 @@ class CabinPinValidation(Action):
         elif data['cabin_guess'] == 2:
             data['cabin_guess'] += 1
             dispatcher.utter_message(text="It is also not "+cabin_password)
-        elif data['cabin_guess'] == 3: 
+        elif data['cabin_guess'] == 3:
             dispatcher.utter_message(text="Nope, not right. Maybe look at the 686 ANOTHER WAY...")
             data['cabin_guess'] += 1
         elif data['cabin_guess'] == 4:
@@ -205,8 +205,8 @@ class CabinPinValidation(Action):
         else:
             dispatcher.utter_message(text= ""+cabin_password +" is not the pin. It should be (989 - 7 + 2) / 2.")
             data['cabin_guess'] += 1
-        
+
         if check_timer(data):
             dispatcher.utter_message(text=set_timer(data))
-        
+
         return [SlotSet('data', data)]

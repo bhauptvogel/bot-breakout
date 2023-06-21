@@ -1,5 +1,8 @@
-
+# TODO: Mika character information Issue #59
 character_information:
+  Mika:
+  - base_1: ""
+  - base_2: ""
   Maria:
   - base_1: "Maria is the Ex-girlfriend of my co-worker Kira. She was a journalist and was uncovering stuff that was going on in the amusement park to be better informed than her rival Anna"
   - base_2: "I told Maria everything that I knew about Patrick and the stuff going on around here!"
@@ -16,8 +19,8 @@ character_information:
   - base_1: "Patrick is my boss. He is in charge of the amusement park. It's actually a family business, he got it from his dad. Patrick is kind of a snob... he loves to drive around in big cars and all this wealthy stuff. He has his secrets that nobody knows about..."
   - base_2: "Patrick is from China... he came here to take over the amusement park of his family."
   - base_3: "By the way, you already asked me about Patrick, but sure, here's some information: Patrick is my boss, and he runs the amusement park, which is a family business inherited from his dad. He can be a bit snobbish and enjoys showing off his wealth with fancy cars and such. Plus, he has some mysterious secrets that nobody knows about."
-  - secret: "Soo… It's somewhat embarrassing, and I'm also very ashamed of it. Maybe I could have prevented this whole situation and even Maria's death… So let me tell you the story: Patrick is not really a kind person but he is a good boss. When we had an employee consultation I saw some letters from the tax office on his desk and when I asked him about it he tore me down. So I told Maria. She was thinking about doing some investigations on her own. Because the possibility of corruption was high. With Patrick's lifestyle, the big cars and everything… Maria and I didn’t have much contact ever since. She said the risk is too high that someone draws their own conclusions… But it seems like Patrick came to a conclusion. And he may even know that it was me who informed Maria. That could be the reason for the note. He wants to get me. And now we are here… with a dead journalist and a dirty business secret"
-  - full_name: "Patrick is from China. Anyang is his last name"
+  - secret: "Soo… we recently had an employee consultation and I saw some letters from the tax office on his desk. When I asked him about it he tore me down. So I told Maria about this. She was thinking about doing some investigations on her own, because the possibility of corruption was high. With Patrick's lifestyle, the big cars and everything… Maria and I didn’t have much contact ever since. She said the risk is too high that someone draws their own conclusions…"
+  - full_name: "Patrick is from China. His last name is Anyang."
   Victor:
   - base_1: "To be honest... I don’t know him. He is just Marias new boyfriend"
   - base_2: "Victor is Maria's new boyfriend. I don’t know him. Only the things Kira told me about him. She was pretty jealous, that Maria has someone new"
@@ -34,12 +37,14 @@ character_information:
 
 # All relations have to be duplicated because the user can ask for the relation in both directions
 story_character_relation:
+  - Maria_Mika: "We were just acquaintances. I knew her through Anna, they were collegues, and also from her great publications in the Fictional Times Paper."
+  - Mika_Maria: "We were just acquaintances. I knew her through Anna, they were collegues, and also from her great publications in the Fictional Times Paper."
   - Maria_Kira: "Oh, Maria and Kira? They were like, super close! They were actually dating and totally into each other. But you know how life goes, things changed, and now they're ex-friends."
   - Kira_Maria: "Oh, Maria and Kira? They were like, super close! They were actually dating and totally into each other. But you know how life goes, things changed, and now they're ex-friends."
   - Maria_Patrick: "Maria, being the journalist she is, got all intrigued about Patrick's \"business\" and how he makes his cash. She was planning to write an article exposing all the captivating details."
   - Patrick_Maria: "Maria, being the journalist she is, got all intrigued about Patrick's \"business\" and how he makes his cash. She was planning to write an article exposing all the captivating details."
-  - Maria_Victor: "After Maria and Kira broke up, she found love with Victor, and they're dating. They're both incredibly happy together... sorry they WERE incredibly happy"
-  - Victor_Maria: "After Maria and Kira broke up, she found love with Victor, and they're dating. They're both incredibly happy together... sorry they WERE incredibly happy"
+  - Maria_Victor: "After Maria and Kira broke up, she fell in love with Victor, and they started dating. They're both incredibly happy together... sorry they WERE incredibly happy"
+  - Victor_Maria: "After Maria and Kira broke up, she fell in love with Victor, and they started dating. They're both incredibly happy together... sorry they WERE incredibly happy"
   - Maria_Anna: "Their relationship is a little complicated. They're not just colleagues but also rivals in a way. It's like they're constantly in a battle, pushing each other to be at the top of their game. Things can get pretty heated between them."
   - Anna_Maria: "Their relationship is a little complicated. They're not just colleagues but also rivals in a way. It's like they're constantly in a battle, pushing each other to be at the top of their game. Things can get pretty heated between them."
   - Kira_Patrick: "Kira works at the cash-out in Patrick's amusement park, where Patrick is her boss."
@@ -56,20 +61,22 @@ story_character_relation:
   - Anna_Victor: "Anna and Victor actually know each other through their connection with Maria. Anna happens to be Maria's colleague, while Victor is Maria's new boyfriend."
 
 scene_investigation:
-  - base_1: "Ok, so we are standing in the zombie-themed area of the ghost ride. In some way it’s a quite romantic area... we earlier shared a seat at the bench with two zombies holding hands. In the background, there is a scary tree, with no leaves. We can look at the train cabin, under the bench and behind the tree. I think we should search to find some hints about the murderer. Where should we start?"
+  - base_1: "So, we are standing in the zombie-themed section of the ghost ride, next to our cabin. This place, you know, has a strangely romantic vibe but it also gives me a bit of a chill. Look at that spooky tree over there, completely devoid of leaves and the bench under it where the zombies are holding hands and gnawing on a ripped-off limb. \nWould you like to investigate one of those things?"
   - base_2: "Let´s have another close look at everything..."
-  - base_3: "I think this is all we can find here." 
+  - base_3: "I think this is all we can find here."
   - weapon: "Let me see... the weapon is a knife. It’s a bit bloody and it’s a bit scary to hold it. Should I take a closer look or should we put it back where we found it?"
-  - knife: "The Knife... Oh, there are initials in it. It says “A.P.” on the knife. Hm, who might it be?"
-  - body: "Ok, this feels a bit scary to look at Maria's dead body, but it’s the best thing we can do. Let’s move a few steps closer... She is covered in blood... sorry I'm feeling sick I can't look at it anymore. Please say that we can look around now..."
-  - cabin: "It has two seats, as ours did. On the seat closer to us and closer to the themed area is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... Should I investigate it more or should I tell you about the note..."
+  - knife: "The Knife... Oh, there are initials on it. It says “A.P.”. Hm, who might it be?"
+  - body: "Ok, it feels a bit scary to look at Maria's lifeless body, but perhaps we'll discover something that leads us to the murderer. Let’s take a few steps closer... She is covered in blood... sorry I'm feeling sick... I can't look at her anymore. Please say that we can look around now..."
+  - cabin: "It has two seats, just like ours. On the seat closer to us is Maria. She is covered in blood and a note is pinned to her chest. I don’t see how she died... Should I investigate it more or should I tell you about the note..."
   - bench: "Just some zombie love dripping through the wooden slats of the bench. Or is this something else... Let's stand up but be careful to not get tangled in the zombies' limbs."
-  - tree: "The tree is a bit scary. It’s a dead tree with no leaves. Behind the tree, there is just some light equipment to give the scene a spooky feeling."
+  - tree: "The tree is a bit scary. It’s a dead tree without leaves. Behind the tree, there is just some light equipment that adds to the spooky ambiance of the scene."
   - equipment: "I cannot see anything of interest here."
   - note: "There is a Note on the body. It says “You are next”. I believe it means that I am the target the murderer intends to go after next."
   - no_access: "It is inside the train cabin and we currently don't have access. We should first investigate the cabin..."
 
 motive:
+  Mika:
+  - base_1: "No, I didn't have any issues with Maria and also I can't be the murderer since I was with you the whole time."
   Kira:
   - base_1: "Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very well."
   - base_2: "You already asked me about Marias's motive but no worries, I'll tell you again. Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very well."
@@ -87,6 +94,8 @@ motive:
 
 
 access:
+  Mika:
+  - base_1: "Since I work here I do have access to the rollercoasters."
   Kira:
   - base_1: "Kira works at the rollercoaster and has backstage access, so yes, she had access."
   - base_2: "Like I told you: Kira works at the rollercoaster and she has backstage access, so indeed she had the necessary access."
