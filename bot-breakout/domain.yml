@@ -1,6 +1,5 @@
 version: '3.1'
 intents:
-- user_greets_simple
 - user_asks_about_wellbeing
 - user_wants_to_leave
 - user_needs_hint
@@ -34,10 +33,6 @@ slots:
       entity: cabin_password
 
 responses:
-  utter_simple_greet:
-  - text: Hi, do you want to see the **overview** of your current state?
-  - text: Hey, do you want to see the overview of your current state?
-  - text: What would you like to do next? Shall I give you an overview?
   utter_you_cannot_leave:
   - text: You can’t leave before the police arrive in a few minutes! We need to find hints together, so they don’t think we two did it. Should we investigate or talk?
   - text: This is not possible! The murderer could still be walking around, we should wait until the police arrive in a few minutes. I think we should investigate the situation more.

@@ -22,7 +22,7 @@ class StartGame(Action):
             data = tracker.get_slot('data')
 
         timestamp = datetime.now()
-        timer = timestamp + timedelta(seconds=20)
+        timer = timestamp + timedelta(seconds=30)
         #timer = timestamp + timedelta(seconds=420)
         updated_timestamp = timer.timestamp()
 

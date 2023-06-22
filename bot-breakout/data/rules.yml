@@ -6,11 +6,6 @@ rules:
   - intent: user_asks_about_wellbeing
   - action: action_set_reminder
 
-- rule: Simple greet
-  steps:
-  - intent: user_greets_simple
-  - action: utter_simple_greet
-
 - rule: Trigger `action_react_to_reminder` for `EXTERNAL_reminder`
   steps:
   - intent: EXTERNAL_reminder
