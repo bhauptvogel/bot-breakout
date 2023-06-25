@@ -90,6 +90,7 @@ class CharacterInvestigation(Action):
             if last_talked_about != "":
                 characters.append(last_talked_about)
             elif len(informations) == 0:
+                print(last_talked_about, )
                 # TODO: I can tell you about... (all characters the user has not asked about yet) #53
                 dispatcher.utter_message(text="If you want to know something about a character, please specify who you mean. I can tell you about Victor, Anna, Patrick and Kira.")
                 reset_last_talked_about_character(data)

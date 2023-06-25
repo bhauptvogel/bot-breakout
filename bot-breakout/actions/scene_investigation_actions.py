@@ -118,7 +118,7 @@ class CabinStart(Action):
         }
 
         if cabin_open:
-            dispatcher.utter_message(text="It has two seats, as ours did. On the seat closer to us is the female corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. I see something in the puddles. It's a knife! It's strange to grab in blood, but I get it out. I could take a closer look at it.")
+            dispatcher.utter_message(text="It has two seats, just like ours. On the seat closer to us is Maria's corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. I see something in the puddles. It's a knife! It's strange to grab in blood, but I'll get it out. I could take a closer look at it.")
         else:
             data["blocked"] = block
             dispatcher.utter_message(text="We are now standing in front of the train cabin with the dead body. But Damn... the door is locked, and I can't get in. All cabins are locked with a 3-digit pin code. I set those after a rough workday... I don't know the solution but I work with a specific system. I subtract the fourth prime number from the cabin number, added 2 and divide it by 2. I think the cabin number of this cabin is 686. Can you help me find the right pin code to enter the cabin? Just tell me the 3-digit pin code I should try!")
@@ -171,7 +171,7 @@ class CabinPinValidation(Action):
         cabin_password = tracker.latest_message['entities'][0]['value']
 
         if cabin_password == "492":
-            dispatcher.utter_message(text="Yes "+cabin_password+" worked. We can enter the cabin. It has two seats, as ours did. On the seat closer to us is Maria's body. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. I see something in the puddles. It's a knife! It's strange to grab in blood, but I get it out. I could take a closer look at it.")
+            dispatcher.utter_message(text="Yes "+cabin_password+" worked. We can enter the cabin. It has two seats, as ours did. On the seat closer to us is Maria's body. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. I see something in the puddles. It's a knife! It's strange to grab in blood, but I'll get it out. I could take a closer look at it.")
             self.cabin_end(data)
             if check_timer(data):
                 dispatcher.utter_message(text=set_timer(data))

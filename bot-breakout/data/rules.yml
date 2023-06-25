@@ -11,6 +11,11 @@ rules:
   - intent: EXTERNAL_reminder
   - action: action_react_to_reminder
 
+- rule: Who is mika
+  steps:
+  - intent: ask_about_mika
+  - action: utter_who_is_mika
+
 - rule: You cannot leave
   steps:
   - intent: user_wants_to_leave
