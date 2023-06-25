@@ -9,9 +9,6 @@ import time
 import random
 
 
-
-
-
 class StartGame(Action):
     # def __init__(self):
 
@@ -23,9 +20,9 @@ class StartGame(Action):
             data = {}
         else:
             data = tracker.get_slot('data')
-    
+
         timestamp = datetime.now()
-        timer = timestamp + timedelta(seconds=20)
+        timer = timestamp + timedelta(seconds=60)
         #timer = timestamp + timedelta(seconds=420)
         updated_timestamp = timer.timestamp()
 
@@ -33,7 +30,7 @@ class StartGame(Action):
             data['timer'] = updated_timestamp
         if "timercount" not in data.keys():
             data['timercount'] = 1
-        
+
         blocked = {
             "action_character_investigation": "",
             "action_user_guess": "",
@@ -50,13 +47,20 @@ class StartGame(Action):
         if "blocked" not in data.keys():
             data["blocked"] = blocked
 
-        dispatcher.utter_message(
-            "Oh hi! Sorry, I’m just a bit stunned. I know this woman - it's Maria, a journalist... After seeing the dead body, I called the police. Because this is what a good citizen does, right? But now I’m not sure if it was the right decision... We are the only people here and its my work place. I might be a suspect! We have 10 min until the police is here. I should give them some valuable hints about the motive, the access to the crime scene and the murder weapon when they arrive here. But I don’t know where to start. Can you help me clear my mind? We could first investigate the body with the note, or I can tell you about my co-workers."
-        )
-        
+        if "first_message_sent" not in data.keys():
+            dispatcher.utter_message(
+                "I..I..I’m shocked. I know this woman - it’s Maria, a journalist... \nI just called the police, because that's what a good citizen does, right? But now I’m not sure if it was the right decision... We are the only people here and it’s my work place. I might be a suspect! The police said they will be here in 10 minutes. When they arrive, we should provide them with valuable hints about a potential suspect who had both motive and access to the crime scene and the murder weapon. \nI'm not sure where to start. Can you help me clear my mind? Maybe we could investigate the body with the note, or I can tell you about my co-workers."
+            )
+        else:
+            dispatcher.utter_message(
+                "This whole situation is really aweful for a date, but I think we are doing good! Let’s solve this mystery and find out who the murderer is! We could talk about my coworkers or investigate the room."
+            )
+
+        data["first_message_sent"] = True
+
         return [SlotSet("data", data)]
-        
-    
+
+
 class ActionReactToReminder(Action):
     def name(self) -> Text:
         return "action_react_to_reminder"
@@ -70,6 +74,3 @@ class ActionReactToReminder(Action):
         dispatcher.utter_message("The police is coming now! What's our guess?")
 
         return []
-
-
-

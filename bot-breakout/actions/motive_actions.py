@@ -23,7 +23,7 @@ class CharacterMotive(Action):
             data = {}
         else:
             data = tracker.get_slot('data')
-        
+
         blocked = data["blocked"]
         if blocked[self.name()] != "":
             dispatcher.utter_message(text=get_locked_message(data["blocked"][self.name()]))
@@ -47,24 +47,24 @@ class CharacterMotive(Action):
             dispatcher.utter_message(text="I don't know who you are talking about. Please specify one person you want to know about.")
             reset_last_talked_about_character(data)
             return [SlotSet("data", data)]
-    
+
         # if user is not specifiing a character
         if len(characters) == 0 or characters[0] == "":
             # TODO: I can tell you the motive of... (all characters the user has not asked the motive about yet) #53
             dispatcher.utter_message(text="If you want to know the motive about a certain character, let me know who you want to know about.")
             reset_last_talked_about_character(data)
             return [SlotSet("data", data)]
-        
+
         for character in characters:
             # if user asks about a character that is not in the story
             if character not in ii.get_story_characters():
                 dispatcher.utter_message(text=f"I don't know who {character} is. {get_most_similar_person(character)}")
             else:
                 dispatcher.utter_message(text=ii.get_story_information(f"motive/{character}", "", data))
-        
+
         set_last_talked_about_character(characters[-1], data)
 
         if check_timer(data):
-            dispatcher.utter_message(text=set_timer(data))  
+            dispatcher.utter_message(text=set_timer(data))
 
         return [SlotSet("data", data)]

@@ -25,13 +25,13 @@ class CharacterInvestigation(Action):
                     return
             dispatcher.utter_message(text=ii.get_story_information(f"character_information/{character}", "", data))
             set_last_talked_about_character(character, data)
-    
+
     def utter_specific_information(self, dispatcher, character, info, data):
         if info not in ii.get_story_characters_information()[character]:
             if character == "__General__":
                 dispatcher.utter_message(text=f"I don't know anything about the {info}!")
             else:
-                dispatcher.utter_message(text=f"I don't know anything about the {info} of {character}!")        
+                dispatcher.utter_message(text=f"I don't know anything about the {info} of {character}!")
         else:
             dispatcher.utter_message(text=ii.get_story_information(f"character_information/{character}", info, data))
 
@@ -40,12 +40,12 @@ class CharacterInvestigation(Action):
             dispatcher.utter_message(text="I don't know what you mean. Please specify two characters if you want to know about their relation.")
         else:
             dispatcher.utter_message(text=ii.get_story_information("story_character_relation", f"{characters[0]}_{characters[1]}", data))
-            
+
     def process_informations(self, dispatcher, characters, informations, data):
         for info in informations:
-            if info == "relation" or info =="connection":  
-                self.utter_relation(dispatcher, characters, data)      
-            else: 
+            if info == "relation" or info =="connection":
+                self.utter_relation(dispatcher, characters, data)
+            else:
                 if info == "last name" or info == "full name":
                     info = "full_name"
 
@@ -57,12 +57,12 @@ class CharacterInvestigation(Action):
                         dispatcher.utter_message(text=f"I don't know who {character} is. {get_most_similar_person(character)}")
                         return
                     self.utter_specific_information(dispatcher, character, info, data)
-                    
+
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:    
-        
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
             data = {}
         else:
@@ -84,12 +84,13 @@ class CharacterInvestigation(Action):
             else:
                 dispatcher.utter_message(text=get_locked_message(data["blocked"][self.name()]))
             return [SlotSet("data", data)]
-        
+
         if len(characters) == 0:
             last_talked_about = get_last_talked_about_character(data)
             if last_talked_about != "":
                 characters.append(last_talked_about)
             elif len(informations) == 0:
+                print(last_talked_about, )
                 # TODO: I can tell you about... (all characters the user has not asked about yet) #53
                 dispatcher.utter_message(text="If you want to know something about a character, please specify who you mean. I can tell you about Victor, Anna, Patrick and Kira.")
                 reset_last_talked_about_character(data)
@@ -97,14 +98,14 @@ class CharacterInvestigation(Action):
 
 
         if len(entities) > 0 and "group" in entities[0].keys() and entities[0]["group"] == "multiple":
-            # if all coworkers are asked 
+            # if all coworkers are asked
             characters = ["__General__"]
 
         # if user wants to know something specific (about a character)
         if len(informations) == 0:
             self.utter_base_information(dispatcher, characters, data)
         else:
-            self.process_informations(dispatcher, characters, informations, data)   
+            self.process_informations(dispatcher, characters, informations, data)
             reset_last_talked_about_character(data)
 
         if check_timer(data):

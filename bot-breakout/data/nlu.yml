@@ -1,7 +1,7 @@
 version: "3.1"
 nlu:
 
-# possible intents to add: hello/greet, yes
+# possible intents to add: yes
 
 ## ------ start ------
 - intent: user_asks_about_wellbeing
@@ -16,26 +16,40 @@ nlu:
     - hello, how are you?
     - are you good?
     - are you alright there
-    - hi
-    - hey
-    - hello
-    - mika
-    - Hi mika
-    - Hello Mika
     - Hey mika, how are you?
-    - huhu
-    - aloha
-    - bonjour
-    - hola
-    - Hi miki
     - How are you doing, Mika?
     - How are you Mika?
     - How mika is doing
     - Hi Mika, how are you?
     - Mika are you ok?
     - how mike is doing?
+    - hi
+    - hey
+    - Hallo
+    - hello
+    - mika
+    - Hi mika
+    - Hello Mika
+    - Hello Miki
+    - huhu
+    - aloha
+    - bonjour
+    - hola
+    - Hi miki
 
 ## ------ general ------
+- intent: ask_about_mika
+  examples: |
+    - can you tell me more about you?
+    - can you tell me more about Mika?
+    - tell me mor about mika
+    - Can you tell me more about you, Mika?
+    - Who are you?
+    - Who is Mika?
+    - Tell me more about you
+    - Tell me more about yourself, Mika
+    - Tell me more anout Mika
+
 - intent: user_wants_to_leave
   examples: |
     - i want to leave
@@ -94,7 +108,7 @@ nlu:
     - watch overview
     - could you provide an overview?
     - watch overview
-    - tell me about we talked so far 
+    - tell me about we talked so far
     - tell me what we've talked about so far
     - what we have talked about so far
     - what did we talk about so far
@@ -116,9 +130,9 @@ nlu:
     - I think [Kira]{"entity":"person"} was it
     - I think [Victor]{"entity":"person"} was it
     - I think [victor]{"entity":"person"} murdered [Maria]{"entity":"person"}
-    - I think [patrick]{"entity":"person"} murdered [Maria]{"entity":"person"} 
+    - I think [patrick]{"entity":"person"} murdered [Maria]{"entity":"person"}
     - I think [anna]{"entity":"person"} murdered [Maria]{"entity":"person"}
-    - I think [kira]{"entity":"person"} murdered [Maria]{"entity":"person"} 
+    - I think [kira]{"entity":"person"} murdered [Maria]{"entity":"person"}
     - could it be that [kira]{"entity":"person"} murdered [Maria]{"entity":"person"}?
     - could it be that [anna]{"entity":"person"} murdered [Maria]{"entity":"person"}?
     - could it be that [victor]{"entity":"person"} murdered [Maria]{"entity":"person"}?
@@ -258,6 +272,7 @@ nlu:
     - Provide insights about the [note]{"entity":"object", "group":"search"}.
     - Please examine the [weapon]{"entity":"object", "group":"search"} carefully.
     - Take a close look at the [knife]{"entity":"object", "group":"search"}
+    - Take close look at [knife]{"entity":"object", "group":"search"}
     - Observe the details of the [knife]{"entity":"object", "group":"search"}
     - Carefully inspect the [knife]{"entity":"object", "group":"search"}
     - Inspect the [knife]{"entity":"object", "group":"search"}
@@ -273,7 +288,7 @@ nlu:
   examples: |
     - train [cabin]{"entity":"object", "group":"search"}
     - [cabin]{"entity":"object", "group":"search"}
-    - Okay, then I would like to investigate the 
+    - Okay, then I would like to investigate the
     - Investigate the [cabin]{"entity":"object", "group":"search"}
     - Investigate [cabin]{"entity":"object", "group":"search"}
     - Look in the [cabin]{"entity":"object", "group":"search"}
@@ -435,7 +450,6 @@ nlu:
     - Who are your [coworkers]{"entity":"person", "group":"multiple"}?
     - tell me about [Maria]{"entity":"person"}
     - Who is the [boyfriend]{"entity":"person"}?
-    - Who is [Patrick]{"entity":"person"}?
     - More information about [Anna]{"entity":"person"}
     - Where do you know [Victor]{"entity":"person"} from?
     - What [secret]{"entity":"information"}?
@@ -495,24 +509,20 @@ nlu:
     - Provide information about [Patrick]{"entity":"person"}.
     - What is the story behind [Maria]{"entity":"person"}?
     - Who is [Victor]{"entity":"person"} and what is his background?
-    - What do you know about [Anna]{"entity":"person"}?
     - Tell me more about [Patrick]{"entity":"person"} and his background.
     - Can you provide more details about [Maria]{"entity":"person"}?
     - Share information about [Victor]{"entity":"person"}.
     - I would like to know more about [Anna]{"entity":"person"}.
     - What is the [relation]{"entity":"information"} between [Maria]{"entity":"person"} and [Victor]{"entity":"person"}?
-    - Does [Patrick]{"entity":"person"} have any [secrets]{"entity":"information", "value":"secret"}?
     - What do we know about [Anna]{"entity":"person"}'s [past]{"entity":"information"}?
     - Can you tell me [Victor]{"entity":"person"}'s [profession]{"entity":"information"}?
     - What is the [connection]{"entity":"information"} between [Anna]{"entity":"person"} and [Maria]{"entity":"person"}?
     - What role does [Patrick]{"entity":"person"} play in all this?
     - Tell me about [Maria]{"entity":"person"}'s [secret]{"entity":"information"}.
-    - How did [Victor]{"entity":"person"} meet [Anna]{"entity":"person"}?
     - What is [Anna]{"entity":"person"}'s [last name]{"entity":"information"}?
     - What is [Victor]{"entity":"person"}'s [full name]{"entity":"information"}?
     - Provide me with the [full name]{"entity":"information"} of [Patrick]{"entity":"person"}.
     - I need to know [Anna]{"entity":"person"}'s [name]{"entity":"information"}.
-    - Do you know [Patrick]{"entity":"person"}'s [last name]{"entity":"information"}?
     - What is [Victor]{"entity":"person"}'s [last name]{"entity":"information"}?
     - Please provide [Patrick]{"entity":"person"}'s [full name]{"entity":"information"}.
     - What is [Patrick]{"entity":"person"}'s [surname]{"entity":"information"}?
@@ -532,7 +542,6 @@ nlu:
     - What about your [co-workers]{"entity":"person", "group":"multiple"}?
     - Who are your [co-workers]{"entity":"person", "group":"multiple"}?
     - Tell me about [Maria]{"entity":"person"}.
-    - Who is [Patrick]{"entity":"person"}?
     - More information about [Anna]{"entity":"person"}.
     - Where do you know [Victor]{"entity":"person"} from?
     - What [secret]{"entity":"information"}?
@@ -543,7 +552,6 @@ nlu:
     - Give me information about [Patrick]{"entity":"person"}.
     - What's the story of [Maria]{"entity":"person"}?
     - Who is [Victor]{"entity":"person"}?
-    - What do you know about [Anna]{"entity":"person"}?
     - What's [Patrick]{"entity":"person"}'s background?
     - Can you tell me more about [Maria]{"entity":"person"}?
     - Share information about [Victor]{"entity":"person"}.
@@ -556,7 +564,6 @@ nlu:
     - What is the [relation]{"entity":"information"} between [Anna]{"entity":"person"} and [Maria]{"entity":"person"}?
     - What is the [relation]{"entity":"information"} between [Kira]{"entity":"person"} and [Maria]{"entity":"person"}?
     - What is the [relation]{"entity":"information"} between [Patrick]{"entity":"person"} and [Maria]{"entity":"person"}?
-    - Does [Patrick]{"entity":"person"} have any [secrets]{"entity":"information", "value":"secret"}?
     - What do we know about [Anna]{"entity":"person"}'s [past]{"entity":"information"}?
     - Can you tell me [Victor]{"entity":"person"}'s [profession]{"entity":"information"}?
     - What's the [connection]{"entity":"information"} between [Anna]{"entity":"person"} and [Maria]{"entity":"person"}?
@@ -569,10 +576,8 @@ nlu:
     - What's the [connection]{"entity":"information"} between [Kira]{"entity":"person"} and [Maria]{"entity":"person"}?
     - What's [Patrick]{"entity":"person"}'s role in all this?
     - What is the [last name]{"entity":"information"} of [Anna]{"entity":"person"}?
-    - What is [Victor]{"entity":"person"}'s [full name]{"entity":"information"}?
     - Give me the [full name]{"entity":"information"} of [Patrick]{"entity":"person"}.
     - I need [Anna]{"entity":"person"}'s [name]{"entity":"information"}.
-    - Do you know [Patrick]{"entity":"person"}'s [last name]{"entity":"information"}?
     - [Last name]{"entity":"information"} of [Victor]{"entity":"person"}.
     - [Patrick]{"entity":"person"}'s [full name]{"entity":"information"} please.
     - What is the [last name]{"entity":"information"} of [Patrick]{"entity":"person"}?
@@ -583,8 +588,6 @@ nlu:
     - Share additional information about her.
     - Can you tell me more about [Maria]{"entity":"person"}?
     - Who is the [victim]{"entity":"person"} and what can you tell me about them?
-    - Share everything you know about [Maria]{"entity":"person"}.
-    - Tell me about your [coworkers]{"entity":"person", "group":"multiple"}.
     - Let's discuss your [coworkers]{"entity":"person", "group":"multiple"}.
     - Tell me about your [co-workers]{"entity":"person", "group":"multiple"}.
     - Let's discuss your [co-workers]{"entity":"person", "group":"multiple"}.
@@ -592,7 +595,6 @@ nlu:
     - Who are your [coworkers]{"entity":"person", "group":"multiple"}?
     - What can you tell me about your [co-workers]{"entity":"person", "group":"multiple"}?
     - Who are your [co-workers]{"entity":"person", "group":"multiple"}?
-    - Provide more information about [Maria]{"entity":"person"}.
     - Tell me more about [Anna]{"entity":"person"} and her background.
     - Where did you meet [Victor]{"entity":"person"}?
     - What [secrets]{"entity":"information", "value":"secret"}?
@@ -603,27 +605,13 @@ nlu:
     - What can you tell me about [Anna]{"entity":"person"}?
     - Provide information about [Patrick]{"entity":"person"}.
     - Who is [Victor]{"entity":"person"} and what is his background?
-    - What do you know about [Anna]{"entity":"person"}?
-    - Tell me more about [Patrick]{"entity":"person"} and his background.
-    - Can you provide more details about [Maria]{"entity":"person"}?
     - Share information about [Victor]{"entity":"person"}.
     - I would like to know more about [Anna]{"entity":"person"}.
     - What is the [relation]{"entity":"information"} between [Maria]{"entity":"person"} and [Victor]{"entity":"person"}?
-    - Does [Patrick]{"entity":"person"} have any [secrets]{"entity":"information", "value":"secret"}?
     - What do we know about [Anna]{"entity":"person"}'s past?
     - What is the [connection]{"entity":"information"} between [Anna]{"entity":"person"} and [Maria]{"entity":"person"}?
-    - What is [Anna]{"entity":"person"}'s [last name]{"entity":"information"}?
-    - What is [Victor]{"entity":"person"}'s [full name]{"entity":"information"}?
-    - Provide me with the [full name]{"entity":"information"} of [Patrick]{"entity":"person"}.
-    - I need to know [Anna]{"entity":"person"}'s [name]{"entity":"information"}.
-    - Do you know [Patrick]{"entity":"person"}'s [last name]{"entity":"information"}?
-    - [Last name]{"entity":"information"} of [Victor]{"entity":"person"}.
-    - [Patrick]{"entity":"person"}'s [full name]{"entity":"information"} please.
-    - What is [Patrick]{"entity":"person"}'s [surname]{"entity":"information"}?
     - Please tell me [Anna]{"entity":"person"}'s [full name]{"entity":"information"}.
-    - Share more details about [Victor]{"entity":"person"}.
-    - Tell me more about [Maria]{"entity":"person"}'s [boyfriend]{"entity":"person"}.
-    - I want to know more about [Anna]{"entity":"person"}.
+
 
 - intent: motive_of_character
   examples: |
@@ -698,7 +686,6 @@ nlu:
     - Can you tell me more about [her]{"entity":"person", "group":"reference", "role":"suspect"} motive?
     - What could be [her]{"entity":"person", "group":"reference", "role":"suspect"} motive?
     - Does [he]{"entity":"person", "group":"reference", "role":"suspect"} have a motive?
-    - What motive could [she]{"entity":"person", "group":"reference", "role":"suspect"} have?
     - Could [she]{"entity":"person", "group":"reference", "role":"suspect"} have a motive?
 
 - intent: access_to_rollercoaster
