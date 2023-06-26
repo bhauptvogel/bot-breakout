@@ -134,93 +134,94 @@ nlu:
 
 - intent: user_guesses_murderer
   examples: |
-    - we suspect [kira]{"entity":"person"}
-    - we suspect [anna]{"entity":"person"}
-    - we suspect [victor]{"entity":"person"}
-    - we suspect [patrick]{"entity":"person"}
+    - we suspect [kira]{"entity":"person", "role":"suspect"}
+    - we suspect [anna]{"entity":"person", "role":"suspect"}
+    - we suspect [victor]{"entity":"person", "role":"suspect"}
+    - we suspect [patrick]{"entity":"person", "role":"suspect"}
     - police
     - I want to go to the police
-    - I think [Kira]{"entity":"person"} is the murderer
-    - I think [Anna]{"entity":"person"} is the murderer
-    - I think [Victor]{"entity":"person"} is the murderer
-    - I think [Patrick]{"entity":"person"} is the murderer
-    - I think [Patrick]{"entity":"person"} was it
-    - I think [Anna]{"entity":"person"} was it
-    - I think [Kira]{"entity":"person"} was it
-    - I think [Victor]{"entity":"person"} was it
-    - I think [victor]{"entity":"person"} murdered [Maria]{"entity":"person"}
-    - I think [patrick]{"entity":"person"} murdered [Maria]{"entity":"person"}
-    - I think [anna]{"entity":"person"} murdered [Maria]{"entity":"person"}
-    - I think [kira]{"entity":"person"} murdered [Maria]{"entity":"person"}
-    - could it be that [kira]{"entity":"person"} murdered [Maria]{"entity":"person"}?
-    - could it be that [anna]{"entity":"person"} murdered [Maria]{"entity":"person"}?
-    - could it be that [victor]{"entity":"person"} murdered [Maria]{"entity":"person"}?
-    - could it be that [patrick]{"entity":"person"} murdered [Maria]{"entity":"person"}?
-    - [patrick]{"entity":"person"} did the crime
-    - [anna]{"entity":"person"} did the crime
-    - [victor]{"entity":"person"} did the crime
-    - [kira]{"entity":"person"} did the crime
-    - Do you think it was [Kira]{"entity":"person"}?
-    - I know it is that [Patrick]{"entity":"person"}.
-    - I think that is was [Patrick]{"entity":"person"}!
-    - Was it [Anna]{"entity":"person"}?
-    - It was [Victor]{"entity":"person"}!
-    - I am sure it was [Patrick]{"entity":"person"}.
-    - Could [Kira]{"entity":"person"} be the murderer?
-    - I'm suspecting [Anna]{"entity":"person"}.
-    - [Victor]{"entity":"person"} has to be the murderer!
-    - I have a feeling it was [Patrick]{"entity":"person"}.
-    - It was [Anna]{"entity":"person"}, I'm sure of it!
-    - I believe it was [Kira]{"entity":"person"}.
-    - I bet it was [Anna]{"entity":"person"}.
-    - My guess is [Patrick]{"entity":"person"}.
-    - Is it possible that [Victor]{"entity":"person"} is the murderer?
-    - I suspect it was [Kira]{"entity":"person"}.
-    - Was it possibly [Anna]{"entity":"person"}?
-    - [Anna]{"entity":"person"} is my guess.
-    - I think it was [Kira]{"entity":"person"}.
-    - I think [Kira]{"entity":"person"} is the murderer
-    - [Patrick]{"entity":"person"} is the killer!
-    - [Patrick]{"entity":"person"} did it, didn't he?
-    - It had to be [Anna]{"entity":"person"}.
-    - [Victor]{"entity":"person"} is my primary suspect.
-    - I accuse [Anna]{"entity":"person"}.
-    - I suppose it only could have been [Kira]{"entity":"person"}.
-    - Is [Anna]{"entity":"person"} the murderer?
-    - Could the murderer be [Maria's boyfriend]{"entity":"person"}?
+    - I think [Kira]{"entity":"person", "role":"suspect"} is the murderer
+    - I think [Anna]{"entity":"person", "role":"suspect"} is the murderer
+    - I think [Victor]{"entity":"person", "role":"suspect"} is the murderer
+    - I think [Patrick]{"entity":"person", "role":"suspect"} is the murderer
+    - I think [Patrick]{"entity":"person", "role":"suspect"} was it
+    - I think [Anna]{"entity":"person", "role":"suspect"} was it
+    - I think [Kira]{"entity":"person", "role":"suspect"} was it
+    - I think [Victor]{"entity":"person", "role":"suspect"} was it
+    - I think [victor]{"entity":"person", "role":"suspect"} murdered [Maria]{"entity":"person", "role":"victim"}
+    - I think [patrick]{"entity":"person", "role":"suspect"} murdered [Maria]{"entity":"person", "role":"victim"}
+    - I think [anna]{"entity":"person", "role":"suspect"} murdered [Maria]{"entity":"person", "role":"victim"}
+    - I think [kira]{"entity":"person", "role":"suspect"} murdered [Maria]{"entity":"person", "role":"victim"}
+    - could it be that [kira]{"entity":"person", "role":"suspect"} murdered [Maria]{"entity":"person", "role":"victim"}?
+    - could it be that [anna]{"entity":"person", "role":"suspect"} murdered [Maria]{"entity":"person", "role":"victim"}?
+    - could it be that [victor]{"entity":"person", "role":"suspect"} murdered [Maria]{"entity":"person", "role":"victim"}?
+    - could it be that [patrick]{"entity":"person", "role":"suspect"} murdered [Maria]{"entity":"person", "role":"victim"}?
+    - [patrick]{"entity":"person", "role":"suspect"} did the crime
+    - [anna]{"entity":"person", "role":"suspect"} did the crime
+    - [victor]{"entity":"person", "role":"suspect"} did the crime
+    - [kira]{"entity":"person", "role":"suspect"} did the crime
+    - Do you think it was [Kira]{"entity":"person", "role":"suspect"}?
+    - I know it is that [Patrick]{"entity":"person", "role":"suspect"}.
+    - I think that is was [Patrick]{"entity":"person", "role":"suspect"}!
+    - Was it [Anna]{"entity":"person", "role":"suspect"}?
+    - It was [Victor]{"entity":"person", "role":"suspect"}!
+    - I am sure it was [Patrick]{"entity":"person", "role":"suspect"}.
+    - Could [Kira]{"entity":"person", "role":"suspect"} be the murderer?
+    - I'm suspecting [Anna]{"entity":"person", "role":"suspect"}.
+    - [Victor]{"entity":"person", "role":"suspect"} has to be the murderer!
+    - I have a feeling it was [Patrick]{"entity":"person", "role":"suspect"}.
+    - It was [Anna]{"entity":"person", "role":"suspect"}, I'm sure of it!
+    - I believe it was [Kira]{"entity":"person", "role":"suspect"}.
+    - I bet it was [Anna]{"entity":"person", "role":"suspect"}.
+    - My guess is [Patrick]{"entity":"person", "role":"suspect"}.
+    - Is it possible that [Victor]{"entity":"person", "role":"suspect"} is the murderer?
+    - I suspect it was [Kira]{"entity":"person", "role":"suspect"}.
+    - Was it possibly [Anna]{"entity":"person", "role":"suspect"}?
+    - [Anna]{"entity":"person", "role":"suspect"} is my guess.
+    - I think it was [Kira]{"entity":"person", "role":"suspect"}.
+    - I think [Kira]{"entity":"person", "role":"suspect"} is the murderer
+    - [Patrick]{"entity":"person", "role":"suspect"} is the killer!
+    - [Patrick]{"entity":"person", "role":"suspect"} did it, didn't he?
+    - It had to be [Anna]{"entity":"person", "role":"suspect"}.
+    - [Victor]{"entity":"person", "role":"suspect"} is my primary suspect.
+    - I accuse [Anna]{"entity":"person", "role":"suspect"}.
+    - I suppose it only could have been [Kira]{"entity":"person", "role":"suspect"}.
+    - Is [Anna]{"entity":"person", "role":"suspect"} the murderer?
+    - Could the murderer be [Maria's boyfriend]{"entity":"person", "role":"suspect"}?
     - I want to log in an answer!
     - I want to tell the police who the killer is.
-    - I am suspecting it was [Victors]{"entity":"person", "value":"Victor"}.
-    - It's definitely [Ana]{"entity":"person", "value":"Anna"}.
-    - [Viktor's]{"entity":"person", "value":"Victor"} the one, I'm positive.
-    - Are we sure it isn't [Annas]{"entity":"person", "value":"Anna"}?
-    - I'm fairly certain it was [Marie]{"entity":"person", "value":"Maria"}.
-    - [Vicktor]{"entity":"person", "value":"Victor"} is the only one left.
-    - Could [Kirass]{"entity":"person", "value":"Kira"} be the one we're looking for?
-    - It must have been [Patrik's]{"entity":"person", "value":"Patrick"}.
-    - [Viktors]{"entity":"person", "value":"Victor"}' handiwork, I'm sure.
-    - I believe [Marria]{"entity":"person", "value":"Maria"} is guilty.
-    - [Kisa]{"entity":"person", "value":"Kira"} must have done it!
-    - I'm pointing my finger at [Padrik]{"entity":"person", "value":"Patrick"}.
-    - It's possible that [Victor]{"entity":"person", "value":"Victor"} committed the crime.
-    - I have a hunch it's [Ana]{"entity":"person", "value":"Anna"}.
-    - Do you think it could be [Patrik]{"entity":"person", "value":"Patrick"}?
-    - [Marie]{"entity":"person", "value":"Maria"} can't be ruled out.
-    - [Vicktors]{"entity":"person", "value":"Victor"} is the likely suspect.
-    - I want to report that it was [Partick]{"entity":"person", "value":"Patrick"}.
-    - I need to let the detectives know it was [Kiras]{"entity":"person", "value":"Kira"}.
-    - My intuition says it's [Marias]{"entity":"person", "value":"Maria"}.
-    - [Vicctor]{"entity":"person", "value":"Victor"} is the one to blame.
-    - I'm convinced it's [Annaa]{"entity":"person", "value":"Anna"}.
-    - I wish to report that [Patriks]{"entity":"person", "value":"Patrick"} is the criminal.
-    - Let's consider [Anas]{"entity":"person", "value":"Anna"} as the killer.
-    - I want to submit my final answer: It's [mari]{"entity":"person", "value":"Maria"}.
-    - I think it's time to tell the police that [patrick]{"entity":"person", "value":"Patrick"} is responsible.
-    - Can [Kira's]{"entity":"person", "value":"Kira"} guilt be confirmed?
-    - I have no doubts, it was [Patrik]{"entity":"person", "value":"Patrick"}.
-    - So [Patrik]{"entity":"person", "value":"Patrick"} killed [Mariaa]{"entity":"person", "value":"Maria"}?
-    - Do you think [Patric]{"entity":"person", "value":"Patrick"} killed [Maria]{"entity":"person"}?
-    - did [Kira]{"entity":"person"} kill [Maria]{"entity":"person"}
+    - I am suspecting it was [Victors]{"entity":"person", "value":"Victor", "role":"suspect"}.
+    - It's definitely [Ana]{"entity":"person", "value":"Anna", "role":"suspect"}.
+    - [Viktor's]{"entity":"person", "value":"Victor", "role":"suspect"} the one, I'm positive.
+    - Are we sure it isn't [Annas]{"entity":"person", "value":"Anna", "role":"suspect"}?
+    - I'm fairly certain it was [Marie]{"entity":"person", "value":"Maria", "role":"suspect"}.
+    - [Vicktor]{"entity":"person", "value":"Victor", "role":"suspect"} is the only one left.
+    - Could [Kirass]{"entity":"person", "value":"Kira", "role":"suspect"} be the one we're looking for?
+    - It must have been [Patrik's]{"entity":"person", "value":"Patrick", "role":"suspect"}.
+    - [Viktors]{"entity":"person", "value":"Victor", "role":"suspect"}' handiwork, I'm sure.
+    - I believe [Marria]{"entity":"person", "value":"Maria", "role":"suspect"} is guilty.
+    - [Kisa]{"entity":"person", "value":"Kira", "role":"suspect"} must have done it!
+    - I'm pointing my finger at [Padrik]{"entity":"person", "value":"Patrick", "role":"suspect"}.
+    - It's possible that [Victor]{"entity":"person", "value":"Victor", "role":"suspect"} committed the crime.
+    - I have a hunch it's [Ana]{"entity":"person", "value":"Anna", "role":"suspect"}.
+    - i think it is [maria]{"entity":"person", "value":"Maria", "role":"suspect"}
+    - Do you think it could be [Patrik]{"entity":"person", "value":"Patrick", "role":"suspect"}?
+    - [Marie]{"entity":"person", "value":"Maria", "role":"suspect"} can't be ruled out.
+    - [Vicktors]{"entity":"person", "value":"Victor", "role":"suspect"} is the likely suspect.
+    - I want to report that it was [Partick]{"entity":"person", "value":"Patrick", "role":"suspect"}.
+    - I need to let the detectives know it was [Kiras]{"entity":"person", "value":"Kira", "role":"suspect"}.
+    - My intuition says it's [Marias]{"entity":"person", "value":"Maria", "role":"suspect"}.
+    - [Vicctor]{"entity":"person", "value":"Victor", "role":"suspect"} is the one to blame.
+    - I'm convinced it's [Annaa]{"entity":"person", "value":"Anna", "role":"suspect"}.
+    - I wish to report that [Patriks]{"entity":"person", "value":"Patrick", "role":"suspect"} is the criminal.
+    - Let's consider [Anas]{"entity":"person", "value":"Anna", "role":"suspect"} as the killer.
+    - I want to submit my final answer: It's [mari]{"entity":"person", "value":"Maria", "role":"suspect"}.
+    - I think it's time to tell the police that [patrick]{"entity":"person", "value":"Patrick", "role":"suspect"} is responsible.
+    - Can [Kira's]{"entity":"person", "value":"Kira", "role":"suspect"} guilt be confirmed?
+    - I have no doubts, it was [Patrik]{"entity":"person", "value":"Patrick", "role":"suspect"}.
+    - So [Patrik]{"entity":"person", "value":"Patrick", "role":"suspect"} killed [Mariaa]{"entity":"person", "value":"Maria", "role":"victim"}?
+    - Do you think [Patric]{"entity":"person", "value":"Patrick", "role":"suspect"} killed [Maria]{"entity":"person", "role":"victim"}?
+    - did [Kira]{"entity":"person", "role":"suspect"} kill [Maria]{"entity":"person", "role":"victim"}
 
 ## ------ scene investigation ------
 - intent: scene_investigation
@@ -704,7 +705,7 @@ nlu:
     - What could be [Meike]{"entity":"person"}'s reason to kill [Maria]{"entity":"person", "role":"victim"}?
     - Does [Ursula]{"entity":"person"} have a reason to harm [Maria]{"entity":"person", "role":"victim"}?
     - Can you tell me more about [Victors]{"entity":"person", "role":"suspect", "value":"Victor"} motive?
-    - Can you tell me more about [Patrick]{"entity":"person", "role":"suspect"}s motive?
+    - Can you tell me more about [Patricks]{"entity":"person", "role":"suspect", "value":"Patrick"} motive?
     - Can you tell me more about [Annas]{"entity":"person", "role":"suspect", "value":"Anna"} motive?
     - What could [kira]{"entity":"person", "role":"suspect", "value":"Kira"} gain from [Maria]{"entity":"person", "role":"victim"}'s death?
     - Why would [Ana]{"entity":"person", "role":"suspect", "value":"Anna"} kill [Maria]{"entity":"person", "role":"victim"}?
