@@ -50,6 +50,33 @@ nlu:
     - Tell me more about yourself, Mika
     - Tell me more anout Mika
 
+- intent: who_is_the_murderer
+  examples: |
+    - Who did it?
+    - Who's to blame?
+    - Who's responsible?
+    - Who committed the crime?
+    - Who killed them?
+    - Who caused this?
+    - Who took a life?
+    - Who's the culprit?
+    - Who's behind it?
+    - Who do you think did it?
+    - Who do you think is the murderer?
+    - Who do you think killed her?
+    - Who do you think killed Maria?
+    - Who is the murderer?
+    - Do you know who the murderer is?
+    - Do you think it was one of your colleagues?
+    - Do you think it was one of your coworkers?
+    - Do you think it was Anna?
+    - do you think it was Victor
+    - do you think anna killed Maria?
+    - Did Patrik kill Maria?
+    - did Kira kill Maria?
+    - Did Patrik kill her?
+    - did Kira kill her?
+
 - intent: user_wants_to_leave
   examples: |
     - i want to leave

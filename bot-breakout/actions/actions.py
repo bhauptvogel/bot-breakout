@@ -7,6 +7,7 @@ from rasa_sdk.events import SlotSet, ReminderScheduled
 from datetime import datetime, timedelta
 import time
 import random
+from helpers.timer_check import check_timer
 
 
 class StartGame(Action):
@@ -20,16 +21,6 @@ class StartGame(Action):
             data = {}
         else:
             data = tracker.get_slot('data')
-
-        timestamp = datetime.now()
-        timer = timestamp + timedelta(seconds=60)
-        #timer = timestamp + timedelta(seconds=420)
-        updated_timestamp = timer.timestamp()
-
-        if "timer" not in data.keys():
-            data['timer'] = updated_timestamp
-        if "timercount" not in data.keys():
-            data['timercount'] = 1
 
         blocked = {
             "action_character_investigation": "",
@@ -51,12 +42,25 @@ class StartGame(Action):
             dispatcher.utter_message(
                 "I..I..I’m shocked. I know this woman - it’s Maria, a journalist... \nI just called the police, because that's what a good citizen does, right? But now I’m not sure if it was the right decision... We are the only people here and it’s my work place. I might be a suspect! The police said they will be here in 10 minutes. When they arrive, we should provide them with valuable hints about a potential suspect who had both motive and access to the crime scene and the murder weapon. \nI'm not sure where to start. Can you help me clear my mind? Maybe we could investigate the body with the note, or I can tell you about my co-workers."
             )
+
+            timestamp = datetime.now()
+            timer = timestamp + timedelta(seconds=60)
+            #timer = timestamp + timedelta(seconds=420)
+            updated_timestamp = timer.timestamp()
+
+            if "timer" not in data.keys():
+                data['timer'] = updated_timestamp
+            if "timercount" not in data.keys():
+                data['timercount'] = 1
         else:
             dispatcher.utter_message(
                 "This whole situation is really aweful for a date, but I think we are doing good! Let’s solve this mystery and find out who the murderer is! We could talk about my coworkers or investigate the room."
             )
 
         data["first_message_sent"] = True
+
+        if check_timer(data):
+            dispatcher.utter_message(text=set_timer(data))
 
         return [SlotSet("data", data)]
 

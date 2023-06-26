@@ -16,6 +16,11 @@ rules:
   - intent: ask_about_mika
   - action: utter_who_is_mika
 
+- rule: Who is the murderer
+  steps:
+  - intent: who_is_the_murderer
+  - action: utter_i_do_not_know_murderer
+
 - rule: You cannot leave
   steps:
   - intent: user_wants_to_leave
