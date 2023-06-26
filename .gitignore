@@ -1,8 +1,7 @@
 .DS_Store
 .vscode/
 
-models/
-chatbot/models/
+
 chatbot/tests/
 results/
 
