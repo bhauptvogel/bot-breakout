@@ -67,15 +67,7 @@ nlu:
     - Who do you think killed Maria?
     - Who is the murderer?
     - Do you know who the murderer is?
-    - Do you think it was one of your colleagues?
-    - Do you think it was one of your coworkers?
-    - Do you think it was Anna?
-    - do you think it was Victor
-    - do you think anna killed Maria?
-    - Did Patrik kill Maria?
-    - did Kira kill Maria?
-    - Did Patrik kill her?
-    - did Kira kill her?
+    - who is the killer?
 
 - intent: user_wants_to_leave
   examples: |

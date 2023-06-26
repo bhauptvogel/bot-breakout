@@ -7,7 +7,7 @@ from rasa_sdk.events import SlotSet, ReminderScheduled
 from datetime import datetime, timedelta
 import time
 import random
-from helpers.timer_check import check_timer
+from helpers.timer_check import check_timer, set_timer
 
 
 class StartGame(Action):
