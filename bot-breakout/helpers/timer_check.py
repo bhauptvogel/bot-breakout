@@ -24,7 +24,13 @@ def set_timer(data):
             "action_scene_investigation": "end_of_game_blocked",
             "validate_simple_cabin_form": "end_of_game_blocked",
             "action_cabin_end": "end_of_game_blocked",
-            "action_cabin_start": "end_of_game_blocked"
+            "action_cabin_start": "end_of_game_blocked",
+            "action_set_reminder": "end_of_game_blocked",
+            "action_react_to_reminder": "end_of_game_blocked",
+            "action_you_cannot_leave": "end_of_game_blocked",
+            "action_ask_about_mika": "end_of_game_blocked",
+            "action_who_is_the_murderer": "end_of_game_blocked",
+            "action_cabin_validation": "end_of_game_blocked"
         }
         
         data['blocked'] = blocked
@@ -33,7 +39,7 @@ def set_timer(data):
     else:
         data['timercount'] = 2
         timestamp = datetime.now()
-        timer = timestamp + timedelta(seconds=20)
+        timer = timestamp + timedelta(seconds=10)
         #timer = timestamp + timedelta(seconds=180)
         updated_timestamp = timer.timestamp()
         data['timer'] = updated_timestamp
