@@ -155,7 +155,7 @@ class Hint(Action):
                 6: "It should be (989 - 7 + 2) / 2.",
             }
             if data["cabin_guess"] > 6:
-                dispatcher.utter_message(text=output[data[6]])
+                dispatcher.utter_message(text=output[6])
                 return [SlotSet("data", data)]
             elif data["cabin_guess"] in output.keys():
                 dispatcher.utter_message(text=output[data["cabin_guess"]])
