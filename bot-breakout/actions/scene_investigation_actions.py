@@ -41,8 +41,7 @@ class SceneInvestigation(Action):
         else:
             data = tracker.get_slot('data')
 
-        blocked = data["blocked"]
-        if blocked[self.name()] != "":
+        if "blocked" in data and data["blocked"][self.name()] != "":
             dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
             return [SlotSet("data", data)]
 

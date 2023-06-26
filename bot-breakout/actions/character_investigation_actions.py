@@ -72,8 +72,7 @@ class CharacterInvestigation(Action):
         informations = [e['value'] for e in entities if e['entity'] == 'information']
         characters = [e['value'] for e in entities if e['entity'] == 'person']
 
-        blocked = data["blocked"]
-        if blocked[self.name()] != "":
+        if "blocked" in data and data["blocked"][self.name()] != "":
             if data["blocked"][self.name()] == "end_of_game_blocked":
                 names_in_message = tracker.latest_message['text'].split(" ")
                 if len(names_in_message) > 2:
