@@ -40,10 +40,7 @@ responses:
   - text: I have no clue at the moment. Let's collect some more hints together, to find out who killed Maria.
   utter_who_is_mika:
   - text: As you already know, I work here at the amusement park. I'm part of the marketing team and we're currently working on a new marketing campaign, since we recently built a new large rollercoaster in our park and we hope to attract more people to come here.
-  utter_you_cannot_leave:
-  - text: You can’t leave before the police arrive in a few minutes! We need to find hints together, so they don’t think we two did it. Should we investigate or talk?
-  - text: This is not possible! The murderer could still be walking around, we should wait until the police arrive in a few minutes. I think we should investigate the situation more.
-
+ 
 actions:
 - action_overview_of_the_state
 - action_scene_investigation
@@ -56,6 +53,9 @@ actions:
 - action_cabin_start
 - action_give_hint
 - action_cabin_validation
+- action_you_cannot_leave
+- action_ask_about_mika
+- action_who_is_the_murderer
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

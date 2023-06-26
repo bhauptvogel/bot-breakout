@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 import time
 import random
 from helpers.timer_check import check_timer, set_timer
+from helpers.blocked_message import get_blocked_message
 
 
 class StartGame(Action):
@@ -32,7 +33,13 @@ class StartGame(Action):
             "action_scene_investigation": "",
             "validate_simple_cabin_form": "",
             "action_cabin_end": "",
-            "action_cabin_start": ""
+            "action_cabin_start": "",
+            "action_set_reminder": "",
+            "action_react_to_reminder": "",
+            "action_you_cannot_leave": "",
+            "action_ask_about_mika": "",
+            "action_who_is_the_murderer": "",
+            "action_cabin_validation": "",
         }
 
         if "blocked" not in data.keys():
@@ -44,7 +51,7 @@ class StartGame(Action):
             )
 
             timestamp = datetime.now()
-            timer = timestamp + timedelta(seconds=60)
+            timer = timestamp + timedelta(seconds=20)
             #timer = timestamp + timedelta(seconds=420)
             updated_timestamp = timer.timestamp()
 
@@ -76,5 +83,99 @@ class ActionReactToReminder(Action):
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
         dispatcher.utter_message("The police is coming now! What's our guess?")
+
+        return []
+
+
+class UserWantsToLeave(Action):
+    def name(self) -> Text: 
+        return "action_you_cannot_leave"
+    
+    async def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        
+        if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
+            data = {}
+        else:
+            data = tracker.get_slot('data')
+        
+        if "blocked" in data and data["blocked"][self.name()] != "":
+            dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
+            return []
+
+        sentences = [
+            "You can’t leave before the police arrive in a few minutes! We need to find hints together, so they don’t think we two did it. Should we investigate or talk?",
+            "This is not possible! The murderer could still be walking around, we should wait until the police arrive in a few minutes. I think we should investigate the situation more."
+        ]
+
+        dispatcher.utter_message(text= random.choice(sentences))
+
+        if check_timer(data):
+            dispatcher.utter_message(text=set_timer(data))
+
+        return []
+
+
+class AskAboutMika(Action):
+    def name(self) -> Text: 
+        return "action_ask_about_mika"
+    
+    async def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        
+        if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
+            data = {}
+        else:
+            data = tracker.get_slot('data')
+        
+        if "blocked" in data and data["blocked"][self.name()] != "":
+            dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
+            return []
+
+        dispatcher.utter_message(text="As you already know, I work here at the amusement park. I'm part of the marketing team and we're currently working on a new marketing campaign, since we recently built a new large rollercoaster in our park and we hope to attract more people to come here.")
+
+        if check_timer(data):
+            dispatcher.utter_message(text=set_timer(data))
+
+        return []
+
+
+class WhoIsTheMurderer(Action):
+    def name(self) -> Text: 
+        return "action_who_is_the_murderer"
+    
+    async def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        
+        if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
+            data = {}
+        else:
+            data = tracker.get_slot('data')
+        
+        if "blocked" in data and data["blocked"][self.name()] != "":
+            dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
+            return []
+
+        sentences = [
+            "I don't know who the murderer could be. Let's collect some more hints together, to find out who did it.",
+            "I have no clue at the moment. Let's collect some more hints together, to find out who killed Maria."
+        ]
+
+        dispatcher.utter_message(text= random.choice(sentences))
+
+        if check_timer(data):
+            dispatcher.utter_message(text=set_timer(data))
 
         return []
