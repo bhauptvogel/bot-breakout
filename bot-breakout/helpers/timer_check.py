@@ -15,16 +15,16 @@ def set_timer(data):
         return
     if data['timercount'] > 1:
         blocked = {
-            "action_character_investigation": "end_locked",
-            "action_user_guess": "end_locked",
-            "action_give_hint": "end_locked",
-            "action_tell_motive": "end_locked",
+            "action_character_investigation": "end_of_game_blocked",
+            "action_user_guess": "",
+            "action_give_hint": "end_of_game_blocked",
+            "action_tell_motive": "end_of_game_blocked",
             "action_overview_of_the_state": "",
-            "action_access_to_roller_coaster": "end_locked",
-            "action_scene_investigation": "end_locked",
-            "validate_simple_cabin_form": "end_locked",
-            "action_cabin_end": "end_locked",
-            "action_cabin_start": "end_locked"
+            "action_access_to_roller_coaster": "end_of_game_blocked",
+            "action_scene_investigation": "end_of_game_blocked",
+            "validate_simple_cabin_form": "end_of_game_blocked",
+            "action_cabin_end": "end_of_game_blocked",
+            "action_cabin_start": "end_of_game_blocked"
         }
         
         data['blocked'] = blocked
@@ -33,7 +33,7 @@ def set_timer(data):
     else:
         data['timercount'] = 2
         timestamp = datetime.now()
-        timer = timestamp + timedelta(seconds=30)
+        timer = timestamp + timedelta(seconds=20)
         #timer = timestamp + timedelta(seconds=180)
         updated_timestamp = timer.timestamp()
         data['timer'] = updated_timestamp

@@ -5,13 +5,13 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, ReminderScheduled
 from helpers.timer_check import check_timer, set_timer
-from helpers.blocked_message import get_locked_message
+from helpers.blocked_message import get_blocked_message
 
 import random
 from . import information_interface as ii
-from helpers.string_similarity import get_most_similar_person
+from helpers.string_similarity import get_most_similar_person, levenshtein_distance
 from helpers.last_talked_about import get_last_talked_about_character, set_last_talked_about_character, reset_last_talked_about_character
-
+from helpers.end_of_game import guess_murderer
 
 class CharacterInvestigation(Action):
     def name(self) -> Text:
@@ -73,16 +73,17 @@ class CharacterInvestigation(Action):
         characters = [e['value'] for e in entities if e['entity'] == 'person']
 
         blocked = data["blocked"]
-
-        end_names = ["Anna", "Anna Pollock", "Anna P", "Anna P.", "Patrick", "Patrick Anyang", "Patrick A", "Patrick A.", "Kira", "Kira Russel", "Kira R", "Kira R.", "Victor", "Victor Lopez", "Victor L", "Victor L."]
         if blocked[self.name()] != "":
-            if data["blocked"][self.name()] == "end_locked":
-                if tracker.latest_message['text'] in end_names:
-                    print("Antwort eingeloggt")
-                else:
-                    dispatcher.utter_message(text=get_locked_message(data["blocked"][self.name()]))
-            else:
-                dispatcher.utter_message(text=get_locked_message(data["blocked"][self.name()]))
+            if data["blocked"][self.name()] == "end_of_game_blocked":
+                names_in_message = tracker.latest_message['text'].split(" ")
+                if len(names_in_message) > 2:
+                    dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
+                for name in names_in_message:
+                    for story_character in ii.get_story_characters():
+                        if name == story_character or levenshtein_distance(name, story_character) <= 2:
+                            dispatcher.utter_message(text=guess_murderer(data, story_character))
+                            return [SlotSet("data", data)]
+            dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
             return [SlotSet("data", data)]
 
         if len(characters) == 0:
