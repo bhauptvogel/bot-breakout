@@ -108,7 +108,7 @@ class CabinStart(Action):
         block = {
             "action_character_investigation": "cabin_locked",
             "action_user_guess": "cabin_locked",
-            "action_give_hint": "",
+            "action_give_hint": "cabin_locked",
             "action_tell_motive": "",
             "action_overview_of_the_state": "",
             "action_access_to_roller_coaster": "cabin_locked",

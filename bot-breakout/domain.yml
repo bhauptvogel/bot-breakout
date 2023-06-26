@@ -34,13 +34,6 @@ slots:
     - type: from_entity
       entity: cabin_password
 
-responses:
-  utter_i_do_not_know_murderer:
-  - text: I don't know who the murderer could be. Let's collect some more hints together, to find out who did it.
-  - text: I have no clue at the moment. Let's collect some more hints together, to find out who killed Maria.
-  utter_who_is_mika:
-  - text: As you already know, I work here at the amusement park. I'm part of the marketing team and we're currently working on a new marketing campaign, since we recently built a new large rollercoaster in our park and we hope to attract more people to come here.
- 
 actions:
 - action_overview_of_the_state
 - action_scene_investigation

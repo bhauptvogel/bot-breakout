@@ -111,7 +111,6 @@ class Hint(Action):
         return "action_give_hint"
 
     def get_next_hint(self, data):
-        
         if "story_state" not in data:
             data["story_state"] = {}
 
@@ -133,7 +132,6 @@ class Hint(Action):
             if not any(in_game_state):
                 return hint["text"]
 
-
         return "I don't have any hints for you right now."
 
     def run(
@@ -146,7 +144,24 @@ class Hint(Action):
             data = {}
         else:
             data = tracker.get_slot("data")
-        
+
+        if ("cabin_riddle_started" in data.keys() and data["cabin_riddle_started"] == True):
+            output = {
+                1: "Ok, let's focus on the riddle. Just try typing in a number and we will work this out together.",
+                2: "Ok, let's focus on the riddle. Maybe there is another way to look at the cabin number.",
+                3: "Maybe look at the 686 ANOTHER WAY...",
+                4: "Let's focus on the riddle. Just try typing in a number and we will work this out together.",
+                5: "Oh I see now... the cabin number is 989",
+                6: "It should be (989 - 7 + 2) / 2.",
+            }
+            if data["cabin_guess"] > 6:
+                dispatcher.utter_message(text=output[data[6]])
+                return [SlotSet("data", data)]
+            elif data["cabin_guess"] in output.keys():
+                dispatcher.utter_message(text=output[data["cabin_guess"]])
+                data["cabin_guess"] += 1
+                return [SlotSet("data", data)]
+
         if "blocked" in data and data["blocked"][self.name()] != "":
             dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
             return [SlotSet("data", data)]
@@ -159,4 +174,3 @@ class Hint(Action):
                 dispatcher.utter_message(text=set_timer(data))
 
         return [SlotSet("data", data)]
-
