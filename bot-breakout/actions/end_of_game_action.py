@@ -76,11 +76,11 @@ class UserGuessesMurderer(Action):
 
         entities = tracker.latest_message["entities"]
         person = [e["value"] for e in entities if e["entity"] == "person"]
-        
+
         # ! hack for the case that the "Maria" entity is in persons (f.e. "Did Kira kill Maria?")
         if len(person) == 2 and "Maria" in person:
                 # person is the other person
-                person = [p for p in person if p != "Maria"]
+                person = [e["value"] for e in entities if (e["entity"] == "person" and e["role"] == "suspect")]
 
         if len(person) != 1:
             dispatcher.utter_message(text="So who do you think it is? I'm confused.")
