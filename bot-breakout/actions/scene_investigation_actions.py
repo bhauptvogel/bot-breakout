@@ -8,7 +8,7 @@ from rasa_sdk.events import SlotSet, EventType
 import random
 from . import information_interface as ii
 from helpers.timer_check import check_timer, set_timer
-from helpers.blocked_message import get_locked_message
+from helpers.blocked_message import get_blocked_message
 
 class SceneInvestigation(Action):
     def name(self) -> Text:
@@ -43,7 +43,7 @@ class SceneInvestigation(Action):
 
         blocked = data["blocked"]
         if blocked[self.name()] != "":
-            dispatcher.utter_message(text=get_locked_message(data["blocked"][self.name()]))
+            dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
             return [SlotSet("data", data)]
 
 
@@ -99,7 +99,7 @@ class CabinStart(Action):
             blocked = data["blocked"]
 
         if blocked[self.name()] != "":
-            dispatcher.utter_message(text=get_locked_message(data["blocked"][self.name()]))
+            dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
             if check_timer(data):
                 dispatcher.utter_message(text=set_timer(data))
             return [SlotSet("data", data)]

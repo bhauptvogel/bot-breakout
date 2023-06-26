@@ -369,6 +369,14 @@ nlu:
     - [Anna]{"entity":"person"}
     - [Victor]{"entity":"person"}
     - [Patrick]{"entity":"person"}
+    - [Patrik]{"entity":"person", "value":"Patrick"}
+    - [Viktor]{"entity":"person", "value":"Victor"}
+    - [kira]{"entity":"person", "value":"Kira"}
+    - [ana]{"entity":"person", "value":"Anna"}
+    - [Marie]{"entity":"person", "value":"Maria"}
+    - [vicktor]{"entity":"person", "value":"Victor"}
+    - [Patric]{"entity":"person", "value":"Patrick"}
+    - [Pat]{"entity":"person", "value":"Patrick"}
     - Who is [Victor]{"entity":"person"}?
     - Who is [Victor]{"entity":"person"} and what is his background?
     - Who is [Anna]{"entity":"person"}?
@@ -886,3 +894,4 @@ nlu:
     - patrick
     - patrik
     - Partick
+    - Pat
