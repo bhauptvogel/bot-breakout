@@ -15,9 +15,10 @@ formattings = {
     "Mika": "<b style='color: DarkSlateGray;'>Mika</b>",
 }
 
-font_family = "font-family: trebuchet ms;"
+font_family = "font-family: baskerville;"
 
-def utter(dispatcher: CollectingDispatcher, text: str):
+# ONLY use this function to send messages to the user
+def utter(dispatcher: CollectingDispatcher, text: str) -> None:
     if GameArgs.formatting:
         for key, value in formattings.items():
             text = text.replace(key, value)
