@@ -62,7 +62,7 @@ class StartGame(Action):
                 data['timercount'] = 1
         else:
             utter(dispatcher,
-                "This whole situation is really aweful for a date, but I think we are doing good! Let’s solve this mystery! We could talk about my coworkers or investigate the room."
+                "This whole situation is really <em>aweful</em> for a date, but I think we are doing good! Let’s solve this mystery! We could talk about my coworkers or investigate the room."
             )
 
         data["first_message_sent"] = True

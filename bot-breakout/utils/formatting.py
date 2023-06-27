@@ -19,12 +19,17 @@ font_family = "font-family: trebuchet ms;"
 
 # ONLY use this function to send messages to the user
 def utter(dispatcher: CollectingDispatcher, text: str) -> None:
-    if GameParams.formatting:
+    if GameParams.formatting == True:
         for key, value in formattings.items():
             text = text.replace(key, value)
 
         text = f"<p style='{font_family}'>{text}</p>"
     else:
-        text = text.replace("<br>", "<br>")
+        # if console output is enabled, remove html
+        text = text.replace("<br>", "\n")
+        from bs4 import BeautifulSoup
+        from html import unescape
+        soup = BeautifulSoup(text, "html.parser")
+        text = unescape(soup.get_text())
 
     dispatcher.utter_message(text=text)
