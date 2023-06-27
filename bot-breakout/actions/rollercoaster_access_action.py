@@ -12,6 +12,7 @@ import random
 from utils import information_interface as ii
 from utils.string_similarity import get_most_similar_person
 from utils.last_talked_about import get_last_talked_about_character, set_last_talked_about_character, reset_last_talked_about_character
+from utils.formatting import utter
 
 class AccessToRollerCoaster(Action):
     def name(self) -> Text:
@@ -28,7 +29,7 @@ class AccessToRollerCoaster(Action):
             data = tracker.get_slot('data')
         
         if "blocked" in data and data["blocked"][self.name()] != "":
-            dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
+            utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             return [SlotSet("data", data)]
 
         entities = tracker.latest_message['entities']
@@ -45,7 +46,7 @@ class AccessToRollerCoaster(Action):
             # TODO: Check gender of last talked about character
             characters.append(get_last_talked_about_character(data))
         elif len(subjetive_pronouns) > 1:
-            dispatcher.utter_message(text="I don't know who you are talking about. Please specify one person you want to know about.")
+            utter(dispatcher,text="I don't know who you are talking about. Please specify one person you want to know about.")
             reset_last_talked_about_character(data)
             return [SlotSet("data", data)]
 
@@ -53,20 +54,20 @@ class AccessToRollerCoaster(Action):
         # if user is not specifiing a character
         if len(characters) == 0 or characters[0] == "":
             # TODO: I can tell you who had access of... (all characters the user has not asked access about yet) #53
-            dispatcher.utter_message(text="If you want to know who had access to the roller coaster, tell me who do you want to know about.")
+            utter(dispatcher,text="If you want to know who had access to the roller coaster, tell me who do you want to know about.")
             reset_last_talked_about_character(data)
             return [SlotSet("data", data)]
         
         for character in characters:
             # if user asks about a character that is not in the story
             if character not in ii.get_story_characters():
-                dispatcher.utter_message(text=f"I don't know who {character} is. {get_most_similar_person(character)}")
+                utter(dispatcher,text=f"I don't know who {character} is. {get_most_similar_person(character)}")
             else:
-                dispatcher.utter_message(text=ii.get_story_information(f"access/{character}", "", data))
+                utter(dispatcher,text=ii.get_story_information(f"access/{character}", "", data))
         
         set_last_talked_about_character(characters[-1], data)
 
         if check_timer(data):
-            dispatcher.utter_message(text=set_timer(data))  
+            utter(dispatcher,text=set_timer(data))  
 
         return [SlotSet("data", data)]

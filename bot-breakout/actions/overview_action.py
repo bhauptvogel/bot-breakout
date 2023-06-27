@@ -9,6 +9,7 @@ from utils import information_interface as ii
 from utils.last_talked_about import reset_last_talked_about_character
 from utils.timer_check import check_timer, set_timer
 from utils.blocked_message import get_blocked_message
+from utils.formatting import utter
 
 INFORMATION = [
     {
@@ -94,7 +95,7 @@ class SituationOverview(Action):
             data = tracker.get_slot("data")
         
         if "blocked" in data and data["blocked"][self.name()] != "":
-            dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
+            utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             return [SlotSet("data", data)]
 
         if "story_state" not in data or data["story_state"] is {}:
@@ -119,18 +120,18 @@ class SituationOverview(Action):
             # if all states of info are in the game_state 
             if in_game_state:
                 if count_info_utters == 0:
-                    dispatcher.utter_message(text="Here is everything we talked about so far: \n\n")       
+                    utter(dispatcher,text="Here is everything we talked about so far: \n\n")       
                 count_info_utters += 1
-                dispatcher.utter_message(text=info["text"])
+                utter(dispatcher,text=info["text"])
             
         if count_info_utters == 0:
-            dispatcher.utter_message(text="We have not talked about anything important yet.")
+            utter(dispatcher,text="We have not talked about anything important yet.")
 
 
         reset_last_talked_about_character(data)
         
         if check_timer(data):
-            dispatcher.utter_message(text=set_timer(data))  
+            utter(dispatcher,text=set_timer(data))  
                 
 
         return [SlotSet("data", data)]

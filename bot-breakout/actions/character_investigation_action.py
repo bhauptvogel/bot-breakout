@@ -12,6 +12,7 @@ from utils import information_interface as ii
 from utils.string_similarity import get_most_similar_person, levenshtein_distance
 from utils.last_talked_about import get_last_talked_about_character, set_last_talked_about_character, reset_last_talked_about_character
 from utils.end_of_game import guess_murderer
+from utils.formatting import utter
 
 class CharacterInvestigation(Action):
     def name(self) -> Text:
@@ -20,26 +21,26 @@ class CharacterInvestigation(Action):
     def utter_base_information(self, dispatcher, characters, data):
         for character in characters:
             if character is not "__General__" and character not in ii.get_story_characters():
-                    dispatcher.utter_message(text=f"I don't know who {character} is. {get_most_similar_person(character)}")
+                    utter(dispatcher, text=f"I don't know who {character} is. {get_most_similar_person(character)}")
                     reset_last_talked_about_character(data)
                     return
-            dispatcher.utter_message(text=ii.get_story_information(f"character_information/{character}", "", data))
+            utter(dispatcher, text=ii.get_story_information(f"character_information/{character}", "", data))
             set_last_talked_about_character(character, data)
 
     def utter_specific_information(self, dispatcher, character, info, data):
         if info not in ii.get_story_characters_information()[character]:
             if character == "__General__":
-                dispatcher.utter_message(text=f"I don't know anything about the {info}!")
+                utter(dispatcher, text=f"I don't know anything about the {info}!")
             else:
-                dispatcher.utter_message(text=f"I don't know anything about the {info} of {character}!")
+                utter(dispatcher, text=f"I don't know anything about the {info} of {character}!")
         else:
-            dispatcher.utter_message(text=ii.get_story_information(f"character_information/{character}", info, data))
+            utter(dispatcher, text=ii.get_story_information(f"character_information/{character}", info, data))
 
     def utter_relation(self, dispatcher, characters, data):
         if len(characters) != 2:
-            dispatcher.utter_message(text="I don't know what you mean. Please specify two characters if you want to know about their relation.")
+            utter(dispatcher, text="I don't know what you mean. Please specify two characters if you want to know about their relation.")
         else:
-            dispatcher.utter_message(text=ii.get_story_information("story_character_relation", f"{characters[0]}_{characters[1]}", data))
+            utter(dispatcher, text=ii.get_story_information("story_character_relation", f"{characters[0]}_{characters[1]}", data))
 
     def process_informations(self, dispatcher, characters, informations, data):
         for info in informations:
@@ -54,7 +55,7 @@ class CharacterInvestigation(Action):
 
                 for character in characters:
                     if character not in ii.get_story_characters():
-                        dispatcher.utter_message(text=f"I don't know who {character} is. {get_most_similar_person(character)}")
+                        utter(dispatcher, text=f"I don't know who {character} is. {get_most_similar_person(character)}")
                         return
                     self.utter_specific_information(dispatcher, character, info, data)
 
@@ -76,13 +77,13 @@ class CharacterInvestigation(Action):
             if data["blocked"][self.name()] == "end_of_game_blocked":
                 names_in_message = tracker.latest_message['text'].split(" ")
                 if len(names_in_message) > 2:
-                    dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
+                    utter(dispatcher, text=get_blocked_message(data,data["blocked"][self.name()]))
                 for name in names_in_message:
                     for story_character in ii.get_story_characters():
                         if name == story_character or levenshtein_distance(name, story_character) <= 2:
-                            dispatcher.utter_message(text=guess_murderer(data, story_character))
+                            utter(dispatcher, text=guess_murderer(data, story_character))
                             return [SlotSet("data", data)]
-            dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
+            utter(dispatcher, text=get_blocked_message(data,data["blocked"][self.name()]))
             return [SlotSet("data", data)]
 
         if len(characters) == 0:
@@ -92,7 +93,7 @@ class CharacterInvestigation(Action):
             elif len(informations) == 0:
                 print(last_talked_about, )
                 # TODO: I can tell you about... (all characters the user has not asked about yet) #53
-                dispatcher.utter_message(text="If you want to know something about a character, please specify who you mean. I can tell you about Victor, Anna, Patrick and Kira.")
+                utter(dispatcher, text="If you want to know something about a character, please specify who you mean. I can tell you about Victor, Anna, Patrick and Kira.")
                 reset_last_talked_about_character(data)
                 return [SlotSet("data", data)]
 
@@ -109,6 +110,6 @@ class CharacterInvestigation(Action):
             reset_last_talked_about_character(data)
 
         if check_timer(data):
-            dispatcher.utter_message(text=set_timer(data))
+            utter(dispatcher, text=set_timer(data))
 
         return [SlotSet("data", data)]
