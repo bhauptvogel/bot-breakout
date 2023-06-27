@@ -96,10 +96,7 @@ class CabinStart(Action):
 
         data['cabin_riddle_started'] = True
 
-        if 'blocked' in data.keys():
-            blocked = data["blocked"]
-
-        if blocked[self.name()] != "":
+        if "blocked" in data and data["blocked"][self.name()] != "":
             dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
             if check_timer(data):
                 dispatcher.utter_message(text=set_timer(data))
@@ -182,10 +179,7 @@ class CabinPinValidation(Action):
         if 'cabin_number_guess' not in data.keys():
             data['cabin_number_guess'] = False
         
-        if 'blocked' in data.keys():
-            blocked = data["blocked"]
-
-        if blocked[self.name()] != "":
+        if "blocked" in data and data["blocked"][self.name()] != "":
             dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
             if check_timer(data):
                 dispatcher.utter_message(text=set_timer(data))
