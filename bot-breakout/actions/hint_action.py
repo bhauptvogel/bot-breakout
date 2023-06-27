@@ -8,6 +8,7 @@ import random
 from utils.timer_check import check_timer, set_timer
 from utils.last_talked_about import reset_last_talked_about_character
 from utils.blocked_message import get_blocked_message
+from utils.formatting import utter
 
 HINTS = [
     # not talked about coworkers
@@ -156,25 +157,25 @@ class Hint(Action):
             }
             if "cabin_guess" not in data.keys():
                 data["cabin_guess"] = 2
-                dispatcher.utter_message(text=output[1])
+                utter(dispatcher,text=output[1])
                 return [SlotSet("data", data)]
             elif data["cabin_guess"] > 6:
-                dispatcher.utter_message(text=output[6])
+                utter(dispatcher,text=output[6])
                 return [SlotSet("data", data)]
             elif data["cabin_guess"] in output.keys():
-                dispatcher.utter_message(text=output[data["cabin_guess"]])
+                utter(dispatcher,text=output[data["cabin_guess"]])
                 data["cabin_guess"] += 1
                 return [SlotSet("data", data)]
 
         if "blocked" in data and data["blocked"][self.name()] != "":
-            dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
+            utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             return [SlotSet("data", data)]
 
-        dispatcher.utter_message(text=self.get_next_hint(data))
+        utter(dispatcher,text=self.get_next_hint(data))
 
         reset_last_talked_about_character(data)
 
         if check_timer(data):
-                dispatcher.utter_message(text=set_timer(data))
+                utter(dispatcher,text=set_timer(data))
 
         return [SlotSet("data", data)]

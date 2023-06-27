@@ -25,7 +25,7 @@ class CharacterMotive(Action):
             data = tracker.get_slot('data')
 
         if "blocked" in data and data["blocked"][self.name()] != "":
-            dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
+            utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             return [SlotSet("data", data)]
 
         # check if the person asked for is suspect or victim
@@ -43,27 +43,27 @@ class CharacterMotive(Action):
             # TODO: Check gender of last talked about character
             characters.append(get_last_talked_about_character(data))
         elif len(subjetive_pronouns) > 1:
-            dispatcher.utter_message(text="I don't know who you are talking about. Please specify one person you want to know about.")
+            utter(dispatcher,text="I don't know who you are talking about. Please specify one person you want to know about.")
             reset_last_talked_about_character(data)
             return [SlotSet("data", data)]
 
         # if user is not specifiing a character
         if len(characters) == 0 or characters[0] == "":
             # TODO: I can tell you the motive of... (all characters the user has not asked the motive about yet) #53
-            dispatcher.utter_message(text="If you want to know the motive about a certain character, let me know who you want to know about.")
+            utter(dispatcher,text="If you want to know the motive about a certain character, let me know who you want to know about.")
             reset_last_talked_about_character(data)
             return [SlotSet("data", data)]
 
         for character in characters:
             # if user asks about a character that is not in the story
             if character not in ii.get_story_characters():
-                dispatcher.utter_message(text=f"I don't know who {character} is. {get_most_similar_person(character)}")
+                utter(dispatcher,text=f"I don't know who {character} is. {get_most_similar_person(character)}")
             else:
-                dispatcher.utter_message(text=ii.get_story_information(f"motive/{character}", "", data))
+                utter(dispatcher,text=ii.get_story_information(f"motive/{character}", "", data))
 
         set_last_talked_about_character(characters[-1], data)
 
         if check_timer(data):
-            dispatcher.utter_message(text=set_timer(data))
+            utter(dispatcher,text=set_timer(data))
 
         return [SlotSet("data", data)]
