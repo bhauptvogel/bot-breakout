@@ -1,8 +1,8 @@
 from rasa_sdk.executor import CollectingDispatcher
 from utils.game_parameters import GameParams
+
+# NOT in frontend deployment
 if GameParams.formatting == False:
-    # for removing html tags in console output
-    # NOT in frontend deployment
     from bs4 import BeautifulSoup
     from html import unescape
 
@@ -24,14 +24,15 @@ font_family = "font-family: trebuchet ms;"
 
 # ONLY use this function to send messages to the user
 def utter(dispatcher: CollectingDispatcher, text: str) -> None:
-    if GameParams.formatting == True:
+    if GameParams.formatting == False:
+        # remove html tags
+        text = text.replace("<br>", "\n")
+        soup = BeautifulSoup(text, "html.parser")
+        text = unescape(soup.get_text())
+    else:
         for key, value in formattings.items():
             text = text.replace(key, value)
 
         text = f"<p style='{font_family}'>{text}</p>"
-    else:
-        text = text.replace("<br>", "\n")
-        soup = BeautifulSoup(text, "html.parser")
-        text = unescape(soup.get_text())
 
     dispatcher.utter_message(text=text)
