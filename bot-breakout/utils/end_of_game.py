@@ -6,7 +6,7 @@ def guess_murderer(data, person):
     elif data["user_wants_to_commit"] == True:
         data["user_wants_to_commit"] = False
         if person == "Patrick":
-            output = "Haha seams like you already did my Job! We will check all the details and talk to you after we are done. Please leave some of your informations to my colleage. Possible, that we will be in touch sone. But for now you can leave.\n"
+            output = "[Police officer]Haha seams like you already did my Job! We will check all the details and talk to you after we are done. Please leave some of your informations to my colleage. Possible, that we will be in touch sone. But for now you can leave.\n"
             output += "After a hot investigation the police found multiple hints to claim Patrick for corruption. Your perfect Hint was very helpful and leaded to Patrick being in jail very quick. Police work is your ambition. Great job. Your Date is impressed too and ask for another Date. Maybe you will solve a theft this time!"
             output += "You won the game! Congratulations!"
             data['blocked'] = {
@@ -43,5 +43,5 @@ def guess_murderer(data, person):
             return output
     else:
         print("ERROR: this should not happen, look into end_of_game.py")
-        return "Game is over. You can't do anything anymore."
+        return "Game is over. You can't do anything anymore. If you want to restart, leave the room and join back in."
         

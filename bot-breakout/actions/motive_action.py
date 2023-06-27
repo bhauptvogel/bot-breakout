@@ -44,7 +44,7 @@ class CharacterMotive(Action):
             # TODO: Check gender of last talked about character
             characters.append(get_last_talked_about_character(data))
         elif len(subjetive_pronouns) > 1:
-            utter(dispatcher,text="I don't know who you are talking about. Please specify one person you want to know about.")
+            utter(dispatcher,text="I don't know who you are talking about. Please specify one person you want to know about. We can talk about Kira, Patrick, Anna or the victim Maria")
             reset_last_talked_about_character(data)
             return [SlotSet("data", data)]
 

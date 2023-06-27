@@ -22,7 +22,9 @@ def utter(dispatcher: CollectingDispatcher, text: str) -> None:
     if GameParams.formatting:
         for key, value in formattings.items():
             text = text.replace(key, value)
-        
+
         text = f"<p style='{font_family}'>{text}</p>"
+    else:
+        text = text.replace("<br>", "\n")
 
     dispatcher.utter_message(text=text)

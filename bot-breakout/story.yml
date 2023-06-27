@@ -1,5 +1,5 @@
-# TODO: Mika character information Issue #59
 character_information:
+  # TODO: Mika character information Issue #85 
   # Mika:
   # - base_1: "As you already know, I work here at the amusement park. I'm part of the marketing team and we're currently working on a new marketing campaign, because since we recently built a new large rollercoaster."
   Maria:
@@ -18,7 +18,7 @@ character_information:
   - base_1: "Patrick is my boss. He is in charge of the amusement park. It's actually a family business, he got it from his dad. Patrick is kind of a snob... he loves to drive around in big cars and all this wealthy stuff. <small>And... He has his secrets that nobody knows about...</small>"
   - base_2: "Patrick is from China... he came here to take over the amusement park of his family."
   - base_3: "By the way, you already asked me about Patrick, but sure, here's some information: Patrick is my boss, and he runs the amusement park, which is a family business inherited from his dad. He can be a bit snobbish and enjoys showing off his wealth with fancy cars and such. Plus, he has some mysterious secrets that nobody knows about."
-  - secret: "Soo… we recently had an employee consultation and I saw some letters from the tax office on his desk. When I asked him about it he tore me down. So I told Maria about this. She was thinking about doing some investigations on her own, because the possibility of corruption was high. With Patrick's lifestyle, the big cars and everything… Maria and I didn’t have much contact ever since. She said the risk is too high that someone draws their own conclusions…"
+  - secret: "Soo… recently I saw some letters from the tax office on Patricks desk in his office. When I asked him about it he tore me down. So I told Maria. And she was thinking about doing her own investigations. With Patrick's lifestyle, the big cars and everything… It could be corruption. But I dont know what Maria discovered. For safety reasons we didn't have much contact since."
   - full_name: "Patrick is from China. His last name is Anyang."
   Victor:
   - base_1: "To be honest... I don’t know Victor. He is just Maria's new boyfriend"
@@ -67,15 +67,15 @@ scene_investigation:
   - knife: "The Knife... Oh, there are initials on it. It says “A.P.”. Hm, who might it be?"
   - body: "Ok, it feels a bit scary to look at Maria's lifeless body, but perhaps we'll discover something that leads us to the murderer. Let’s take a few steps closer... She is covered in blood... sorry I'm feeling sick... I can't look at her anymore. Please say that we can look around now..."
   - cabin: "It has two seats, just like ours. On the seat closer to us is Maria. She is covered in blood and a note is pinned to her chest. I don’t see how she died... Should I investigate it more or should I tell you about the note..."
-  - bench: "Just some zombie love dripping through the wooden slats of the bench. Or is this something else... Let's stand up but be careful to not get tangled in the zombies' limbs."
-  - tree: "The tree is a bit scary. It’s a dead tree without leaves. Behind the tree, there is just some light equipment that adds to the spooky ambiance of the scene."
-  - equipment: "I cannot see anything of interest here."
-  - note: "There is a Note on the body. It says “You are next”. I believe it means that I am the target the murderer intends to go after next."
+  - bench: "Just some zombie love dripping through the wooden slats of the bench. Bit disgusting... We stand up but be careful to not get tangled in the zombies' limbs. Now we are back next to the cabin."
+  - tree: "The tree is a bit scary. It’s a dead tree without leaves. Behind the tree, there is just some light equipment that adds to the spooky ambiance of the scene. Nothing to find here. We are back standing next to the cabin."
+  - equipment: " Green light reminds me of the hulk... But there is nothing interesting to solve our mystery"
+  - note: "The Note is pinned on the body. The murderer must be a psycopath... It says “You are next”. I believe that I am the next target of the murderer... I feel overwhelmed. Lets solve this murder mystery together before its to late!"
   - no_access: "It is inside the train cabin and we currently don't have access. We should first investigate the cabin..."
 
 motive:
   Mika:
-  - base_1: "No, I didn't have any issues with Maria and also I can't be the murderer since I was with you the whole time."
+  - base_1: "No, I didn't have any issues with Maria and also I can't be the murderer since I was with you the whole time. But good that you askes. You should always check if you are dating a serial killer!"
   Kira:
   - base_1: "Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very well."
   - base_2: "You already asked me about Marias's motive but no worries, I'll tell you again. Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very well."
@@ -89,7 +89,7 @@ motive:
   - base_1: "Anna and Maria were rivals. If it's about a good story Anna would have done anything. And they worked on the same story..."
   - base_2: "You already asked me about Anna's motive but no worries, I'll tell you again. She and Maria were rivals. If it's about a good story Anna would have done anything."
   Maria:
-  - base_1: "I'm pretty sure Maria didn't unalive herself. This looks definitely like a murder."
+  - base_1: "I'm pretty sure Maria didn't unalive herself. This looks definitely like a murder. I think Anna, Kira or Patrick have something to do with it..."
 
 
 access:
@@ -99,7 +99,7 @@ access:
   - base_1: "Kira works at the rollercoaster and has backstage access, so yes, she had access."
   - base_2: "Like I told you: Kira works at the rollercoaster and she has backstage access, so indeed she had the necessary access."
   Patrick:
-  - base_1: "Since he is the owner of the rollercoaster he definitely had access to it, so he could have done something..."
+  - base_1: "Since he is the owner of the rollercoaster he definitely had access to it, so he could have done something."
   - base_2: "Didn't you already ask me that? Well, since he's the owner of the rollercoaster, he definitely had access to it, which means he could have potentially done something..."
   Victor:
   - base_1: "Victor doesn't work at the rollercoaster, and since access to the backstage area requires specific keys, it's highly unlikely that he could have gotten back there."

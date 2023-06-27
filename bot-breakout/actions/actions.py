@@ -49,7 +49,7 @@ class StartGame(Action):
 
         if "first_message_sent" not in data.keys():
             utter(dispatcher,
-                "I..I..I’m shocked. I know this woman - it’s Maria, a journalist... \nI just called the police, because that's what a good citizen does, right? But now I’m not sure if it was the right decision... We are the only people here and it’s my work place. I might be a suspect! The police said they will be here in 10 minutes. When they arrive, we should provide them with valuable hints about a potential suspect who had both motive and access to the crime scene and the murder weapon. \nI'm not sure where to start. Can you help me clear my mind? Maybe we could investigate the body with the note, or I can tell you about my co-workers."
+                "Oh hi, Sorry I’m just shocked. I..I..I know this woman - it’s Maria, a journalist... \nI just called the police, because that's what a good citizen does, right? But now we should find some hint to not become a suspect! The police is here in 10 minutes. When they arrive, we should provide valuable hints about a potential suspect who had both motive and access to the crime scene and the murder weapon. \nI'm not sure where to start. Can you help me clear my mind? Maybe we could investigate the room, or I can tell you about my co-workers."
             )
 
             timestamp = datetime.now()
@@ -62,7 +62,7 @@ class StartGame(Action):
                 data['timercount'] = 1
         else:
             utter(dispatcher,
-                "This whole situation is really aweful for a date, but I think we are doing good! Let’s solve this mystery and find out who the murderer is! We could talk about my coworkers or investigate the room."
+                "This whole situation is really aweful for a date, but I think we are doing good! Let’s solve this mystery! We could talk about my coworkers or investigate the room."
             )
 
         data["first_message_sent"] = True
@@ -83,7 +83,7 @@ class ActionReactToReminder(Action):
         tracker: Tracker,
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
-        utter(dispatcher,"The police is coming now! What's our guess?")
+        utter(dispatcher,"The police is coming now! Before we go outside tell me who do you suspect as the murderer?")
 
         return []
 
@@ -110,7 +110,7 @@ class UserWantsToLeave(Action):
 
         sentences = [
             "You can’t leave before the police arrive in a few minutes! We need to find hints together, so they don’t think we two did it. Should we investigate or talk?",
-            "This is not possible! The murderer could still be walking around, we should wait until the police arrive in a few minutes. I think we should investigate the situation more."
+            "This is not possible! The murderer could still be walking around. When the police arrive in a few minutes, we need to tell them as much about this Mystery as possible. I think we should investigate the scene more."
         ]
 
         utter(dispatcher,text= random.choice(sentences))
@@ -141,7 +141,12 @@ class AskAboutMika(Action):
             utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             return []
 
-        utter(dispatcher,text="As you already know, I work here at the amusement park. I'm part of the marketing team and we're currently working on a new marketing campaign, since we recently built a new large rollercoaster in our park and we hope to attract more people to come here.")
+        sentences = [
+            "As you already know, I work here at the amusement park. I'm part of the marketing team and we're currently working on a new marketing campaign, since we recently built a new large rollercoaster in our park and we hope to attract more people to come here.",
+            "I'm part of the marketing team at the amusement park. Lately we are working on a campaign for the park, my boss Patick things this is the best way to attract more visitors. If you ask me it would be better to renovate the attractions we have and keep them up to date. But Patrick thinks different..."
+        ]
+
+        utter(dispatcher,text=random.choice(sentences))
 
         if check_timer(data):
             utter(dispatcher,text=set_timer(data))
@@ -170,8 +175,8 @@ class WhoIsTheMurderer(Action):
             return []
 
         sentences = [
-            "I don't know who the murderer could be. Let's collect some more hints together, to find out who did it.",
-            "I have no clue at the moment. Let's collect some more hints together, to find out who killed Maria."
+            "I don't know who the murderer could be. Let's collect some more hints together, to find out who did it. My co workers could have something to do with this...",
+            "I have no clue at the moment. Let's collect some more hints together, to find out who killed Maria. Could there be a murder weapon in the cabin?"
         ]
 
         utter(dispatcher,text= random.choice(sentences))
