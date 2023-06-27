@@ -150,11 +150,15 @@ class Hint(Action):
                 1: "Ok, let's focus on the riddle. Just try typing in a number and we will work this out together.",
                 2: "Ok, let's focus on the riddle. Maybe there is another way to look at the cabin number.",
                 3: "Maybe look at the 686 ANOTHER WAY...",
-                4: "Let's focus on the riddle. Just try typing in a number and we will work this out together.",
+                4: "Let's focus on the riddle. I think I have an idea... first try typing in another number.",
                 5: "Oh I see now... the cabin number is 989",
                 6: "It should be (989 - 7 + 2) / 2.",
             }
-            if data["cabin_guess"] > 6:
+            if "cabin_guess" not in data.keys():
+                data["cabin_guess"] = 2
+                dispatcher.utter_message(text=output[1])
+                return [SlotSet("data", data)]
+            elif data["cabin_guess"] > 6:
                 dispatcher.utter_message(text=output[6])
                 return [SlotSet("data", data)]
             elif data["cabin_guess"] in output.keys():
