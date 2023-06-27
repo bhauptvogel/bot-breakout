@@ -9,7 +9,7 @@ def load_story_yml():
     """
     Loads the information from the information.yml file
     """
-    with open('story_information.yml', encoding="utf8") as f:
+    with open('story.yml', encoding="utf8") as f:
         story_yml = yaml.load(f, Loader=yaml.FullLoader)
     return story_yml
 

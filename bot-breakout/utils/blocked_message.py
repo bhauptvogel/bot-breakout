@@ -1,7 +1,7 @@
-from helpers import end_of_game
+from utils import end_of_game
 
 def get_blocked_message(data, blocked_key): 
-    if blocked_key == "cabin_locked":
+    if blocked_key == "cabin_blocked":
         return "We have to open the cabin first! Until then I can't help you with anything else."
     elif blocked_key == "end_of_game_blocked":
         return "We have to tell the police who the murderer is! I can't help you with anything else."

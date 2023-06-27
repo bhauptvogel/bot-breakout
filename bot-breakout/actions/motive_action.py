@@ -5,11 +5,11 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
-from . import information_interface as ii
-from helpers.timer_check import check_timer, set_timer
-from helpers.string_similarity import get_most_similar_person
-from helpers.last_talked_about import get_last_talked_about_character, set_last_talked_about_character, reset_last_talked_about_character
-from helpers.blocked_message import get_blocked_message
+from utils import information_interface as ii
+from utils.timer_check import check_timer, set_timer
+from utils.string_similarity import get_most_similar_person
+from utils.last_talked_about import get_last_talked_about_character, set_last_talked_about_character, reset_last_talked_about_character
+from utils.blocked_message import get_blocked_message
 
 class CharacterMotive(Action):
     def name(self) -> Text:

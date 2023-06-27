@@ -5,9 +5,9 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
-from helpers.timer_check import check_timer, set_timer
-from helpers.last_talked_about import reset_last_talked_about_character
-from helpers.blocked_message import get_blocked_message
+from utils.timer_check import check_timer, set_timer
+from utils.last_talked_about import reset_last_talked_about_character
+from utils.blocked_message import get_blocked_message
 
 HINTS = [
     # not talked about coworkers
@@ -150,11 +150,15 @@ class Hint(Action):
                 1: "Ok, let's focus on the riddle. Just try typing in a number and we will work this out together.",
                 2: "Ok, let's focus on the riddle. Maybe there is another way to look at the cabin number.",
                 3: "Maybe look at the 686 ANOTHER WAY...",
-                4: "Let's focus on the riddle. Just try typing in a number and we will work this out together.",
+                4: "Let's focus on the riddle. I think I have an idea... first try typing in another number.",
                 5: "Oh I see now... the cabin number is 989",
                 6: "It should be (989 - 7 + 2) / 2.",
             }
-            if data["cabin_guess"] > 6:
+            if "cabin_guess" not in data.keys():
+                data["cabin_guess"] = 2
+                dispatcher.utter_message(text=output[1])
+                return [SlotSet("data", data)]
+            elif data["cabin_guess"] > 6:
                 dispatcher.utter_message(text=output[6])
                 return [SlotSet("data", data)]
             elif data["cabin_guess"] in output.keys():

@@ -6,9 +6,9 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
-from . import information_interface as ii
-from helpers.timer_check import check_timer, set_timer
-from helpers.blocked_message import get_blocked_message
+from utils import information_interface as ii
+from utils.timer_check import check_timer, set_timer
+from utils.blocked_message import get_blocked_message
 
 class SceneInvestigation(Action):
     def name(self) -> Text:
@@ -96,31 +96,28 @@ class CabinStart(Action):
 
         data['cabin_riddle_started'] = True
 
-        if 'blocked' in data.keys():
-            blocked = data["blocked"]
-
-        if blocked[self.name()] != "":
+        if "blocked" in data and data["blocked"][self.name()] != "":
             dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
             if check_timer(data):
                 dispatcher.utter_message(text=set_timer(data))
             return [SlotSet("data", data)]
 
         block = {
-            "action_character_investigation": "cabin_locked",
-            "action_user_guess": "cabin_locked",
-            "action_give_hint": "cabin_locked",
+            "action_character_investigation": "cabin_blocked",
+            "action_user_guess": "cabin_blocked",
+            "action_give_hint": "cabin_blocked",
             "action_tell_motive": "",
             "action_overview_of_the_state": "",
-            "action_access_to_roller_coaster": "cabin_locked",
-            "action_scene_investigation": "cabin_locked",
+            "action_access_to_roller_coaster": "cabin_blocked",
+            "action_scene_investigation": "cabin_blocked",
             "validate_simple_cabin_form": "",
             "action_cabin_end": "",
             "action_cabin_start": "",
-            "action_set_reminder": "cabin_locked",
+            "action_set_reminder": "cabin_blocked",
             "action_react_to_reminder": "",
-            "action_you_cannot_leave": "cabin_locked",
-            "action_ask_about_mika": "cabin_locked",
-            "action_who_is_the_murderer": "cabin_locked",
+            "action_you_cannot_leave": "cabin_blocked",
+            "action_ask_about_mika": "cabin_blocked",
+            "action_who_is_the_murderer": "cabin_blocked",
             "action_cabin_validation": "",
 
         }
@@ -182,10 +179,7 @@ class CabinPinValidation(Action):
         if 'cabin_number_guess' not in data.keys():
             data['cabin_number_guess'] = False
         
-        if 'blocked' in data.keys():
-            blocked = data["blocked"]
-
-        if blocked[self.name()] != "":
+        if "blocked" in data and data["blocked"][self.name()] != "":
             dispatcher.utter_message(text=get_blocked_message(data,data["blocked"][self.name()]))
             if check_timer(data):
                 dispatcher.utter_message(text=set_timer(data))

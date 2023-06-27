@@ -5,12 +5,12 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
-from . import information_interface as ii
-from helpers.timer_check import check_timer, set_timer
-from helpers.last_talked_about import reset_last_talked_about_character
-from helpers.string_similarity import get_most_similar_person
-from helpers.blocked_message import get_blocked_message
-from helpers.end_of_game import guess_murderer
+from utils import information_interface as ii
+from utils.timer_check import check_timer, set_timer
+from utils.last_talked_about import reset_last_talked_about_character
+from utils.string_similarity import get_most_similar_person
+from utils.blocked_message import get_blocked_message
+from utils.end_of_game import guess_murderer
 
 PERCENTAGE_THRESHOLD = 0.45
 
