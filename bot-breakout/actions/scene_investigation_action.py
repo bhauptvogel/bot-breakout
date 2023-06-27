@@ -192,13 +192,13 @@ class CabinPinValidation(Action):
         if 'cabin_riddle_started' in data.keys() and data['cabin_riddle_started']:
 
             if cabin_password == "492":
-                utter(dispatcher,text="Yes "+cabin_password+" worked. We can enter the cabin. It has two seats, as ours did. On the seat closer to us is Maria's body. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. I see something in the puddles. It's a knife! It's strange to grab in blood, but I'll get it out. I could take a closer look at it.")
+                utter(dispatcher,text="Yes "+cabin_password+" worked. We can enter the cabin. It has two seats, as ours did. On the seat closer to us is Maria's body. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. I see something in the puddles. It's a knife! It's strange to grab in blood, but I'll get it out. I could take a closer look at it, if you tell me to look at the knife.")
                 self.cabin_end(data)
                 if check_timer(data):
                     utter(dispatcher,text=set_timer(data))
                 return [SlotSet('data', data)]
             if cabin_password == "989" and not data['cabin_number_guess']:
-                utter(dispatcher,text="This is not the password. But 989 is the right cabin number, sorry for the confusion.")
+                utter(dispatcher,text="This is not the password. But 989 is the right cabin number, sorry for the confusion. I looked at it the wrong way, stupid me.")
                 data['cabin_number_guess'] = True
                 data['cabin_guess'] += 1
                 if check_timer(data):

@@ -35,6 +35,8 @@ nlu:
     - aloha
     - bonjour
     - hola
+    - start
+    - start game
     - Hi miki
 
 ## ------ general ------

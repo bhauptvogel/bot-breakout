@@ -120,7 +120,7 @@ class SituationOverview(Action):
             # if all states of info are in the game_state 
             if in_game_state:
                 if count_info_utters == 0:
-                    utter(dispatcher,text="Here is everything we talked about so far: \n\n")       
+                    utter(dispatcher,text="Here is everything we talked about so far: <br><br>")       
                 count_info_utters += 1
                 utter(dispatcher,text=info["text"])
             
