@@ -60,7 +60,7 @@ story_character_relation:
   - Anna_Victor: "Anna and Victor actually know each other through their connection with Maria. Anna happens to be Maria's colleague, while Victor is Maria's new boyfriend."
 
 scene_investigation:
-  - base_1: "So, we are standing in the zombie-themed section of the ghost ride, next to our cabin. This place, you know, has a strangely romantic vibe but it also gives me a bit of a chill. Look at that spooky tree over there, completely devoid of leaves and the bench under it where the zombies are holding hands and gnawing on a ripped-off limb. \nWould you like to investigate one of those things?"
+  - base_1: "So, we are standing in the zombie-themed section of the ghost ride, next to our cabin. This place, you know, has a strangely romantic vibe but it also gives me a bit of a chill. Look at that spooky tree over there, completely devoid of leaves and the bench under it where the zombies are holding hands and gnawing on a ripped-off limb. <br>Would you like to investigate one of those things?"
   - base_2: "Let´s have another close look at everything..."
   - base_3: "I think this is all we can find here."
   - weapon: "Let me see... the weapon is a knife. It’s a bit bloody and it’s a bit scary to hold it. Should I take a closer look or should we put it back where we found it?"

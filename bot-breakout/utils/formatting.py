@@ -25,6 +25,6 @@ def utter(dispatcher: CollectingDispatcher, text: str) -> None:
 
         text = f"<p style='{font_family}'>{text}</p>"
     else:
-        text = text.replace("<br>", "\n")
+        text = text.replace("<br>", "<br>")
 
     dispatcher.utter_message(text=text)
