@@ -103,21 +103,21 @@ class CabinStart(Action):
             return [SlotSet("data", data)]
 
         block = {
-            "action_character_investigation": "cabin_locked",
-            "action_user_guess": "cabin_locked",
-            "action_give_hint": "cabin_locked",
+            "action_character_investigation": "cabin_blocked",
+            "action_user_guess": "cabin_blocked",
+            "action_give_hint": "cabin_blocked",
             "action_tell_motive": "",
             "action_overview_of_the_state": "",
-            "action_access_to_roller_coaster": "cabin_locked",
-            "action_scene_investigation": "cabin_locked",
+            "action_access_to_roller_coaster": "cabin_blocked",
+            "action_scene_investigation": "cabin_blocked",
             "validate_simple_cabin_form": "",
             "action_cabin_end": "",
             "action_cabin_start": "",
-            "action_set_reminder": "cabin_locked",
+            "action_set_reminder": "cabin_blocked",
             "action_react_to_reminder": "",
-            "action_you_cannot_leave": "cabin_locked",
-            "action_ask_about_mika": "cabin_locked",
-            "action_who_is_the_murderer": "cabin_locked",
+            "action_you_cannot_leave": "cabin_blocked",
+            "action_ask_about_mika": "cabin_blocked",
+            "action_who_is_the_murderer": "cabin_blocked",
             "action_cabin_validation": "",
 
         }
