@@ -1,5 +1,10 @@
 from rasa_sdk.executor import CollectingDispatcher
 from utils.game_parameters import GameParams
+if GameParams.formatting == False:
+    # for removing html tags in console output
+    # NOT in frontend deployment
+    from bs4 import BeautifulSoup
+    from html import unescape
 
 formattings = {
     "Maria": "<b style='color: FireBrick;'>Maria</b>",
@@ -25,10 +30,7 @@ def utter(dispatcher: CollectingDispatcher, text: str) -> None:
 
         text = f"<p style='{font_family}'>{text}</p>"
     else:
-        # if console output is enabled, remove html
         text = text.replace("<br>", "\n")
-        from bs4 import BeautifulSoup
-        from html import unescape
         soup = BeautifulSoup(text, "html.parser")
         text = unescape(soup.get_text())
 
