@@ -1,4 +1,4 @@
-from actions import information_interface as ii
+from utils import information_interface as ii
 
 def get_last_talked_about_character(data):
     # TODO: Check gender of last talked about character (if the last talked about character matches with the pronoun the user is using)

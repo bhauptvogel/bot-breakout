@@ -7,8 +7,8 @@ from rasa_sdk.events import SlotSet, ReminderScheduled
 from datetime import datetime, timedelta
 import time
 import random
-from helpers.timer_check import check_timer, set_timer
-from helpers.blocked_message import get_blocked_message
+from utils.timer_check import check_timer, set_timer
+from utils.blocked_message import get_blocked_message
 
 
 class StartGame(Action):

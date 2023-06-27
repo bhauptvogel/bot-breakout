@@ -5,10 +5,10 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
-from . import information_interface as ii
-from helpers.last_talked_about import reset_last_talked_about_character
-from helpers.timer_check import check_timer, set_timer
-from helpers.blocked_message import get_blocked_message
+from utils import information_interface as ii
+from utils.last_talked_about import reset_last_talked_about_character
+from utils.timer_check import check_timer, set_timer
+from utils.blocked_message import get_blocked_message
 
 INFORMATION = [
     {
