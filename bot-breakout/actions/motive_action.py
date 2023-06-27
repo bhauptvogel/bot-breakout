@@ -10,6 +10,7 @@ from utils.timer_check import check_timer, set_timer
 from utils.string_similarity import get_most_similar_person
 from utils.last_talked_about import get_last_talked_about_character, set_last_talked_about_character, reset_last_talked_about_character
 from utils.blocked_message import get_blocked_message
+from utils.formatting import utter
 
 class CharacterMotive(Action):
     def name(self) -> Text:
