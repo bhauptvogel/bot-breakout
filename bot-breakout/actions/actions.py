@@ -10,7 +10,7 @@ import random
 from utils.timer_check import check_timer, set_timer
 from utils.blocked_message import get_blocked_message
 from utils.formatting import utter
-from utils.game_parameters import GameArgs
+from utils.game_parameters import GameParams
 
 
 class StartGame(Action):
@@ -53,7 +53,7 @@ class StartGame(Action):
             )
 
             timestamp = datetime.now()
-            timer = timestamp + timedelta(seconds=GameArgs.game_time_seconds)
+            timer = timestamp + timedelta(seconds=GameParams.game_time_seconds)
             updated_timestamp = timer.timestamp()
 
             if "timer" not in data.keys():

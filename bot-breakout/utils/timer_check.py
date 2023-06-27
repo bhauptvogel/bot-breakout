@@ -1,7 +1,7 @@
 from datetime import datetime
 from datetime import datetime, timedelta
 from rasa_sdk.events import SlotSet
-from utils.game_parameters import GameArgs
+from utils.game_parameters import GameParams
 
 def check_timer(data):
     if "timer" not in data.keys():
@@ -40,7 +40,7 @@ def set_timer(data):
     else:
         data['timercount'] = 2
         timestamp = datetime.now()
-        timer = timestamp + timedelta(seconds=(GameArgs.game_time_seconds/2.33))
+        timer = timestamp + timedelta(seconds=(GameParams.game_time_seconds/2.33))
         updated_timestamp = timer.timestamp()
         data['timer'] = updated_timestamp
         return "We have 3 more minutes until the police arrives. We need to hurry!"

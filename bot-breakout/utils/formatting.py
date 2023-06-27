@@ -1,5 +1,5 @@
 from rasa_sdk.executor import CollectingDispatcher
-from utils.game_parameters import GameArgs
+from utils.game_parameters import GameParams
 
 formattings = {
     "Maria": "<b style='color: FireBrick;'>Maria</b>",
@@ -19,7 +19,7 @@ font_family = "font-family: baskerville;"
 
 # ONLY use this function to send messages to the user
 def utter(dispatcher: CollectingDispatcher, text: str) -> None:
-    if GameArgs.formatting:
+    if GameParams.formatting:
         for key, value in formattings.items():
             text = text.replace(key, value)
         
