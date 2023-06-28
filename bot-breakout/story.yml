@@ -1,5 +1,5 @@
 character_information:
-  # TODO: Mika character information Issue #85 
+  # TODO: Mika character information Issue #85
   # Mika:
   # - base_1: "As you already know, I work here at the amusement park. I'm part of the marketing team and we're currently working on a new marketing campaign, because since we recently built a new large rollercoaster."
   Maria:
@@ -38,8 +38,8 @@ character_information:
 story_character_relation:
   - Maria_Mika: "We were just acquaintances. I knew her through Kira and also from her great publications in the Fictional Times Paper."
   - Mika_Maria: "We were just acquaintances. I knew her through Kira and also from her great publications in the Fictional Times Paper."
-  - Maria_Kira: "Oh, Maria and Kira? They were like, super close! They were actually dating and totally into each other. But you know how life goes, things changed, and now they're ex-friends."
-  - Kira_Maria: "Oh, Maria and Kira? They were like, super close! They were actually dating and totally into each other. But you know how life goes, things changed, and now they're ex-friends."
+  - Maria_Kira: "Oh, Maria and Kira? They were like, super close! They were actually dating and totally into each other. But you know how life goes, things changed, and now they're ex-girlfriends."
+  - Kira_Maria: "Oh, Maria and Kira? They were like, super close! They were actually dating and totally into each other. But you know how life goes, things changed, and now they're ex-girlfriends."
   - Maria_Patrick: "Maria, being the journalist she is, got all intrigued about Patrick's \"business\" and how he makes his cash. She was planning to write an article exposing all the captivating details."
   - Patrick_Maria: "Maria, being the journalist she is, got all intrigued about Patrick's \"business\" and how he makes his cash. She was planning to write an article exposing all the captivating details."
   - Maria_Victor: "After Maria and Kira broke up, she fell in love with Victor, and they started dating. They're both incredibly happy together... sorry they WERE incredibly happy"
@@ -54,13 +54,13 @@ story_character_relation:
   - Anna_Kira: "Kira and Anna barely know each other. They may have crossed paths briefly when Anna was snooping around the rollercoaster business, but that's about it."
   - Patrick_Victor: "Patrick and Victor don't know each other."
   - Victor_Patrick: "Patrick and Victor don't know each other."
-  - Patrick_Anna: "So, here's the deal: they ended up knowing each other because of this report that Anna and Maria wanted to publish. They both got involved in the investigation, but let me tell you, Patrick wasn't exactly thrilled about it. Things got a bit tense there, my friend!"
-  - Anna_Patrick: "So, here's the deal: they ended up knowing each other because of this report that Anna and Maria wanted to publish. They both got involved in the investigation, but let me tell you, Patrick wasn't exactly thrilled about it. Things got a bit tense there, my friend!"
+  - Patrick_Anna: "So, here's the deal: they ended up knowing each other because of this report that Anna and Maria wanted to publish. They both got involved in the investigation, but let me tell you, Patrick wasn't exactly thrilled about it. Things got a bit tense there!"
+  - Anna_Patrick: "So, here's the deal: they ended up knowing each other because of this report that Anna and Maria wanted to publish. They both got involved in the investigation, but let me tell you, Patrick wasn't exactly thrilled about it. Things got a bit tense there!"
   - Victor_Anna: "Anna and Victor actually know each other through their connection with Maria. Anna happens to be Maria's colleague, while Victor is Maria's new boyfriend."
   - Anna_Victor: "Anna and Victor actually know each other through their connection with Maria. Anna happens to be Maria's colleague, while Victor is Maria's new boyfriend."
 
 scene_investigation:
-  - base_1: "So, we are standing in the zombie-themed section of the ghost ride, next to our cabin. This place, you know, has a strangely romantic vibe but it also gives me a bit of a chill. Look at that spooky tree over there, completely devoid of leaves and the bench under it where the zombies are holding hands and gnawing on a ripped-off limb. <br>Would you like to investigate one of those things?"
+  - base_1: "So, we are standing in the zombie-themed section of the ghost ride, next to our cabin. This place, you know, has a strangely romantic vibe but it also gives me a bit of a chill. Look at that spooky tree over there, completely devoid of leaves and the bench under it where the zombies are holding hands and gnawing on a ripped-off limb. <br>We could investigate one of those things."
   - base_2: "Let´s have another close look at everything..."
   - base_3: "I think this is all we can find here."
   - weapon: "Let me see... the weapon is a knife. It’s a bit bloody and it’s a bit scary to hold it. Should I take a closer look or should we put it back where we found it?"
@@ -70,7 +70,7 @@ scene_investigation:
   - bench: "Just some zombie love dripping through the wooden slats of the bench. Bit disgusting... We stand up but be careful to not get tangled in the zombies' limbs. Now we are back next to the cabin."
   - tree: "The tree is a bit scary. It’s a dead tree without leaves. Behind the tree, there is just some light equipment that adds to the spooky ambiance of the scene. Nothing to find here. We are back standing next to the cabin."
   - equipment: " Green light reminds me of the hulk... But there is nothing interesting to solve our mystery"
-  - note: "The Note is pinned on the body. The murderer must be a psycopath... It says “You are next”. I believe that I am the next target of the murderer... I feel overwhelmed. Lets solve this murder mystery together before its to late!"
+  - note: "The Note is pinned on the body. The murderer must be a psycopath... It says “You are next”. I believe that I am the next target of the murderer... I feel overwhelmed. Let's solve this murder mystery together before it's to late!"
   - no_access: "It is inside the train cabin and we currently don't have access. We should first investigate the cabin..."
 
 motive:
@@ -81,7 +81,7 @@ motive:
   - base_2: "You already asked me about Marias's motive but no worries, I'll tell you again. Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very well."
   Patrick:
   - base_1: "I'm not sure if I should tell you about this, but whatever... the situation can't really get any worse. Maria had recently discovered that Patrick was involved in some illegal activities regarding corruption. I don't know the details but it would have been the end of Patrick's career if this story got published."
-  - base_2: "You already asked me about Patrick's motive but no worries, I'll tell you again. Maria is the Ex of Kira. Maria had recently discovered that Patrick was involved in some illegal activities regarding corruption. I don't know the details but it would have been the end of Patrick's career if this story got published."
+  - base_2: "You already asked me about Patrick's motive but no worries, I'll tell you again. Maria had recently discovered that Patrick was involved in some illegal activities regarding corruption. I don't know the details but it would have been the end of Patrick's career if this story got published."
   Victor:
   - base_1: "As far as I know, he wouldn't have a reason to kill Maria. They just started dating and it was going really well."
   - base_2: "You already asked me about Victor's motive but no worries, I'll tell you again. Victor wouldn't have a reason to kill Maria. They just started dating and it was going really well."
@@ -99,10 +99,10 @@ access:
   - base_1: "Kira works at the rollercoaster and has backstage access, so yes, she had access."
   - base_2: "Like I told you: Kira works at the rollercoaster and she has backstage access, so indeed she had the necessary access."
   Patrick:
-  - base_1: "Since he is the owner of the rollercoaster he definitely had access to it, so he could have done something."
-  - base_2: "Didn't you already ask me that? Well, since he's the owner of the rollercoaster, he definitely had access to it, which means he could have potentially done something..."
+  - base_1: "Since he is the owner of the amusement park he definitely had access to it, so he could have done something."
+  - base_2: "Didn't you already ask me that? Well, since he's the owner of the amusement park, he definitely had access to the rollercoasters."
   Victor:
-  - base_1: "Victor doesn't work at the rollercoaster, and since access to the backstage area requires specific keys, it's highly unlikely that he could have gotten back there."
+  - base_1: "Victor doesn't work at the amusement park, and since access to the backstage area requires specific keys, it's highly unlikely that he could have gotten back there."
   - base_2: "I think I told you. Victor isn't employed at the amusement park, and considering that access to the backstage area requires specific keys, it's highly improbable that he could have managed to get back there."
   Anna:
   - base_1: "Anna doesn't work here so she doesn't have the keys she requires to access backstage. So she couldn't get there"

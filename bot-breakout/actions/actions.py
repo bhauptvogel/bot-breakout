@@ -83,33 +83,33 @@ class ActionReactToReminder(Action):
         tracker: Tracker,
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
-        utter(dispatcher,"The police is coming now! Before we go outside tell me who do you suspect as the murderer?")
+        utter(dispatcher,"The police is coming now! Before we go outside, tell me who do you suspect as the murderer?")
 
         return []
 
 
 class UserWantsToLeave(Action):
-    def name(self) -> Text: 
+    def name(self) -> Text:
         return "action_you_cannot_leave"
-    
+
     async def run(
         self,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
-        
+
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
             data = {}
         else:
             data = tracker.get_slot('data')
-        
+
         if "blocked" in data and data["blocked"][self.name()] != "":
             utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             return []
 
         sentences = [
-            "You can’t leave before the police arrive in a few minutes! We need to find hints together, so they don’t think we two did it. Should we investigate or talk?",
+            "You can’t leave before the police arrive in a few minutes! We need to find hints together, so they don’t think we two did it. We could talk or investigate the crime scene.",
             "This is not possible! The murderer could still be walking around. When the police arrive in a few minutes, we need to tell them as much about this Mystery as possible. I think we should investigate the scene more."
         ]
 
@@ -122,21 +122,21 @@ class UserWantsToLeave(Action):
 
 
 class AskAboutMika(Action):
-    def name(self) -> Text: 
+    def name(self) -> Text:
         return "action_ask_about_mika"
-    
+
     async def run(
         self,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
-        
+
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
             data = {}
         else:
             data = tracker.get_slot('data')
-        
+
         if "blocked" in data and data["blocked"][self.name()] != "":
             utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             return []
@@ -155,28 +155,28 @@ class AskAboutMika(Action):
 
 
 class WhoIsTheMurderer(Action):
-    def name(self) -> Text: 
+    def name(self) -> Text:
         return "action_who_is_the_murderer"
-    
+
     async def run(
         self,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
-        
+
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
             data = {}
         else:
             data = tracker.get_slot('data')
-        
+
         if "blocked" in data and data["blocked"][self.name()] != "":
             utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             return []
 
         sentences = [
             "I don't know who the murderer could be. Let's collect some more hints together, to find out who did it. My co workers could have something to do with this...",
-            "I have no clue at the moment. Let's collect some more hints together, to find out who killed Maria. Could there be a murder weapon in the cabin?"
+            "I have no clue at the moment. Let's collect some more hints together, to find out who killed Maria."
         ]
 
         utter(dispatcher,text= random.choice(sentences))
