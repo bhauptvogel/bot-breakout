@@ -68,7 +68,7 @@ HINTS = [
     },
     # not asked about full names of characters (because of intitials)
     {
-        "text": "Do you know the full names of all characters?🧐 I think you need them if you want to know who could be 'A.P.'",
+        "text": "Do you know the full names of all characters?🧐 I think you need them if you want to know who could be “<em style='font-family: Brush Script MT, cursive;'>A.P.</em>”",
         "disallowed_story_states": [
             "character_information/Maria/full_name",
             "character_information/Anna/full_name",

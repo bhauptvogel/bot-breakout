@@ -13,7 +13,7 @@ from utils.formatting import utter
 
 INFORMATION = [
     {
-        "text": "Maria is the victim.⚰️ She was a journalist and worked on a big story about this amusment park.🎢",
+        "text": "Maria is the victim.⚰️ She was a journalist and worked on a big story about this amusment park.",
         "required_story_states": ["character_information/Maria/base_1"],
     },
     {
@@ -73,7 +73,7 @@ INFORMATION = [
         "required_story_states": ["scene_investigation/knife", "character_information/Anna/full_name", "character_information/Patrick/full_name"],
     },
     {
-        "text": "There is a note on the body saying “You are next”. We have to hurry!🥺",
+        "text": "There is a note on the body saying “<em style='font-family: Brush Script MT, cursive; color: red;'>You are next</em>”. We have to hurry!🥺",
         "required_story_states": ["scene_investigation/note"],
     }
 ]
