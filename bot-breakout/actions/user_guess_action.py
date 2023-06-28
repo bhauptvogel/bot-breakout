@@ -84,10 +84,10 @@ class UserGuessesMurderer(Action):
                 person = [e["value"] for e in entities if (e["entity"] == "person" and e["role"] == "suspect")]
 
         if len(person) != 1:
-            utter(dispatcher,text="So who do you think it is? I'm confused.")
+            utter(dispatcher,text="So who do you think it is? I'm confused.😵‍💫")
             return [SlotSet("data", data)]
         elif person[0] not in ii.get_story_characters():
-            utter(dispatcher,text=f"I don't know who {person[0]} is. {get_most_similar_person(person[0])}")
+            utter(dispatcher,text=f"I don't know who {person[0]} is.😵‍💫 {get_most_similar_person(person[0])}")
             return [SlotSet("data", data)]
 
         # TODO (#23): Rewrite end
@@ -96,7 +96,7 @@ class UserGuessesMurderer(Action):
         else:
             utter(dispatcher,
                 #text="We can’t leave before the police arrives in a few minutes! You need to know more about this story to be sure. Let's find more hints together, so they don’t think we two did it. We need to check for a motive, if the suspect had access and the murder weapon!"
-                f"So you guess that {person[0]} is the murderer... We need to make sure we know as much about all of our suspects as possible, like if they had access to the train and their motive. Also taking a closer look at the murder weapon could give a clue! Lets go on with the investigation before we accuse someone."
+                f"So you guess that {person[0]} is the murderer...👀 We need to make sure we know as much about all of our suspects as possible, like if they had <b>access to the train</b> and their <b>motive</b>. Also taking a closer look at the <b> murder weapon </b> could give a clue!🔎 Lets go on with the investigation before we accuse someone.🫠"
             )
         
             reset_last_talked_about_character(data)

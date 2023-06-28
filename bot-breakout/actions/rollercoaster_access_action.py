@@ -46,7 +46,7 @@ class AccessToRollerCoaster(Action):
             # TODO: Check gender of last talked about character
             characters.append(get_last_talked_about_character(data))
         elif len(subjetive_pronouns) > 1:
-            utter(dispatcher,text="I don't know who you are talking about. Please specify one person you want to know about.")
+            utter(dispatcher,text="I don't know who you are talking about.😵‍💫 Please specify one person you want to know about.")
             reset_last_talked_about_character(data)
             return [SlotSet("data", data)]
 
@@ -54,14 +54,14 @@ class AccessToRollerCoaster(Action):
         # if user is not specifiing a character
         if len(characters) == 0 or characters[0] == "":
             # TODO: I can tell you who had access of... (all characters the user has not asked access about yet) #53
-            utter(dispatcher,text="If you want to know who had access to the roller coaster, tell me who do you want to know about.")
+            utter(dispatcher,text="If you want to know who had access to the roller coaster, tell me who do you want to know about in a full sentence please.🥺")
             reset_last_talked_about_character(data)
             return [SlotSet("data", data)]
         
         for character in characters:
             # if user asks about a character that is not in the story
             if character not in ii.get_story_characters():
-                utter(dispatcher,text=f"I don't know who {character} is. {get_most_similar_person(character)}")
+                utter(dispatcher,text=f"I don't know who {character} is.😵‍💫 {get_most_similar_person(character)}")
             else:
                 utter(dispatcher,text=ii.get_story_information(f"access/{character}", "", data))
         
