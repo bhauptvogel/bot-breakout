@@ -84,10 +84,10 @@ class UserGuessesMurderer(Action):
                 person = [e["value"] for e in entities if (e["entity"] == "person" and e["role"] == "suspect")]
 
         if len(person) != 1:
-            utter(dispatcher,text="So who do you think it is? I'm confused.😵‍💫")
+            utter(dispatcher,text="So who do you think it is? I'm confused.😵")
             return [SlotSet("data", data)]
         elif person[0] not in ii.get_story_characters():
-            utter(dispatcher,text=f"I don't know who {person[0]} is.😵‍💫 {get_most_similar_person(person[0])}")
+            utter(dispatcher,text=f"I don't know who {person[0]} is.😵 {get_most_similar_person(person[0])}")
             return [SlotSet("data", data)]
 
         # TODO (#23): Rewrite end
