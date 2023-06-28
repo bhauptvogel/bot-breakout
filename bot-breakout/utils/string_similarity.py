@@ -29,7 +29,7 @@ def get_most_similar_person(character):
             most_similar_character = story_character
             most_similar_character_similarity = similarity
     
-    if most_similar_character_similarity >= 3:
+    if most_similar_character_similarity <= 3:
         return f"Maybe you meant {most_similar_character}. Please specify the name of the person.😬"
     else:
         return ""

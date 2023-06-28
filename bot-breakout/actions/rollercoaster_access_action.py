@@ -17,6 +17,27 @@ from utils.formatting import utter
 class AccessToRollerCoaster(Action):
     def name(self) -> Text:
         return "action_access_to_roller_coaster"
+    
+    def hint_access(self, data):
+        if "story_state" not in data or "access" not in data["story_state"]:
+            return ""
+        
+        discussed_characters = data["story_state"]["access"]
+        discussed_characters = list(discussed_characters.keys())
+
+        characters_to_talk_about = []
+        for character in ii.get_story_characters():
+            if character not in discussed_characters:
+                characters_to_talk_about.append(character)
+
+        if len(characters_to_talk_about) == 0:
+            return ""
+        elif len(characters_to_talk_about) == 1:
+            return "I could tell you if " + characters_to_talk_about[0] + " had access to the roller coaster."
+        elif len(characters_to_talk_about) == 2:
+            return "You have not asked if " + characters_to_talk_about[0] + " or " + characters_to_talk_about[1] + " had access to this roller coaster."
+        else:
+            return "It might be helpful for you to know if "+ ", ".join(characters_to_talk_about[:-1]) + " or " + characters_to_talk_about[-1] + " had access to the roller coaster."
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
@@ -46,22 +67,21 @@ class AccessToRollerCoaster(Action):
             # TODO: Check gender of last talked about character
             characters.append(get_last_talked_about_character(data))
         elif len(subjetive_pronouns) > 1:
-            utter(dispatcher,text="I don't know who you are talking about.😵‍💫 Please specify one person you want to know about.")
+            utter(dispatcher,text=f"I don't know who you are talking about.😵 Please specify one person you want to know about. {self.hint_access(data)}")
             reset_last_talked_about_character(data)
             return [SlotSet("data", data)]
 
 
         # if user is not specifiing a character
         if len(characters) == 0 or characters[0] == "":
-            # TODO: I can tell you who had access of... (all characters the user has not asked access about yet) #53
-            utter(dispatcher,text="If you want to know who had access to the roller coaster, tell me who do you want to know about in a full sentence please.🥺")
+            utter(dispatcher,text=f"If you want to know who had access to the roller coaster, tell me who do you want to know about.🥺 {self.hint_access(data)}")
             reset_last_talked_about_character(data)
             return [SlotSet("data", data)]
         
         for character in characters:
             # if user asks about a character that is not in the story
             if character not in ii.get_story_characters():
-                utter(dispatcher,text=f"I don't know who {character} is.😵‍💫 {get_most_similar_person(character)}")
+                utter(dispatcher,text=f"I don't know who {character} is.😵 {get_most_similar_person(character)}")
             else:
                 utter(dispatcher,text=ii.get_story_information(f"access/{character}", "", data))
         
