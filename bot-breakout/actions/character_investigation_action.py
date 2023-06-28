@@ -59,6 +59,26 @@ class CharacterInvestigation(Action):
                         return
                     self.utter_specific_information(dispatcher, character, info, data)
 
+    def hint_character_to_talk_about(self, data):
+        if "story_state" not in data or "character_information" not in data["story_state"]:
+            return "I can tell you about Victor, Anna, Patrick, Maria and Kira."
+        
+        discussed_characters = data["story_state"]["character_information"]
+        discussed_characters = list(discussed_characters.keys())
+
+        characters_to_talk_about = []
+        for character in ii.get_story_characters():
+            if character not in discussed_characters:
+                characters_to_talk_about.append(character)
+
+        if len(characters_to_talk_about) == 0:
+            return ""
+        elif len(characters_to_talk_about) == 1:
+            return f"Let's maybe talk about {characters_to_talk_about[0]}."
+        elif len(characters_to_talk_about) == 2:
+            return f"We still have not talked about {characters_to_talk_about[0]} and {characters_to_talk_about[1]}."
+        else:
+            return f"We can talk about {', '.join(characters_to_talk_about[:-1])} or {characters_to_talk_about[-1]}."
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
@@ -91,9 +111,7 @@ class CharacterInvestigation(Action):
             if last_talked_about != "":
                 characters.append(last_talked_about)
             elif len(informations) == 0:
-                print(last_talked_about, )
-                # TODO: I can tell you about... (all characters the user has not asked about yet) #53
-                utter(dispatcher, text="If you want to know something about a character, please specify who you mean.😇 <br>I can tell you about Victor, Anna, Patrick and Kira.")
+                utter(dispatcher, text=f"If you want to know something about a character, please specify who you mean.😇 <br>{self.hint_character_to_talk_about(data)}")
                 reset_last_talked_about_character(data)
                 return [SlotSet("data", data)]
 

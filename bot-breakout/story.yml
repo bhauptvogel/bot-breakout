@@ -61,8 +61,8 @@ story_character_relation:
 
 scene_investigation:
   - base_1: "So, we are standing in the zombie-themed section of the ghost ride🧟 , next to our cabin. This place has a strangely romantic vibe.☺️ We earlier shared a seat at the bench with two zombies holding hands and nibbling on limbs.🦴 In the background is a scary tree, devoid of leaves.🍂 <br>Would you like to investigate the tree, the bench or the cabin with Marias dead body?"
-  - base_2: "Let´s have another close look at everything...👀"
-  - base_3: "I think this is all we can find here. "
+  - base_2: "Let´s have another close look at everything..."
+  - base_3: "This is all we can find here. "
   - weapon: "Let me see... the weapon is a knife. It’s a bit bloody and it’s a bit scary to hold it. Oh, there are initials on it. It says “<em style='font-family: 'Brush Script MT', cursive;;'>A.P.</em>”. Hm, who might it be?👀 "
   - knife: "The Knife... Oh, there are initials on it. It says “<em style='font-family: Brush Script MT, cursive;'>A.P.</em>”. Hm, who might it be?👀"
   - body: "Ok, it feels a bit scary to look at Maria's lifeless body, but perhaps we'll discover something that leads us to the murderer. Let’s take a few steps closer... She is covered in blood...🩸 sorry I'm feeling sick... I can't look at her anymore. Please say that we can look around now... 😰 "

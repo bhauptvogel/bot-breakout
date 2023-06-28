@@ -15,6 +15,28 @@ from utils.formatting import utter
 class CharacterMotive(Action):
     def name(self) -> Text:
         return "action_tell_motive"
+    
+    def hint_motive(self, data):
+        if "story_state" not in data or "motive" not in data["story_state"]:
+            return "We can talk about Kira, Patrick, Anna or the victim Maria."
+        
+        discussed_characters = data["story_state"]["motive"]
+        discussed_characters = list(discussed_characters.keys())
+
+        characters_to_talk_about = []
+        for character in ii.get_story_characters():
+            if character not in discussed_characters:
+                characters_to_talk_about.append(character)
+
+        if len(characters_to_talk_about) == 0:
+            return ""
+        elif len(characters_to_talk_about) == 1:
+            return "We can maybe talk about why " + characters_to_talk_about[0] + " might have killed Maria."
+        elif len(characters_to_talk_about) == 2:
+            return "We have not yet discussed why " + characters_to_talk_about[0] + " or " + characters_to_talk_about[1] + " might have done it."
+        else:
+            return "You can ask me about possible motives of " + ", ".join(characters_to_talk_about[:-1]) + " or " + characters_to_talk_about[-1] + "."
+
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
@@ -44,21 +66,20 @@ class CharacterMotive(Action):
             # TODO: Check gender of last talked about character
             characters.append(get_last_talked_about_character(data))
         elif len(subjetive_pronouns) > 1:
-            utter(dispatcher,text="I don't know who you are talking about.😵‍💫 Please specify one person you want to know about. We can talk about Kira, Patrick, Anna or the victim Maria")
+            utter(dispatcher,text=f"I don't know who you are talking about.😵 Please specify one person you want to know about. {self.hint_motive(data)}")
             reset_last_talked_about_character(data)
             return [SlotSet("data", data)]
 
         # if user is not specifiing a character
         if len(characters) == 0 or characters[0] == "":
-            # TODO: I can tell you the motive of... (all characters the user has not asked the motive about yet) #53
-            utter(dispatcher,text="If you want to know the motive about a certain person, let me know who you want to know about.😊")
+            utter(dispatcher,text=f"If you want to know the motive about a certain person, let me know who you want to know about.😊 {self.hint_motive(data)}")
             reset_last_talked_about_character(data)
             return [SlotSet("data", data)]
 
         for character in characters:
             # if user asks about a character that is not in the story
             if character not in ii.get_story_characters():
-                utter(dispatcher,text=f"I don't know who {character} is.😵‍💫 {get_most_similar_person(character)}")
+                utter(dispatcher,text=f"I don't know who {character} is.😵 {get_most_similar_person(character)}")
             else:
                 utter(dispatcher,text=ii.get_story_information(f"motive/{character}", "", data))
 
