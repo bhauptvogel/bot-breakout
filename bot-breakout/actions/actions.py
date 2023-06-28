@@ -49,7 +49,7 @@ class StartGame(Action):
 
         if "first_message_sent" not in data.keys():
             utter(dispatcher,
-                "Oh hi, Sorry I’m just shocked. I..I..I know this woman - it’s Maria, a journalist...😨 <br>I just called the police, because that's what a good citizen does, right? But now we should find some hint to not become a suspect! The police is here in 10 minutes.⏰ When they arrive, we should provide valuable hints about a <b>potential suspect</b> who had both <b>motive and access</b> to the crime scene and the <b>murder weapon</b>.🔪 <br>I'm not sure where to start. Can you help me clear my mind?🥺 Maybe we could investigate the room 🔍, or I can tell you about my co-workers 👥."
+                "Oh hi, Sorry I’m just shocked. I..I..I know this woman - it’s Maria, a journalist...😨 <br>I just called the police, because that's what a good citizen does, right? But now we should find some hint to not become a suspect! The police is here in 10 minutes.⏰ When they arrive, we should provide valuable hints about a <b>potential suspect</b> who had both <b>motive and access</b> to the crime scene and the <b>murder weapon</b>. <br>I'm not sure where to start. Can you help me clear my mind?🥺 Maybe we could investigate the room, or I can tell you about my co-workers."
             )
 
             timestamp = datetime.now()
@@ -110,7 +110,7 @@ class UserWantsToLeave(Action):
 
         sentences = [
             "You can’t leave before the police arrive in a few minutes!😱 We need to find hints together, so they don’t think we two did it. Should we investigate or talk?👀",
-            "This is not possible! The murderer could still be walking around.😰 When the police arrive in a few minutes, we need to tell them as much about this Mystery as possible. I think we should investigate the scene more.🔍"
+            "This is not possible! The murderer could still be walking around.😰 When the police arrive in a few minutes, we need to tell them as much about this Mystery as possible. I think we should investigate the scene more."
         ]
 
         utter(dispatcher,text= random.choice(sentences))
