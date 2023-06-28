@@ -44,21 +44,21 @@ class CharacterMotive(Action):
             # TODO: Check gender of last talked about character
             characters.append(get_last_talked_about_character(data))
         elif len(subjetive_pronouns) > 1:
-            utter(dispatcher,text="I don't know who you are talking about. Please specify one person you want to know about. We can talk about Kira, Patrick, Anna or the victim Maria")
+            utter(dispatcher,text="I don't know who you are talking about.😵‍💫 Please specify one person you want to know about. We can talk about Kira, Patrick, Anna or the victim Maria")
             reset_last_talked_about_character(data)
             return [SlotSet("data", data)]
 
         # if user is not specifiing a character
         if len(characters) == 0 or characters[0] == "":
             # TODO: I can tell you the motive of... (all characters the user has not asked the motive about yet) #53
-            utter(dispatcher,text="If you want to know the motive about a certain character, let me know who you want to know about.")
+            utter(dispatcher,text="If you want to know the motive about a certain person, let me know who you want to know about.😊")
             reset_last_talked_about_character(data)
             return [SlotSet("data", data)]
 
         for character in characters:
             # if user asks about a character that is not in the story
             if character not in ii.get_story_characters():
-                utter(dispatcher,text=f"I don't know who {character} is. {get_most_similar_person(character)}")
+                utter(dispatcher,text=f"I don't know who {character} is.😵‍💫 {get_most_similar_person(character)}")
             else:
                 utter(dispatcher,text=ii.get_story_information(f"motive/{character}", "", data))
 
