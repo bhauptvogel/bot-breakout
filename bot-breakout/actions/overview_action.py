@@ -94,11 +94,15 @@ class SituationOverview(Action):
         else:
             data = tracker.get_slot("data")
         
-        if "blocked" in data and data["blocked"][self.name()] != "":
+        if "blocked" not in data.keys():
+            utter(dispatcher, text=get_blocked_message(data,"no_greet_yet"))
+            return []
+        
+        if "blocked" in data.keys() and data["blocked"][self.name()] != "":
             utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             return [SlotSet("data", data)]
 
-        if "story_state" not in data or data["story_state"] is {}:
+        if "story_state" not in data.keys() or data["story_state"] == {}:
             data["story_state"] = {}
             return [SlotSet("data", data)]
 
@@ -120,7 +124,10 @@ class SituationOverview(Action):
             # if all states of info are in the game_state 
             if in_game_state:
                 if count_info_utters == 0:
-                    utter(dispatcher,text="Remember that you can also ask for a hint <br> ✨Here is everything we talked about so far✨: <br><br>")
+                    if "hint_given" in data.keys() and data["hint_given"]:
+                        utter(dispatcher,text="Here is everything we talked about so far✨: <br><br>")
+                    else:
+                        utter(dispatcher,text="Remember that you can also ask for a hint <br> ✨Here is everything we talked about so far✨: <br><br>")
                 count_info_utters += 1
                 utter(dispatcher,text=info["text"])
             

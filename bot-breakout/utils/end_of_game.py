@@ -19,7 +19,13 @@ def guess_murderer(data, person):
                 "action_scene_investigation": "game_over_blocked",
                 "validate_simple_cabin_form": "game_over_blocked",
                 "action_cabin_end": "game_over_blocked",
-                "action_cabin_start": "game_over_blocked"
+                "action_cabin_start": "game_over_blocked",
+                "action_set_reminder": "game_over_blocked",
+                "action_react_to_reminder": "game_over_blocked",
+                "action_you_cannot_leave": "game_over_blocked",
+                "action_ask_about_mika": "game_over_blocked",
+                "action_who_is_the_murderer": "game_over_blocked",
+                "action_cabin_validation": "game_over_blocked",
             }
             data["won"] = True
             return output
@@ -37,7 +43,13 @@ def guess_murderer(data, person):
                 "action_scene_investigation": "game_over_blocked",
                 "validate_simple_cabin_form": "game_over_blocked",
                 "action_cabin_end": "game_over_blocked",
-                "action_cabin_start": "game_over_blocked"
+                "action_cabin_start": "game_over_blocked",
+                "action_set_reminder": "game_over_blocked",
+                "action_react_to_reminder": "game_over_blocked",
+                "action_you_cannot_leave": "game_over_blocked",
+                "action_ask_about_mika": "game_over_blocked",
+                "action_who_is_the_murderer": "game_over_blocked",
+                "action_cabin_validation": "game_over_blocked",
             }
             data["won"] = False
             return output

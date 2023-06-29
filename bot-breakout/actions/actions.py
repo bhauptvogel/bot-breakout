@@ -24,7 +24,7 @@ class StartGame(Action):
             data = {}
         else:
             data = tracker.get_slot('data')
-
+        
         blocked = {
             "action_character_investigation": "",
             "action_user_guess": "",
@@ -46,6 +46,9 @@ class StartGame(Action):
 
         if "blocked" not in data.keys():
             data["blocked"] = blocked
+        
+        if "hint_given" not in data.keys():
+            data["hint_given"] = False
 
         if "first_message_sent" not in data.keys():
             utter(dispatcher,
@@ -104,7 +107,11 @@ class UserWantsToLeave(Action):
         else:
             data = tracker.get_slot('data')
         
-        if "blocked" in data and data["blocked"][self.name()] != "":
+        if "blocked" not in data.keys():
+            utter(dispatcher, text=get_blocked_message(data,"no_greet_yet"))
+            return []
+        
+        if "blocked" in data.keys() and data["blocked"][self.name()] != "":
             utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             return []
 
@@ -137,7 +144,11 @@ class AskAboutMika(Action):
         else:
             data = tracker.get_slot('data')
         
-        if "blocked" in data and data["blocked"][self.name()] != "":
+        if "blocked" not in data.keys():
+            utter(dispatcher, text=get_blocked_message(data,"no_greet_yet"))
+            return []
+        
+        if "blocked" in data.keys() and data["blocked"][self.name()] != "":
             utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             return []
 
@@ -170,7 +181,11 @@ class WhoIsTheMurderer(Action):
         else:
             data = tracker.get_slot('data')
         
-        if "blocked" in data and data["blocked"][self.name()] != "":
+        if "blocked" not in data.keys():
+            utter(dispatcher, text=get_blocked_message(data,"no_greet_yet"))
+            return []
+        
+        if "blocked" in data.keys() and data["blocked"][self.name()] != "":
             utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             return []
 
