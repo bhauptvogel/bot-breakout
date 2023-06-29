@@ -34,9 +34,9 @@ slots:
     - type: from_entity
       entity: cabin_password
 
-responses:
-  utter_please_rephrase:
-    - text: I'm sorry, I didn't quite understand that. Could you please rephrase?
+# responses:
+  # utter_please_rephrase:
+  #   - text: I'm sorry, I didn't quite understand that. Could you please rephrase?
 
 actions:
 - action_overview_of_the_state
