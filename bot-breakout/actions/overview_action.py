@@ -13,15 +13,15 @@ from utils.formatting import utter
 
 INFORMATION = [
     {
-        "text": "Maria is the victim. She was a journalist and worked on a big story about this amusment park.",
+        "text": "Maria is the victim.⚰️ She was a journalist and worked on a big story about this amusment park.",
         "required_story_states": ["character_information/Maria/base_1"],
     },
     {
-        "text": "Kira is my co-worker and I know her pretty well.",
+        "text": "Kira is my co-worker and I know her pretty well.😇",
         "required_story_states": ["character_information/Kira/base_1"],
     },
     {
-        "text": "She is the Ex-Girlfriend of Maria. She didn't handle the break-up well, as Maria was already together with Victor after a few days.",
+        "text": "She is the Ex-Girlfriend of Maria.💔 She didn't handle the break-up well, as Maria was already together with Victor after a few days.🫣",
         "required_story_states": ["character_information/Kira/base_1", "motive/Kira"],
     },
     {
@@ -37,15 +37,15 @@ INFORMATION = [
         "required_story_states": ["character_information/Victor/base_1", "motive/Victor"],
     },
     {
-        "text": "I don't know how he could have accessed the building.",
+        "text": "I don't know how he could have accessed the building.🤷",
         "required_story_states": ["character_information/Victor/base_1", "access/Victor"],
     },
     {
-        "text": "Anna is a journalist and a colleague of Maria.",
+        "text": "Anna is a journalist and a colleague of Maria.👩‍💻",
         "required_story_states": ["character_information/Anna/base_1"],
     },
     {
-        "text": "She and Maria were rivals. Anna is very driven and wanted to be the first to publish the story about the amusement park.",
+        "text": "She and Maria were rivals.🤼‍♀️ Anna is very driven and wanted to be the first to publish the story about the amusement park.",
         "required_story_states": ["character_information/Anna/base_1", "motive/Anna"],
     },
     {
@@ -53,7 +53,7 @@ INFORMATION = [
         "required_story_states": ["character_information/Anna/base_1", "access/Anna"],
     },
     {
-        "text": "Patrick is my snobbish boss who owns the family amusement park business and loves luxury vehicles and opulence.",
+        "text": "Patrick is my snobbish boss who owns the family amusement park business and loves luxury vehicles and opulence.🏆",
         "required_story_states": ["character_information/Patrick/base_1"],
     },
     {
@@ -61,19 +61,19 @@ INFORMATION = [
         "required_story_states": ["character_information/Patrick/base_1", "access/Patrick"],
     },
     {
-        "text": "Maria just found out that Patrick's been caught up in some sketchy corruption stuff. If this gets out, he's toast, but I don't know all the details.",
+        "text": "Maria just found out that Patrick's been caught up in some sketchy corruption stuff. If this gets out, he's toast, but I don't know all the details.👀",
         "required_story_states": ["character_information/Patrick/base_1", "motive/Patrick"],
     },
     {
-        "text": "Somebody used a knife to kill Maria. Written on the knife were the initials 'A' and 'P'.",
+        "text": "Somebody used a knife to kill Maria. Written on the knife were the initials 'A' and 'P'.👀",
         "required_story_states": ["scene_investigation/knife"],
     },
     {
-        "text": "This can only be Anna Pollock or Patrick Anyang.",
+        "text": "This can only be Anna Pollock or Patrick Anyang.😱",
         "required_story_states": ["scene_investigation/knife", "character_information/Anna/full_name", "character_information/Patrick/full_name"],
     },
     {
-        "text": "There is a note on the body saying “You are next”. We have to hurry!",
+        "text": "There is a note on the body saying “<em style='font-family: Brush Script MT, cursive; color: red;'>You are next</em>”. We have to hurry!🥺",
         "required_story_states": ["scene_investigation/note"],
     }
 ]
@@ -120,7 +120,7 @@ class SituationOverview(Action):
             # if all states of info are in the game_state 
             if in_game_state:
                 if count_info_utters == 0:
-                    utter(dispatcher,text="Here is everything we talked about so far: <br><br>")       
+                    utter(dispatcher,text="Remember that you can also ask for a hint <br> ✨Here is everything we talked about so far✨: <br><br>")
                 count_info_utters += 1
                 utter(dispatcher,text=info["text"])
             

@@ -36,11 +36,11 @@ def set_timer(data):
         
         data['blocked'] = blocked
         SlotSet('data',data)
-        return "The Time is over. The police waits outside, we need to go and tell them our suspect. By the way who do suspect? Please tell me a name."
+        return "The Time is over. ⏰ The police waits outside, we need to go and tell them our suspect. By the way who do suspect?👀 Please tell me a name."
     else:
         data['timercount'] = 2
         timestamp = datetime.now()
         timer = timestamp + timedelta(seconds=(GameParams.game_time_seconds/2.33))
         updated_timestamp = timer.timestamp()
         data['timer'] = updated_timestamp
-        return "We have 3 more minutes until the police arrives. We need to hurry! Maybe ask for a hint, i can check if there is something important that we have not talked about."
+        return "We have 3 more minutes until the police arrives. We need to hurry!⏰ Maybe ask for a hint, i can check if there is something important that we have not talked about."

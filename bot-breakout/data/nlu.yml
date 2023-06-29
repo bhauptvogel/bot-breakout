@@ -463,6 +463,7 @@ nlu:
     - investigate your [coworker]{"entity":"person", "group":"multiple"}
     - investigate your [co-workers]{"entity":"person", "group":"multiple"}
     - investigate your [coworkers]{"entity":"person", "group":"multiple"}
+    - tell me about [kirra]{"entity": "person", "value": "Kira"}
     - Tell me more about him
     - Tell me more about her
     - Tell me more about it
@@ -874,6 +875,7 @@ nlu:
     - Kira's
     - Kisa
     - kira
+    - kirra
     - Kirras
 
 - synonym: Patrick

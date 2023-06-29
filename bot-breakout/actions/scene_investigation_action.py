@@ -21,16 +21,16 @@ class SceneInvestigation(Action):
         Give a little hint what to do next.
         """
         NOT_IN_GAME_STATE = {
-            "cabin": "I think we should take a look at the cabin.",
-            "body": "Now I thinks it is time to take a look at the body.",
-            "knife": "We have not yet looked at the knife though.",
+            "cabin": "I think we should take a look at the cabin.👀",
+            "body": "Now I thinks it is time to take a look at the body.👀",
+            "knife": "We have not yet looked at the knife though.👀",
         }
         for key in NOT_IN_GAME_STATE:
             if key not in data["story_state"]["scene_investigation"]:
                 utter(dispatcher,text=NOT_IN_GAME_STATE[key])
                 return
         if "character_investigation" not in data["story_state"]:
-            utter(dispatcher,text="I think we should talk about my coworkers.")
+            utter(dispatcher,text="I think we should talk about my coworkers.👥")
             return
 
     def run(self, dispatcher: CollectingDispatcher,
@@ -70,7 +70,7 @@ class SceneInvestigation(Action):
                 utter(dispatcher,text=ii.get_story_information("scene_investigation", obj, data))
             else:
                 # TODO: If User has not yet looked around: "I could look around and tell you what I see."
-                utter(dispatcher,text=f"Sorry, I don't know what {obj} is.")
+                utter(dispatcher,text=f"Sorry, I don't know what {obj} is.😵")
 
         if check_timer(data):
             utter(dispatcher,text=set_timer(data))
@@ -124,10 +124,10 @@ class CabinStart(Action):
         }
 
         if cabin_open:
-            utter(dispatcher,text="It has two seats, just like ours. On the seat closer to us is Maria's corpse. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. I see something in the puddles. It's a knife! It's strange to grab in blood, but I'll get it out. I could take a closer look at it.")
+            utter(dispatcher,text="It has two seats, just like ours. On the seat closer to us is Maria's corpse. She is covered in blood and a note is pinned to her chest.🩸 I don’t see why and how she died... The floor also looks messy.😥 I see something in the puddles. It's a knife! It's strange to grab in blood, but I'll get it out. I could take a closer look at it.")
         else:
             data["blocked"] = block
-            utter(dispatcher,text="We are now standing in front of the train cabin with the dead body. But Damn... the door is locked, and I can't get in. All cabins are locked with a 3-digit pin code. I set those after a rough workday... I don't know the solution but I work with a specific system. I subtract the fourth prime number from the cabin number, added 2 and divide it by 2. I think the cabin number of this cabin is 686. Can you help me find the right pin code to enter the cabin? Just tell me the 3-digit pin code I should try!")
+            utter(dispatcher,text="We are now standing in front of the train cabin with the dead body. But Damn... the door is locked, and I can't get in.😨 All cabins are locked with a 3-digit pin code. I set those after a rough workday... I don't know the solution but I work with a specific system. I subtract the fourth prime number from the cabin number, added 2 and divide it by 2. I think the cabin number of this cabin is 686.🙃 Can you help me find the right pin code to enter the cabin? Just tell me the 3-digit pin code I should try!😊")
 
         if check_timer(data):
             utter(dispatcher,text=set_timer(data))
@@ -192,13 +192,13 @@ class CabinPinValidation(Action):
         if 'cabin_riddle_started' in data.keys() and data['cabin_riddle_started']:
 
             if cabin_password == "492":
-                utter(dispatcher,text="Yes "+cabin_password+" worked. We can enter the cabin. It has two seats, as ours did. On the seat closer to us is Maria's body. She is covered in blood and a note is pinned to her chest. I don’t see why and how she died... The floor also looks messy. I see something in the puddles. It's a knife! It's strange to grab in blood, but I'll get it out. I could take a closer look at it, if you tell me to look at the knife.")
+                utter(dispatcher,text="Yes "+cabin_password+" worked.🎉 We can enter the cabin. It has two seats, as ours did. On the seat closer to us is Maria's body. She is covered in blood and a note is pinned to her chest.🩸 I don’t see why and how she died... The floor also looks messy.😰 I see something in the puddles. It's a knife!🔪 It's strange to grab in blood, but I'll get it out. I could take a closer look at it, if you tell me to look at the knife.")
                 self.cabin_end(data)
                 if check_timer(data):
                     utter(dispatcher,text=set_timer(data))
                 return [SlotSet('data', data)]
             if cabin_password == "989" and not data['cabin_number_guess']:
-                utter(dispatcher,text="This is not the password. But 989 is the right cabin number, sorry for the confusion. I looked at it the wrong way, stupid me.")
+                utter(dispatcher,text="This is not the password. But 989 is the right cabin number, sorry for the confusion.🙃 I looked at it the wrong way, stupid me.")
                 data['cabin_number_guess'] = True
                 data['cabin_guess'] += 1
                 if check_timer(data):
@@ -212,19 +212,19 @@ class CabinPinValidation(Action):
                 data['cabin_guess'] += 1
                 utter(dispatcher,text="It is also not "+cabin_password)
             elif data['cabin_guess'] == 3:
-                utter(dispatcher,text="Nope, not right. Maybe look at the 686 ANOTHER WAY...")
+                utter(dispatcher,text="Nope, not right. Maybe look at the 686 ANOTHER WAY...🙃")
                 data['cabin_guess'] += 1
             elif data['cabin_guess'] == 4:
                 utter(dispatcher,text="Nope unfortunately not "+cabin_password)
                 data['cabin_guess'] += 1
             elif data['cabin_guess'] == 5:
                 if not data['cabin_number_guess']:
-                    utter(dispatcher,text="It is not "+cabin_password+". Oh I see now... the cabin number is 989")
+                    utter(dispatcher,text="It is not "+cabin_password+". Oh I see now... the cabin number is 989😅")
                 else:
-                    utter(dispatcher,text= ""+cabin_password +" is not the pin. It should be (989 - 7 + 2) / 2.")
+                    utter(dispatcher,text= ""+cabin_password +" is not the pin. It should be (989 - 7 + 2) / 2.😉")
                 data['cabin_guess'] += 1
             else:
-                utter(dispatcher,text= ""+cabin_password +" is not the pin. It should be (989 - 7 + 2) / 2.")
+                utter(dispatcher,text= ""+cabin_password +" is not the pin. It should be (989 - 7 + 2) / 2.😉")
                 data['cabin_guess'] += 1
 
         else:

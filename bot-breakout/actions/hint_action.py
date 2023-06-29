@@ -13,62 +13,62 @@ from utils.formatting import utter
 HINTS = [
     # not talked about coworkers
     {
-        "text": "Maybe we can talk about my coworkers. I have a hunch they play an important role in all of this.",
+        "text": "Maybe we can talk about my coworkers. I have a hunch they play an important role in all of this.🤔",
         "disallowed_story_states": ["character_information"],
     },
     # scene not investigated
     {
-        "text": "Let me look at the surroundings, should I? Investigating the scene might help us.",
+        "text": "Lets look at the surroundings. Investigating the scene might help us.🔎",
         "disallowed_story_states": ["scene_investigation"],
     },
     # not talked about Maria (victim)
     {
-        "text": "I think we should talk about Maria. She was the victim after all.",
+        "text": "I think we should talk about Maria. She was the victim after all.😓",
         "disallowed_story_states": ["character_information/Maria"],
     },
     # not talked about Anna
     {
-        "text": "Maybe you should know more about Anna. There is something important you need to know!",
+        "text": "Maybe you should know more about Anna. There is something important you need to know!🫢",
         "disallowed_story_states": ["character_information/Anna"],
     },
     # cabin not investigated
     {
-        "text": "It might be time now to take a look at the cabin.",
+        "text": "It might be time now to take a look at the cabin.👀",
         "disallowed_story_states": ["scene_investigation/cabin"],
     },
     # not talked about Patrick
     {
-        "text": "I think it's time to talk about Patrick. There is stuff you don't know about him yet!",
+        "text": "I think it's time to talk about Patrick. There is stuff you don't know about him yet!🫣",
         "disallowed_story_states": ["character_information/Patrick"],
     },
     # not talked about Kira
     {
-        "text": "We cannot get around talking about Kira. Although I don't want her to be a part of this.",
+        "text": "We cannot get around talking about Kira. Although I don't want her to be a part of this.😔",
         "disallowed_story_states": ["character_information/Kira"],
     },
     # body not investigated
     {
-        "text": "This is so tough but we need to take a look at the body. I know it's hard but it might help us.",
+        "text": "This is so tough but we need to take a look at the body.😰 I know it's hard but it might help us.",
         "disallowed_story_states": ["scene_investigation/body"],
     },
     # note not investigated
     {
-        "text": "I think we should take a look and read the note. It might help us.",
+        "text": "I think we should take a look and read the note. It might help us.👀",
         "disallowed_story_states": ["scene_investigation/note"],
     },
     # weapon not investigated
     {
-        "text": "I could take a closer look at the weapon.",
+        "text": "I could take a closer look at the weapon.🔪",
         "disallowed_story_states": ["scene_investigation/weapon"],
     },
     # knife not investigated
     {
-        "text": "Let's look at the knife, should we?",
+        "text": "Let's look at the knife 🔪",
         "disallowed_story_states": ["scene_investigation/knife"],
     },
     # not asked about full names of characters (because of intitials)
     {
-        "text": "Do you know the full names of all characters? I think you need them if you want to know who could be 'A.P.'",
+        "text": "Do you know the full names of all characters?🧐 I think you need them if you want to know who could be “<em style='font-family: Brush Script MT, cursive;'>A.P.</em>”",
         "disallowed_story_states": [
             "character_information/Maria/full_name",
             "character_information/Anna/full_name",
@@ -79,7 +79,7 @@ HINTS = [
     },
     # not asked about possible motives of characters
     {
-        "text": "Maybe we can think about possible motives of the characters.",
+        "text": "Maybe we can talk about possible motives of the characters.🧐",
         "disallowed_story_states": [
             "motive/Maria",
             "motive/Anna",
@@ -90,7 +90,7 @@ HINTS = [
     },
     # not asked about possible access to rollercoaster
     {
-        "text": "I think it might help us to clear our minds about who even had access to this rollercoaster and part of the amusement park.",
+        "text": "I think it might help us to clear our minds about who even had access to this rollercoaster and parts of the amusement park.🧐",
         "disallowed_story_states": [
             "access/Maria",
             "access/Anna",
@@ -101,7 +101,7 @@ HINTS = [
     },
     # not asked about patricks secret
     {
-        "text": "I'm not sure I told you everything about Patrick. There is more. He has a secret...",
+        "text": "I'm not sure I told you everything about Patrick. There is more. He has a secret...🤫",
         "disallowed_story_states": ["character_information/Patrick/secret"],
     },
 ]
@@ -133,7 +133,7 @@ class Hint(Action):
             if not any(in_game_state):
                 return hint["text"]
 
-        return "I don't have any hints for you right now."
+        return "I don't have any hints for you right now.🫠"
 
     def run(
         self,
@@ -149,12 +149,12 @@ class Hint(Action):
         # if in cabin riddle, give special hint for cabin riddle
         if ("cabin_riddle_started" in data.keys() and data["cabin_riddle_started"] == True):
             output = {
-                1: "Ok, let's focus on the riddle. Just try typing in a number and we will work this out together.",
-                2: "Ok, let's focus on the riddle. Maybe there is another way to look at the cabin number.",
-                3: "Maybe look at the 686 ANOTHER WAY...",
+                1: "Ok, let's focus on the riddle. Just try typing in a number and we will work this out together.😊",
+                2: "Ok, let's focus on the riddle. Maybe there is another way to look at the cabin number.🙃",
+                3: "Maybe look at the 686 ANOTHER WAY...🙃",
                 4: "I think I have an idea... but let's first make another attempt, give me another number.",
-                5: "Oh I see now... the cabin number is 989",
-                6: "It should be (989 - 7 + 2) / 2.",
+                5: "Oh I made a mistake... the cabin number is 989🫣",
+                6: "It should be (989 - 7 + 2) / 2. Type it n a calculator!😊",
             }
             if "cabin_guess" not in data.keys():
                 data["cabin_guess"] = 2
