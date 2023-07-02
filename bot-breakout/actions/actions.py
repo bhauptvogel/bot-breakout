@@ -143,7 +143,7 @@ class AskAboutMika(Action):
 
         sentences = [
             "As you already know, I work here at the amusement park.🎡 I'm part of the marketing team and we're currently working on a new marketing campaign, since we recently built a new large rollercoaster in our park and we hope to attract more people to come here.",
-            "I'm part of the marketing team at the amusement park. Lately we are working on a campaign for the park, my boss Patick things this is the best way to attract more visitors. If you ask me it would be better to renovate the attractions we have and keep them up to date. But Patrick thinks different...🙄"
+            "I'm part of the marketing team at the amusement park. Lately we are working on a campaign for the park, my boss Patrick thinks this is the best way to attract more visitors. If you ask me it would be better to renovate the attractions we have and keep them up to date. But Patrick thinks different...🙄"
         ]
 
         utter(dispatcher,text=random.choice(sentences))
@@ -175,7 +175,7 @@ class WhoIsTheMurderer(Action):
             return []
 
         sentences = [
-            "I don't know who the murderer could be.🤷 Let's collect some more hints together, to find out who did it.😊 My co workers could have something to do with this...",
+            "I don't know who the murderer could be.🤷 Let's collect some more hints together, to find out who did it.😊 My co-workers could have something to do with this...",
             "I have no clue at the moment. Let's collect some more hints together, to find out who killed Maria. Could there be a murder weapon in the cabin?🧐"
         ]
 
