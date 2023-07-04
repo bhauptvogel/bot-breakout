@@ -186,11 +186,22 @@ class WhoIsTheMurderer(Action):
 
         return []
 
-class FallbackAction(Action):
+
+
+class ActionDefaultFallback(Action):
+    """Executes the fallback action and goes back to the previous state
+    of the dialogue"""
+
     def name(self) -> Text:
         return "action_default_fallback"
 
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        # Custom logic for fallback action
-        dispatcher.utter_message(text="I'm sorry, I didn't understand. Can you please rephrase?")
-        return []
+    async def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        utter(dispatcher, response="utter_default_fallback")
+
+        # Revert user message which led to fallback.
+        return [UserUtteranceReverted()]

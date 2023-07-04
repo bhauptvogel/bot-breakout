@@ -2,7 +2,7 @@ version: '3.1'
 intents:
 - user_asks_about_wellbeing
 - ask_about_mika
-- fallback
+- out_of_scope
 - who_is_the_murderer
 - user_wants_to_leave
 - user_needs_hint
@@ -36,8 +36,12 @@ slots:
       entity: cabin_password
 
 responses:
+  utter_out_of_scope:
+    - text: I'm sorry, I didn't quite understand that. Please rephrase your last message.
   utter_default_fallback:
-    - text: I'm sorry, I didn't quite understand that. Could you please rephrase?
+    - text: Sorry, I didn't quite get that. Please rephrase your last message.
+  utter_please_rephrase:
+    - text: Sorry, I didn't quite get that. Please rephrase your last message.
 
 actions:
 - action_overview_of_the_state
@@ -54,6 +58,7 @@ actions:
 - action_you_cannot_leave
 - action_ask_about_mika
 - action_who_is_the_murderer
+- action_default_fallback
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

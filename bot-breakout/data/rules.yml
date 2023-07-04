@@ -66,7 +66,13 @@ rules:
   - intent: guess_cabin_pin
   - action: action_cabin_validation
 
+# Fallback and out of scope handling
+- rule: out-of-scope
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+
 - rule: Ask the user to rephrase whenever they send a message with low NLU confidence
   steps:
-  - intent: fallback
-  - action: action_default_fallback
+  - intent: nlu_fallback
+  - action: utter_please_rephrase
