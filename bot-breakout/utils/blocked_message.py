@@ -12,5 +12,5 @@ def get_blocked_message(data, blocked_key):
         elif data["won"] == False:
             return "The game is over! <b>You have lost.</b>❌ <br>You can leave the room and join back in to give it another shot! Maybe next time you find the murderer😊"
     elif blocked_key == "no_greet_yet":
-        return "You need to start the game first by asking Mika how he's doing"
+        return "<span style='font-family: georgia;'>Hoppla, there went something wrong. Please ask how mika is doing to start.</span>"
         
