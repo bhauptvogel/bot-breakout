@@ -39,25 +39,7 @@ nlu:
     - start game
     - Hi miki
 
-## ------ fallback -----
-# - tell me about them
-# - intent: fallback
-#   examples: |
-#     - K
-#     - is the train number correct?
-#     - what is happening in amusement park
-#     - who
-#     - Lets try
-#     - what is the number
-#     - Limbs
-#     - train number is not correct
-#     - What
-#     - Find
-#     - Pin code
-#     - Mika
-#     - is the train number covered by something?
-#     - talk to police
-
+## ------ out of scope input -----
 - intent: out_of_scope
   examples: |
     - K
