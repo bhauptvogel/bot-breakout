@@ -6,7 +6,7 @@ from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, EventType
 import random
 from utils import information_interface as ii
-from utils.timer_check import check_timer, set_timer
+from utils.timer_check import check_timer, end_of_game
 from utils.last_talked_about import reset_last_talked_about_character
 from utils.string_similarity import get_most_similar_person
 from utils.blocked_message import get_blocked_message
@@ -94,8 +94,7 @@ class UserGuessesMurderer(Action):
             utter(dispatcher,text=f"I don't know who {person[0]} is.😵 {get_most_similar_person(person[0])}")
             return [SlotSet("data", data)]
 
-        # TODO (#23): Rewrite end
-        if self.get_percentage_of_required_game_states(data) > PERCENTAGE_THRESHOLD or check_timer(data):
+        if self.get_percentage_of_required_game_states(data) > PERCENTAGE_THRESHOLD or end_of_game(data):
             utter(dispatcher,text=guess_murderer(data, person[0]))
             return [SlotSet("data", data)]
         else:
