@@ -19,8 +19,8 @@ character_information:
   - full_name: "Patrick is from China. His last name is Anyang."
   Victor:
   - base_1: "To be honest... I don’t know Victor. He is just Maria's new boyfriend🤷"
-  - base_2: "Victor is Maria's new boyfriend. I don’t know him. Only the things Kira told me about him. She was pretty jealous, that Maria has someone new"
-  - base_3: "Oh, I think we already talked about Victor. But here you go: I don't really know Victor personally. He's just Maria's new boyfriend, and I haven't had any direct interactions with him. Kira, on the other hand, shared some things about him with me, and she seemed a bit jealous that Maria moved on with someone new.❤️‍🩹 "
+  - base_2: "Victor is Maria's new boyfriend. I don’t know him. Only the things Kira told me about him. She was pretty jealous, that Maria had someone new"
+  - base_3: "Oh, I think we already talked about Victor. But here you go: I don't know Victor personally. He's just Maria's new boyfriend. Kira, on the other hand, shared some things about him with me, and she seemed a very jealous that Maria moved on with someone new.❤️‍🩹 "
   - full_name: "Victor Lopez is his full name"
   Anna:
   - base_1: "Anna is Maria's colleague at the Fictional Times Paper. I met her at some of Kira's Partys. She is nice but very focused on her job, just as Maria is … sorry, was.😓"
@@ -68,7 +68,7 @@ scene_investigation:
   - tree: "The tree is a bit scary. It’s a dead tree without leaves. Behind the tree, there is just some light equipment that adds to the spooky ambiance of the scene.🕸 Nothing to find here. <br> We are back next to the cabin again."
   - equipment: "The Green light reminds me of the hulk... 🐸  But there is nothing interesting to solve our mystery"
   - note: "The Note is pinned to the body. The murderer must be a psychopath... It says “<em style='font-family: Brush Script MT, cursive; color: red;'>You are next</em>”. I fear that I'm the killer's next target... I feel overwhelmed.😥 Let's solve this murder mystery together before it's to late!🥺"
-  - no_access: "It is inside the train cabin and we currently don't have access.⚙️ We should first investigate the cabin..."
+  - no_access: "It is inside the train cabin and we currently don't have access. We should first investigate the cabin..."
 
 motive:
   Mika:
