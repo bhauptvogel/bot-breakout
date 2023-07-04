@@ -105,7 +105,7 @@ class SituationOverview(Action):
             data["story_state"] = {}
             return [SlotSet("data", data)]
 
-        count_info_utters = 0
+        utter_text = ""
 
         for info in INFORMATION:
             in_game_state = True
@@ -122,16 +122,18 @@ class SituationOverview(Action):
 
             # if all states of info are in the game_state 
             if in_game_state:
-                if count_info_utters == 0:
+                if not utter_text:
                     if "hint_given" in data.keys() and data["hint_given"]:
-                        utter(dispatcher,text="Here is everything we talked about so far✨: <br><br>")
+                        utter_text += "Here is everything we talked about so far✨: <br><br>"
                     else:
-                        utter(dispatcher,text="Remember that you can also ask for a hint <br> ✨Here is everything we talked about so far✨: <br><br>")
-                count_info_utters += 1
-                utter(dispatcher,text=info["text"])
+                        utter_text += "Remember that you can also ask for a hint <br> ✨Here is everything we talked about so far✨: <br><br>"
+                utter_text += f"{info['text']}<br>"
             
-        if count_info_utters == 0:
+        if not utter_text:
             utter(dispatcher,text="We have not talked about anything important yet.")
+        else:
+            print(utter_text)
+            utter(dispatcher,text=utter_text)
 
 
         reset_last_talked_about_character(data)
