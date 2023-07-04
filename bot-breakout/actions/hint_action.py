@@ -13,7 +13,7 @@ from utils.formatting import utter
 HINTS = [
     # not talked about coworkers
     {
-        "text": "Maybe we can talk about my coworkers. I have a hunch they play an important role in all of this.🤔",
+        "text": "Maybe we can talk about my co-workers. I have a hunch they play an important role in all of this.🤔",
         "disallowed_story_states": ["character_information"],
     },
     # scene not investigated
