@@ -48,13 +48,8 @@ def set_timer(dispatcher: CollectingDispatcher, data: dict):
         utter(dispatcher=dispatcher, text="The Time is over. ⏰ The police waits outside, we need to go and tell them our suspect. By the way, who do suspect?👀 Please tell me a name.")
         return [SlotSet("data", data)]
 
-def check_timer(data: dict):
-    if "timer" not in data or "won" in data:
-        return
-    elif data['timer'] >= datetime.now().timestamp():
-        return False
-    else:
-        return True
+def end_of_game(data: dict):
+    return ("timer" in data) and ("won" not in data) and (data['timer'] < datetime.now().timestamp()) and (data["timercount"] == 3)
 
 def check_timer(dispatcher: CollectingDispatcher, data: dict):
     if "timer" not in data or "won" in data:
