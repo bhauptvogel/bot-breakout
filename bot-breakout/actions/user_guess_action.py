@@ -72,7 +72,10 @@ class UserGuessesMurderer(Action):
         else:
             data = tracker.get_slot("data")
         
-        if "blocked" in data and data["blocked"][self.name()] != "":
+        if "blocked" not in data.keys():
+            utter(dispatcher, text=get_blocked_message(data,"no_greet_yet"))
+            return []
+        elif data["blocked"][self.name()] != "":
             utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             return [SlotSet("data", data)]
 
@@ -94,6 +97,7 @@ class UserGuessesMurderer(Action):
         # TODO (#23): Rewrite end
         if self.get_percentage_of_required_game_states(data) > PERCENTAGE_THRESHOLD or check_timer(data):
             utter(dispatcher,text=guess_murderer(data, person[0]))
+            return [SlotSet("data", data)]
         else:
             utter(dispatcher,
                 #text="We can’t leave before the police arrives in a few minutes! You need to know more about this story to be sure. Let's find more hints together, so they don’t think we two did it. We need to check for a motive, if the suspect had access and the murder weapon!"
@@ -101,8 +105,6 @@ class UserGuessesMurderer(Action):
             )
         
             reset_last_talked_about_character(data)
-            
-            if check_timer(data):
-                    utter(dispatcher,text=set_timer(data))       
 
-        return [SlotSet("data", data)]
+            return check_timer(dispatcher, data)
+    

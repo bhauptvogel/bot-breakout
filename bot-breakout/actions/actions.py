@@ -24,7 +24,7 @@ class StartGame(Action):
             data = {}
         else:
             data = tracker.get_slot('data')
-
+        
         blocked = {
             "action_character_investigation": "",
             "action_user_guess": "",
@@ -46,6 +46,9 @@ class StartGame(Action):
 
         if "blocked" not in data.keys():
             data["blocked"] = blocked
+        
+        if "hint_given" not in data.keys():
+            data["hint_given"] = False
 
         if "first_message_sent" not in data.keys():
             utter(dispatcher,
@@ -67,10 +70,7 @@ class StartGame(Action):
 
         data["first_message_sent"] = True
 
-        if check_timer(data):
-            utter(dispatcher,text=set_timer(data))
-
-        return [SlotSet("data", data)]
+        return check_timer(dispatcher, data)
 
 
 class ActionReactToReminder(Action):
@@ -103,8 +103,11 @@ class UserWantsToLeave(Action):
             data = {}
         else:
             data = tracker.get_slot('data')
-
-        if "blocked" in data and data["blocked"][self.name()] != "":
+        
+        if "blocked" not in data.keys():
+            utter(dispatcher, text=get_blocked_message(data,"no_greet_yet"))
+            return []
+        elif data["blocked"][self.name()] != "":
             utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             return []
 
@@ -115,10 +118,7 @@ class UserWantsToLeave(Action):
 
         utter(dispatcher,text= random.choice(sentences))
 
-        if check_timer(data):
-            utter(dispatcher,text=set_timer(data))
-
-        return []
+        return check_timer(dispatcher, data)
 
 
 class AskAboutMika(Action):
@@ -136,8 +136,11 @@ class AskAboutMika(Action):
             data = {}
         else:
             data = tracker.get_slot('data')
-
-        if "blocked" in data and data["blocked"][self.name()] != "":
+        
+        if "blocked" not in data.keys():
+            utter(dispatcher, text=get_blocked_message(data,"no_greet_yet"))
+            return []
+        elif data["blocked"][self.name()] != "":
             utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             return []
 
@@ -148,11 +151,7 @@ class AskAboutMika(Action):
 
         utter(dispatcher,text=random.choice(sentences))
 
-        if check_timer(data):
-            utter(dispatcher,text=set_timer(data))
-
-        return []
-
+        return check_timer(dispatcher, data)
 
 class WhoIsTheMurderer(Action):
     def name(self) -> Text:
@@ -169,8 +168,11 @@ class WhoIsTheMurderer(Action):
             data = {}
         else:
             data = tracker.get_slot('data')
-
-        if "blocked" in data and data["blocked"][self.name()] != "":
+        
+        if "blocked" not in data.keys():
+            utter(dispatcher, text=get_blocked_message(data,"no_greet_yet"))
+            return []
+        elif data["blocked"][self.name()] != "":
             utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             return []
 

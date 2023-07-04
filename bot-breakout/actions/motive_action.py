@@ -46,8 +46,11 @@ class CharacterMotive(Action):
             data = {}
         else:
             data = tracker.get_slot('data')
-
-        if "blocked" in data and data["blocked"][self.name()] != "":
+        
+        if "blocked" not in data.keys():
+            utter(dispatcher, text=get_blocked_message(data,"no_greet_yet"))
+            return []
+        elif data["blocked"][self.name()] != "":
             utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             return [SlotSet("data", data)]
 
@@ -85,7 +88,4 @@ class CharacterMotive(Action):
 
         set_last_talked_about_character(characters[-1], data)
 
-        if check_timer(data):
-            utter(dispatcher,text=set_timer(data))
-
-        return [SlotSet("data", data)]
+        return check_timer(dispatcher, data)

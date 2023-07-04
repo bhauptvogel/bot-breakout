@@ -88,16 +88,16 @@ class CharacterInvestigation(Action):
             data = {}
         else:
             data = tracker.get_slot('data')
-
-        entities = tracker.latest_message['entities']
-        informations = [e['value'] for e in entities if e['entity'] == 'information']
-        characters = [e['value'] for e in entities if e['entity'] == 'person']
-
-        if "blocked" in data and data["blocked"][self.name()] != "":
+        
+        if "blocked" not in data.keys():
+            utter(dispatcher, text=get_blocked_message(data,"no_greet_yet"))
+            return []
+        elif data["blocked"][self.name()] != "":
             if data["blocked"][self.name()] == "end_of_game_blocked":
                 names_in_message = tracker.latest_message['text'].split(" ")
                 if len(names_in_message) > 2:
                     utter(dispatcher, text=get_blocked_message(data,data["blocked"][self.name()]))
+                    return [SlotSet("data", data)]
                 for name in names_in_message:
                     for story_character in ii.get_story_characters():
                         if name == story_character or levenshtein_distance(name, story_character) <= 2:
@@ -105,6 +105,10 @@ class CharacterInvestigation(Action):
                             return [SlotSet("data", data)]
             utter(dispatcher, text=get_blocked_message(data,data["blocked"][self.name()]))
             return [SlotSet("data", data)]
+        
+        entities = tracker.latest_message['entities']
+        informations = [e['value'] for e in entities if e['entity'] == 'information']
+        characters = [e['value'] for e in entities if e['entity'] == 'person']
 
         if len(characters) == 0:
             last_talked_about = get_last_talked_about_character(data)
@@ -127,7 +131,4 @@ class CharacterInvestigation(Action):
             self.process_informations(dispatcher, characters, informations, data)
             reset_last_talked_about_character(data)
 
-        if check_timer(data):
-            utter(dispatcher, text=set_timer(data))
-
-        return [SlotSet("data", data)]
+        return check_timer(dispatcher, data)

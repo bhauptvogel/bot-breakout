@@ -146,6 +146,13 @@ class Hint(Action):
         else:
             data = tracker.get_slot("data")
 
+        if "blocked" not in data.keys():
+            utter(dispatcher, text=get_blocked_message(data,"no_greet_yet"))
+            return []
+        elif data["blocked"][self.name()] != "":
+            utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
+            return [SlotSet("data", data)]
+
         # if in cabin riddle, give special hint for cabin riddle
         if ("cabin_riddle_started" in data.keys() and data["cabin_riddle_started"] == True):
             output = {
@@ -154,7 +161,7 @@ class Hint(Action):
                 3: "Maybe look at the 686 ANOTHER WAY...🙃",
                 4: "I think I have an idea... but let's first make another attempt, give me another number.",
                 5: "Oh I made a mistake... the cabin number is 989🫣",
-                6: "It should be (989 - 7 + 2) / 2. Type it n a calculator!😊",
+                6: "It should be (989 - 7 + 2) / 2. Type it in a calculator!😊",
             }
             if "cabin_guess" not in data.keys():
                 data["cabin_guess"] = 2
@@ -167,16 +174,12 @@ class Hint(Action):
                 utter(dispatcher,text=output[data["cabin_guess"]])
                 data["cabin_guess"] += 1
                 return [SlotSet("data", data)]
-
-        if "blocked" in data and data["blocked"][self.name()] != "":
-            utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
-            return [SlotSet("data", data)]
+       
 
         utter(dispatcher,text=self.get_next_hint(data))
 
         reset_last_talked_about_character(data)
 
-        if check_timer(data):
-                utter(dispatcher,text=set_timer(data))
+        data["hint_given"] = True
 
-        return [SlotSet("data", data)]
+        return check_timer(dispatcher, data)
