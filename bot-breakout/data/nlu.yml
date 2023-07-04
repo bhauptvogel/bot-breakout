@@ -38,6 +38,8 @@ nlu:
     - start
     - start game
     - Hi miki
+    - Mika, that was quite shocking. Are you doing okay?
+    - Mika, that was... quite unexpected. How are you holding up?
 
 ## ------ out of scope input -----
 - intent: out_of_scope
