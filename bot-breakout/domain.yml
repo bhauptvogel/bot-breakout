@@ -38,8 +38,6 @@ slots:
 responses:
   utter_out_of_scope:
     - text: I'm sorry, I didn't quite understand that. Please rephrase your last message.
-  utter_default_fallback:
-    - text: Sorry, I didn't quite get that. Please rephrase your last message.
   utter_please_rephrase:
     - text: Sorry, I didn't quite get that. Please rephrase your last message.
 

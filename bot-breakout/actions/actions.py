@@ -183,27 +183,4 @@ class WhoIsTheMurderer(Action):
 
         utter(dispatcher,text= random.choice(sentences))
 
-        if check_timer(data):
-            utter(dispatcher,text=set_timer(data))
-
-        return []
-
-
-
-class ActionDefaultFallback(Action):
-    """Executes the fallback action and goes back to the previous state
-    of the dialogue"""
-
-    def name(self) -> Text:
-        return "action_default_fallback"
-
-    async def run(
-        self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any],
-    ) -> List[Dict[Text, Any]]:
-        utter(dispatcher, response="utter_default_fallback")
-
-        # Revert user message which led to fallback.
-        return [UserUtteranceReverted()]
+        return check_timer(dispatcher, data)
