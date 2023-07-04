@@ -57,7 +57,7 @@ story_character_relation:
   - Anna_Victor: "Anna and Victor actually know each other through their connection with Maria. Anna happens to be Maria's colleague, while Victor is Maria's new boyfriend."
 
 scene_investigation:
-  - base_1: "So, we are standing in the zombie-themed section of the ghost ride🧟, next to our cabin. This place has a strangely romantic vibe. We earlier shared a seat at the bench with two zombies holding hands and nibbling on limbs.🦴 In the background is a scary tree, devoid of leaves.🍂 <br>We could investigate the tree, the bench or the cabin with Marias dead body."
+  - base_1: "So, we are standing in the zombie-themed section of the ghost ride, next to our cabin.🧟 This place has a strangely romantic vibe. We earlier shared a seat at the bench with two zombies holding hands and nibbling on limbs.🦴 In the background is a scary tree, devoid of leaves.🍂 <br>We could investigate the tree, the bench or the cabin with Marias dead body."
   - base_2: "Let´s have another close look at everything..."
   - base_3: "This is all we can find here. "
   - weapon: "Let me see... the weapon is a knife. It’s a bit bloody and it’s a bit scary to hold it. Oh, there are initials on it. It says “<em style='font-family: 'Brush Script MT', cursive;;'>A.P.</em>”. Hm, who might it be?👀 "
@@ -74,7 +74,7 @@ motive:
   Mika:
   - base_1: "No, I didn't have any issues with Maria and also I can't be the murderer since I was with you the whole time. But good that you asked. You should always check if you are dating a serial killer!😅"
   Kira:
-  - base_1: "Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very well.😔"
+  - base_1: "Maria is Kira's Ex. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very well.😔"
   - base_2: "You already asked me about Marias's motive but no worries, I'll tell you again. Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very well.😔"
   Patrick:
   - base_1: "I'm not sure if I should tell you about this, but whatever... Maria had recently discovered that Patrick was involved in some illegal activities regarding corruption. I don't know the details but it would have been the end of Patrick's career if this story got published.🫢"
