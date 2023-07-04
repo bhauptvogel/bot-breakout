@@ -41,8 +41,12 @@ class SceneInvestigation(Action):
             data = {}
         else:
             data = tracker.get_slot('data')
+        
+        if "blocked" not in data.keys():
+            utter(dispatcher, text=get_blocked_message(data,"no_greet_yet"))
+            return []
 
-        if "blocked" in data and data["blocked"][self.name()] != "":
+        if "blocked" in data.keys() and data["blocked"][self.name()] != "":
             utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             return [SlotSet("data", data)]
 
@@ -89,6 +93,10 @@ class CabinStart(Action):
             data = {}
         else:
             data = tracker.get_slot('data')
+        
+        if "blocked" not in data.keys():
+            utter(dispatcher, text=get_blocked_message(data,"no_greet_yet"))
+            return []
 
         if 'cabin_open' not in data.keys():
             cabin_open = False
@@ -97,7 +105,7 @@ class CabinStart(Action):
 
         data['cabin_riddle_started'] = True
 
-        if "blocked" in data and data["blocked"][self.name()] != "":
+        if "blocked" in data.keys() and data["blocked"][self.name()] != "":
             utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             if check_timer(data):
                 utter(dispatcher,text=set_timer(data))
@@ -106,7 +114,7 @@ class CabinStart(Action):
         block = {
             "action_character_investigation": "cabin_blocked",
             "action_user_guess": "cabin_blocked",
-            "action_give_hint": "cabin_blocked",
+            "action_give_hint": "",
             "action_tell_motive": "",
             "action_overview_of_the_state": "",
             "action_access_to_roller_coaster": "cabin_blocked",
@@ -174,13 +182,18 @@ class CabinPinValidation(Action):
             data = {}
         else:
             data = tracker.get_slot('data')
+
+        if "blocked" not in data.keys():
+            utter(dispatcher, text=get_blocked_message(data,"no_greet_yet"))
+            return []
+        
         if 'cabin_guess' not in data.keys():
             data['cabin_guess'] = 1
 
         if 'cabin_number_guess' not in data.keys():
             data['cabin_number_guess'] = False
         
-        if "blocked" in data and data["blocked"][self.name()] != "":
+        if "blocked" in data.keys() and data["blocked"][self.name()] != "":
             utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
             if check_timer(data):
                 utter(dispatcher,text=set_timer(data))

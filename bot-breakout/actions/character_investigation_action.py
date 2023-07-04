@@ -88,12 +88,16 @@ class CharacterInvestigation(Action):
             data = {}
         else:
             data = tracker.get_slot('data')
+        
+        if "blocked" not in data.keys():
+            utter(dispatcher, text=get_blocked_message(data,"no_greet_yet"))
+            return []
 
         entities = tracker.latest_message['entities']
         informations = [e['value'] for e in entities if e['entity'] == 'information']
         characters = [e['value'] for e in entities if e['entity'] == 'person']
 
-        if "blocked" in data and data["blocked"][self.name()] != "":
+        if "blocked" in data.keys() and data["blocked"][self.name()] != "":
             if data["blocked"][self.name()] == "end_of_game_blocked":
                 names_in_message = tracker.latest_message['text'].split(" ")
                 if len(names_in_message) > 2:

@@ -14,7 +14,22 @@ def check_timer(data):
 def set_timer(data):
     if "timercount" not in data.keys():
         return
-    if data['timercount'] > 1:
+    if data['timercount'] == 1:
+        if "hint_given" in data.keys() and data["hint_given"]:
+            data['timercount'] = 2
+            timestamp = datetime.now()
+            timer = timestamp + timedelta(seconds=(GameParams.game_time_seconds/2.33))
+            updated_timestamp = timer.timestamp()
+            data['timer'] = updated_timestamp
+            return
+        elif "hint_given" in data.keys() and not data["hint_given"]:
+            data['timercount'] = 2
+            timestamp = datetime.now()
+            timer = timestamp + timedelta(seconds=(GameParams.game_time_seconds/2.33))
+            updated_timestamp = timer.timestamp()
+            data['timer'] = updated_timestamp
+            return "Remember that you can also ask for a hint ✨"
+    elif data["timercount"] == 2:
         blocked = {
             "action_character_investigation": "end_of_game_blocked",
             "action_user_guess": "",
@@ -31,7 +46,7 @@ def set_timer(data):
             "action_you_cannot_leave": "end_of_game_blocked",
             "action_ask_about_mika": "end_of_game_blocked",
             "action_who_is_the_murderer": "end_of_game_blocked",
-            "action_cabin_validation": "end_of_game_blocked"
+            "action_cabin_validation": "end_of_game_blocked",
         }
         
         data['blocked'] = blocked
