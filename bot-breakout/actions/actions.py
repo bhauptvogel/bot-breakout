@@ -89,16 +89,16 @@ class ActionReactToReminder(Action):
 
 
 class UserWantsToLeave(Action):
-    def name(self) -> Text: 
+    def name(self) -> Text:
         return "action_you_cannot_leave"
-    
+
     async def run(
         self,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
-        
+
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
             data = {}
         else:
@@ -122,16 +122,16 @@ class UserWantsToLeave(Action):
 
 
 class AskAboutMika(Action):
-    def name(self) -> Text: 
+    def name(self) -> Text:
         return "action_ask_about_mika"
-    
+
     async def run(
         self,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
-        
+
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
             data = {}
         else:
@@ -154,16 +154,16 @@ class AskAboutMika(Action):
         return check_timer(dispatcher, data)
 
 class WhoIsTheMurderer(Action):
-    def name(self) -> Text: 
+    def name(self) -> Text:
         return "action_who_is_the_murderer"
-    
+
     async def run(
         self,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
-        
+
         if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
             data = {}
         else:

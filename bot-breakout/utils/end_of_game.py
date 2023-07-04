@@ -6,8 +6,8 @@ def guess_murderer(data, person):
     elif data["user_wants_to_commit"] == True:
         data["user_wants_to_commit"] = False
         if person == "Patrick":
-            output = "<p style='font-family: georgia;'>[Police officer👮‍♂️] Haha seams like you already did my Job!🤩 We will check all the details and talk to you after we are done. Please leave some of your informations to my colleage. Possible, that we will be in touch sone. But for now you can go home.</p><br>"
-            output += "After a hot investigation the police found multiple hints to claim Patrick for corruption. Your perfect Hint was very helpful and leaded to Patrick being in jail very quick.🔗 You should consider a career as an detective. Great job!🥳 Your Date is impressed too and asks for another Date. Maybe you will solve a theft next time!💞<br>"
+            output = "<p style='font-family: georgia;'>[Police officer👮‍♂️] Haha seams like you already did my Job!🤩 We will check all the details and talk to you after we are done. Please leave some of your informations to my colleage. Possible, that we will be in touch soon. But for now you can go home.</p><br>"
+            output += "After a thorough investigation, the police found several clues to prosecute Patrick for corruption. Your Hint was very helpful and led to Patrick going to jail very quickly.🔗 You should consider a career as a detective. Great job!🥳 Your Date is impressed too and asks for another Date. Maybe you will solve a theft next time!💞<br>"
             output += "<h1>You won the game!✅</h1> <br>Congratulations!🎉"
             data['blocked'] = {
                 "action_character_investigation": "game_over_blocked",
@@ -56,4 +56,3 @@ def guess_murderer(data, person):
     else:
         print("ERROR: this should not happen, look into end_of_game.py")
         return "Game is over. You can't do anything anymore. If you want to restart, leave the room and join back in."
-        

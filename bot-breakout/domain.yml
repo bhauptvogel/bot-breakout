@@ -2,6 +2,7 @@ version: '3.1'
 intents:
 - user_asks_about_wellbeing
 - ask_about_mika
+- out_of_scope
 - who_is_the_murderer
 - user_wants_to_leave
 - user_needs_hint
@@ -33,6 +34,12 @@ slots:
     mappings:
     - type: from_entity
       entity: cabin_password
+
+responses:
+  utter_out_of_scope:
+    - text: I'm sorry, I didn't quite understand that. Please rephrase your last message.
+  utter_please_rephrase:
+    - text: Sorry, I didn't quite get that. Please rephrase your last message.
 
 actions:
 - action_overview_of_the_state
