@@ -149,6 +149,9 @@ class Hint(Action):
         if "blocked" not in data.keys():
             utter(dispatcher, text=get_blocked_message(data,"no_greet_yet"))
             return []
+        elif data["blocked"][self.name()] != "":
+            utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
+            return [SlotSet("data", data)]
 
         # if in cabin riddle, give special hint for cabin riddle
         if ("cabin_riddle_started" in data.keys() and data["cabin_riddle_started"] == True):
@@ -171,10 +174,7 @@ class Hint(Action):
                 utter(dispatcher,text=output[data["cabin_guess"]])
                 data["cabin_guess"] += 1
                 return [SlotSet("data", data)]
-
-        if "blocked" in data.keys() and data["blocked"][self.name()] != "":
-            utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
-            return [SlotSet("data", data)]
+       
 
         utter(dispatcher,text=self.get_next_hint(data))
 
@@ -182,7 +182,4 @@ class Hint(Action):
 
         data["hint_given"] = True
 
-        if check_timer(data):
-                utter(dispatcher,text=set_timer(data))
-
-        return [SlotSet("data", data)]
+        return check_timer(dispatcher, data)
