@@ -212,7 +212,7 @@ class CharacterLastSeen(Action):
         entities = tracker.latest_message['entities']
         characters = [e['value'] for e in entities if e['entity'] == 'person']
 
-        if len(characters) == 1 or characters[0] in ii.get_story_characters():
+        if len(characters) == 1 and characters[0] in ii.get_story_characters():
             utter(dispatcher, text=ii.get_story_information(f"last_seen/{characters[0]}", "", data))
         else:
             utter(dispatcher, text=f"If you want to know something about a character, please specify who you mean.😇")

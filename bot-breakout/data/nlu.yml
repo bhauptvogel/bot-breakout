@@ -677,8 +677,18 @@ nlu:
     - when have you last seen [Kira]{"entity":"person"}?
     - it is important that you tell me when you last saw [Victor]{"entity":"person"}.
     - I think you should tell me when you last saw [Anna]{"entity":"person"}.
-    - 
-
+    - When was the most recent encounter you had with [Victor]{"entity":"person"}?
+    - Can you recall the date of your last sighting of [Anna]{"entity":"person"}?
+    - I'm curious about the last time you laid eyes on [Patrick]{"entity":"person"}. Could you provide me with that information?
+    - Do you remember when you last saw [Maria]{"entity":"person"}?
+    - Please let me know if you remember when you last saw [Maria]{"entity":"person"}.
+    - When did you have your most recent encounter with [Kira]{"entity":"person"}?
+    - Have you come across [Anna]{"entity":"person"} recently?
+    - In the past few days, have you had any sightings of [Patrick]{"entity":"person"}?
+    - Have you had any recent conversations with [Maria]{"entity":"person"}?
+    - When was the most recent sighting of [Kira]{"entity":"person"}?
+    - It's crucial that you disclose the date of your last encounter with [Victor]{"entity":"person"}.
+    - I believe it's essential for you to divulge when you last saw [Anna]{"entity":"person"}.
 
 
 - intent: motive_of_character
