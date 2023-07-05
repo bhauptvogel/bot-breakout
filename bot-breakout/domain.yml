@@ -10,6 +10,7 @@ intents:
 - user_guesses_murderer
 - scene_investigation
 - information_about_character
+- character_last_seen
 - motive_of_character
 - access_to_rollercoaster
 - EXTERNAL_reminder
