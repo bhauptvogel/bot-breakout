@@ -106,30 +106,28 @@ class CabinStart(Action):
         data['cabin_riddle_started'] = True
 
 
-        block = {
-            "action_character_investigation": "cabin_blocked",
-            "action_user_guess": "cabin_blocked",
-            "action_give_hint": "",
-            "action_tell_motive": "",
-            "action_overview_of_the_state": "",
-            "action_access_to_roller_coaster": "cabin_blocked",
-            "action_scene_investigation": "cabin_blocked",
-            "validate_simple_cabin_form": "",
-            "action_cabin_end": "",
-            "action_cabin_start": "",
-            "action_set_reminder": "cabin_blocked",
-            "action_react_to_reminder": "",
-            "action_you_cannot_leave": "cabin_blocked",
-            "action_ask_about_mika": "cabin_blocked",
-            "action_who_is_the_murderer": "cabin_blocked",
-            "action_cabin_validation": "",
-
-        }
-
         if cabin_open:
             utter(dispatcher,text="It has two seats, just like ours. On the seat closer to us is Maria's corpse. She is covered in blood and a note is pinned to her chest.🩸 I don’t see why and how she died... The floor also looks messy.😥 I see something in the puddles. It's a knife! It's strange to grab in blood, but I'll get it out. I could take a closer look at it.")
         else:
-            data["blocked"] = block
+            data["blocked"] = {
+                "action_character_investigation": "cabin_blocked",
+                "action_user_guess": "cabin_blocked",
+                "action_give_hint": "",
+                "action_tell_motive": "",
+                "action_overview_of_the_state": "",
+                "action_access_to_roller_coaster": "cabin_blocked",
+                "action_scene_investigation": "cabin_blocked",
+                "validate_simple_cabin_form": "",
+                "action_cabin_end": "",
+                "action_cabin_start": "",
+                "action_set_reminder": "cabin_blocked",
+                "action_react_to_reminder": "",
+                "action_you_cannot_leave": "cabin_blocked",
+                "action_ask_about_mika": "cabin_blocked",
+                "action_who_is_the_murderer": "cabin_blocked",
+                "action_cabin_validation": "",
+                "action_character_last_seen": "cabin_locked",
+            }
             utter(dispatcher,text="We are now standing in front of the train cabin with the dead body. But Damn... the door is locked, and I can't get in.😨 All cabins are locked with a 3-digit pin code. I set those after a rough workday... I don't know the solution but I work with a specific system. I subtract the fourth prime number from the cabin number, added 2 and divide it by 2. I think the cabin number of this cabin is 686.🙃 Can you help me find the right pin code to enter the cabin? Just tell me the 3-digit pin code I should try!😊")
 
         return check_timer(dispatcher, data)
@@ -143,7 +141,7 @@ class CabinPinValidation(Action):
             data['cabin_open'] = True
             data['cabin_riddle_started'] = False
 
-            block = {
+            data["blocked"] = {
                 "action_character_investigation": "",
                 "action_user_guess": "",
                 "action_give_hint": "",
@@ -160,8 +158,8 @@ class CabinPinValidation(Action):
                 "action_ask_about_mika": "",
                 "action_who_is_the_murderer": "",
                 "action_cabin_validation": "",
+                "action_character_last_seen": "",
             }
-            data["blocked"] = block
 
             ii.set_game_state("scene_investigation", "cabin", data)
 

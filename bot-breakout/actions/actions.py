@@ -11,6 +11,7 @@ from utils.timer_check import check_timer, set_timer
 from utils.blocked_message import get_blocked_message
 from utils.formatting import utter
 from utils.game_parameters import GameParams
+from utils import information_interface as ii
 
 
 class StartGame(Action):
@@ -25,27 +26,27 @@ class StartGame(Action):
         else:
             data = tracker.get_slot('data')
         
-        blocked = {
-            "action_character_investigation": "",
-            "action_user_guess": "",
-            "action_give_hint": "",
-            "action_tell_motive": "",
-            "action_overview_of_the_state": "",
-            "action_access_to_roller_coaster": "",
-            "action_scene_investigation": "",
-            "validate_simple_cabin_form": "",
-            "action_cabin_end": "",
-            "action_cabin_start": "",
-            "action_set_reminder": "",
-            "action_react_to_reminder": "",
-            "action_you_cannot_leave": "",
-            "action_ask_about_mika": "",
-            "action_who_is_the_murderer": "",
-            "action_cabin_validation": "",
-        }
 
         if "blocked" not in data.keys():
-            data["blocked"] = blocked
+            data["blocked"] = {
+                "action_character_investigation": "",
+                "action_user_guess": "",
+                "action_give_hint": "",
+                "action_tell_motive": "",
+                "action_overview_of_the_state": "",
+                "action_access_to_roller_coaster": "",
+                "action_scene_investigation": "",
+                "validate_simple_cabin_form": "",
+                "action_cabin_end": "",
+                "action_cabin_start": "",
+                "action_set_reminder": "",
+                "action_react_to_reminder": "",
+                "action_you_cannot_leave": "",
+                "action_ask_about_mika": "",
+                "action_who_is_the_murderer": "",
+                "action_cabin_validation": "",
+                "action_character_last_seen": "",
+            }
         
         if "hint_given" not in data.keys():
             data["hint_given"] = False
@@ -182,5 +183,39 @@ class WhoIsTheMurderer(Action):
         ]
 
         utter(dispatcher,text= random.choice(sentences))
+
+        return check_timer(dispatcher, data)
+
+class CharacterLastSeen(Action):
+    def name(self) -> Text:
+        return "action_character_last_seen"
+    
+    async def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        
+        if tracker.get_slot('data') is None or tracker.get_slot('data') == 'Null':
+            data = {}
+        else:
+            data = tracker.get_slot('data')
+        
+        if "blocked" not in data.keys():
+            utter(dispatcher, text=get_blocked_message(data,"no_greet_yet"))
+            return []
+        elif data["blocked"][self.name()] != "":
+            utter(dispatcher,text=get_blocked_message(data,data["blocked"][self.name()]))
+            return []
+        
+        entities = tracker.latest_message['entities']
+        characters = [e['value'] for e in entities if e['entity'] == 'person']
+
+        if len(characters) == 1 and characters[0] in ii.get_story_characters():
+            utter(dispatcher, text=ii.get_story_information(f"last_seen/{characters[0]}", "", data))
+        else:
+            utter(dispatcher, text=f"If you want to know something about a character, please specify who you mean.😇")
+            
 
         return check_timer(dispatcher, data)
