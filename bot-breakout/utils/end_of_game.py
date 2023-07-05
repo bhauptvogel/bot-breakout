@@ -9,7 +9,7 @@ def guess_murderer(data, person):
             output = "<p style='font-family: georgia;'>[Police officer👮‍♂️] Haha seams like you already did my Job!🤩 We will check all the details and talk to you after we are done. Please leave some of your informations to my colleage. Possible, that we will be in touch soon. But for now you can go home.</p><br>"
             output += "After a thorough investigation, the police found several clues to prosecute Patrick for corruption. Your Hint was very helpful and led to Patrick going to jail very quickly.🔗 You should consider a career as a detective. Great job!🥳 Your Date is impressed too and asks for another Date. Maybe you will solve a theft next time!💞<br>"
             output += "<h1>You won the game!✅</h1> <br>Congratulations!🎉"
-            data['blocked'] = {
+            data["blocked"] = {
                 "action_character_investigation": "game_over_blocked",
                 "action_user_guess": "game_over_blocked",
                 "action_give_hint": "game_over_blocked",
@@ -26,6 +26,7 @@ def guess_murderer(data, person):
                 "action_ask_about_mika": "game_over_blocked",
                 "action_who_is_the_murderer": "game_over_blocked",
                 "action_cabin_validation": "game_over_blocked",
+                "action_character_last_seen": "game_over_blocked",
             }
             data["won"] = True
             return output
@@ -33,7 +34,7 @@ def guess_murderer(data, person):
             output = f"<p style='font-family: georgia;'>[Police officer👮‍♂️] So you already did my job. We talked with {person} before we arrived. Maybe I should talk to you two bit more because {person} has an alibi...🫣 Maybe on the Police Station. Hendrick! Handcuff these two, they are suspiscious.🤨</p><br>"
             output = f"After a hot investigation, the Police concluded that {person} is innocent. Your were hold at the police station for a couple of hours and are now drained. But you had a lot of time to get to know your Date in ✨jail✨. Detective work seams not to be your secret talent... <br>"
             output += "<h1>You lost the game!❌</h1> <br>Better luck next time!🍀"
-            data['blocked'] = {
+            data["blocked"] = {
                 "action_character_investigation": "game_over_blocked",
                 "action_user_guess": "game_over_blocked",
                 "action_give_hint": "game_over_blocked",
@@ -50,6 +51,7 @@ def guess_murderer(data, person):
                 "action_ask_about_mika": "game_over_blocked",
                 "action_who_is_the_murderer": "game_over_blocked",
                 "action_cabin_validation": "game_over_blocked",
+                "action_character_last_seen": "game_over_blocked",
             }
             data["won"] = False
             return output

@@ -663,6 +663,23 @@ nlu:
     - What is the [connection]{"entity":"information"} between [Anna]{"entity":"person"} and [Maria]{"entity":"person"}?
     - Please tell me [Anna]{"entity":"person"}'s [full name]{"entity":"information"}.
 
+- intent: character_last_seen
+  examples: |
+    - when was the last time you saw [Victor]{"entity":"person"}?
+    - when did you last see [Anna]{"entity":"person"}?
+    - I need to know when you last saw [Patrick]{"entity":"person"}.
+    - Can you tell me when you last saw [Maria]{"entity":"person"}?
+    - When did you last see [Kira]{"entity":"person"}?
+    - when was the last time you talked to [Victor]{"entity":"person"}?
+    - did you see [Anna]{"entity":"person"} recently?
+    - did you see [Patrick]{"entity":"person"} in the last few days?
+    - did you talk to [Maria]{"entity":"person"} recently?
+    - when have you last seen [Kira]{"entity":"person"}?
+    - it is important that you tell me when you last saw [Victor]{"entity":"person"}.
+    - I think you should tell me when you last saw [Anna]{"entity":"person"}.
+    - 
+
+
 
 - intent: motive_of_character
   examples: |

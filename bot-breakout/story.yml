@@ -107,3 +107,16 @@ access:
   Maria:
   - base_1: "Maria is the victim. She lies dead in the cabin.⚰️"
   - base_2: "That is an odd question. Maria is the victim and lies dead in the cabin.🪦"
+
+
+last_seen:
+  Kira:
+  - base_1: "I saw Kira..."
+  Patrick:
+  - base_1: "I saw Patrick..."
+  Victor:
+  - base_1: "I saw Victor..."
+  Anna:
+  - base_1: "I saw Anna..."
+  Maria:
+  - base_1: "I saw Maria..."

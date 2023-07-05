@@ -132,7 +132,6 @@ class SituationOverview(Action):
         if not utter_text:
             utter(dispatcher,text="We have not talked about anything important yet.")
         else:
-            print(utter_text)
             utter(dispatcher,text=utter_text)
 
 

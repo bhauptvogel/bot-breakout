@@ -26,7 +26,7 @@ def set_timer(dispatcher: CollectingDispatcher, data: dict):
         utter(dispatcher=dispatcher, text= "We have 3 more minutes until the police arrives. We need to hurry!⏰ Maybe ask for a hint, I can check if there is something important that we have not talked about.")
         return [SlotSet("data", data)]
     else:
-        data['blocked'] = {
+        data["blocked"] = {
             "action_character_investigation": "end_of_game_blocked",
             "action_user_guess": "",
             "action_give_hint": "end_of_game_blocked",
@@ -43,6 +43,7 @@ def set_timer(dispatcher: CollectingDispatcher, data: dict):
             "action_ask_about_mika": "end_of_game_blocked",
             "action_who_is_the_murderer": "end_of_game_blocked",
             "action_cabin_validation": "end_of_game_blocked",
+            "action_character_last_seen": "end_of_game_blocked",
         }
         
         utter(dispatcher=dispatcher, text="The Time is over. ⏰ The police waits outside, we need to go and tell them our suspect. By the way, who do suspect?👀 Please tell me a name.")
