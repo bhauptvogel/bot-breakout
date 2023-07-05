@@ -248,6 +248,7 @@ nlu:
 ## ------ scene investigation ------
 - intent: scene_investigation
   examples: |
+    - investigate marias dead [body]{"entity":"object", "group":"search"}
     - let's investigate marias [body]{"entity":"object", "group":"search"}
     - lets investigate marias [body]{"entity":"object", "group":"search"}
     - I would like to investigate the [body]{"entity":"object", "group":"search"}
