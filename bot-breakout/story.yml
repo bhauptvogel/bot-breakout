@@ -111,12 +111,12 @@ access:
 
 last_seen:
   Kira:
-  - base_1: "I saw Kira"
+  - base_1: "I saw Kira yesterday at work. She was fine."
   Patrick:
-  - base_1: "I saw Patrick..."
+  - base_1: "Patrick was at work yesterday. We didn't talk but saw him in his office."
   Victor:
-  - base_1: "I saw Victor..."
+  - base_1: "We meet at a Party last month. Victor is nice but I can't estimate him."
   Anna:
-  - base_1: "I saw Anna..."
+  - base_1: "I haven't seen Anna for a long time. I think a saw her at the new years party."
   Maria:
-  - base_1: "I saw Maria..."
+  - base_1: "Last time I saw Maria we had some deep talk... after this we didn't meet again. This was some weeks ago"
