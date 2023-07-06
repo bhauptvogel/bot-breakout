@@ -3,13 +3,13 @@ character_information:
   - base_1: "Maria is the Ex-girlfriend of my co-worker Kira.💔 She was a journalist and was uncovering stuff that was going on in the amusement park to be better informed than her rival Anna.🤺"
   - base_2: "I told Maria everything that I knew about Patrick and the stuff going on around here!🤫"
   - base_3: "You already asked me about Maria but sure, here you go: Maria, Kira's ex and a journalist, was digging into amusement park issues to outdo Anna."
-  - breakup: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her Colleague Anna. That's why their relationship broke apart…😓"
+  - breakup: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her colleague Anna. That's why their relationship broke apart…😓"
   - full_name: "Maria Sterling is her full name"
   Kira:
-  - base_1: "Kira is my co-worker. We are pretty good, I helped her to get through the breakup with Maria.🫣 That really took her down she was super upset - especially because of Maria's new boyfriend Victor."
+  - base_1: "Kira is my colleague, she works at the cashier. We get along pretty well, I helped her get over the breakup with Maria.🫣 That really took her down, she was super upset - especially because of Maria's new boyfriend Victor."
   - base_2: "I think Maria having a new boyfriend really messed her up. She was super upset.😥 Other than that, she's really nice. She doesn't know a lot about what is going on in the amusement park business."
-  - base_3: "You've already asked me about Kira, but sure: Kira is my co-worker, and I helped her through a tough breakup with Maria. She was really upset because of Maria's new boyfriend, Victor. Other than that, she's a nice person, but she doesn't know much about the amusement park business."
-  - breakup: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her Colleague Anna. That's why their relationship broke apart…💔"
+  - base_3: "You've already asked me about Kira, but sure: Kira is my colleague, and I helped her through a tough breakup with Maria. She was really upset because of Maria's new boyfriend, Victor. Other than that, she's a nice person, but she doesn't know much about the amusement park business."
+  - breakup: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her colleague Anna. That's why their relationship broke apart…💔"
   - full_name: "Kira Russell is her full name"
   Patrick:
   - base_1: "Patrick is my boss. He is in charge of the amusement park. It's actually a family business, he got it from his dad. Patrick is kind of a snob...🙄 he loves to drive around in big cars and all this wealthy stuff.🤑 <small>And... He has his secrets that nobody knows about...</small>"
@@ -60,7 +60,7 @@ scene_investigation:
   - base_1: "So, we are standing in the zombie-themed section of the ghost ride, next to our cabin.🧟 This place has a strangely romantic vibe. We earlier shared a seat at the bench with two zombies holding hands and nibbling on limbs.🦴 In the background is a scary tree, devoid of leaves.🍂 <br>We could investigate the tree, the bench or the cabin with Marias dead body."
   - base_2: "Let´s have another close look at everything..."
   - base_3: "This is all we can find here. "
-  - weapon: "Let me see... the weapon is a knife. It’s a bit bloody and it’s a bit scary to hold it. Oh, there are initials on it. It says “<em style='font-family: 'Brush Script MT', cursive;;'>A.P.</em>”. Hm, who might it be?👀 "
+  - weapon: "The Knife... Oh, there are initials on it. It says “<em style='font-family: Brush Script MT, cursive;'>A.P.</em>”. Hm, who might it be?👀"
   - knife: "The Knife... Oh, there are initials on it. It says “<em style='font-family: Brush Script MT, cursive;'>A.P.</em>”. Hm, who might it be?👀"
   - body: "Ok, it feels a bit scary to look at Maria's lifeless body, but perhaps we'll discover something that leads us to the murderer. Let’s take a few steps closer... She is covered in blood...🩸 sorry I'm feeling sick... I can't look at her anymore. Please say that we can look around now... 😰 "
   - cabin: "It has two seats, just like ours. On the seat closer to us is Maria. She is covered in blood and a note is pinned to her chest.🩸 I don’t see how she died... Should I investigate it more or should I tell you about the note...👀"
@@ -111,7 +111,7 @@ access:
 
 last_seen:
   Kira:
-  - base_1: "I saw Kira..."
+  - base_1: "I saw Kira"
   Patrick:
   - base_1: "I saw Patrick..."
   Victor:
