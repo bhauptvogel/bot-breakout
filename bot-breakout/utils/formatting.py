@@ -20,8 +20,6 @@ formattings = {
     "Mika": "<b style='color: DarkSlateGray;'>Mika</b>",
 }
 
-font_family = "font-family: verdana;"
-
 # ONLY use this function to send messages to the user
 def utter(dispatcher: CollectingDispatcher, text: str) -> None:
     if GameParams.formatting == False:
@@ -33,6 +31,6 @@ def utter(dispatcher: CollectingDispatcher, text: str) -> None:
         for key, value in formattings.items():
             text = text.replace(key, value)
 
-        text = f"<p style='{font_family}'>{text}</p>"
+        text = f"<p>{text}</p>"
 
     dispatcher.utter_message(text=text)
