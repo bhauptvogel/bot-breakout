@@ -55,5 +55,4 @@ def guess_murderer(data, person):
             data["won"] = False
             return output
     else:
-        print("ERROR: this should not happen, look into end_of_game.py")
         return "The Game is over. You can't do anything anymore. If you want to restart, leave the chat and then rejoin."
