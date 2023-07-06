@@ -66,6 +66,11 @@ rules:
   - intent: guess_cabin_pin
   - action: action_cabin_validation
 
+- rule: Person Last seen
+  steps:
+  - intent: character_last_seen
+  - action: action_character_last_seen
+
 # Fallback and out of scope handling
 - rule: out-of-scope
   steps:

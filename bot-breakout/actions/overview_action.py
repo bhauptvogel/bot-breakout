@@ -13,23 +13,23 @@ from utils.formatting import utter
 
 INFORMATION = [
     {
-        "text": "Maria is the victim.⚰️ She was a journalist and worked on a big story about this amusment park.",
+        "text": "Maria is the victim.⚰️ She was a journalist and worked on a big story about this amusement park.",
         "required_story_states": ["character_information/Maria/base_1"],
     },
     {
-        "text": "Kira is my co-worker and I know her pretty well.😇",
+        "text": "Kira is my co-worker. I know her pretty well.😇",
         "required_story_states": ["character_information/Kira/base_1"],
     },
     {
-        "text": "She is the Ex-Girlfriend of Maria.💔 She didn't handle the break-up well, as Maria was already together with Victor after a few days.🫣",
+        "text": "She is the Ex-Girlfriend of Maria.💔 She didn't handle the break-up well, as Maria was already with Victor after a few days.🫣",
         "required_story_states": ["character_information/Kira/base_1", "motive/Kira"],
     },
     {
-        "text": "She works here in the office and has access to the building 👀.",
+        "text": "She works here in the office and has access to the buildings 👀.",
         "required_story_states": ["character_information/Kira/base_1", "access/Kira"],
     },
     {
-        "text": "I don't know Victor very well. He is the new boyfriend of Maria.",
+        "text": "I don't know Victor very well. I just know that he's the new boyfriend of Maria.",
         "required_story_states": ["character_information/Victor/base_1"],
     },
     {
@@ -37,7 +37,7 @@ INFORMATION = [
         "required_story_states": ["character_information/Victor/base_1", "motive/Victor"],
     },
     {
-        "text": "I don't know how he could have accessed the building.🤷",
+        "text": "I don't know how he could have accessed the rollercoaster.🤷",
         "required_story_states": ["character_information/Victor/base_1", "access/Victor"],
     },
     {
@@ -49,7 +49,7 @@ INFORMATION = [
         "required_story_states": ["character_information/Anna/base_1", "motive/Anna"],
     },
     {
-        "text": "She definitely doesn't have access to the roller coaster.",
+        "text": "She definitely doesn't have access to the rollercoaster.",
         "required_story_states": ["character_information/Anna/base_1", "access/Anna"],
     },
     {
@@ -57,15 +57,15 @@ INFORMATION = [
         "required_story_states": ["character_information/Patrick/base_1"],
     },
     {
-        "text": "As the owner of the amusement park, he has access to the roller coaster.",
+        "text": "As the owner of the amusement park, he has access to the rollercoaster.",
         "required_story_states": ["character_information/Patrick/base_1", "access/Patrick"],
     },
     {
-        "text": "Maria just found out that Patrick's been caught up in some sketchy corruption stuff. If this gets out, he's toast, but I don't know all the details.👀",
+        "text": "Maria just found out that Patrick has been caught up in some sketchy corruption stuff. If this gets out, he's toast, but I don't know all the details.👀",
         "required_story_states": ["character_information/Patrick/base_1", "motive/Patrick"],
     },
     {
-        "text": "Somebody used a knife to kill Maria. Written on the knife were the initials 'A' and 'P'.👀",
+        "text": "Maria was killed with a knife. Written on the knife are the initials 'A' and 'P'.👀",
         "required_story_states": ["scene_investigation/knife"],
     },
     {
@@ -73,7 +73,7 @@ INFORMATION = [
         "required_story_states": ["scene_investigation/knife", "character_information/Anna/full_name", "character_information/Patrick/full_name"],
     },
     {
-        "text": "There is a note on the body saying “<em style='font-family: Brush Script MT, cursive; color: red;'>You are next</em>”. We have to hurry!🥺",
+        "text": "There is a note on the body saying “<em style='font-family: Brush Script MT, cursive; color: red;'>You are next</em>”. We have to hurry!😧",
         "required_story_states": ["scene_investigation/note"],
     }
 ]
@@ -105,7 +105,7 @@ class SituationOverview(Action):
             data["story_state"] = {}
             return [SlotSet("data", data)]
 
-        count_info_utters = 0
+        utter_text = ""
 
         for info in INFORMATION:
             in_game_state = True
@@ -122,16 +122,17 @@ class SituationOverview(Action):
 
             # if all states of info are in the game_state 
             if in_game_state:
-                if count_info_utters == 0:
+                if not utter_text:
                     if "hint_given" in data.keys() and data["hint_given"]:
-                        utter(dispatcher,text="Here is everything we talked about so far✨: <br><br>")
+                        utter_text += "Here is everything we talked about so far✨: <br><br>"
                     else:
-                        utter(dispatcher,text="Remember that you can also ask for a hint <br> ✨Here is everything we talked about so far✨: <br><br>")
-                count_info_utters += 1
-                utter(dispatcher,text=info["text"])
+                        utter_text += "Remember that you can also ask for a hint <br> ✨Here is everything we talked about so far✨: <br><br>"
+                utter_text += f"{info['text']}<br>"
             
-        if count_info_utters == 0:
-            utter(dispatcher,text="We have not talked about anything important yet.")
+        if not utter_text:
+            utter(dispatcher,text="We haven't talked about anything important yet.")
+        else:
+            utter(dispatcher,text=utter_text)
 
 
         reset_last_talked_about_character(data)

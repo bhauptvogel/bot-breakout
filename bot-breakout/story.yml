@@ -3,13 +3,13 @@ character_information:
   - base_1: "Maria is the Ex-girlfriend of my co-worker Kira.💔 She was a journalist and was uncovering stuff that was going on in the amusement park to be better informed than her rival Anna.🤺"
   - base_2: "I told Maria everything that I knew about Patrick and the stuff going on around here!🤫"
   - base_3: "You already asked me about Maria but sure, here you go: Maria, Kira's ex and a journalist, was digging into amusement park issues to outdo Anna."
-  - breakup: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her Colleague Anna. That's why their relationship broke apart…😓"
+  - breakup: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her colleague Anna. That's why their relationship broke apart…😓"
   - full_name: "Maria Sterling is her full name"
   Kira:
-  - base_1: "Kira is my co-worker. We are pretty good, I helped her to get through the breakup with Maria.🫣 That really took her down she was super upset - especially because of Maria's new boyfriend Victor."
+  - base_1: "Kira is my colleague, she works at the cashier. We get along pretty well, I helped her get over the breakup with Maria.🫣 That really took her down, she was super upset - especially because of Maria's new boyfriend Victor."
   - base_2: "I think Maria having a new boyfriend really messed her up. She was super upset.😥 Other than that, she's really nice. She doesn't know a lot about what is going on in the amusement park business."
-  - base_3: "You've already asked me about Kira, but sure: Kira is my co-worker, and I helped her through a tough breakup with Maria. She was really upset because of Maria's new boyfriend, Victor. Other than that, she's a nice person, but she doesn't know much about the amusement park business."
-  - breakup: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her Colleague Anna. That's why their relationship broke apart…💔"
+  - base_3: "You've already asked me about Kira, but sure: Kira is my colleague, and I helped her through a tough breakup with Maria. She was really upset because of Maria's new boyfriend, Victor. Other than that, she's a nice person, but she doesn't know much about the amusement park business."
+  - breakup: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her colleague Anna. That's why their relationship broke apart…💔"
   - full_name: "Kira Russell is her full name"
   Patrick:
   - base_1: "Patrick is my boss. He is in charge of the amusement park. It's actually a family business, he got it from his dad. Patrick is kind of a snob...🙄 he loves to drive around in big cars and all this wealthy stuff.🤑 <small>And... He has his secrets that nobody knows about...</small>"
@@ -19,8 +19,8 @@ character_information:
   - full_name: "Patrick is from China. His last name is Anyang."
   Victor:
   - base_1: "To be honest... I don’t know Victor. He is just Maria's new boyfriend🤷"
-  - base_2: "Victor is Maria's new boyfriend. I don’t know him. Only the things Kira told me about him. She was pretty jealous, that Maria has someone new"
-  - base_3: "Oh, I think we already talked about Victor. But here you go: I don't really know Victor personally. He's just Maria's new boyfriend, and I haven't had any direct interactions with him. Kira, on the other hand, shared some things about him with me, and she seemed a bit jealous that Maria moved on with someone new.❤️‍🩹 "
+  - base_2: "Victor is Maria's new boyfriend. I don’t know him. Only the things Kira told me about him. She was pretty jealous, that Maria had someone new"
+  - base_3: "Oh, I think we already talked about Victor. But here you go: I don't know Victor personally. He's just Maria's new boyfriend. Kira, on the other hand, shared some things about him with me, and she seemed a very jealous that Maria moved on with someone new.❤️‍🩹 "
   - full_name: "Victor Lopez is his full name"
   Anna:
   - base_1: "Anna is Maria's colleague at the Fictional Times Paper. I met her at some of Kira's Partys. She is nice but very focused on her job, just as Maria is … sorry, was.😓"
@@ -57,10 +57,10 @@ story_character_relation:
   - Anna_Victor: "Anna and Victor actually know each other through their connection with Maria. Anna happens to be Maria's colleague, while Victor is Maria's new boyfriend."
 
 scene_investigation:
-  - base_1: "So, we are standing in the zombie-themed section of the ghost ride🧟, next to our cabin. This place has a strangely romantic vibe. We earlier shared a seat at the bench with two zombies holding hands and nibbling on limbs.🦴 In the background is a scary tree, devoid of leaves.🍂 <br>We could investigate the tree, the bench or the cabin with Marias dead body."
+  - base_1: "So, we are standing in the zombie-themed section of the ghost ride, next to our cabin.🧟 This place has a strangely romantic vibe. We earlier shared a seat at the bench with two zombies holding hands and nibbling on limbs.🦴 In the background is a scary tree, devoid of leaves.🍂 <br>We could investigate the tree, the bench or the cabin with Marias dead body."
   - base_2: "Let´s have another close look at everything..."
   - base_3: "This is all we can find here. "
-  - weapon: "Let me see... the weapon is a knife. It’s a bit bloody and it’s a bit scary to hold it. Oh, there are initials on it. It says “<em style='font-family: 'Brush Script MT', cursive;;'>A.P.</em>”. Hm, who might it be?👀 "
+  - weapon: "The Knife... Oh, there are initials on it. It says “<em style='font-family: Brush Script MT, cursive;'>A.P.</em>”. Hm, who might it be?👀"
   - knife: "The Knife... Oh, there are initials on it. It says “<em style='font-family: Brush Script MT, cursive;'>A.P.</em>”. Hm, who might it be?👀"
   - body: "Ok, it feels a bit scary to look at Maria's lifeless body, but perhaps we'll discover something that leads us to the murderer. Let’s take a few steps closer... She is covered in blood...🩸 sorry I'm feeling sick... I can't look at her anymore. Please say that we can look around now... 😰 "
   - cabin: "It has two seats, just like ours. On the seat closer to us is Maria. She is covered in blood and a note is pinned to her chest.🩸 I don’t see how she died... Should I investigate it more or should I tell you about the note...👀"
@@ -68,13 +68,13 @@ scene_investigation:
   - tree: "The tree is a bit scary. It’s a dead tree without leaves. Behind the tree, there is just some light equipment that adds to the spooky ambiance of the scene.🕸 Nothing to find here. <br> We are back next to the cabin again."
   - equipment: "The Green light reminds me of the hulk... 🐸  But there is nothing interesting to solve our mystery"
   - note: "The Note is pinned to the body. The murderer must be a psychopath... It says “<em style='font-family: Brush Script MT, cursive; color: red;'>You are next</em>”. I fear that I'm the killer's next target... I feel overwhelmed.😥 Let's solve this murder mystery together before it's to late!🥺"
-  - no_access: "It is inside the train cabin and we currently don't have access.⚙️ We should first investigate the cabin..."
+  - no_access: "It is inside the train cabin and we currently don't have access. We should first investigate the cabin..."
 
 motive:
   Mika:
   - base_1: "No, I didn't have any issues with Maria and also I can't be the murderer since I was with you the whole time. But good that you asked. You should always check if you are dating a serial killer!😅"
   Kira:
-  - base_1: "Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very well.😔"
+  - base_1: "Maria is Kira's Ex. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very well.😔"
   - base_2: "You already asked me about Marias's motive but no worries, I'll tell you again. Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very well.😔"
   Patrick:
   - base_1: "I'm not sure if I should tell you about this, but whatever... Maria had recently discovered that Patrick was involved in some illegal activities regarding corruption. I don't know the details but it would have been the end of Patrick's career if this story got published.🫢"
@@ -107,3 +107,16 @@ access:
   Maria:
   - base_1: "Maria is the victim. She lies dead in the cabin.⚰️"
   - base_2: "That is an odd question. Maria is the victim and lies dead in the cabin.🪦"
+
+
+last_seen:
+  Kira:
+  - base_1: "I saw Kira yesterday at work. She was fine."
+  Patrick:
+  - base_1: "Patrick was at work yesterday. We didn't talk but saw him in his office."
+  Victor:
+  - base_1: "We meet at a Party last month. Victor is nice but I can't estimate him."
+  Anna:
+  - base_1: "I haven't seen Anna for a long time. I think a saw her at the new years party."
+  Maria:
+  - base_1: "Last time I saw Maria we had some deep talk... after this we didn't meet again. This was some weeks ago"

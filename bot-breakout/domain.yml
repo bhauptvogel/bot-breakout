@@ -10,6 +10,7 @@ intents:
 - user_guesses_murderer
 - scene_investigation
 - information_about_character
+- character_last_seen
 - motive_of_character
 - access_to_rollercoaster
 - EXTERNAL_reminder
@@ -56,6 +57,7 @@ actions:
 - action_you_cannot_leave
 - action_ask_about_mika
 - action_who_is_the_murderer
+- action_character_last_seen
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
