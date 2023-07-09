@@ -28,7 +28,7 @@ character_information:
   - base_3: "Actually you already asked me about Anna. But I will tell you about her again. Anna is a colleague of Maria's at the Fictional Times Paper. I've met her at some parties hosted by Kira, and she seems nice, but she's really focused on her job, just like Maria was. There's this rivalry between Anna and Maria that developed over time. I think Anna values prestige a lot and always strives to have the biggest stories."
   - full_name: "Anna Pollock is her full name"
   __General__:
-  - base_1: "My coworkers are Kira, who works as a cashier, and Patrick who is the director of the amusement park. 🎢 By the way, I also know Anna. Who do you want to know more about?"
+  - base_1: "My coworkers are Kira, who works as a cashier, and Patrick who is the director of the amusement park. 🎢 By the way, I also know Anna. Who do you want to know more about? I also have information about their motive, access, full name and relation."
   - breakup: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her colleague Anna. That's why their relationship broke apart…😔"
 
 # All relations have to be duplicated because the user can ask for the relation in both directions

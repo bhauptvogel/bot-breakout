@@ -244,10 +244,9 @@ nlu:
     - So [Patrik]{"entity":"person", "value":"Patrick", "role":"suspect"} killed [Mariaa]{"entity":"person", "value":"Maria", "role":"victim"}?
     - Do you think [Patric]{"entity":"person", "value":"Patrick", "role":"suspect"} killed [Maria]{"entity":"person", "role":"victim"}?
     - did [Kira]{"entity":"person", "role":"suspect"} kill [Maria]{"entity":"person", "role":"victim"}
-    - I think [Patrick]{"entity":"person", "value":"Patrick", "role":"suspect"} Anyang is the murderer
-    - I think [Kira]{"entity":"person", "role":"suspect"} Russell is the murderer
-    - I think [Anna]{"entity":"person", "role":"suspect"} Pollock is the murderer
-    - I think [Victor]{"entity":"person", "role":"suspect"} Lopez is the murderer
+    - Is [Kira's]{"entity":"person", "value":"Kira", "role":"suspect"} the owner?
+    - is [Kira's]{"entity":"person", "value":"Kira", "role":"suspect"} the owner of the knife?
+    - belongs the knife to [Kira's]{"entity":"person", "value":"Kira", "role":"suspect"}?
 
 ## ------ scene investigation ------
 - intent: scene_investigation
