@@ -258,6 +258,7 @@ nlu:
     - check [knife]{"entity":"object", "group":"search"}
     - check [weapon]{"entity":"object", "group":"search"}
     - check [cabin]{"entity":"object", "group":"search"}
+    - look at [knive]{"entity":"object", "group":"search", "value":"knife"}
     - Investigate the scene
     - investigate the scene
     - Tell me about the environment
@@ -287,8 +288,10 @@ nlu:
     - Look at the light [equipment]{"entity":"object", "group":"search"}
     - Please take a look at the [knife]{"entity":"object", "group":"search"}
     - Look at the [knife]{"entity":"object", "group":"search"}
+    - Now look at the [knive]{"entity":"object", "group":"search", "value":"knife"}
     - Please look at the [knife]{"entity":"object", "group":"search"}
     - Investigate the [knife]{"entity":"object", "group":"search"}
+    - Investigate the [knive]{"entity":"object", "group":"search", "value":"knife"}
     - Let’s search for the [murder weapon]{"entity":"object", "group":"search", "value": "weapon"}
     - Let's inspect the [bench]{"entity":"object", "group":"search"}
     - Look under the [bench]{"entity":"object", "group":"search"}
