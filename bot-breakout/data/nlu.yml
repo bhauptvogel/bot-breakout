@@ -22,12 +22,15 @@ nlu:
     - How mika is doing
     - Hi Mika, how are you?
     - Mika are you ok?
+    - talk to Mika
     - how mike is doing?
     - hi
     - hey
     - Hallo
     - hello
     - mika
+    - mika?
+    - Mika
     - Hi mika
     - Hello Mika
     - Hello Miki
@@ -160,6 +163,14 @@ nlu:
     - we suspect [anna]{"entity":"person", "role":"suspect"}
     - we suspect [victor]{"entity":"person", "role":"suspect"}
     - we suspect [patrick]{"entity":"person", "role":"suspect"}
+    - Is it [Anna]{"entity":"person", "role":"suspect"}
+    - Is it [Victor]{"entity":"person", "role":"suspect"}
+    - Is it [Patrick]{"entity":"person", "role":"suspect"}
+    - Is it [Kira]{"entity":"person", "role":"suspect"}
+    - I think [Patrick]{"entity":"person", "value":"Patrick", "role":"suspect"} Anyang is the murderer
+    - I think [Kira]{"entity":"person", "role":"suspect"} Russell is the murderer
+    - I think [Anna]{"entity":"person", "role":"suspect"} Pollock is the murderer
+    - I think [Victor]{"entity":"person", "role":"suspect"} Lopez is the murderer
     - police
     - I want to go to the police
     - I think [Kira]{"entity":"person", "role":"suspect"} is the murderer
@@ -251,7 +262,7 @@ nlu:
 ## ------ scene investigation ------
 - intent: scene_investigation
   examples: |
-    - investigate marias dead [body]{"entity":"object", "group":"search"}
+    - investigate marias [dead body]{"entity":"object", "group":"search", "value":"body"}
     - let's investigate marias [body]{"entity":"object", "group":"search"}
     - lets investigate marias [body]{"entity":"object", "group":"search"}
     - I would like to investigate the [body]{"entity":"object", "group":"search"}
@@ -261,9 +272,14 @@ nlu:
     - check [knife]{"entity":"object", "group":"search"}
     - check [weapon]{"entity":"object", "group":"search"}
     - check [cabin]{"entity":"object", "group":"search"}
+    - look at [knive]{"entity":"object", "group":"search", "value":"knife"}
     - Investigate the scene
     - investigate the scene
     - Tell me about the environment
+    - Maria's [dead body]{"entity":"object", "group":"search", "value":"body"}
+    - look at the [dead body]{"entity":"object", "group":"search", "value":"body"}
+    - look at the [cabbin]{"entity":"object", "group":"search", "value":"cabin"} with maria's [dead body]{"entity":"object", "group":"search", "value":"body"}
+    - check the room of Marias [dead body]{"entity":"object", "group":"search", "value":"body"}
     - What do you see?
     - Search the room
     - Mika investigate the scene
@@ -290,8 +306,10 @@ nlu:
     - Look at the light [equipment]{"entity":"object", "group":"search"}
     - Please take a look at the [knife]{"entity":"object", "group":"search"}
     - Look at the [knife]{"entity":"object", "group":"search"}
+    - Now look at the [knive]{"entity":"object", "group":"search", "value":"knife"}
     - Please look at the [knife]{"entity":"object", "group":"search"}
     - Investigate the [knife]{"entity":"object", "group":"search"}
+    - Investigate the [knive]{"entity":"object", "group":"search", "value":"knife"}
     - Let’s search for the [murder weapon]{"entity":"object", "group":"search", "value": "weapon"}
     - Let's inspect the [bench]{"entity":"object", "group":"search"}
     - Look under the [bench]{"entity":"object", "group":"search"}
@@ -493,6 +511,16 @@ nlu:
     - Tell me more about it
     - More about him
     - More about her
+    - The [initials]{"entity":"information", "value":"full name"} of [Anna]{"entity":"person"}
+    - The [initials]{"entity":"information", "value":"full name"} of [Patrick]{"entity":"person"}
+    - The [initials]{"entity":"information", "value":"full name"} of [Kira]{"entity":"person"}
+    - The [initials]{"entity":"information", "value":"full name"} of [Victor]{"entity":"person"}
+    - The [initials]{"entity":"information", "value":"full name"} of [Maria]{"entity":"person"}
+    - what are the [initials]{"entity":"information", "value":"full name"} of [Anna]{"entity":"person"}
+    - I need to know the [initials]{"entity":"information", "value":"full name"} of [Patrick]{"entity":"person"}
+    - can you provide me the [initials]{"entity":"information", "value":"full name"} of [Kira]{"entity":"person"}
+    - please tell me the [initials]{"entity":"information", "value":"full name"} of [Victor]{"entity":"person"}
+    - what are [Victor]{"entity":"person"}'s [initials]{"entity":"information", "value":"full name"}
     - [Kira]{"entity":"person"}
     - Tell me about [Maria]{"entity":"person"}
     - Who is the [victim]{"entity":"person"}?
@@ -531,7 +559,9 @@ nlu:
     - How did [Victor]{"entity":"person"} meet [Anna]{"entity":"person"}?
     - What is the [last name]{"entity":"information"} of [Anna]{"entity":"person"}?
     - What is [Victor]{"entity":"person"}'s' [full name]{"entity":"information"}?
+    - What are [Victor]{"entity":"person"}'s' [initials]{"entity":"information", "value":"full name"}?
     - Give me the [full name]{"entity":"information"} of [Patrick]{"entity":"person"}
+    - Give me the [initials]{"entity":"information", "value":"full name"} of [Patrick]{"entity":"person"}
     - I need [Anna]{"entity":"person"}'s [name]{"entity":"information"}
     - Do you know [Patrick]{"entity":"person"}'s [last name]{"entity":"information"}?
     - [Last name]{"entity":"information"} of [Victor]{"entity":"person"}
@@ -822,6 +852,7 @@ nlu:
     - dead person
     - dead woman
     - woman in the cabin
+    - dead body
     - corpse
 
 - synonym: secret
@@ -836,6 +867,7 @@ nlu:
 - synonym: cabin
   examples: |
     - train cabin
+    - cabbin
     - train
     - rollercoaster cabin
 
@@ -879,6 +911,7 @@ nlu:
   examples: |
     - surname
     - fullname
+    - initials
     - name
     - last name
     - family name
