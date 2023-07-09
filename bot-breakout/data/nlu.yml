@@ -29,6 +29,8 @@ nlu:
     - Hallo
     - hello
     - mika
+    - mika?
+    - Mika
     - Hi mika
     - Hello Mika
     - Hello Miki
@@ -268,6 +270,7 @@ nlu:
     - investigate the scene
     - Tell me about the environment
     - Maria's [dead body]{"entity":"object", "group":"search", "value":"body"}
+    - look at the [dead body]{"entity":"object", "group":"search", "value":"body"}
     - look at the [cabbin]{"entity":"object", "group":"search", "value":"cabin"} with maria's [dead body]{"entity":"object", "group":"search", "value":"body"}
     - check the room of Marias [dead body]{"entity":"object", "group":"search", "value":"body"}
     - What do you see?
