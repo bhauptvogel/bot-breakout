@@ -64,10 +64,17 @@ class SceneInvestigation(Action):
             if "base_2" in data["story_state"]["scene_investigation"]:
                 self.utter_hint_scene_investigation(dispatcher, data)
 
+        no_access_already_said = False
         for obj in objects:
             objects_inside_cabin = ['body', 'weapon', 'knife', 'note', 'cabin']
             if obj in objects_inside_cabin and not cabin_open:
-                obj = "no_access"
+                if not no_access_already_said:
+                    obj = "no_access"
+                    no_access_already_said = True
+                else:
+                    print("Already said no access")
+                    continue
+
 
             if obj in ii.get_story_objects():
                 utter(dispatcher,text=ii.get_story_information("scene_investigation", obj, data))
