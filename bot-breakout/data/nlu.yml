@@ -500,6 +500,16 @@ nlu:
     - Tell me more about it
     - More about him
     - More about her
+    - The [initials]{"entity":"information", "value":"full name"} of [Anna]{"entity":"person"}
+    - The [initials]{"entity":"information", "value":"full name"} of [Patrick]{"entity":"person"}
+    - The [initials]{"entity":"information", "value":"full name"} of [Kira]{"entity":"person"}
+    - The [initials]{"entity":"information", "value":"full name"} of [Victor]{"entity":"person"}
+    - The [initials]{"entity":"information", "value":"full name"} of [Maria]{"entity":"person"}
+    - what are the [initials]{"entity":"information", "value":"full name"} of [Anna]{"entity":"person"}
+    - I need to know the [initials]{"entity":"information", "value":"full name"} of [Patrick]{"entity":"person"}
+    - can you provide me the [initials]{"entity":"information", "value":"full name"} of [Kira]{"entity":"person"}
+    - please tell me the [initials]{"entity":"information", "value":"full name"} of [Victor]{"entity":"person"}
+    - what are [Victor]{"entity":"person"}'s [initials]{"entity":"information", "value":"full name"}
     - [Kira]{"entity":"person"}
     - Tell me about [Maria]{"entity":"person"}
     - Who is the [victim]{"entity":"person"}?
@@ -538,7 +548,9 @@ nlu:
     - How did [Victor]{"entity":"person"} meet [Anna]{"entity":"person"}?
     - What is the [last name]{"entity":"information"} of [Anna]{"entity":"person"}?
     - What is [Victor]{"entity":"person"}'s' [full name]{"entity":"information"}?
+    - What are [Victor]{"entity":"person"}'s' [initials]{"entity":"information", "value":"full name"}?
     - Give me the [full name]{"entity":"information"} of [Patrick]{"entity":"person"}
+    - Give me the [initials]{"entity":"information", "value":"full name"} of [Patrick]{"entity":"person"}
     - I need [Anna]{"entity":"person"}'s [name]{"entity":"information"}
     - Do you know [Patrick]{"entity":"person"}'s [last name]{"entity":"information"}?
     - [Last name]{"entity":"information"} of [Victor]{"entity":"person"}
@@ -885,6 +897,7 @@ nlu:
   examples: |
     - surname
     - fullname
+    - initials
     - name
     - last name
     - family name
