@@ -167,6 +167,10 @@ nlu:
     - Is it [Victor]{"entity":"person", "role":"suspect"}
     - Is it [Patrick]{"entity":"person", "role":"suspect"}
     - Is it [Kira]{"entity":"person", "role":"suspect"}
+    - I think [Patrick]{"entity":"person", "value":"Patrick", "role":"suspect"} Anyang is the murderer
+    - I think [Kira]{"entity":"person", "role":"suspect"} Russell is the murderer
+    - I think [Anna]{"entity":"person", "role":"suspect"} Pollock is the murderer
+    - I think [Victor]{"entity":"person", "role":"suspect"} Lopez is the murderer
     - police
     - I want to go to the police
     - I think [Kira]{"entity":"person", "role":"suspect"} is the murderer
