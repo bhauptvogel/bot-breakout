@@ -160,6 +160,10 @@ nlu:
     - we suspect [anna]{"entity":"person", "role":"suspect"}
     - we suspect [victor]{"entity":"person", "role":"suspect"}
     - we suspect [patrick]{"entity":"person", "role":"suspect"}
+    - Is it [Anna]{"entity":"person", "role":"suspect"}
+    - Is it [Victor]{"entity":"person", "role":"suspect"}
+    - Is it [Patrick]{"entity":"person", "role":"suspect"}
+    - Is it [Kira]{"entity":"person", "role":"suspect"}
     - police
     - I want to go to the police
     - I think [Kira]{"entity":"person", "role":"suspect"} is the murderer
