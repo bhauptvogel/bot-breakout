@@ -53,7 +53,7 @@ class StartGame(Action):
 
         if "first_message_sent" not in data.keys():
             utter(dispatcher,
-                "Oh hi, Sorry I’m just shocked. I..I..I know this woman - it’s Maria, a journalist...😨 <br>I just called the police, because that's what a good citizen does, right? But now we should find some hints to not become a suspect ourselves! The police is here in 10 minutes.⏰ When they arrive, we should provide valuable hints about a <b>potential suspect</b> who had both <b>motive and access</b> to the crime scene and the <b>murder weapon</b>. <br>I'm not sure where to start. Can you help me clear my mind?🥺 Maybe we could investigate the room, or I can tell you about my co-workers."
+                "Oh hi, Sorry I’m just shocked. I..I..I know this woman - it’s Maria, a journalist...😨 <br>I just called the police, because that's what a good citizen does, right? But now we should find some hints to not become a suspect ourselves! The police is here in 10 minutes.⏰ When they arrive, we should provide valuable hints about a <b>potential suspect</b> who had both <b>motive</b> and <b>access</b> to the crime scene and the <b>murder weapon</b>. <br>I'm not sure where to start. Can you help me clear my mind?🥺 Maybe we could investigate the room, or I can tell you about my co-workers."
             )
 
             timestamp = datetime.now()

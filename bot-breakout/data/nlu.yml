@@ -828,6 +828,9 @@ nlu:
   examples: |
     - secrets
     - Secret
+    - Secrets
+    - Sekrets
+    - sekrets
     - secret information
 
 - synonym: cabin
