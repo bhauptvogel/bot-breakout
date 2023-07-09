@@ -248,7 +248,7 @@ nlu:
 ## ------ scene investigation ------
 - intent: scene_investigation
   examples: |
-    - investigate marias dead [body]{"entity":"object", "group":"search"}
+    - investigate marias [dead body]{"entity":"object", "group":"search", "value":"body"}
     - let's investigate marias [body]{"entity":"object", "group":"search"}
     - lets investigate marias [body]{"entity":"object", "group":"search"}
     - I would like to investigate the [body]{"entity":"object", "group":"search"}
@@ -262,6 +262,9 @@ nlu:
     - Investigate the scene
     - investigate the scene
     - Tell me about the environment
+    - Maria's [dead body]{"entity":"object", "group":"search", "value":"body"}
+    - look at the [cabbin]{"entity":"object", "group":"search", "value":"cabin"} with maria's [dead body]{"entity":"object", "group":"search", "value":"body"}
+    - check the room of Marias [dead body]{"entity":"object", "group":"search", "value":"body"}
     - What do you see?
     - Search the room
     - Mika investigate the scene
@@ -822,6 +825,7 @@ nlu:
     - dead person
     - dead woman
     - woman in the cabin
+    - dead body
     - corpse
 
 - synonym: secret
@@ -833,6 +837,7 @@ nlu:
 - synonym: cabin
   examples: |
     - train cabin
+    - cabbin
     - train
     - rollercoaster cabin
 
