@@ -255,6 +255,9 @@ nlu:
     - So [Patrik]{"entity":"person", "value":"Patrick", "role":"suspect"} killed [Mariaa]{"entity":"person", "value":"Maria", "role":"victim"}?
     - Do you think [Patric]{"entity":"person", "value":"Patrick", "role":"suspect"} killed [Maria]{"entity":"person", "role":"victim"}?
     - did [Kira]{"entity":"person", "role":"suspect"} kill [Maria]{"entity":"person", "role":"victim"}
+    - Is [Kira's]{"entity":"person", "value":"Kira", "role":"suspect"} the owner?
+    - is [Kira's]{"entity":"person", "value":"Kira", "role":"suspect"} the owner of the knife?
+    - belongs the knife to [Kira's]{"entity":"person", "value":"Kira", "role":"suspect"}?
 
 ## ------ scene investigation ------
 - intent: scene_investigation
@@ -856,6 +859,9 @@ nlu:
   examples: |
     - secrets
     - Secret
+    - Secrets
+    - Sekrets
+    - sekrets
     - secret information
 
 - synonym: cabin
