@@ -133,7 +133,7 @@ class Hint(Action):
             if not any(in_game_state):
                 return hint["text"]
 
-        return "I don't have any hints for you right now.🫠"
+        return "I don't have any hints for you right now."
 
     def run(
         self,
