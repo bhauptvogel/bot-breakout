@@ -41,7 +41,7 @@ class CharacterInvestigation(Action):
 
     def utter_relation(self, dispatcher, characters, data):
         if len(characters) != 2:
-            utter(dispatcher, text="I don't know what you mean.🫠 Please specify two characters names if you want to know about their relation.")
+            utter(dispatcher, text="I don't know what you mean. Please specify two characters names if you want to know about their relation.")
         else:
             utter(dispatcher, text=ii.get_story_information("story_character_relation", f"{characters[0]}_{characters[1]}", data))
 
@@ -58,7 +58,7 @@ class CharacterInvestigation(Action):
 
                 for character in characters:
                     if character not in ii.get_story_characters():
-                        utter(dispatcher, text=f"I don't know who {character} is.🫠 {get_most_similar_person(character)}")
+                        utter(dispatcher, text=f"I don't know who {character} is.😧 {get_most_similar_person(character)}")
                         return
                     self.utter_specific_information(dispatcher, character, info, data)
 
