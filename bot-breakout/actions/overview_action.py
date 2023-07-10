@@ -21,7 +21,7 @@ INFORMATION = [
         "required_story_states": ["character_information/Kira/base_1"],
     },
     {
-        "text": "She is the Ex-Girlfriend of Maria.💔 She didn't handle the break-up well, as Maria was already with Victor after a few days.🫣",
+        "text": "She is the Ex-Girlfriend of Maria.💔 She didn't handle the break-up well, as Maria was already with Victor after a few days.🫢",
         "required_story_states": ["character_information/Kira/base_1", "motive/Kira"],
     },
     {
