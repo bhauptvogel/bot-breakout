@@ -28,7 +28,7 @@ HINTS = [
     },
     # not talked about Anna
     {
-        "text": "Maybe you should know more about Anna. There is something important you need to know!🫢",
+        "text": "Maybe you should know more about Anna. There is something important you need to know!😧",
         "disallowed_story_states": ["character_information/Anna"],
     },
     # cabin not investigated
@@ -38,7 +38,7 @@ HINTS = [
     },
     # not talked about Patrick
     {
-        "text": "I think it's time to talk about Patrick. There is stuff you don't know about him yet!🫢",
+        "text": "I think it's time to talk about Patrick. There is stuff you don't know about him yet!😧",
         "disallowed_story_states": ["character_information/Patrick"],
     },
     # not talked about Kira
@@ -160,7 +160,7 @@ class Hint(Action):
                 2: "Ok, let's focus on the riddle. Maybe there is another way to look at the cabin number.🙃",
                 3: "Maybe look at the 686 ANOTHER WAY...🙃",
                 4: "I think I have an idea... but let's first make another attempt, give me another number.",
-                5: "Oh I made a mistake... the cabin number is 989🫢",
+                5: "Oh I made a mistake... the cabin number is 989😅",
                 6: "It should be (989 - 7 + 2) / 2. Type it in a calculator!😊",
             }
             if "cabin_guess" not in data.keys():
