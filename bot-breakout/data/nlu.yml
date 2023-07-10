@@ -273,6 +273,7 @@ nlu:
     - check [weapon]{"entity":"object", "group":"search"}
     - check [cabin]{"entity":"object", "group":"search"}
     - look at [knive]{"entity":"object", "group":"search", "value":"knife"}
+    - yes look at the [knife]{"entity":"object", "group":"search"}
     - Investigate the scene
     - investigate the scene
     - Tell me about the environment
