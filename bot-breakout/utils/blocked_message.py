@@ -2,7 +2,7 @@ from utils import end_of_game
 
 def get_blocked_message(data, blocked_key): 
     if blocked_key == "cabin_blocked":
-        return "We have to open the cabin first! Its not that, hard try again.🎲 Maybe I remember something and give you a hint while guessing the pin code.🫢"
+        return "We have to open the cabin first! Its not that, hard try again.🎲 Maybe I remember something and give you a hint while guessing the pin code.😉"
     elif blocked_key == "end_of_game_blocked":
         return "We dont have time anymore!⏰ The police waits outside, please tell me who you suspect? <br>Type in a name."
     elif blocked_key == "game_over_blocked":

@@ -6,7 +6,7 @@ character_information:
   - breakup: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her colleague Anna. That's why their relationship broke apart…😓"
   - full_name: "Maria Sterling is her full name"
   Kira:
-  - base_1: "Kira is my colleague, she works at the cashier. We get along pretty well, I helped her get over the breakup with Maria.🫢 That really took her down, she was super upset - especially because of Maria's new boyfriend Victor."
+  - base_1: "Kira is my colleague, she works at the cashier. We get along pretty well, I helped her get over the breakup with Maria.😓 That really took her down, she was super upset - especially because of Maria's new boyfriend Victor."
   - base_2: "I think Maria having a new boyfriend really messed her up. She was super upset.😥 Other than that, she's really nice. She doesn't know a lot about what is going on in the amusement park business."
   - base_3: "You've already asked me about Kira, but sure: Kira is my colleague, and I helped her through a tough breakup with Maria. She was really upset because of Maria's new boyfriend, Victor. Other than that, she's a nice person, but she doesn't know much about the amusement park business."
   - breakup: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her colleague Anna. That's why their relationship broke apart…💔"
@@ -15,7 +15,7 @@ character_information:
   - base_1: "Patrick is my boss. He is in charge of the amusement park. It's actually a family business, he got it from his dad. Patrick is kind of a snob...🙄 he loves to drive around in big cars and all this wealthy stuff.🤑 And... He has his secrets that nobody knows about..."
   - base_2: "Patrick is from China... he came here to take over the amusement park of his family."
   - base_3: "By the way, you already asked me about Patrick, but sure, here's some information: Patrick is my boss, and he runs the amusement park, which is a family business inherited from his dad.🤑 He can be a bit snobbish and enjoys showing off his wealth with fancy cars and such. Plus, he has some mysterious secrets that nobody knows about."
-  - secret: "Soo… recently I saw some letters from the tax office on Patricks desk in his office. When I asked him about it he tore me down. So I told Maria. And she was thinking about doing her own investigations. With Patrick's lifestyle, the big cars and everything… It could be corruption. But I dont know what Maria discovered. For safety reasons we didn't have much contact since. 🫢 "
+  - secret: "Soo… recently I saw some letters from the tax office on Patricks desk in his office. When I asked him about it he tore me down. So I told Maria. And she was thinking about doing her own investigations. With Patrick's lifestyle, the big cars and everything… It could be corruption. But I dont know what Maria discovered. For safety reasons we didn't have much contact since. 😐 "
   - full_name: "Patrick is from China. His last name is Anyang."
   Victor:
   - base_1: "To be honest... I don’t know Victor. He is just Maria's new boyfriend🤷"
@@ -41,8 +41,8 @@ story_character_relation:
   - Patrick_Maria: "Maria, being the journalist she is, got all intrigued about Patrick's \"business\" and how he makes his cash.💵 She was planning to write an article exposing all the captivating details."
   - Maria_Victor: "After Maria and Kira broke up, she fell in love with Victor, and they started dating. They're both incredibly happy together... sorry they <em>WERE</em> incredibly happy😥"
   - Victor_Maria: "After Maria and Kira broke up, she fell in love with Victor, and they started dating. They're both incredibly happy together... sorry they <em>WERE</em> incredibly happy😥"
-  - Maria_Anna: "Their relationship is a little complicated. They're not just colleagues but also rivals in a way. It's like they're constantly in a battle, pushing each other to be at the top of their game. Things can get pretty heated between them. 🫢 "
-  - Anna_Maria: "Their relationship is a little complicated. They're not just colleagues but also rivals in a way. It's like they're constantly in a battle, pushing each other to be at the top of their game. Things can get pretty heated between them. 🫢 "
+  - Maria_Anna: "Their relationship is a little complicated. They're not just colleagues but also rivals in a way. It's like they're constantly in a battle, pushing each other to be at the top of their game. Things can get pretty heated between them. 🙄 "
+  - Anna_Maria: "Their relationship is a little complicated. They're not just colleagues but also rivals in a way. It's like they're constantly in a battle, pushing each other to be at the top of their game. Things can get pretty heated between them. 🙄 "
   - Kira_Patrick: "Kira works at the cash-out in Patrick's amusement park, where Patrick is her boss."
   - Patrick_Kira: "Kira works at the cash-out in Patrick's amusement park, where Patrick is her boss."
   - Kira_Victor: "Kira is Maria's ex, and Victor is her new boyfriend. They barely know each other beyond their connection through Maria."
@@ -77,14 +77,14 @@ motive:
   - base_1: "Maria is Kira's Ex. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very well.😔"
   - base_2: "You already asked me about Marias's motive but no worries, I'll tell you again. Maria is the Ex of Kira. The break up wasn't so nice and a few days after, Maria was already together with Victor. Kira didn't handle the break up very well.😔"
   Patrick:
-  - base_1: "I'm not sure if I should tell you about this, but whatever... Maria had recently discovered that Patrick was involved in some illegal activities regarding corruption. I don't know the details but it would have been the end of Patrick's career if this story got published.🫢"
-  - base_2: "You already asked me about Patrick's motive but no worries, I'll tell you again. Maria is the Ex of Kira. Maria had recently discovered that Patrick was involved in some illegal activities regarding corruption. I don't know the details but it would have been the end of Patrick's career if this story got published.🫢"
+  - base_1: "I'm not sure if I should tell you about this, but whatever... Maria had recently discovered that Patrick was involved in some illegal activities regarding corruption. I don't know the details but it would have been the end of Patrick's career if this story got published.😧"
+  - base_2: "You already asked me about Patrick's motive but no worries, I'll tell you again. Maria is the Ex of Kira. Maria had recently discovered that Patrick was involved in some illegal activities regarding corruption. I don't know the details but it would have been the end of Patrick's career if this story got published.😧"
   Victor:
   - base_1: "As far as I know, he wouldn't have a reason to kill Maria. They just started dating and it was going really well.✨"
   - base_2: "You already asked me about Victor's motive but no worries, I'll tell you again. Victor wouldn't have a reason to kill Maria. They just started dating and it was going really well.✨ "
   Anna:
   - base_1: "Anna and Maria were rivals. If it's about a good story Anna would have done anything. And they worked on the same story...🫠"
-  - base_2: "You already asked me about Anna's motive but no worries, I'll tell you again. She and Maria were rivals. If it's about a good story Anna would have done anything.🫢"
+  - base_2: "You already asked me about Anna's motive but no worries, I'll tell you again. She and Maria were rivals. If it's about a good story Anna would have done anything.😧"
   Maria:
   - base_1: "I'm pretty sure Maria didn't unalive herself. This looks definitely like a murder.😵 I think Anna, Kira or Patrick have something to do with it..."
 
