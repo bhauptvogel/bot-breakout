@@ -72,7 +72,6 @@ class SceneInvestigation(Action):
                     obj = "no_access"
                     no_access_already_said = True
                 else:
-                    print("Already said no access")
                     continue
 
 

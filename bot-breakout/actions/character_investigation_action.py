@@ -30,7 +30,10 @@ class CharacterInvestigation(Action):
     def utter_specific_information(self, dispatcher, character, info, data):
         if info not in ii.get_story_characters_information()[character]:
             if character == "__General__":
-                utter(dispatcher, text=f"I don't know anything about the {info}!")
+                if info == "full_name":
+                   utter(dispatcher, text=f"Please specify a character name if you want to know about their full name.")
+                else:
+                    utter(dispatcher, text=f"I don't know anything about the {info}!")
             else:
                 utter(dispatcher, text=f"I don't know anything about the {info} of {character}!")
         else:
