@@ -1,8 +1,5 @@
 
 import yaml
-import logging
-logging.basicConfig(level=logging.WARNING, format='%(asctime)s - %(levelname)s - %(message)s')
-
 
 
 def load_story_yml():
@@ -30,8 +27,6 @@ def set_game_state(class_: str, item: str, data_slot: dict):
         else:
             d[key] = {}
             d = d[key]
-
-    logging.debug("Game state was set: " + str(data_slot["story_state"]))
 
 def get_class_split(class_: str, story_dict: dict):
     """
@@ -89,17 +84,13 @@ def get_story_information(class_, item, data_slot):
     :return: utter message that the chatbot should say
     """
     
-    logging.info("get_story_information: " + class_ + ", item: " + item)
-
     story_dict = load_story_yml()
     class_story_data = get_class_split(class_, story_dict)
 
 
     if class_story_data is None:
-        logging.error(f"get_story_information: class_data is None! class:{class_}, item:{item}")
         return None
     if data_slot is None:
-        logging.error("get_story_information: data_slot is None")
         return None
 
     # keys in class
@@ -111,7 +102,6 @@ def get_story_information(class_, item, data_slot):
         item = get_base_item(keys_in_class_story, class_, data_slot)
     
     if item not in keys_in_class_story:
-        logging.warning(f'item {item} not in keys... ' + ' '.join(keys_in_class_story))
         return None
 
     set_game_state(class_, item, data_slot)
