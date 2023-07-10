@@ -6,7 +6,7 @@ character_information:
   - breakup: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her colleague Anna. That's why their relationship broke apart…😓"
   - full_name: "Maria Sterling is her full name"
   Kira:
-  - base_1: "Kira is my colleague, she works at the cashier. We get along pretty well, I helped her get over the breakup with Maria.🫣 That really took her down, she was super upset - especially because of Maria's new boyfriend Victor."
+  - base_1: "Kira is my colleague, she works at the cashier. We get along pretty well, I helped her get over the breakup with Maria.🫢 That really took her down, she was super upset - especially because of Maria's new boyfriend Victor."
   - base_2: "I think Maria having a new boyfriend really messed her up. She was super upset.😥 Other than that, she's really nice. She doesn't know a lot about what is going on in the amusement park business."
   - base_3: "You've already asked me about Kira, but sure: Kira is my colleague, and I helped her through a tough breakup with Maria. She was really upset because of Maria's new boyfriend, Victor. Other than that, she's a nice person, but she doesn't know much about the amusement park business."
   - breakup: "Kira and Maria were totally in love, but they had heated arguments about Maria working too much. She always wanted to catch the hottest stories and loved to do investigations on her own. She tried to outshine her colleague Anna. That's why their relationship broke apart…💔"
@@ -15,7 +15,7 @@ character_information:
   - base_1: "Patrick is my boss. He is in charge of the amusement park. It's actually a family business, he got it from his dad. Patrick is kind of a snob...🙄 he loves to drive around in big cars and all this wealthy stuff.🤑 And... He has his secrets that nobody knows about..."
   - base_2: "Patrick is from China... he came here to take over the amusement park of his family."
   - base_3: "By the way, you already asked me about Patrick, but sure, here's some information: Patrick is my boss, and he runs the amusement park, which is a family business inherited from his dad.🤑 He can be a bit snobbish and enjoys showing off his wealth with fancy cars and such. Plus, he has some mysterious secrets that nobody knows about."
-  - secret: "Soo… recently I saw some letters from the tax office on Patricks desk in his office. When I asked him about it he tore me down. So I told Maria. And she was thinking about doing her own investigations. With Patrick's lifestyle, the big cars and everything… It could be corruption. But I dont know what Maria discovered. For safety reasons we didn't have much contact since. 🫣 "
+  - secret: "Soo… recently I saw some letters from the tax office on Patricks desk in his office. When I asked him about it he tore me down. So I told Maria. And she was thinking about doing her own investigations. With Patrick's lifestyle, the big cars and everything… It could be corruption. But I dont know what Maria discovered. For safety reasons we didn't have much contact since. 🫢 "
   - full_name: "Patrick is from China. His last name is Anyang."
   Victor:
   - base_1: "To be honest... I don’t know Victor. He is just Maria's new boyfriend🤷"
@@ -62,7 +62,7 @@ scene_investigation:
   - base_3: "This is all we can find here. "
   - weapon: "The Knife... Oh, there are initials on it. It says “<em style='font-family: Brush Script MT, cursive;'>A.P.</em>”. Hm, who might it be?👀"
   - knife: "The Knife... Oh, there are initials on it. It says “<em style='font-family: Brush Script MT, cursive;'>A.P.</em>”. Hm, who might it be?👀"
-  - body: "Ok, it feels a bit scary to look at Maria's lifeless body, but perhaps we'll discover something that leads us to the murderer. Let’s take a few steps closer... She is covered in blood...🩸 sorry I'm feeling sick... I can't look at her anymore. Please say that we can look around now... 😰 "
+  - body: "It feels a bit scary to look at Maria's lifeless body, but perhaps we'll discover something that leads us to the murderer. The body is inside the cabin and she is covered in blood...🩸So its possible that she got stabbed with the knife we found. We could take a closer look at the knife to get more information about it.👀"
   - cabin: "It has two seats, just like ours. On the seat closer to us is Maria. She is covered in blood and a note is pinned to her chest.🩸 I don’t see how she died... Should I investigate it more or should I tell you about the note...👀"
   - bench: "Just two zombies in love sitting here, with a few spider webs beneath the bench. Bit disgusting...🥴 Oh, be careful to not get tangled in the zombies when standing up. <br> Now we are back next to the cabin."
   - tree: "The tree is a bit scary. It’s a dead tree without leaves. Behind the tree, there is just some light equipment that adds to the spooky ambiance of the scene.🕸 Nothing to find here. <br> We are back next to the cabin again."

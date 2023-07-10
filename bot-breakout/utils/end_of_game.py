@@ -30,7 +30,7 @@ def guess_murderer(data, person):
             data["won"] = True
             return output
         else:
-            output = f"<p style='font-family: georgia;'>[Police officer👮‍♂️] So you already did my job. We talked to {person} before we arrived. Maybe I should talk to you two a bit more because {person} has an alibi...🫣 Maybe at the police station. Hendrick! Handcuff these two, they are suspiscious.🤨</p><br>"
+            output = f"<p style='font-family: georgia;'>[Police officer👮‍♂️] So you already did my job. We talked to {person} before we arrived. Maybe I should talk to you two a bit more because {person} has an alibi...🫢 Maybe at the police station. Hendrick! Handcuff these two, they are suspiscious.🤨</p><br>"
             output = f"After a hot investigation, the police conclude that {person} is innocent. Your were held at the police station for a few hours and are now drained. But you had a lot of time to get to know your Date in ✨jail✨. Detective work doesn't seem to be your secret talent... <br>"
             output += "<h1>You lost the game!❌</h1> <br>Better luck next time!🍀"
             data["blocked"] = {
